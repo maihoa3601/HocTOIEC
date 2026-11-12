@@ -116,3 +116,5 @@ for(const [i,w]of words.entries()){
 const bank={version:1,reviewedDate:'12/11/2026',note:'Câu hỏi được chuyển hoặc biên soạn từ những trang tài liệu đã đọc. Giải thích do TOEIC Studio biên soạn; có liên kết nguồn để đối chiếu.',sets};
 await writeFile(new URL('../dist/learning-bank.json',import.meta.url),JSON.stringify(bank,null,2));
 console.log(JSON.stringify({sets:sets.length,questions:sets.reduce((n,s)=>n+s.questions.length,0),cards:sets.reduce((n,s)=>n+s.cards.length,0),courses:new Set(sets.map(s=>s.courseId)).size}));
+
+await import('./enrich-learning-bank.mjs');

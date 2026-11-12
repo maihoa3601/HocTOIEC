@@ -1,0 +1,1409 @@
+[
+  {
+    "id": "word-classes-basics",
+    "title": "Từ loại · nhìn vị trí, chọn dạng đúng",
+    "topic": "Ngữ pháp",
+    "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+    "folderId": "1QsFpapAAnqcIYEc03YBHgBgC5HomaVqq",
+    "description": "Đọc quy tắc ngắn, tự điền đáp án và sửa lỗi trong câu mới.",
+    "origin": "Bài luyện mới do TOEIC Studio biên soạn theo các trang tài liệu đã đọc",
+    "sources": [
+      {
+        "id": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "title": "covumaiphuongunit9-tuloai.pdf",
+        "pages": [
+          1,
+          2,
+          4,
+          5,
+          6,
+          7
+        ],
+        "url": "https://drive.google.com/file/d/14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF/view"
+      }
+    ],
+    "summary": [
+      "Danh từ có thể đứng sau tính từ sở hữu, mạo từ và tính từ.",
+      "Tính từ bổ nghĩa cho danh từ; thường đứng trước danh từ hoặc sau to be.",
+      "Trạng từ bổ nghĩa cho động từ hoặc tính từ. Không phải từ nào có -ly cũng là trạng từ.",
+      "Fast, well, hard là các trạng từ cần nhớ riêng."
+    ],
+    "questions": [
+      {
+        "id": "word-classes-basics-001",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Chỗ trống cần từ loại nào? “The receptionist is very ___.”",
+        "options": [
+          "Danh từ",
+          "Động từ",
+          "Tính từ",
+          "Mạo từ"
+        ],
+        "answer": 2,
+        "explanation": "Sau to be và trạng từ mức độ very cần một tính từ mô tả receptionist.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 6
+      },
+      {
+        "id": "word-classes-basics-002",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Chọn cụm có nghĩa “một nhân viên cẩn thận”.",
+        "options": [
+          "a carefully worker",
+          "a careful worker",
+          "a carefuly worker",
+          "a careless worker"
+        ],
+        "answer": 1,
+        "explanation": "Careful nghĩa là cẩn thận và là tính từ đứng trước worker. Careless nghĩa là bất cẩn, trái với nghĩa được yêu cầu.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 5
+      },
+      {
+        "id": "word-classes-basics-003",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Trong câu “The team works hard”, hard đang làm nhiệm vụ gì?",
+        "options": [
+          "Danh từ chỉ người",
+          "Tính từ bổ nghĩa cho team",
+          "Trạng từ bổ nghĩa cho works",
+          "Động từ chính"
+        ],
+        "answer": 2,
+        "explanation": "Hard bổ nghĩa cho cách làm việc của team nên ở đây là trạng từ.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 7
+      },
+      {
+        "id": "word-classes-basics-004",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Từ nào là tính từ dù kết thúc bằng -ly?",
+        "options": [
+          "slowly",
+          "carefully",
+          "friendly",
+          "quickly"
+        ],
+        "answer": 2,
+        "explanation": "Friendly mô tả tính chất thân thiện; không thể chỉ dựa vào đuôi -ly để kết luận.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 6
+      },
+      {
+        "id": "word-classes-basics-005",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng đúng của từ trong ngoặc: “She is a helpful ___ (teach).”",
+        "accept": [
+          "teacher"
+        ],
+        "explanation": "Sau a helpful cần danh từ chỉ người: teacher.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 5
+      },
+      {
+        "id": "word-classes-basics-006",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng đúng: “The flowers are ___ (beauty).”",
+        "accept": [
+          "beautiful"
+        ],
+        "explanation": "Sau are để mô tả flowers cần tính từ beautiful.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 5
+      },
+      {
+        "id": "word-classes-basics-007",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng đúng: “Please read the instructions ___ (careful).”",
+        "accept": [
+          "carefully"
+        ],
+        "explanation": "Chỗ trống bổ nghĩa cho động từ read nên dùng trạng từ carefully.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 7
+      },
+      {
+        "id": "word-classes-basics-008",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền một từ: “The technician works ___.” (chăm chỉ)",
+        "accept": [
+          "hard"
+        ],
+        "explanation": "Hard có thể là trạng từ mang nghĩa chăm chỉ. Không dùng hardly cho nghĩa này.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 7
+      },
+      {
+        "id": "word-classes-basics-009",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng đúng: “Her ___ (happy) is clear.”",
+        "accept": [
+          "happiness"
+        ],
+        "explanation": "Sau tính từ sở hữu Her, vị trí chủ ngữ cần danh từ happiness.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 5
+      },
+      {
+        "id": "word-classes-basics-010",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng đúng: “The visitor smiled ___ (happy).”",
+        "accept": [
+          "happily"
+        ],
+        "explanation": "Cách mỉm cười được diễn tả bằng trạng từ happily.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 2
+      },
+      {
+        "id": "word-classes-basics-011",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng đúng của use mang nghĩa “hữu ích”: “The new system is ___ for our team.”",
+        "accept": [
+          "useful"
+        ],
+        "explanation": "Sau is cần tính từ; useful nghĩa là hữu ích, theo mẫu tính từ đuôi -ful. Useless có nghĩa trái lại.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 6
+      },
+      {
+        "id": "word-classes-basics-012",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền một trạng từ mức độ gồm 4 chữ cái, nghĩa là “rất”: “The task is ___ easy.”",
+        "accept": [
+          "very"
+        ],
+        "explanation": "Very gồm 4 chữ cái, nghĩa là rất và đứng trước tính từ easy.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 7
+      },
+      {
+        "id": "word-classes-basics-013",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “The receptionist is carefully.” Chỉ viết từ đúng thay cho carefully.",
+        "accept": [
+          "careful"
+        ],
+        "explanation": "Sau is để mô tả tính cách/đặc điểm của người dùng tính từ careful.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 5
+      },
+      {
+        "id": "word-classes-basics-014",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “They speak slow.” Chỉ viết dạng đúng thay cho slow.",
+        "accept": [
+          "slowly"
+        ],
+        "explanation": "Speak cần trạng từ chỉ cách nói: slowly.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 7
+      },
+      {
+        "id": "word-classes-basics-015",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “He is a happily child.” Chỉ viết từ đúng thay cho happily.",
+        "accept": [
+          "happy"
+        ],
+        "explanation": "Trước danh từ child cần tính từ happy.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 5
+      },
+      {
+        "id": "word-classes-basics-016",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “This chair is very comfort.” Chỉ viết dạng đúng thay cho comfort.",
+        "accept": [
+          "comfortable"
+        ],
+        "explanation": "Sau is very cần tính từ; comfortable theo mẫu đuôi -able.",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 6
+      }
+    ],
+    "cards": [
+      {
+        "id": "word-classes-basics-card-1",
+        "front": "teacher",
+        "back": "giáo viên",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 1
+      },
+      {
+        "id": "word-classes-basics-card-2",
+        "front": "happiness",
+        "back": "niềm vui",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 1
+      },
+      {
+        "id": "word-classes-basics-card-3",
+        "front": "carefully",
+        "back": "một cách cẩn thận",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 2
+      },
+      {
+        "id": "word-classes-basics-card-4",
+        "front": "friendly",
+        "back": "thân thiện (tính từ)",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 2
+      },
+      {
+        "id": "word-classes-basics-card-5",
+        "front": "well",
+        "back": "tốt, giỏi (trạng từ)",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 2
+      },
+      {
+        "id": "word-classes-basics-card-6",
+        "front": "hard",
+        "back": "chăm chỉ (trong vai trò trạng từ)",
+        "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+        "page": 2
+      }
+    ],
+    "lesson": {
+      "sections": [
+        {
+          "heading": "Tìm danh từ trong cụm từ",
+          "points": [
+            "Nhìn mạo từ, tính từ sở hữu và tính từ đứng trước chỗ trống để xác định vị trí của danh từ.",
+            "Các đuôi như -er/-or, -tion, -ment, -ness có thể giúp nhận diện; vẫn phải xét vị trí và nghĩa."
+          ],
+          "examples": [
+            {
+              "en": "Our teacher is kind.",
+              "vi": "Giáo viên của chúng tôi tốt bụng.",
+              "orderable": true
+            },
+            {
+              "en": "Happiness matters.",
+              "vi": "Niềm vui là điều quan trọng.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+          "page": 5
+        },
+        {
+          "heading": "Tính từ mô tả người và vật",
+          "points": [
+            "Dùng tính từ trước danh từ hoặc sau to be.",
+            "Một số tính từ có đuôi -ful, -less, -able, -ive. Friendly và lovely vẫn là tính từ dù có -ly."
+          ],
+          "examples": [
+            {
+              "en": "This is a comfortable chair.",
+              "vi": "Đây là một chiếc ghế thoải mái.",
+              "orderable": true
+            },
+            {
+              "en": "The visitors are friendly.",
+              "vi": "Những du khách rất thân thiện.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+          "page": 6
+        },
+        {
+          "heading": "Trạng từ nói rõ cách làm và mức độ",
+          "points": [
+            "Trạng từ có thể bổ nghĩa cho động từ: làm việc cẩn thận, nói chậm.",
+            "Trạng từ mức độ đứng trước tính từ: very useful.",
+            "Nhiều trạng từ được tạo bằng tính từ + -ly, nhưng well, fast, hard không theo mẫu đó."
+          ],
+          "examples": [
+            {
+              "en": "She speaks slowly.",
+              "vi": "Cô ấy nói chậm.",
+              "orderable": true
+            },
+            {
+              "en": "The room is quite small.",
+              "vi": "Căn phòng khá nhỏ.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "14BWWIRM3hksPOsQQNCNxYmyjul7BO9EF",
+          "page": 7
+        }
+      ],
+      "pitfalls": [
+        "Sau is/are để mô tả đặc điểm thường cần tính từ: careful, không phải carefully.",
+        "Để mô tả cách thực hiện động từ, chọn trạng từ: work carefully.",
+        "Không đổi hard thành hardly để nói chăm chỉ: hai từ có nghĩa khác nhau."
+      ]
+    }
+  },
+  {
+    "id": "present-continuous",
+    "title": "Hiện tại tiếp diễn · hành động đang xảy ra",
+    "topic": "Ngữ pháp",
+    "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+    "folderId": "1bCINI7Mg7KaSBX_SzgqkdI2o1a-qHkqv",
+    "description": "Đọc quy tắc ngắn, tự điền đáp án và sửa lỗi trong câu mới.",
+    "origin": "Bài luyện mới do TOEIC Studio biên soạn theo các trang tài liệu đã đọc",
+    "sources": [
+      {
+        "id": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "title": "covumaiphuongunit10-thihientaitiepdien.pdf",
+        "pages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "url": "https://drive.google.com/file/d/1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z/view"
+      }
+    ],
+    "summary": [
+      "S + am/is/are + V-ing; chọn to be theo chủ ngữ.",
+      "Phủ định thêm not sau to be; câu hỏi đưa to be lên trước chủ ngữ.",
+      "Dùng cho hành động đang xảy ra hoặc một cuộc hẹn/sắp xếp tương lai đã định.",
+      "Chú ý bỏ e hoặc nhân đôi phụ âm khi tạo một số dạng V-ing."
+    ],
+    "questions": [
+      {
+        "id": "present-continuous-001",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Chọn câu diễn tả đúng hành động đang xảy ra.",
+        "options": [
+          "The employees is type now.",
+          "The employees are typing now.",
+          "The employees typing now.",
+          "The employees are type now."
+        ],
+        "answer": 1,
+        "explanation": "The employees là chủ ngữ số nhiều; dùng are typing. Các lựa chọn còn lại thiếu -ing hoặc thiếu to be.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 2
+      },
+      {
+        "id": "present-continuous-002",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "“___ the visitors waiting outside?”",
+        "options": [
+          "Is",
+          "Do",
+          "Are",
+          "Does"
+        ],
+        "answer": 2,
+        "explanation": "The visitors số nhiều, câu hỏi tiếp diễn dùng Are + chủ ngữ + waiting.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 2
+      },
+      {
+        "id": "present-continuous-003",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Dạng -ing đúng của close là gì?",
+        "options": [
+          "closeing",
+          "closing",
+          "clossing",
+          "closeding"
+        ],
+        "answer": 1,
+        "explanation": "Close kết thúc bằng e: bỏ e rồi thêm -ing.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 3
+      },
+      {
+        "id": "present-continuous-004",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Trong “We are meeting the trainer at 9 tomorrow”, câu đang nói về điều gì?",
+        "options": [
+          "Một thói quen mỗi ngày",
+          "Một cuộc hẹn tương lai đã sắp xếp",
+          "Một việc đã xong hôm qua",
+          "Một sự thật luôn đúng"
+        ],
+        "answer": 1,
+        "explanation": "Hiện tại tiếp diễn có thể diễn tả một kế hoạch/sắp xếp tương lai cụ thể.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 2
+      },
+      {
+        "id": "present-continuous-005",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền to be: “I ___ waiting for the bus now.”",
+        "accept": [
+          "am"
+        ],
+        "explanation": "I đi với am trong cấu trúc am + V-ing.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 2
+      },
+      {
+        "id": "present-continuous-006",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền to be: “The receptionist ___ talking to a visitor.”",
+        "accept": [
+          "is"
+        ],
+        "explanation": "The receptionist là một người, dùng is talking.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 2
+      },
+      {
+        "id": "present-continuous-007",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng -ing: “They are ___ (run) in the park.”",
+        "accept": [
+          "running"
+        ],
+        "explanation": "Run là động từ ngắn, nhân đôi n rồi thêm -ing: running.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 3
+      },
+      {
+        "id": "present-continuous-008",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng -ing: “The assistant is ___ (type) an email.”",
+        "accept": [
+          "typing"
+        ],
+        "explanation": "Type bỏ e trước khi thêm -ing.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 3
+      },
+      {
+        "id": "present-continuous-009",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng -ing: “She is ___ (give) the customer a form.”",
+        "accept": [
+          "giving"
+        ],
+        "explanation": "Give bỏ e rồi thêm -ing thành giving.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 3
+      },
+      {
+        "id": "present-continuous-010",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền từ phủ định: “We are ___ watching a film.”",
+        "accept": [
+          "not"
+        ],
+        "explanation": "Đặt not sau are để tạo phủ định tiếp diễn.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 2
+      },
+      {
+        "id": "present-continuous-011",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền to be vào câu hỏi: “___ your brother working at the moment?”",
+        "accept": [
+          "Is"
+        ],
+        "explanation": "Your brother số ít, đưa is lên đầu câu hỏi.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 2
+      },
+      {
+        "id": "present-continuous-012",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng -ing: “Look! The plane is ___ (fly) above us.”",
+        "accept": [
+          "flying"
+        ],
+        "explanation": "Fly chỉ cần thêm -ing; không đổi y thành i.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 3
+      },
+      {
+        "id": "present-continuous-013",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “They is waiting.” Chỉ viết từ đúng thay cho is.",
+        "accept": [
+          "are"
+        ],
+        "explanation": "They là chủ ngữ số nhiều nên dùng are waiting.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 2
+      },
+      {
+        "id": "present-continuous-014",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “He is writeing a report.” Chỉ viết dạng đúng thay cho writeing.",
+        "accept": [
+          "writing"
+        ],
+        "explanation": "Động từ write bỏ e trước khi thêm -ing.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 3
+      },
+      {
+        "id": "present-continuous-015",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “Are she talking?” Chỉ viết từ đúng thay cho Are.",
+        "accept": [
+          "Is"
+        ],
+        "explanation": "She đi với is trong cả khẳng định lẫn nghi vấn.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 2
+      },
+      {
+        "id": "present-continuous-016",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “We are closeing the gate.” Chỉ viết dạng đúng thay cho closeing.",
+        "accept": [
+          "closing"
+        ],
+        "explanation": "Close bỏ e trước khi thêm -ing.",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 3
+      }
+    ],
+    "cards": [
+      {
+        "id": "present-continuous-card-1",
+        "front": "wait",
+        "back": "đợi",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 1
+      },
+      {
+        "id": "present-continuous-card-2",
+        "front": "type",
+        "back": "gõ máy",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 1
+      },
+      {
+        "id": "present-continuous-card-3",
+        "front": "gate",
+        "back": "cổng",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 1
+      },
+      {
+        "id": "present-continuous-card-4",
+        "front": "living room",
+        "back": "phòng khách",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 1
+      },
+      {
+        "id": "present-continuous-card-5",
+        "front": "keyboard",
+        "back": "bàn phím",
+        "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+        "page": 1
+      }
+    ],
+    "lesson": {
+      "sections": [
+        {
+          "heading": "Dựng câu bằng to be và V-ing",
+          "points": [
+            "I đi với am; he/she/it đi với is; you/we/they đi với are.",
+            "Câu tiếp diễn cần cả to be và động từ có -ing.",
+            "Phủ định: thêm not sau to be. Câu hỏi: đưa am/is/are lên đầu."
+          ],
+          "examples": [
+            {
+              "en": "I am checking the schedule.",
+              "vi": "Tôi đang kiểm tra lịch.",
+              "orderable": true
+            },
+            {
+              "en": "Are the visitors waiting?",
+              "vi": "Những vị khách đang đợi phải không?",
+              "orderable": true
+            }
+          ],
+          "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+          "page": 2
+        },
+        {
+          "heading": "Chọn đúng thời điểm",
+          "points": [
+            "Thì hiện tại tiếp diễn diễn tả một hành động đang xảy ra ngay lúc nói.",
+            "Có thể dùng hiện tại tiếp diễn cho một sắp xếp tương lai đã xác định."
+          ],
+          "examples": [
+            {
+              "en": "The receptionist is typing now.",
+              "vi": "Lễ tân đang gõ máy lúc này.",
+              "orderable": true
+            },
+            {
+              "en": "We are meeting our manager at ten tomorrow.",
+              "vi": "Chúng tôi đã hẹn gặp quản lý lúc mười giờ ngày mai.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+          "page": 2
+        },
+        {
+          "heading": "Nhìn dấu hiệu và viết đúng -ing",
+          "points": [
+            "Now, right now, at the moment thường gợi hành động đang diễn ra. Look! và Listen! cũng hướng sự chú ý vào hiện tại.",
+            "Type → typing: bỏ e. Run → running: nhân đôi n ở động từ ngắn này. Wait → waiting: thêm -ing."
+          ],
+          "examples": [
+            {
+              "en": "The visitors are waiting at the gate.",
+              "vi": "Những vị khách đang đợi ở cổng.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "1qaYIngQUhqm3x7DJhNXsQ6YBpL5qlJ9z",
+          "page": 3
+        }
+      ],
+      "pitfalls": [
+        "Không bỏ to be: “She typing” phải có is.",
+        "Sau is/are vẫn dùng V-ing, không dùng động từ nguyên mẫu.",
+        "Không thêm e trở lại khi viết typing, giving hoặc closing."
+      ]
+    }
+  },
+  {
+    "id": "past-simple-affirmative",
+    "title": "Quá khứ đơn · kể việc đã hoàn tất",
+    "topic": "Ngữ pháp",
+    "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+    "folderId": "1N6FPmQ9xaNyaj9xfuS6Z4tKLkgH6yhDj",
+    "description": "Đọc quy tắc ngắn, tự điền đáp án và sửa lỗi trong câu mới.",
+    "origin": "Bài luyện mới do TOEIC Studio biên soạn theo các trang tài liệu đã đọc",
+    "sources": [
+      {
+        "id": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "title": "covumaiphuongunit12-thiquakhudonthekhangdinh.pdf",
+        "pages": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "url": "https://drive.google.com/file/d/1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp/view"
+      }
+    ],
+    "summary": [
+      "I/he/she/it dùng was; you/we/they dùng were.",
+      "Động từ thường ở câu khẳng định dùng dạng quá khứ: V-ed hoặc cột 2.",
+      "Động từ bất quy tắc cần nhớ riêng: buy → bought, go → went, take → took.",
+      "Yesterday, last week và ago thường đặt câu trong một thời điểm quá khứ đã kết thúc."
+    ],
+    "questions": [
+      {
+        "id": "past-simple-affirmative-001",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "“The meeting ___ short yesterday.”",
+        "options": [
+          "were",
+          "was",
+          "is",
+          "are"
+        ],
+        "answer": 1,
+        "explanation": "The meeting số ít và yesterday chỉ quá khứ; dùng was.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 2
+      },
+      {
+        "id": "past-simple-affirmative-002",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "“They ___ the new printer last month.”",
+        "options": [
+          "buy",
+          "buyed",
+          "bought",
+          "buying"
+        ],
+        "answer": 2,
+        "explanation": "Buy có dạng quá khứ bất quy tắc là bought.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-003",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Cụm nào rõ nhất về một thời điểm quá khứ đã kết thúc?",
+        "options": [
+          "right now",
+          "every Monday",
+          "two weeks ago",
+          "at the moment"
+        ],
+        "answer": 2,
+        "explanation": "Ago là dấu hiệu thường gặp trong câu quá khứ đơn.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 4
+      },
+      {
+        "id": "past-simple-affirmative-004",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Dạng quá khứ đúng của stop là gì?",
+        "options": [
+          "stoped",
+          "stopped",
+          "stoping",
+          "stops"
+        ],
+        "answer": 1,
+        "explanation": "Stop nhân đôi p rồi thêm -ed.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-005",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền was hoặc were: “I ___ at the office yesterday.”",
+        "accept": [
+          "was"
+        ],
+        "explanation": "I đi với was trong quá khứ đơn của to be.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 2
+      },
+      {
+        "id": "past-simple-affirmative-006",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền was hoặc were: “The customers ___ satisfied.”",
+        "accept": [
+          "were"
+        ],
+        "explanation": "The customers là chủ ngữ số nhiều, dùng were.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 2
+      },
+      {
+        "id": "past-simple-affirmative-007",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng quá khứ: “We ___ (visit) the factory last Friday.”",
+        "accept": [
+          "visited"
+        ],
+        "explanation": "Visit là động từ có quy tắc, thêm -ed.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-008",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng quá khứ: “The class ___ (begin) at eight yesterday.”",
+        "accept": [
+          "began"
+        ],
+        "explanation": "Begin có dạng cột 2 là began.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-009",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng quá khứ: “She ___ (bring) her laptop.”",
+        "accept": [
+          "brought"
+        ],
+        "explanation": "Bring có dạng quá khứ là brought.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-010",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng quá khứ: “They ___ (send) the package last Monday.”",
+        "accept": [
+          "sent"
+        ],
+        "explanation": "Send đổi thành sent ở quá khứ đơn.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 4
+      },
+      {
+        "id": "past-simple-affirmative-011",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng quá khứ: “He ___ (take) the train yesterday.”",
+        "accept": [
+          "took"
+        ],
+        "explanation": "Take có dạng cột 2 là took.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 4
+      },
+      {
+        "id": "past-simple-affirmative-012",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng quá khứ: “We ___ (study) English last night.”",
+        "accept": [
+          "studied"
+        ],
+        "explanation": "Study kết thúc bằng phụ âm + y: đổi y thành i và thêm -ed.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-013",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “They was busy.” Chỉ viết từ đúng thay cho was.",
+        "accept": [
+          "were"
+        ],
+        "explanation": "They đi với were.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 2
+      },
+      {
+        "id": "past-simple-affirmative-014",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “She buyed a ticket.” Chỉ viết dạng đúng thay cho buyed.",
+        "accept": [
+          "bought"
+        ],
+        "explanation": "Buy là động từ bất quy tắc; dạng quá khứ là bought.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-015",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “We goed home.” Chỉ viết dạng đúng thay cho goed.",
+        "accept": [
+          "went"
+        ],
+        "explanation": "Go có dạng quá khứ bất quy tắc went.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-016",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “He maked a plan.” Chỉ viết dạng đúng thay cho maked.",
+        "accept": [
+          "made"
+        ],
+        "explanation": "Make có dạng quá khứ made.",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 4
+      }
+    ],
+    "cards": [
+      {
+        "id": "past-simple-affirmative-card-1",
+        "front": "begin → began",
+        "back": "bắt đầu · dạng quá khứ",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-card-2",
+        "front": "buy → bought",
+        "back": "mua · dạng quá khứ",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-card-3",
+        "front": "bring → brought",
+        "back": "mang tới · dạng quá khứ",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 3
+      },
+      {
+        "id": "past-simple-affirmative-card-4",
+        "front": "take → took",
+        "back": "cầm, mang · dạng quá khứ",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 4
+      },
+      {
+        "id": "past-simple-affirmative-card-5",
+        "front": "send → sent",
+        "back": "gửi · dạng quá khứ",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 4
+      },
+      {
+        "id": "past-simple-affirmative-card-6",
+        "front": "make → made",
+        "back": "làm, tạo · dạng quá khứ",
+        "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+        "page": 4
+      }
+    ],
+    "lesson": {
+      "sections": [
+        {
+          "heading": "Nói về trạng thái trong quá khứ",
+          "points": [
+            "Was đi với I/he/she/it; were đi với you/we/they.",
+            "Cần nhìn chủ ngữ trước khi chọn was hay were."
+          ],
+          "examples": [
+            {
+              "en": "The office was quiet yesterday.",
+              "vi": "Hôm qua văn phòng yên tĩnh.",
+              "orderable": true
+            },
+            {
+              "en": "The visitors were early.",
+              "vi": "Những vị khách đã đến sớm.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+          "page": 2
+        },
+        {
+          "heading": "Biến động từ thành dạng quá khứ",
+          "points": [
+            "Đa số động từ thêm -ed; kết thúc e thêm -d.",
+            "Phụ âm + y thường đổi y thành i rồi thêm -ed: study → studied.",
+            "Một số động từ ngắn nhân đôi phụ âm: stop → stopped.",
+            "Các động từ bất quy tắc như bring/brought, buy/bought, go/went cần học theo cặp."
+          ],
+          "examples": [
+            {
+              "en": "We studied together last night.",
+              "vi": "Chúng tôi đã học cùng nhau tối qua.",
+              "orderable": true
+            },
+            {
+              "en": "She brought the documents.",
+              "vi": "Cô ấy đã mang tài liệu tới.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+          "page": 3
+        },
+        {
+          "heading": "Gắn câu với một thời điểm đã qua",
+          "points": [
+            "Dùng quá khứ đơn để kể hành động đã xảy ra và chấm dứt trong quá khứ.",
+            "Chú ý các cụm thời gian như yesterday, last month, two days ago và in 2020."
+          ],
+          "examples": [
+            {
+              "en": "They sent the email two hours ago.",
+              "vi": "Họ đã gửi email cách đây hai giờ.",
+              "orderable": true
+            },
+            {
+              "en": "I met the new manager last week.",
+              "vi": "Tôi đã gặp quản lý mới tuần trước.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "1N4yhp8lTSrwiZQ0EV1hnISp-VY3pYtKp",
+          "page": 4
+        }
+      ],
+      "pitfalls": [
+        "Không thêm -ed vào động từ đã bất quy tắc: bought, không phải buyed.",
+        "Không dùng was với they/we/you trong các câu kể thông thường này.",
+        "Những từ như cost/cut giữ nguyên dạng nhưng vẫn có thể mang nghĩa quá khứ."
+      ]
+    }
+  },
+  {
+    "id": "future-simple",
+    "title": "Tương lai đơn · dự đoán, đề nghị và lời hứa",
+    "topic": "Ngữ pháp",
+    "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+    "folderId": "17-_8hdG9vdng5CTp1I-Mo9n6qMSdSOBd",
+    "description": "Đọc quy tắc ngắn, tự điền đáp án và sửa lỗi trong câu mới.",
+    "origin": "Bài luyện mới do TOEIC Studio biên soạn theo các trang tài liệu đã đọc",
+    "sources": [
+      {
+        "id": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "title": "covumaiphuongunit16-thituonglaidon.pdf",
+        "pages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "url": "https://drive.google.com/file/d/12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr/view"
+      }
+    ],
+    "summary": [
+      "S + will + động từ nguyên mẫu; will dùng giống nhau cho các chủ ngữ.",
+      "Phủ định: will not / won’t. Câu hỏi: Will + S + động từ nguyên mẫu?",
+      "Dùng cho dự đoán, niềm tin về tương lai, quyết định tức thời, đề nghị hoặc lời hứa.",
+      "Các cụm tomorrow, next week, soon cần được hiểu cùng ngữ cảnh, không tự quyết định một thì duy nhất."
+    ],
+    "questions": [
+      {
+        "id": "future-simple-001",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "“The manager will ___ the schedule tomorrow.”",
+        "options": [
+          "checks",
+          "checking",
+          "check",
+          "checked"
+        ],
+        "answer": 2,
+        "explanation": "Sau will luôn là động từ nguyên mẫu check.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 2
+      },
+      {
+        "id": "future-simple-002",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "“Will the visitors arrive soon?” — “Yes, they ___.”",
+        "options": [
+          "won’t",
+          "will",
+          "do",
+          "are"
+        ],
+        "answer": 1,
+        "explanation": "Câu trả lời ngắn khẳng định cho Will ...? dùng will.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 3
+      },
+      {
+        "id": "future-simple-003",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Bạn nhìn thấy đồng nghiệp đang ôm một hộp nặng và quyết định giúp ngay. Câu nào phù hợp?",
+        "options": [
+          "I helped you yesterday.",
+          "I will carry that box for you.",
+          "I carry it every Monday.",
+          "I am a box."
+        ],
+        "answer": 1,
+        "explanation": "Will diễn tả lời đề nghị/quyết định ngay tại thời điểm nói.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 3
+      },
+      {
+        "id": "future-simple-004",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "“I think the new course will be useful.” thể hiện ý nào?",
+        "options": [
+          "Một dự đoán hoặc niềm tin",
+          "Một việc đã hoàn tất hôm qua",
+          "Một câu phủ định",
+          "Một thói quen cố định"
+        ],
+        "answer": 0,
+        "explanation": "I think + will thường thể hiện dự đoán hoặc quan điểm về tương lai.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 3
+      },
+      {
+        "id": "future-simple-005",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền trợ động từ: “I promise I ___ return the book tomorrow.”",
+        "accept": [
+          "will"
+        ],
+        "explanation": "Một lời hứa có thể dùng will + động từ nguyên mẫu.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 3
+      },
+      {
+        "id": "future-simple-006",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng nguyên mẫu: “She will ___ (check) the invoice.”",
+        "accept": [
+          "check"
+        ],
+        "explanation": "Sau will không thêm s dù chủ ngữ là she.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 2
+      },
+      {
+        "id": "future-simple-007",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng nguyên mẫu: “We won’t ___ (cancel) the lesson.”",
+        "accept": [
+          "cancel"
+        ],
+        "explanation": "Won’t + động từ nguyên mẫu cancel.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 2
+      },
+      {
+        "id": "future-simple-008",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Tạo câu hỏi ở thì tương lai đơn: điền trợ động từ “___ you help me with this form?”",
+        "accept": [
+          "Will"
+        ],
+        "explanation": "Đề yêu cầu thì tương lai đơn, dùng Will + you + help ...?",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 3
+      },
+      {
+        "id": "future-simple-009",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng viết gọn của will not: “He ___ be late.”",
+        "accept": [
+          "won't"
+        ],
+        "explanation": "Will not viết gọn thành won’t.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 2
+      },
+      {
+        "id": "future-simple-010",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền từ còn thiếu trong câu trả lời: “Will she come?” — “No, she ___.”",
+        "accept": [
+          "won't"
+        ],
+        "explanation": "Câu trả lời ngắn phủ định dùng won’t.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 3
+      },
+      {
+        "id": "future-simple-011",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng nguyên mẫu: “They will ___ (carry) the chairs upstairs.”",
+        "accept": [
+          "carry"
+        ],
+        "explanation": "Sau will giữ nguyên carry, không đổi thành carries hoặc carried.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 2
+      },
+      {
+        "id": "future-simple-012",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền trợ động từ: “You look cold. I ___ turn on the heater.”",
+        "accept": [
+          "will"
+        ],
+        "explanation": "Người nói quyết định và đề nghị giúp ngay lúc nói: will turn on.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 3
+      },
+      {
+        "id": "future-simple-013",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “He will returns soon.” Chỉ viết từ đúng thay cho returns.",
+        "accept": [
+          "return"
+        ],
+        "explanation": "Sau will dùng nguyên mẫu return.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 2
+      },
+      {
+        "id": "future-simple-014",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “Will she checks the form?” Chỉ viết từ đúng thay cho checks.",
+        "accept": [
+          "check"
+        ],
+        "explanation": "Trong câu hỏi với will, động từ cũng phải giữ nguyên.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 3
+      },
+      {
+        "id": "future-simple-015",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “They won’t lent us money.” Chỉ viết từ đúng thay cho lent.",
+        "accept": [
+          "lend"
+        ],
+        "explanation": "Won’t + nguyên mẫu lend, không dùng dạng quá khứ lent.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 2
+      },
+      {
+        "id": "future-simple-016",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa lỗi: “I will helped you.” Chỉ viết từ đúng thay cho helped.",
+        "accept": [
+          "help"
+        ],
+        "explanation": "Will cần động từ nguyên mẫu help.",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 2
+      }
+    ],
+    "cards": [
+      {
+        "id": "future-simple-card-1",
+        "front": "return",
+        "back": "quay trở lại",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 1
+      },
+      {
+        "id": "future-simple-card-2",
+        "front": "lend",
+        "back": "cho vay, cho mượn",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 1
+      },
+      {
+        "id": "future-simple-card-3",
+        "front": "cancel",
+        "back": "hủy bỏ",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 1
+      },
+      {
+        "id": "future-simple-card-4",
+        "front": "carry",
+        "back": "mang, vác",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 1
+      },
+      {
+        "id": "future-simple-card-5",
+        "front": "heater",
+        "back": "máy sưởi",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 2
+      },
+      {
+        "id": "future-simple-card-6",
+        "front": "soon",
+        "back": "sớm",
+        "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+        "page": 1
+      }
+    ],
+    "lesson": {
+      "sections": [
+        {
+          "heading": "Giữ nguyên động từ sau will",
+          "points": [
+            "Will không đổi theo chủ ngữ và luôn đi với động từ nguyên mẫu.",
+            "Will not viết gọn thành won’t; will có thể viết gọn thành ’ll."
+          ],
+          "examples": [
+            {
+              "en": "The assistant will check the list.",
+              "vi": "Trợ lý sẽ kiểm tra danh sách.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+          "page": 2
+        },
+        {
+          "heading": "Hỏi và trả lời với will",
+          "points": [
+            "Câu hỏi đưa will lên trước chủ ngữ.",
+            "Trả lời ngắn dùng will hoặc won’t và đại từ tương ứng."
+          ],
+          "examples": [
+            {
+              "en": "Will they return soon?",
+              "vi": "Họ sẽ sớm trở lại chứ?",
+              "orderable": true
+            },
+            {
+              "en": "Yes, they will.",
+              "vi": "Có, họ sẽ trở lại.",
+              "orderable": false
+            }
+          ],
+          "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+          "page": 3
+        },
+        {
+          "heading": "Nói điều mình dự đoán hoặc quyết định ngay",
+          "points": [
+            "I think, I believe, I’m sure thường mở đầu một dự đoán hoặc niềm tin về tương lai.",
+            "Will có thể diễn tả lời đề nghị, lời hứa hoặc quyết định được đưa ra ngay khi nói.",
+            "Một cụm chỉ tương lai không đủ để loại mọi cách diễn đạt khác; chọn theo cả ngữ cảnh và ý muốn nói."
+          ],
+          "examples": [
+            {
+              "en": "I will carry the box for you.",
+              "vi": "Tôi sẽ mang hộp giúp bạn.",
+              "orderable": true
+            },
+            {
+              "en": "I think the weather will improve tomorrow.",
+              "vi": "Tôi nghĩ thời tiết ngày mai sẽ tốt hơn.",
+              "orderable": true
+            }
+          ],
+          "sourceId": "12ijgToaWJVRDcr1kh6n5mMkcoE3_Dwxr",
+          "page": 3
+        }
+      ],
+      "pitfalls": [
+        "Không thêm -s hoặc -ed sau will: will check, không phải will checks/checked.",
+        "Won’t đã chứa not; không viết won’t not.",
+        "Câu hỏi cần trật tự Will + chủ ngữ + động từ, không phải chủ ngữ + will trong dạng hỏi có/không."
+      ]
+    }
+  }
+]

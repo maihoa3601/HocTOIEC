@@ -1,0 +1,1480 @@
+[
+  {
+    "id": "to-be-basics",
+    "title": "To be: nói đúng về người và vật",
+    "topic": "Nền tảng",
+    "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+    "folderId": "1cadVvuFOj1s46GIfKm-o-K6T4LxB9soo",
+    "description": "Đọc quy tắc, thử nhớ rồi vận dụng vào câu mới.",
+    "origin": "Câu hỏi mới biên soạn theo các trang tài liệu đã đọc; giải thích do TOEIC Studio biên soạn.",
+    "sources": [
+      {
+        "id": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "title": "[ Cô Vũ Mai Phương ] Unit 1 - Thể khẳng định và phủ định của động từ to be",
+        "pages": [
+          1,
+          3,
+          4,
+          5
+        ],
+        "url": "https://drive.google.com/file/d/1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu/view"
+      }
+    ],
+    "summary": [
+      "I đi với am; he/she/it và danh từ số ít đi với is; you/we/they và danh từ số nhiều đi với are.",
+      "Phủ định bằng cách thêm not sau am/is/are.",
+      "Tính từ sở hữu đứng trước danh từ: my book, her car, our teacher.",
+      "Chọn a/an theo âm đầu của từ tiếp theo; an đi trước âm nguyên âm."
+    ],
+    "questions": [
+      {
+        "id": "to-be-basics-001",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "I ___ ready for the lesson.",
+        "options": [
+          "am",
+          "is",
+          "are"
+        ],
+        "answer": 0,
+        "explanation": "I luôn đi với am ở hiện tại.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 4
+      },
+      {
+        "id": "to-be-basics-002",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Those apples ___ fresh.",
+        "options": [
+          "is",
+          "are",
+          "am"
+        ],
+        "answer": 1,
+        "explanation": "Apples là số nhiều nên đi với are.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 4
+      },
+      {
+        "id": "to-be-basics-003",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Our teacher ___ at school.",
+        "options": [
+          "are",
+          "am",
+          "is"
+        ],
+        "answer": 2,
+        "explanation": "Our teacher chỉ một người nên dùng is.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 4
+      },
+      {
+        "id": "to-be-basics-004",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Chọn câu phủ định đúng.",
+        "options": [
+          "She not is sad.",
+          "She isn't sad.",
+          "She aren't sad."
+        ],
+        "answer": 1,
+        "explanation": "Phủ định đặt not sau is; is not có thể rút thành isn’t.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 5
+      },
+      {
+        "id": "to-be-basics-005",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Chọn cụm đúng để nói “một quả táo”.",
+        "options": [
+          "a apple",
+          "an apple",
+          "am apple"
+        ],
+        "answer": 1,
+        "explanation": "Apple bắt đầu bằng âm nguyên âm nên dùng an.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 3
+      },
+      {
+        "id": "to-be-basics-006",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Điền tính từ sở hữu nghĩa là “của chúng tôi”: ___ teacher.",
+        "options": [
+          "we",
+          "us",
+          "our"
+        ],
+        "answer": 2,
+        "explanation": "Our là tính từ sở hữu của we và đứng trước teacher.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 3
+      },
+      {
+        "id": "to-be-basics-007",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền một từ am/is/are: Minh ___ my friend.",
+        "accept": [
+          "is"
+        ],
+        "explanation": "Minh là một người, tương ứng he, nên dùng is.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 4
+      },
+      {
+        "id": "to-be-basics-008",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền một từ am/is/are: We ___ not late.",
+        "accept": [
+          "are"
+        ],
+        "explanation": "We đi với are; thêm not để phủ định.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 5
+      },
+      {
+        "id": "to-be-basics-009",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền một từ am/is/are: I ___ not a teacher.",
+        "accept": [
+          "am"
+        ],
+        "explanation": "I dùng am, kể cả trong câu phủ định.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 5
+      },
+      {
+        "id": "to-be-basics-010",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền a hoặc an: There is ___ orange in my bag.",
+        "accept": [
+          "an"
+        ],
+        "explanation": "Orange bắt đầu bằng âm nguyên âm; cần an.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 3
+      },
+      {
+        "id": "to-be-basics-011",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền một từ nghĩa là “của cô ấy”: This is ___ book.",
+        "accept": [
+          "her"
+        ],
+        "explanation": "Tính từ sở hữu her đứng trước danh từ book.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 1
+      },
+      {
+        "id": "to-be-basics-012",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng đầy đủ của động từ: The two cats ___ small.",
+        "accept": [
+          "are"
+        ],
+        "explanation": "The two cats là chủ ngữ số nhiều, dùng are.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 4
+      },
+      {
+        "id": "to-be-basics-013",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa một từ sai và viết lại cả câu: “He are my brother.”",
+        "accept": [
+          "He is my brother",
+          "He's my brother"
+        ],
+        "explanation": "He là số ít nên đổi are thành is.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 4
+      },
+      {
+        "id": "to-be-basics-014",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa một từ sai và viết lại cả câu: “They is not happy.”",
+        "accept": [
+          "They are not happy",
+          "They aren't happy",
+          "They're not happy"
+        ],
+        "explanation": "They dùng are; giữ not để câu vẫn mang nghĩa phủ định.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 5
+      },
+      {
+        "id": "to-be-basics-015",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa một từ sai và viết lại cả câu: “It are a book.”",
+        "accept": [
+          "It is a book",
+          "It's a book"
+        ],
+        "explanation": "It là số ít nên dùng is.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 4
+      },
+      {
+        "id": "to-be-basics-016",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa một từ sai và viết lại cả câu: “She am not tall.”",
+        "accept": [
+          "She is not tall",
+          "She isn't tall",
+          "She's not tall"
+        ],
+        "explanation": "She đi với is, không đi với am.",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 5
+      }
+    ],
+    "cards": [
+      {
+        "id": "to-be-basics-card-1",
+        "front": "teacher",
+        "back": "giáo viên",
+        "example": "",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 1
+      },
+      {
+        "id": "to-be-basics-card-2",
+        "front": "student",
+        "back": "học sinh",
+        "example": "",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 1
+      },
+      {
+        "id": "to-be-basics-card-3",
+        "front": "happy",
+        "back": "vui vẻ",
+        "example": "",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 1
+      },
+      {
+        "id": "to-be-basics-card-4",
+        "front": "sad",
+        "back": "buồn",
+        "example": "",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 1
+      },
+      {
+        "id": "to-be-basics-card-5",
+        "front": "tall",
+        "back": "cao",
+        "example": "",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 1
+      },
+      {
+        "id": "to-be-basics-card-6",
+        "front": "short",
+        "back": "thấp, ngắn",
+        "example": "",
+        "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu",
+        "page": 1
+      }
+    ],
+    "lesson": {
+      "sections": [
+        {
+          "heading": "Ghép chủ ngữ với am, is, are",
+          "page": 4,
+          "points": [
+            "Tìm chủ ngữ trước khi chọn to be. Hai người nối bằng and thường là chủ ngữ số nhiều.",
+            "Sau to be có thể là danh từ, tính từ hoặc cụm chỉ nơi chốn."
+          ],
+          "examples": [
+            {
+              "en": "I am ready.",
+              "vi": "Tôi đã sẵn sàng."
+            },
+            {
+              "en": "Our teacher is at school.",
+              "vi": "Giáo viên của chúng tôi đang ở trường."
+            },
+            {
+              "en": "We are students.",
+              "vi": "Chúng tôi là học sinh."
+            }
+          ],
+          "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu"
+        },
+        {
+          "heading": "Phủ định và dạng rút gọn",
+          "page": 5,
+          "points": [
+            "Đặt not ngay sau to be: am not, is not, are not.",
+            "Is not có thể rút thành isn’t, are not thành aren’t; I am not thành I’m not."
+          ],
+          "examples": [
+            {
+              "en": "The room is not small.",
+              "vi": "Căn phòng không nhỏ."
+            },
+            {
+              "en": "The room isn't small.",
+              "vi": "Căn phòng không nhỏ."
+            }
+          ],
+          "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu"
+        },
+        {
+          "heading": "Một danh từ cần đi với từ nào?",
+          "page": 3,
+          "points": [
+            "Tính từ sở hữu đứng trước danh từ, không dùng thay cho chủ ngữ.",
+            "A/an dùng với danh từ đếm được số ít; lựa chọn theo âm đầu, không chỉ nhìn chữ cái."
+          ],
+          "examples": [
+            {
+              "en": "her book / our car / an orange / a cat",
+              "vi": "sách của cô ấy / xe của chúng tôi / một quả cam / một con mèo",
+              "orderable": false
+            }
+          ],
+          "sourceId": "1wt6s6ZC06ZHj8sI6qdNfGygR4OH83lzu"
+        }
+      ],
+      "pitfalls": [
+        "Đừng viết I is hoặc They is.",
+        "Đừng đặt not trước động từ: She not is là sai.",
+        "Its nghĩa là của nó; it's là dạng rút gọn của it is."
+      ]
+    }
+  },
+  {
+    "id": "to-be-questions",
+    "title": "To be: hỏi nhanh, đáp gọn",
+    "topic": "Nền tảng",
+    "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+    "folderId": "1958d9q0aNfZYk_2j90RaT93ot1Co2dvs",
+    "description": "Đọc quy tắc, thử nhớ rồi vận dụng vào câu mới.",
+    "origin": "Câu hỏi mới biên soạn theo các trang tài liệu đã đọc; giải thích do TOEIC Studio biên soạn.",
+    "sources": [
+      {
+        "id": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "title": "[ Cô Vũ Mai Phương ] Unit 2 - Thể nghi vấn với to be",
+        "pages": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "url": "https://drive.google.com/file/d/1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O/view"
+      }
+    ],
+    "summary": [
+      "Câu hỏi Yes/No: đưa am/is/are lên trước chủ ngữ.",
+      "Câu trả lời ngắn cần giữ đúng động từ và đại từ: Yes, she is. / No, they aren’t.",
+      "This/that là số ít; these/those là số nhiều.",
+      "Một số danh từ số nhiều bất quy tắc cần nhớ: child → children, woman → women."
+    ],
+    "questions": [
+      {
+        "id": "to-be-questions-001",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "___ your mother a doctor?",
+        "options": [
+          "Are",
+          "Is",
+          "Am"
+        ],
+        "answer": 1,
+        "explanation": "Your mother là một người nên câu hỏi bắt đầu bằng Is.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 4
+      },
+      {
+        "id": "to-be-questions-002",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "___ the children in the kitchen?",
+        "options": [
+          "Is",
+          "Am",
+          "Are"
+        ],
+        "answer": 2,
+        "explanation": "Children là số nhiều nên dùng Are.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 4
+      },
+      {
+        "id": "to-be-questions-003",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Is this your picture? — Yes, ___.",
+        "options": [
+          "it is",
+          "they are",
+          "it isn’t"
+        ],
+        "answer": 0,
+        "explanation": "This picture được thay bằng it; câu trả lời khẳng định dùng it is.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 5
+      },
+      {
+        "id": "to-be-questions-004",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Are those your boxes? — No, ___.",
+        "options": [
+          "they is not",
+          "they aren’t",
+          "it isn’t"
+        ],
+        "answer": 1,
+        "explanation": "Those boxes là số nhiều nên đáp No, they aren’t.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 5
+      },
+      {
+        "id": "to-be-questions-005",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Chọn từ chỉ gần và số nhiều: ___ books are new.",
+        "options": [
+          "This",
+          "That",
+          "These"
+        ],
+        "answer": 2,
+        "explanation": "These đứng trước danh từ số nhiều và chỉ những vật ở gần.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 3
+      },
+      {
+        "id": "to-be-questions-006",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "Chọn dạng số nhiều của child.",
+        "options": [
+          "childs",
+          "childes",
+          "children"
+        ],
+        "answer": 2,
+        "explanation": "Child có dạng số nhiều bất quy tắc là children.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 2
+      },
+      {
+        "id": "to-be-questions-007",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền am/is/are: ___ I late?",
+        "accept": [
+          "am"
+        ],
+        "explanation": "Đảo am lên trước I để tạo câu hỏi.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 4
+      },
+      {
+        "id": "to-be-questions-008",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền am/is/are: ___ these rooms old?",
+        "accept": [
+          "are"
+        ],
+        "explanation": "These rooms là số nhiều nên hỏi bằng Are.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 4
+      },
+      {
+        "id": "to-be-questions-009",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền am/is/are: Is Nam busy? — Yes, he ___.",
+        "accept": [
+          "is"
+        ],
+        "explanation": "Nam được thay bằng he; câu trả lời ngắn giữ is.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 5
+      },
+      {
+        "id": "to-be-questions-010",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền dạng phủ định đầy đủ hoặc rút gọn: Are they friends? — No, they ___.",
+        "accept": [
+          "are not",
+          "aren't"
+        ],
+        "explanation": "They đi với are not hoặc aren’t.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 5
+      },
+      {
+        "id": "to-be-questions-011",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Viết một từ: dạng số nhiều của woman là ___.",
+        "accept": [
+          "women"
+        ],
+        "explanation": "Woman đổi thành women khi ở số nhiều.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 2
+      },
+      {
+        "id": "to-be-questions-012",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Viết một từ: dạng số nhiều của box là ___.",
+        "accept": [
+          "boxes"
+        ],
+        "explanation": "Box kết thúc bằng x nên thêm es.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 3
+      },
+      {
+        "id": "to-be-questions-013",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa trật tự từ và viết lại thành câu hỏi: “Your sister is kind?”",
+        "accept": [
+          "Is your sister kind"
+        ],
+        "explanation": "Câu hỏi Yes/No chuẩn đặt Is trước your sister.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 4
+      },
+      {
+        "id": "to-be-questions-014",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa một từ sai và viết lại cả câu: “Is those your books?”",
+        "accept": [
+          "Are those your books"
+        ],
+        "explanation": "Those là số nhiều nên đổi Is thành Are.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 5
+      },
+      {
+        "id": "to-be-questions-015",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa một từ sai và viết lại cả câu: “Are this your room?”",
+        "accept": [
+          "Is this your room"
+        ],
+        "explanation": "This là số ít nên dùng Is.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 5
+      },
+      {
+        "id": "to-be-questions-016",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Sửa một từ sai và viết lại câu trả lời: “No, she aren’t.”",
+        "accept": [
+          "No, she is not",
+          "No, she isn't"
+        ],
+        "explanation": "She dùng is not/isn’t, không dùng aren’t.",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 5
+      }
+    ],
+    "cards": [
+      {
+        "id": "to-be-questions-card-1",
+        "front": "uncle",
+        "back": "chú, bác, cậu",
+        "example": "",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 1
+      },
+      {
+        "id": "to-be-questions-card-2",
+        "front": "aunt",
+        "back": "cô, dì, bác gái",
+        "example": "",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 1
+      },
+      {
+        "id": "to-be-questions-card-3",
+        "front": "room",
+        "back": "căn phòng",
+        "example": "",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 1
+      },
+      {
+        "id": "to-be-questions-card-4",
+        "front": "kitchen",
+        "back": "nhà bếp",
+        "example": "",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 1
+      },
+      {
+        "id": "to-be-questions-card-5",
+        "front": "doctor",
+        "back": "bác sĩ",
+        "example": "",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 1
+      },
+      {
+        "id": "to-be-questions-card-6",
+        "front": "lawyer",
+        "back": "luật sư",
+        "example": "",
+        "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O",
+        "page": 1
+      }
+    ],
+    "lesson": {
+      "sections": [
+        {
+          "heading": "Đảo to be để hỏi",
+          "page": 4,
+          "points": [
+            "Từ câu kể, đưa am/is/are lên trước chủ ngữ và thêm dấu hỏi.",
+            "Không thêm do/does vào câu hỏi đã có to be."
+          ],
+          "examples": [
+            {
+              "en": "The room is new.",
+              "vi": "Căn phòng mới."
+            },
+            {
+              "en": "Is the room new?",
+              "vi": "Căn phòng có mới không?"
+            }
+          ],
+          "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O"
+        },
+        {
+          "heading": "Trả lời ngắn vẫn cần động từ",
+          "page": 5,
+          "points": [
+            "Đồng ý: Yes + đại từ + am/is/are.",
+            "Không đồng ý: No + đại từ + am not/is not/are not."
+          ],
+          "examples": [
+            {
+              "en": "Are your parents busy?",
+              "vi": "Bố mẹ bạn có bận không?"
+            },
+            {
+              "en": "No, they aren’t.",
+              "vi": "Không, họ không bận.",
+              "orderable": false
+            }
+          ],
+          "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O"
+        },
+        {
+          "heading": "Nhìn số ít, số nhiều",
+          "page": 3,
+          "points": [
+            "This và that đi với is; these và those đi với are.",
+            "This/these thường chỉ gần; that/those thường chỉ xa."
+          ],
+          "examples": [
+            {
+              "en": "Is this your bag?",
+              "vi": "Đây có phải cặp của bạn không?"
+            },
+            {
+              "en": "Are those your books?",
+              "vi": "Những quyển kia có phải sách của bạn không?"
+            }
+          ],
+          "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O"
+        },
+        {
+          "heading": "Danh từ số nhiều",
+          "page": 2,
+          "points": [
+            "Phần lớn danh từ thêm s; box → boxes, baby → babies.",
+            "Ghi nhớ các dạng bất quy tắc trong bài như men, women, children."
+          ],
+          "examples": [
+            {
+              "en": "one child → two children; one baby → two babies",
+              "vi": "một đứa trẻ → hai đứa trẻ; một em bé → hai em bé",
+              "orderable": false
+            }
+          ],
+          "sourceId": "1F1P9jBU5IpBseT10-HYPJltbb4kTIm9O"
+        }
+      ],
+      "pitfalls": [
+        "Don't/doesn't không dùng để thay cho is not/are not trong bài này.",
+        "Không trả lời Yes, she is bằng Yes, she’s khi đứng một mình.",
+        "These đi với are, không đi với is."
+      ]
+    }
+  },
+  {
+    "id": "where-when",
+    "title": "Where / When: địa điểm và thời gian",
+    "topic": "Nền tảng",
+    "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+    "folderId": "1f2EaoCNr9hr3N4ksTaE6oRyJ5aKFEHYw",
+    "description": "Đọc quy tắc, thử nhớ rồi vận dụng vào câu mới.",
+    "origin": "Câu hỏi mới biên soạn theo các trang tài liệu đã đọc; giải thích do TOEIC Studio biên soạn.",
+    "sources": [
+      {
+        "id": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "title": "covumaiphuongunit4-cauhoiwherevawhenvoidongtutobe",
+        "pages": [
+          1,
+          3,
+          4,
+          5
+        ],
+        "url": "https://drive.google.com/file/d/13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl/view"
+      }
+    ],
+    "summary": [
+      "Where hỏi nơi chốn; When hỏi thời gian.",
+      "Trong các cụm của bài: in the garden, on the wall, at work.",
+      "Thời gian: in the morning, on Monday, at 8.00; ngoại lệ quen thuộc là at night.",
+      "Cấu trúc: Where/When + am/is/are + chủ ngữ?"
+    ],
+    "questions": [
+      {
+        "id": "where-when-001",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "___ is the meeting? — It is at 9.00.",
+        "options": [
+          "Where",
+          "When",
+          "Who"
+        ],
+        "answer": 1,
+        "explanation": "At 9.00 là thời gian nên hỏi bằng When.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 4
+      },
+      {
+        "id": "where-when-002",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "___ are the keys? — They are on the table.",
+        "options": [
+          "When",
+          "Who",
+          "Where"
+        ],
+        "answer": 2,
+        "explanation": "On the table là địa điểm nên dùng Where.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 4
+      },
+      {
+        "id": "where-when-003",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "The picture is ___ the wall.",
+        "options": [
+          "on",
+          "at",
+          "in"
+        ],
+        "answer": 0,
+        "explanation": "Bức tranh ở trên bề mặt tường: on the wall.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 3
+      },
+      {
+        "id": "where-when-004",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "The class is ___ Tuesday.",
+        "options": [
+          "in",
+          "on",
+          "at"
+        ],
+        "answer": 1,
+        "explanation": "Dùng on trước tên thứ trong tuần.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 3
+      },
+      {
+        "id": "where-when-005",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "My brother is ___ work.",
+        "options": [
+          "in",
+          "on",
+          "at"
+        ],
+        "answer": 2,
+        "explanation": "Cụm chỉ ở nơi làm việc là at work.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 3
+      },
+      {
+        "id": "where-when-006",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "The lesson starts ___ 7.30.",
+        "options": [
+          "at",
+          "on",
+          "in"
+        ],
+        "answer": 0,
+        "explanation": "Giờ cụ thể dùng at.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 4
+      },
+      {
+        "id": "where-when-007",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền Where hoặc When: ___ is your exam? — It is on Thursday.",
+        "accept": [
+          "when"
+        ],
+        "explanation": "On Thursday trả lời về thời gian, vì vậy dùng When.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 4
+      },
+      {
+        "id": "where-when-008",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Điền Where hoặc When: ___ is your sister? — She is in the garden.",
+        "accept": [
+          "where"
+        ],
+        "explanation": "In the garden chỉ địa điểm, dùng Where.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 4
+      },
+      {
+        "id": "where-when-009",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chỉ viết giới từ: We are ___ the kitchen.",
+        "accept": [
+          "in"
+        ],
+        "explanation": "Ở trong phòng bếp: in the kitchen.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 3
+      },
+      {
+        "id": "where-when-010",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chỉ viết giới từ: Her birthday party is ___ Friday.",
+        "accept": [
+          "on"
+        ],
+        "explanation": "Tên thứ Friday đi với on.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 3
+      },
+      {
+        "id": "where-when-011",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chỉ viết giới từ: The English class is ___ the afternoon.",
+        "accept": [
+          "in"
+        ],
+        "explanation": "Cụm thời gian trong bài là in the afternoon.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 3
+      },
+      {
+        "id": "where-when-012",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chỉ viết giới từ: The train arrives ___ midnight.",
+        "accept": [
+          "at"
+        ],
+        "explanation": "Midnight đi với at.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 4
+      },
+      {
+        "id": "where-when-013",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Câu “The class is in Monday.” sai giới từ. Chỉ viết từ thay cho in.",
+        "accept": [
+          "on"
+        ],
+        "explanation": "On Monday là cụm đúng vì Monday là tên thứ.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 3
+      },
+      {
+        "id": "where-when-014",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Câu “My bag is at the floor.” sai giới từ. Chỉ viết từ thay cho at.",
+        "accept": [
+          "on"
+        ],
+        "explanation": "Đồ vật nằm trên bề mặt sàn: on the floor.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 3
+      },
+      {
+        "id": "where-when-015",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Câu “Where is the exam? — It is at noon.” dùng sai từ hỏi theo câu trả lời. Chỉ viết từ thay cho Where.",
+        "accept": [
+          "when"
+        ],
+        "explanation": "At noon là thời gian, nên đổi Where thành When.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 4
+      },
+      {
+        "id": "where-when-016",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Câu “We are in home.” sai giới từ. Chỉ viết từ thay cho in.",
+        "accept": [
+          "at"
+        ],
+        "explanation": "Ở nhà được diễn đạt bằng at home trong bài học.",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 3
+      }
+    ],
+    "cards": [
+      {
+        "id": "where-when-card-1",
+        "front": "garden",
+        "back": "khu vườn",
+        "example": "",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 1
+      },
+      {
+        "id": "where-when-card-2",
+        "front": "wardrobe",
+        "back": "tủ quần áo",
+        "example": "",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 1
+      },
+      {
+        "id": "where-when-card-3",
+        "front": "wall",
+        "back": "bức tường",
+        "example": "",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 1
+      },
+      {
+        "id": "where-when-card-4",
+        "front": "floor",
+        "back": "sàn nhà",
+        "example": "",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 1
+      },
+      {
+        "id": "where-when-card-5",
+        "front": "noon",
+        "back": "buổi trưa, 12 giờ trưa",
+        "example": "",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 1
+      },
+      {
+        "id": "where-when-card-6",
+        "front": "midnight",
+        "back": "nửa đêm",
+        "example": "",
+        "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl",
+        "page": 1
+      }
+    ],
+    "lesson": {
+      "sections": [
+        {
+          "heading": "Chọn đúng điều cần hỏi",
+          "page": 4,
+          "points": [
+            "Câu trả lời là địa điểm → Where.",
+            "Câu trả lời là giờ/ngày → When."
+          ],
+          "examples": [
+            {
+              "en": "Where is the bag?",
+              "vi": "Cặp ở đâu?"
+            },
+            {
+              "en": "It is on the desk.",
+              "vi": "Nó ở trên bàn."
+            },
+            {
+              "en": "When is the class?",
+              "vi": "Lớp học khi nào?"
+            },
+            {
+              "en": "It is on Friday.",
+              "vi": "Lớp học vào thứ Sáu."
+            }
+          ],
+          "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl"
+        },
+        {
+          "heading": "Ghép giới từ với địa điểm",
+          "page": 3,
+          "points": [
+            "In diễn tả ở trong: in the garden, in the kitchen.",
+            "On thường chỉ ở trên bề mặt: on the table, on the wall.",
+            "Ghi nhớ cụm dùng at: at home, at work, at the airport."
+          ],
+          "examples": [
+            {
+              "en": "The picture is on the wall.",
+              "vi": "Bức tranh ở trên tường."
+            },
+            {
+              "en": "My father is at work.",
+              "vi": "Bố tôi đang ở chỗ làm."
+            }
+          ],
+          "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl"
+        },
+        {
+          "heading": "Ghép giới từ với thời gian",
+          "page": 3,
+          "points": [
+            "In đi với morning/afternoon/evening trong các cụm của bài.",
+            "On đi với thứ trong tuần."
+          ],
+          "examples": [
+            {
+              "en": "in the afternoon / on Tuesday",
+              "vi": "vào buổi chiều / vào thứ Ba",
+              "orderable": false
+            }
+          ],
+          "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl"
+        },
+        {
+          "heading": "Giờ cụ thể và một số cụm đặc biệt",
+          "page": 4,
+          "points": [
+            "At dùng với giờ cụ thể: at 8.30.",
+            "Ghi nhớ at noon, at midnight, at night."
+          ],
+          "examples": [
+            {
+              "en": "The party is at 8.00 in the evening.",
+              "vi": "Bữa tiệc lúc tám giờ tối."
+            }
+          ],
+          "sourceId": "13BjweXT3MzGMOZr8avnMlqRv0aVK9pfl"
+        }
+      ],
+      "pitfalls": [
+        "Không chọn Where chỉ vì câu có người; hãy nhìn câu trả lời là nơi hay thời gian.",
+        "Dùng on Monday, không dùng in Monday.",
+        "At night là cụm cần nhớ; không suy ra in night từ in the morning."
+      ]
+    }
+  },
+  {
+    "id": "verb-endings",
+    "title": "Động từ thường: luyện s, es, ies",
+    "topic": "Nền tảng",
+    "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+    "folderId": "1oOnxzdBPzR-cmr-Ie2PDDIPpdsKzuAzU",
+    "description": "Đọc quy tắc, thử nhớ rồi vận dụng vào câu mới.",
+    "origin": "Câu hỏi mới biên soạn theo các trang tài liệu đã đọc; giải thích do TOEIC Studio biên soạn.",
+    "sources": [
+      {
+        "id": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "title": "covumaiphuongunit5-dongtuthuongohientai",
+        "pages": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "url": "https://drive.google.com/file/d/1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no/view"
+      }
+    ],
+    "summary": [
+      "I/you/we/they và chủ ngữ số nhiều dùng dạng nguyên mẫu trong câu khẳng định hiện tại đơn.",
+      "He/she/it, tên một người và chủ ngữ số ít thường cần động từ thêm s/es.",
+      "Phụ âm + y đổi y thành ies; nguyên âm + y chỉ thêm s.",
+      "Ghi nhớ go → goes, do → does, have → has."
+    ],
+    "questions": [
+      {
+        "id": "verb-endings-001",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "My colleague ___ English after work.",
+        "options": [
+          "study",
+          "studies",
+          "studys"
+        ],
+        "answer": 1,
+        "explanation": "My colleague là một người; study có phụ âm d trước y nên đổi thành studies.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-002",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "We ___ chess on Sundays.",
+        "options": [
+          "plays",
+          "playes",
+          "play"
+        ],
+        "answer": 2,
+        "explanation": "We dùng động từ nguyên mẫu play.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 2
+      },
+      {
+        "id": "verb-endings-003",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "He ___ a small car.",
+        "options": [
+          "has",
+          "haves",
+          "have"
+        ],
+        "answer": 0,
+        "explanation": "Have đổi thành has với he.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-004",
+        "type": "choice",
+        "activity": "choice",
+        "prompt": "The children ___ to school by bus.",
+        "options": [
+          "goes",
+          "go",
+          "gos"
+        ],
+        "answer": 1,
+        "explanation": "The children là số nhiều nên dùng go.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 2
+      },
+      {
+        "id": "verb-endings-005",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chia từ trong ngoặc, chỉ viết động từ: She ___ (watch) TV after dinner.",
+        "accept": [
+          "watches"
+        ],
+        "explanation": "Watch kết thúc bằng ch; ngôi thứ ba số ít thêm es.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-006",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chia từ trong ngoặc, chỉ viết động từ: Nam ___ (wash) the dishes.",
+        "accept": [
+          "washes"
+        ],
+        "explanation": "Wash kết thúc bằng sh nên thêm es với Nam.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-007",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chia từ trong ngoặc, chỉ viết động từ: My daughter ___ (play) the guitar.",
+        "accept": [
+          "plays"
+        ],
+        "explanation": "Play có nguyên âm a trước y nên giữ y và thêm s.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-008",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chia từ trong ngoặc, chỉ viết động từ: Their son ___ (study) at home.",
+        "accept": [
+          "studies"
+        ],
+        "explanation": "Study có phụ âm trước y, đổi y thành ies.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-009",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chia từ trong ngoặc, chỉ viết động từ: He ___ (go) to work by train.",
+        "accept": [
+          "goes"
+        ],
+        "explanation": "Go có dạng ngôi thứ ba số ít là goes.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-010",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chia từ trong ngoặc, chỉ viết động từ: Lan ___ (do) her homework after lunch.",
+        "accept": [
+          "does"
+        ],
+        "explanation": "Lan là một người; do đổi thành does.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-011",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chia từ trong ngoặc, chỉ viết động từ: I ___ (read) on the bus.",
+        "accept": [
+          "read"
+        ],
+        "explanation": "I dùng dạng nguyên mẫu read.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 2
+      },
+      {
+        "id": "verb-endings-012",
+        "type": "text",
+        "activity": "cloze",
+        "prompt": "Chia từ trong ngoặc, chỉ viết động từ: They ___ (have) lunch at noon.",
+        "accept": [
+          "have"
+        ],
+        "explanation": "They là số nhiều nên giữ have.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 2
+      },
+      {
+        "id": "verb-endings-013",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Câu “My father go to work by bus.” sai động từ. Chỉ viết từ thay cho go.",
+        "accept": [
+          "goes"
+        ],
+        "explanation": "My father là số ít; go → goes.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-014",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Câu “We watches TV at night.” sai động từ. Chỉ viết từ thay cho watches.",
+        "accept": [
+          "watch"
+        ],
+        "explanation": "We dùng watch nguyên mẫu, không thêm es.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 2
+      },
+      {
+        "id": "verb-endings-015",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Câu “She studys English.” sai chính tả động từ. Chỉ viết từ thay cho studys.",
+        "accept": [
+          "studies"
+        ],
+        "explanation": "Phụ âm + y đổi thành ies: studies.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      },
+      {
+        "id": "verb-endings-016",
+        "type": "text",
+        "activity": "correction",
+        "prompt": "Câu “He haves a new bike.” sai động từ. Chỉ viết từ thay cho haves.",
+        "accept": [
+          "has"
+        ],
+        "explanation": "Have có dạng đặc biệt has với he/she/it.",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 3
+      }
+    ],
+    "cards": [
+      {
+        "id": "verb-endings-card-1",
+        "front": "read",
+        "back": "đọc",
+        "example": "",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 1
+      },
+      {
+        "id": "verb-endings-card-2",
+        "front": "write",
+        "back": "viết",
+        "example": "",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 1
+      },
+      {
+        "id": "verb-endings-card-3",
+        "front": "listen",
+        "back": "nghe",
+        "example": "",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 1
+      },
+      {
+        "id": "verb-endings-card-4",
+        "front": "speak",
+        "back": "nói",
+        "example": "",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 1
+      },
+      {
+        "id": "verb-endings-card-5",
+        "front": "wash",
+        "back": "rửa",
+        "example": "",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 1
+      },
+      {
+        "id": "verb-endings-card-6",
+        "front": "visit",
+        "back": "ghé thăm",
+        "example": "",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 1
+      },
+      {
+        "id": "verb-endings-card-7",
+        "front": "travel",
+        "back": "đi lại, du lịch",
+        "example": "",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 1
+      },
+      {
+        "id": "verb-endings-card-8",
+        "front": "drink",
+        "back": "uống",
+        "example": "",
+        "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no",
+        "page": 1
+      }
+    ],
+    "lesson": {
+      "sections": [
+        {
+          "heading": "Tìm người thực hiện hành động",
+          "page": 2,
+          "points": [
+            "I/you/we/they dùng động từ nguyên mẫu.",
+            "He/she/it hoặc một tên riêng dùng dạng ngôi thứ ba số ít."
+          ],
+          "examples": [
+            {
+              "en": "We read every evening.",
+              "vi": "Chúng tôi đọc mỗi tối."
+            },
+            {
+              "en": "Lan reads every evening.",
+              "vi": "Lan đọc mỗi tối."
+            }
+          ],
+          "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no"
+        },
+        {
+          "heading": "Thêm s hay es?",
+          "page": 3,
+          "points": [
+            "Đa số động từ thêm s: work → works.",
+            "Các động từ kết thúc bằng ss, ch, sh, x trong bài thêm es: watch → watches, wash → washes."
+          ],
+          "examples": [
+            {
+              "en": "He washes the dishes.",
+              "vi": "Anh ấy rửa bát."
+            },
+            {
+              "en": "She watches TV.",
+              "vi": "Cô ấy xem ti vi."
+            }
+          ],
+          "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no"
+        },
+        {
+          "heading": "Xử lý y và các dạng cần nhớ",
+          "page": 3,
+          "points": [
+            "Phụ âm + y: study → studies; nguyên âm + y: play → plays.",
+            "Ghi nhớ have → has, go → goes, do → does."
+          ],
+          "examples": [
+            {
+              "en": "My brother studies English and plays chess.",
+              "vi": "Anh trai tôi học tiếng Anh và chơi cờ."
+            }
+          ],
+          "sourceId": "1n1u8Tr3v4aBmiNgS1b_G25RC3ZLdp-no"
+        }
+      ],
+      "pitfalls": [
+        "Đừng thêm s khi chủ ngữ là they/we.",
+        "Play không đổi thành plaies vì trước y là nguyên âm a.",
+        "Have ở ngôi thứ ba số ít là has, không phải haves."
+      ]
+    }
+  }
+]

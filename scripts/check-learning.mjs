@@ -41,3 +41,8 @@ for(const [id,role]of [['1Xpyx5BBncV9ookRLFAFbFdKHRmh2Gbgf','video'],['1OAAbYlzB
 }
 assert.equal(scheduleCard(null,true,0).due,86400000);assert.equal(scheduleCard({streak:1},true,0).due,3*86400000);assert.equal(scheduleCard({streak:5},false,0).due,600000);
 console.log(JSON.stringify({ok:true,sets:bank.sets.length,questions:qids.size,cards:cardIds.size,pairedDocuments:materials.docs.length}));
+
+const newState=freshLearning(),modeKey=first.id+':cloze';newState.drafts[first.id]={answers:{[q.id]:0}};newState.drafts[modeKey]={answers:{[q.id]:0}};applyQuizResult(newState,first.id,[q],{[q.id]:q.answer},modeKey);assert.ok(newState.drafts[first.id]);assert.equal(newState.drafts[modeKey],undefined,'Submitting a mode preserves the comprehensive draft');
+const modeSaved=sanitizeLearning({drafts:{[modeKey]:{answers:{[q.id]:0}}},lessonRead:{[first.id]:'2026-11-13T10:00:00Z',unknown:'x'},games:[{setId:first.id,type:'match',total:6,correct:6,tries:8,date:'2026-11-13T10:00:00Z'},{setId:'unknown',type:'match',total:6,correct:6,tries:8,date:'2026-11-13T10:00:00Z'}]},bank,ids);assert.ok(modeSaved.drafts[modeKey]);assert.equal(Object.keys(modeSaved.lessonRead).length,1);assert.equal(modeSaved.games.length,1);
+for(const set of bank.sets)for(const section of set.lesson?.sections||[]){assert.ok(section.heading&&section.points.length);assert.ok(set.sources.some(s=>s.id===section.sourceId&&s.pages.includes(section.page)));for(const example of section.examples||[]){assert.ok(example.en&&example.vi);if(example.sourceId)assert.ok(set.sources.some(s=>s.id===example.sourceId&&s.pages.includes(example.page)));}}
+console.log(JSON.stringify({ok:true,modeDrafts:true,newProgressFields:true,lessonSources:true}));
