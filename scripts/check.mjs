@@ -10,6 +10,9 @@ for(const f of data.items){assert.ok(f.id&&f.name&&f.mime&&f.parent&&f.course);a
 assert.equal(normalize('Động từ & Ngữ pháp'),'dong tu & ngu phap');
 assert.equal(cleanTitle('Bài 02- Cấu trúc câu.MP4.mp4'),'Bài 02- Cấu trúc câu');
 assert.ok(tagsFor('PART 2. QUESTION RESPONSE (HỎI ĐÁP)').includes('Listening'));
+assert.ok(!tagsFor('COMBO 4 KHÓA HỌC TOEIC IIG VIETNAM').includes('Speaking & Writing'));
+assert.ok(tagsFor('LUYỆN THI TOEIC NÓI - VIẾT').includes('Speaking & Writing'));
+assert.equal(cleanTitle('PRE-TOEIC [Dành cho người mới bắt đầu]'),'PRE-TOEIC [Dành cho người mới bắt đầu]');
 const known=data.items.find(f=>f.mime.startsWith('video/')).id;
 const checked=safeProgress({completed:{[known]:'2026-11-12T10:00:00Z',bad:'x'},notes:{[known]:'Một ghi chú',bad:'private'},saved:[known,known,'bad'],goal:999,daily:100},ids);
 assert.deepEqual(checked.saved,[known]);assert.equal(checked.goal,650);assert.equal(checked.daily,1);assert.deepEqual(Object.keys(checked.completed),[known]);assert.deepEqual(Object.keys(checked.notes),[known]);

@@ -6,14 +6,14 @@ export function tagsFor(value) {
   if(/reading|doc|part\s*[5-7]\b|text completion|incomplete sentence/.test(v))out.push('Reading');
   if(/ngu phap|van pham|danh tu|dong tu|tinh tu|trang tu|gioi tu|menh de|grammar/.test(v))out.push('Ngữ pháp');
   if(/tu vung|vocabulary/.test(v))out.push('Từ vựng');
-  if(/speaking|writing|noi|viet/.test(v))out.push('Speaking & Writing');
+  if(/speaking|writing/.test(v) || /nói|viết/i.test(value))out.push('Speaking & Writing');
   if(/mat goc|nen tang|can ban|co ban|beginners|pre-toeic|lay goc/.test(v))out.push('Nền tảng');
   if(/luyen de|giai de|bo de|practice|ets/.test(v))out.push('Luyện đề');
   return [...new Set(out)];
 }
 export const isVideo = item => item.mime.startsWith('video/');
 export const isFolder = item => item.mime.endsWith('.folder');
-export const isDocument = item => !isFolder(item) && !isVideo(item) && !item.mime.startsWith('image/');
+export const isDocument = item => !isFolder(item) && !isVideo(item);
 export function safeProgress(value, ids) {
   const v=value&&typeof value==='object'?value:{};
   const keepMap=(source,fn)=>Object.fromEntries(Object.entries(source&&typeof source==='object'?source:{}).filter(([id,val])=>ids.has(id)&&fn(val)));
