@@ -16,6 +16,8 @@ Bài luyện tự lưu nháp, chấm sau khi nộp, giải thích từng câu v�
 
 Kết quả luyện tập, phiếu và thẻ từ lưu trong localStorage riêng, xuất/nhập cùng tiến độ. Chuyển máy cần xuất dữ liệu. Không đưa video/PDF gốc vào bản triển khai. Nội dung câu hỏi ở dist/learning-bank.json; tái tạo bằng node scripts/build-learning-bank.mjs. Kiểm tra chấm bài, nguồn và lưu dữ liệu bằng node scripts/check-learning.mjs.
 
+Có thể thu gọn thanh điều hướng thành dải biểu tượng trên máy tính, ẩn/hiện mục lục khóa học và bảng luyện tập / ghi chú. Lựa chọn bố cục lưu riêng trên trình duyệt. Điện thoại dùng menu trượt; bấm bên ngoài hoặc Escape để đóng.
+
 ## Chạy trên máy
 
 Yêu cầu Node.js. Chạy `node scripts/preview.mjs` rồi mở http://127.0.0.1:4173.

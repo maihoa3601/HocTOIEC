@@ -10,20 +10,21 @@
   <link rel="stylesheet" href="./styles.css">
   <link rel="stylesheet" href="./hierarchy.css">
   <link rel="stylesheet" href="./learning.css">
+  <link rel="stylesheet" href="./layout.css">
   <script type="module" src="./app.js"></script>
 </head>
 <body>
   <a class="skip" href="#main">Đến nội dung chính</a>
   <aside class="sidebar" id="sidebar">
-    <a href="#home" class="brand"><span class="brand-mark">t<span>✦</span></span><span>TOEIC<span class="brand-light">studio</span></span></a>
+    <a href="#home" class="brand" aria-label="TOEIC Studio · Tổng quan"><span class="brand-mark">t<span>✦</span></span><span>TOEIC<span class="brand-light">studio</span></span></a>
     <div class="workspace"><span class="workspace-avatar">S</span><div>Không gian của bạn<small>Học theo nhịp riêng</small></div><span class="tiny-star">✧</span></div>
     <div class="nav-label">GÓC HỌC TẬP</div>
     <nav aria-label="Điều hướng chính" id="nav"></nav>
-    <div class="sidebar-bottom"><div class="encouragement"><span>✦</span><strong>Từng chút, mỗi ngày.</strong><p>Một bài học hôm nay là một bước tiến ngày mai.</p></div><button class="source-link" data-nav="source"><span id="drive-icon"></span><span>Nguồn Google Drive<small>Danh mục đã nhập</small></span><span class="status-dot"></span></button></div>
+    <div class="sidebar-bottom"><div class="encouragement"><span>✦</span><strong>Từng chút, mỗi ngày.</strong><p>Một bài học hôm nay là một bước tiến ngày mai.</p></div><button class="source-link" data-nav="source" aria-label="Nguồn Google Drive" title="Nguồn Google Drive"><span id="drive-icon"></span><span>Nguồn Google Drive<small>Danh mục đã nhập</small></span><span class="status-dot"></span></button></div>
   </aside>
   <div class="scrim" id="scrim"></div>
   <div class="page-shell">
-    <header class="topbar"><button class="icon-button mobile-menu" id="menu-toggle" aria-label="Mở menu" aria-expanded="false"></button><div class="breadcrumb">Không gian học tập <span>/</span> <strong id="page-label">Tổng quan</strong></div><div class="top-actions"><button class="search-shortcut" id="search-shortcut" aria-label="Tìm bài học"><span id="search-icon"></span><span>Tìm bài học…</span><kbd>/</kbd></button><button class="profile" data-nav="progress" aria-label="Xem tiến độ cá nhân">S</button></div></header>
+    <header class="topbar"><button class="icon-button sidebar-toggle" id="menu-toggle" aria-controls="sidebar" aria-label="Thu gọn thanh điều hướng" aria-expanded="true"></button><div class="breadcrumb">Không gian học tập <span>/</span> <strong id="page-label">Tổng quan</strong></div><div class="top-actions"><button class="search-shortcut" id="search-shortcut" aria-label="Tìm bài học"><span id="search-icon"></span><span>Tìm bài học…</span><kbd>/</kbd></button><button class="profile" data-nav="progress" aria-label="Xem tiến độ cá nhân">S</button></div></header>
     <main id="main" tabindex="-1"><div class="loading"><span class="spinner"></span>Đang mở thư viện của bạn…</div></main>
     <footer>TOEIC Studio <span>✦</span> Một không gian nhỏ, cho mục tiêu lớn.</footer>
   </div>
