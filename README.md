@@ -6,6 +6,16 @@ Thư viện chia 20 khóa vào 5 hướng học. Mỗi khóa giữ cấu trúc t
 
 Kiểm tra phân nhóm, cây thư mục và tính đầy đủ của học liệu: `node scripts/check-hierarchy.mjs`.
 
+## Học và luyện từ tài liệu
+
+Mỗi chủ đề có Góc học: video, tài liệu gốc, phiếu trả lời và ghi chú. Tài liệu được phân vai bài học / đề bài / đáp án theo tên; gợi ý từ chương lân cận được ghi rõ để người học kiểm tra. Phiếu tự đối chiếu lưu riêng theo tài liệu, cho nhập 1–100 câu và tự đánh dấu sau khi mở đáp án gốc; không chấm tự động những tài liệu chưa chuyển đổi.
+
+Đã đọc các trang nguồn để tạo 5 bộ gồm 92 câu và 24 thẻ từ: Who/What, hiện tại đơn, hiện tại hoàn thành, từ loại, từ vựng TOEIC List 1. Nguồn thuộc 3 nhóm khóa. Câu hỏi được chuyển hoặc biên soạn theo tài liệu; lời giải do ứng dụng biên soạn, có liên kết tệp và số trang để đối chiếu. Phạm vi này chưa bao gồm toàn bộ tài liệu trong thư viện.
+
+Bài luyện tự lưu nháp, chấm sau khi nộp, giải thích từng câu và tập hợp câu đã trả lời sai. Trả lời đúng khi ôn sẽ loại khỏi danh sách sai. Thẻ từ hẹn ôn theo 1/3/7/14/30 ngày khi đã nhớ và 10 phút khi cần ôn; lịch hiển thị trong ứng dụng, không gửi thông báo.
+
+Kết quả luyện tập, phiếu và thẻ từ lưu trong localStorage riêng, xuất/nhập cùng tiến độ. Chuyển máy cần xuất dữ liệu. Không đưa video/PDF gốc vào bản triển khai. Nội dung câu hỏi ở dist/learning-bank.json; tái tạo bằng node scripts/build-learning-bank.mjs. Kiểm tra chấm bài, nguồn và lưu dữ liệu bằng node scripts/check-learning.mjs.
+
 ## Chạy trên máy
 
 Yêu cầu Node.js. Chạy `node scripts/preview.mjs` rồi mở http://127.0.0.1:4173.
@@ -24,4 +34,4 @@ Tên khóa học và chủ đề lấy từ tên tệp/thư mục; chưa phiên 
 
 ## Triển khai
 
-Ứng dụng HTML/CSS/JavaScript tĩnh, không cần cài thư viện. Cấu hình Sites nằm trong `.openai/hosting.json`, thư mục xuất bản là `dist`. Site khởi tạo riêng tư. Font Be Vietnam Pro tải từ Google Fonts; có font hệ thống dự phòng.
+Ứng dụng HTML/CSS/JavaScript tĩnh, không cần cài thư viện. Cấu hình Sites nằm trong `.openai/hosting.json`, thư mục xuất bản là `dist`. Site hiện được chia sẻ công khai trong Sites. Quyền truy cập vào Sites và quyền xem nội dung trên Drive vẫn do nền tảng tương ứng quản lý. Font Be Vietnam Pro tải từ Google Fonts; có font hệ thống dự phòng.

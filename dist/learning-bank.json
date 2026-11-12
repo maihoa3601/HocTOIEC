@@ -1,0 +1,1623 @@
+{
+  "version": 1,
+  "reviewedDate": "12/11/2026",
+  "note": "Câu hỏi được chuyển hoặc biên soạn từ những trang tài liệu đã đọc. Giải thích do TOEIC Studio biên soạn; có liên kết nguồn để đối chiếu.",
+  "sets": [
+    {
+      "id": "who-what",
+      "title": "Who / What với động từ to be",
+      "topic": "Nền tảng",
+      "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+      "folderId": "1VEUCHLSxBRPh--pkDaN-NJCiRxlIcg0i",
+      "description": "Làm bài, xem giải thích rồi ôn lại câu sai.",
+      "origin": "Chuyển từ tài liệu / biên soạn theo nội dung đã đọc",
+      "sources": [
+        {
+          "id": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "title": "[ Cô Vũ Mai Phương ] Unit 3 - Câu hỏi Who và What với động từ To Be.pdf",
+          "pages": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "url": "https://drive.google.com/file/d/1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ/view"
+        },
+        {
+          "id": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "title": "[ Cô Vũ Mai Phương ] Thi Online Unit 3 - Câu hỏi Who và What với động từ To Be.pdf",
+          "pages": [
+            1,
+            2
+          ],
+          "url": "https://drive.google.com/file/d/1GFIEtmxAL004SdKMkJYi-60u6obtylfz/view"
+        },
+        {
+          "id": "1Otzvfh5a48AI-NSmbacog6oHHfK3I9Al",
+          "title": "DA_Bài thi online Câu hỏi Who và What với động từ to be.pdf",
+          "pages": [
+            1,
+            2
+          ],
+          "url": "https://drive.google.com/file/d/1Otzvfh5a48AI-NSmbacog6oHHfK3I9Al/view"
+        }
+      ],
+      "summary": [
+        "Who dùng để hỏi về người; What hỏi về vật hoặc sự việc.",
+        "This / that đi với is; these / those đi với are.",
+        "Trả lời số ít bằng It is; trả lời số nhiều bằng They are."
+      ],
+      "questions": [
+        {
+          "id": "who-what-001",
+          "type": "choice",
+          "prompt": "Who ___ she? — She is my aunt.",
+          "options": [
+            "are",
+            "is"
+          ],
+          "answer": 1,
+          "explanation": "She là ngôi thứ ba số ít nên đi với is.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 2
+        },
+        {
+          "id": "who-what-002",
+          "type": "choice",
+          "prompt": "Who is this? — It ___ my daughter.",
+          "options": [
+            "is",
+            "are"
+          ],
+          "answer": 0,
+          "explanation": "It là chủ ngữ số ít, dùng is.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 2
+        },
+        {
+          "id": "who-what-003",
+          "type": "choice",
+          "prompt": "Who are ___? — They are our classmates.",
+          "options": [
+            "this",
+            "those"
+          ],
+          "answer": 1,
+          "explanation": "Are và They chỉ số nhiều; chọn those.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 2
+        },
+        {
+          "id": "who-what-004",
+          "type": "choice",
+          "prompt": "Who is ___? — It is Trang.",
+          "options": [
+            "that",
+            "these"
+          ],
+          "answer": 0,
+          "explanation": "Is đi với that, không đi với these.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 2
+        },
+        {
+          "id": "who-what-005",
+          "type": "choice",
+          "prompt": "What ___ this? — It’s my hat.",
+          "options": [
+            "are",
+            "is"
+          ],
+          "answer": 1,
+          "explanation": "This là số ít nên dùng is.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-006",
+          "type": "choice",
+          "prompt": "What is that? — It ___ a cake.",
+          "options": [
+            "is",
+            "are"
+          ],
+          "answer": 0,
+          "explanation": "It is + danh từ số ít.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-007",
+          "type": "choice",
+          "prompt": "What are these? — ___ are my bags.",
+          "options": [
+            "They",
+            "It"
+          ],
+          "answer": 0,
+          "explanation": "These và bags đều chỉ số nhiều; dùng They.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-008",
+          "type": "choice",
+          "prompt": "What are those? — ___ are his jeans.",
+          "options": [
+            "It",
+            "They"
+          ],
+          "answer": 1,
+          "explanation": "Those đi với câu trả lời They are.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-009",
+          "type": "choice",
+          "prompt": "Who ___ they?",
+          "options": [
+            "are",
+            "am"
+          ],
+          "answer": 0,
+          "explanation": "They đi với are; am chỉ đi với I.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-010",
+          "type": "choice",
+          "prompt": "What ___ that?",
+          "options": [
+            "are",
+            "is"
+          ],
+          "answer": 1,
+          "explanation": "That là số ít nên dùng is.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-011",
+          "type": "choice",
+          "prompt": "___ is this? — It’s my grandfather.",
+          "options": [
+            "What",
+            "Who"
+          ],
+          "answer": 1,
+          "explanation": "Grandfather là người nên hỏi bằng Who.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-012",
+          "type": "choice",
+          "prompt": "___ are those? — They are pillows.",
+          "options": [
+            "What",
+            "Who"
+          ],
+          "answer": 0,
+          "explanation": "Pillows là đồ vật nên dùng What.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-013",
+          "type": "choice",
+          "prompt": "What is that? — ___ is a chair.",
+          "options": [
+            "They",
+            "It"
+          ],
+          "answer": 1,
+          "explanation": "A chair là danh từ số ít; trả lời It is.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-014",
+          "type": "choice",
+          "prompt": "Who are these? — ___ are my cousins.",
+          "options": [
+            "They",
+            "It"
+          ],
+          "answer": 0,
+          "explanation": "These và cousins là số nhiều nên dùng They.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-015",
+          "type": "choice",
+          "prompt": "Who is she?",
+          "options": [
+            "It’s my grandfather.",
+            "They are my children.",
+            "They are my socks.",
+            "She is my cousin.",
+            "It’s a banana."
+          ],
+          "answer": 3,
+          "explanation": "She tương ứng với câu trả lời She is my cousin.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 1
+        },
+        {
+          "id": "who-what-016",
+          "type": "choice",
+          "prompt": "Who is this?",
+          "options": [
+            "It’s my grandfather.",
+            "They are my children.",
+            "They are my socks.",
+            "She is my cousin.",
+            "It’s a banana."
+          ],
+          "answer": 0,
+          "explanation": "This hỏi một người; câu trả lời được nối là It’s my grandfather.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 1
+        },
+        {
+          "id": "who-what-017",
+          "type": "choice",
+          "prompt": "What is that?",
+          "options": [
+            "It’s my grandfather.",
+            "They are my children.",
+            "They are my socks.",
+            "She is my cousin.",
+            "It’s a banana."
+          ],
+          "answer": 4,
+          "explanation": "What hỏi đồ vật; that số ít tương ứng It’s a banana.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 1
+        },
+        {
+          "id": "who-what-018",
+          "type": "choice",
+          "prompt": "Who are these?",
+          "options": [
+            "It’s my grandfather.",
+            "They are my children.",
+            "They are my socks.",
+            "She is my cousin.",
+            "It’s a banana."
+          ],
+          "answer": 1,
+          "explanation": "Who hỏi người, these số nhiều; chọn They are my children.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 1
+        },
+        {
+          "id": "who-what-019",
+          "type": "choice",
+          "prompt": "What are they?",
+          "options": [
+            "It’s my grandfather.",
+            "They are my children.",
+            "They are my socks.",
+            "She is my cousin.",
+            "It’s a banana."
+          ],
+          "answer": 2,
+          "explanation": "What hỏi vật, they số nhiều; chọn They are my socks.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 1
+        },
+        {
+          "id": "who-what-020",
+          "type": "choice",
+          "prompt": "___ is this? — It’s a desk.",
+          "options": [
+            "What",
+            "Who"
+          ],
+          "answer": 0,
+          "explanation": "Desk là đồ vật nên dùng What.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-021",
+          "type": "choice",
+          "prompt": "___ are these? — They are shirts.",
+          "options": [
+            "What",
+            "Who"
+          ],
+          "answer": 0,
+          "explanation": "Shirts là đồ vật số nhiều; dùng What.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-022",
+          "type": "choice",
+          "prompt": "___ are these? — They are my children.",
+          "options": [
+            "What",
+            "Who"
+          ],
+          "answer": 1,
+          "explanation": "Children chỉ người nên dùng Who.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-023",
+          "type": "choice",
+          "prompt": "___ is this? — It is my friend.",
+          "options": [
+            "What",
+            "Who"
+          ],
+          "answer": 1,
+          "explanation": "Friend chỉ người nên dùng Who.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-024",
+          "type": "choice",
+          "prompt": "___ are those? — They are her jeans.",
+          "options": [
+            "What",
+            "Who"
+          ],
+          "answer": 0,
+          "explanation": "Jeans là đồ vật nên dùng What.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-025",
+          "type": "choice",
+          "prompt": "What are ___? — They are her dogs.",
+          "options": [
+            "those",
+            "it",
+            "you"
+          ],
+          "answer": 0,
+          "explanation": "Are và They yêu cầu chủ ngữ số nhiều; those phù hợp với câu trả lời chỉ các con chó.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-026",
+          "type": "choice",
+          "prompt": "Who are they? — They ___ our classmates.",
+          "options": [
+            "is",
+            "am",
+            "are"
+          ],
+          "answer": 2,
+          "explanation": "They đi với are.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-027",
+          "type": "choice",
+          "prompt": "What is this? — ___ a chair.",
+          "options": [
+            "They’re",
+            "It’s",
+            "I’m"
+          ],
+          "answer": 1,
+          "explanation": "A chair là một đồ vật, trả lời It is / It’s.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-028",
+          "type": "choice",
+          "prompt": "Who is this? — ___ is my friend.",
+          "options": [
+            "It",
+            "You",
+            "They"
+          ],
+          "answer": 0,
+          "explanation": "Đáp lại Who is this? có thể dùng It is + người được giới thiệu.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-029",
+          "type": "choice",
+          "prompt": "Who ___ that? — It’s his grandmother.",
+          "options": [
+            "is",
+            "are",
+            "am"
+          ],
+          "answer": 0,
+          "explanation": "That là số ít nên đi với is.",
+          "sourceId": "1GFIEtmxAL004SdKMkJYi-60u6obtylfz",
+          "page": 2
+        },
+        {
+          "id": "who-what-030",
+          "type": "text",
+          "prompt": "Viết câu trả lời tiếng Anh: “Đây là một cái bàn.”",
+          "accept": [
+            "It is a desk",
+            "It's a desk",
+            "This is a desk"
+          ],
+          "explanation": "Cấu trúc It is + a + danh từ số ít.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        },
+        {
+          "id": "who-what-031",
+          "type": "text",
+          "prompt": "Viết câu trả lời tiếng Anh: “Họ là những người bạn của tôi.”",
+          "accept": [
+            "They are my friends",
+            "They're my friends"
+          ],
+          "explanation": "They are + danh từ số nhiều.",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 2
+        },
+        {
+          "id": "who-what-032",
+          "type": "text",
+          "prompt": "Viết câu hỏi tiếng Anh: “Cô ấy là ai?”",
+          "accept": [
+            "Who is she",
+            "Who's she"
+          ],
+          "explanation": "Who + is + she?",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 2
+        },
+        {
+          "id": "who-what-033",
+          "type": "text",
+          "prompt": "Viết câu hỏi tiếng Anh: “Những cái này là gì?”",
+          "accept": [
+            "What are these"
+          ],
+          "explanation": "What + are + these?",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 3
+        }
+      ],
+      "cards": [
+        {
+          "id": "who-word-0",
+          "front": "grandfather",
+          "back": "ông",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-1",
+          "front": "grandmother",
+          "back": "bà",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-2",
+          "front": "cousin",
+          "back": "anh, chị hoặc em họ",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-3",
+          "front": "classmate",
+          "back": "bạn cùng lớp",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-4",
+          "front": "banana",
+          "back": "quả chuối",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-5",
+          "front": "cake",
+          "back": "bánh",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-6",
+          "front": "bag",
+          "back": "cặp, túi",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-7",
+          "front": "desk",
+          "back": "cái bàn",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-8",
+          "front": "chair",
+          "back": "cái ghế",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-9",
+          "front": "shirt",
+          "back": "áo sơ mi",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-10",
+          "front": "hat",
+          "back": "cái mũ",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-11",
+          "front": "jeans",
+          "back": "quần bò",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-12",
+          "front": "pillow",
+          "back": "cái gối",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        },
+        {
+          "id": "who-word-13",
+          "front": "sock",
+          "back": "cái tất",
+          "sourceId": "1OAAbYlzBi6H9rXSUyptNFg0T9n6tyoWJ",
+          "page": 1
+        }
+      ]
+    },
+    {
+      "id": "present-simple",
+      "title": "Thì hiện tại đơn",
+      "topic": "Ngữ pháp",
+      "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+      "folderId": "1P7e5mLY2cx7pacF0q378kyU59PhnNtzk",
+      "description": "Làm bài, xem giải thích rồi ôn lại câu sai.",
+      "origin": "Chuyển từ tài liệu / biên soạn theo nội dung đã đọc",
+      "sources": [
+        {
+          "id": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "title": "covumaiphuongunit8-thihientaidon.pdf",
+          "pages": [
+            3,
+            4
+          ],
+          "url": "https://drive.google.com/file/d/1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs/view"
+        }
+      ],
+      "summary": [
+        "Dùng cho thói quen, sự thật hiện tại và lịch trình cố định.",
+        "He / she / it: động từ thêm s/es; phủ định dùng does not + động từ nguyên mẫu.",
+        "Trạng từ tần suất đứng trước động từ thường và sau to be."
+      ],
+      "questions": [
+        {
+          "id": "present-simple-001",
+          "type": "choice",
+          "prompt": "I usually ___ up at 6.00.",
+          "options": [
+            "gets",
+            "get"
+          ],
+          "answer": 1,
+          "explanation": "I dùng động từ nguyên mẫu get.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-002",
+          "type": "choice",
+          "prompt": "___ he often work at the weekend?",
+          "options": [
+            "Does",
+            "Do"
+          ],
+          "answer": 0,
+          "explanation": "He đi với trợ động từ Does.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-003",
+          "type": "choice",
+          "prompt": "My son ___ like ice cream.",
+          "options": [
+            "doesn’t",
+            "don’t"
+          ],
+          "answer": 0,
+          "explanation": "My son là số ít; dùng doesn’t + like.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-004",
+          "type": "choice",
+          "prompt": "Our children ___ active.",
+          "options": [
+            "is",
+            "are"
+          ],
+          "answer": 1,
+          "explanation": "Children là số nhiều nên dùng are.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-005",
+          "type": "choice",
+          "prompt": "Water ___ at 100°C.",
+          "options": [
+            "boil",
+            "boils"
+          ],
+          "answer": 1,
+          "explanation": "Water là danh từ không đếm được, chia động từ số ít boils.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-006",
+          "type": "choice",
+          "prompt": "___ your baby cry at night?",
+          "options": [
+            "Does",
+            "Do"
+          ],
+          "answer": 0,
+          "explanation": "Your baby là số ít nên dùng Does.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-007",
+          "type": "choice",
+          "prompt": "They never ___ to work.",
+          "options": [
+            "cycles",
+            "cycle"
+          ],
+          "answer": 1,
+          "explanation": "They dùng động từ nguyên mẫu cycle.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-008",
+          "type": "choice",
+          "prompt": "Her cats ___ cute.",
+          "options": [
+            "is",
+            "are"
+          ],
+          "answer": 1,
+          "explanation": "Cats là số nhiều, đi với are.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-009",
+          "type": "choice",
+          "prompt": "It ___ hot in summer.",
+          "options": [
+            "am",
+            "is"
+          ],
+          "answer": 1,
+          "explanation": "It đi với is.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-010",
+          "type": "choice",
+          "prompt": "He ___ a university student.",
+          "options": [
+            "isn’t",
+            "aren’t"
+          ],
+          "answer": 0,
+          "explanation": "He dùng is not / isn’t.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-011",
+          "type": "choice",
+          "prompt": "We usually ___ dinner at 7.00.",
+          "options": [
+            "has",
+            "have"
+          ],
+          "answer": 1,
+          "explanation": "We dùng have, không dùng has.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-012",
+          "type": "choice",
+          "prompt": "The train ___ at 4.30.",
+          "options": [
+            "leaves",
+            "leave"
+          ],
+          "answer": 0,
+          "explanation": "The train là số ít; lịch trình cố định dùng hiện tại đơn leaves.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-013",
+          "type": "choice",
+          "prompt": "The Sun ___ in the West.",
+          "options": [
+            "sets",
+            "set"
+          ],
+          "answer": 0,
+          "explanation": "The Sun là số ít và câu nêu sự thật, dùng sets.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-014",
+          "type": "choice",
+          "prompt": "My son sometimes ___ his bedroom.",
+          "options": [
+            "tidy",
+            "tidies"
+          ],
+          "answer": 1,
+          "explanation": "Ngôi thứ ba số ít: tidy đổi y thành ies.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-015",
+          "type": "choice",
+          "prompt": "Our children often ___ around the park.",
+          "options": [
+            "runs",
+            "run"
+          ],
+          "answer": 1,
+          "explanation": "Children là số nhiều, dùng run.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-016",
+          "type": "choice",
+          "prompt": "My brother-in-law doesn’t ___ at a bank.",
+          "options": [
+            "work",
+            "works"
+          ],
+          "answer": 0,
+          "explanation": "Sau doesn’t là động từ nguyên mẫu work.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-017",
+          "type": "choice",
+          "prompt": "I ___ my grandmother twice a month.",
+          "options": [
+            "see",
+            "sees"
+          ],
+          "answer": 0,
+          "explanation": "I dùng see; twice a month diễn tả tần suất.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-018",
+          "type": "choice",
+          "prompt": "Her bedroom ___ always tidy.",
+          "options": [
+            "is",
+            "are"
+          ],
+          "answer": 0,
+          "explanation": "Bedroom số ít dùng is; always đứng sau to be.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        },
+        {
+          "id": "present-simple-019",
+          "type": "choice",
+          "prompt": "___ trees usually turn yellow in the autumn?",
+          "options": [
+            "Do",
+            "Does"
+          ],
+          "answer": 0,
+          "explanation": "Trees là số nhiều nên dùng Do.",
+          "sourceId": "1XPvtsqyfYBdPP8Q6thy3PA2Kc1lPvbUs",
+          "page": 4
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": "present-perfect",
+      "title": "Thì hiện tại hoàn thành",
+      "topic": "Ngữ pháp",
+      "courseId": "1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD",
+      "folderId": "1joNefXG00p2Cb-0r30rdM5SyOc4xKF3m",
+      "description": "Làm bài, xem giải thích rồi ôn lại câu sai.",
+      "origin": "Chuyển từ tài liệu / biên soạn theo nội dung đã đọc",
+      "sources": [
+        {
+          "id": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "title": "covumaiphuongunit15-thihientaihoanthanh.pdf",
+          "pages": [
+            2,
+            3,
+            4
+          ],
+          "url": "https://drive.google.com/file/d/1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S/view"
+        }
+      ],
+      "summary": [
+        "Have / has + quá khứ phân từ (V3).",
+        "For đi với khoảng thời gian, since đi với mốc thời gian.",
+        "Yet thường gặp trong câu phủ định hoặc nghi vấn; just diễn tả việc vừa xảy ra."
+      ],
+      "questions": [
+        {
+          "id": "present-perfect-001",
+          "type": "choice",
+          "prompt": "They ___ lived in Paris for 2 years.",
+          "options": [
+            "have",
+            "has"
+          ],
+          "answer": 0,
+          "explanation": "They đi với have + V3.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        },
+        {
+          "id": "present-perfect-002",
+          "type": "choice",
+          "prompt": "___ she heard the story yet?",
+          "options": [
+            "Has",
+            "Have"
+          ],
+          "answer": 0,
+          "explanation": "She đi với Has trong câu nghi vấn.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        },
+        {
+          "id": "present-perfect-003",
+          "type": "choice",
+          "prompt": "We ___ at this factory since 2020.",
+          "options": [
+            "worked",
+            "have worked"
+          ],
+          "answer": 1,
+          "explanation": "Since 2020 là mốc bắt đầu kéo dài tới hiện tại; dùng have worked.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        },
+        {
+          "id": "present-perfect-004",
+          "type": "choice",
+          "prompt": "I ___ dinner yet.",
+          "options": [
+            "haven’t had",
+            "didn’t have"
+          ],
+          "answer": 0,
+          "explanation": "Yet trong câu phủ định ở ngữ cảnh hiện tại hoàn thành: haven’t had.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        },
+        {
+          "id": "present-perfect-005",
+          "type": "choice",
+          "prompt": "I ___ just read her essay.",
+          "options": [
+            "have",
+            "has"
+          ],
+          "answer": 0,
+          "explanation": "I dùng have; just đứng giữa have và V3.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        },
+        {
+          "id": "present-perfect-006",
+          "type": "choice",
+          "prompt": "My cousin ___ stayed in my flat for 2 days.",
+          "options": [
+            "has",
+            "have"
+          ],
+          "answer": 0,
+          "explanation": "My cousin là số ít, dùng has.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        },
+        {
+          "id": "present-perfect-007",
+          "type": "choice",
+          "prompt": "They ___ since 2015.",
+          "options": [
+            "married",
+            "have been married"
+          ],
+          "answer": 1,
+          "explanation": "Trạng thái bắt đầu từ 2015 và còn tiếp diễn: have been married.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        },
+        {
+          "id": "present-perfect-008",
+          "type": "choice",
+          "prompt": "She ___ for her book for 20 minutes.",
+          "options": [
+            "has searched",
+            "have searched"
+          ],
+          "answer": 0,
+          "explanation": "She đi với has + V3; for 20 minutes là khoảng thời gian.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        },
+        {
+          "id": "present-perfect-009",
+          "type": "choice",
+          "prompt": "He ___ her message yet.",
+          "options": [
+            "haven’t received",
+            "hasn’t received"
+          ],
+          "answer": 1,
+          "explanation": "He đi với has not / hasn’t.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        },
+        {
+          "id": "present-perfect-010",
+          "type": "choice",
+          "prompt": "I ___ my key.",
+          "options": [
+            "have lost",
+            "has lost"
+          ],
+          "answer": 0,
+          "explanation": "I dùng have lost, kết quả hiện tại là không có chìa khóa.",
+          "sourceId": "1wBQSgX1vRTwfLTojBWuxHzfGfwCCVI-S",
+          "page": 4
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": "word-form",
+      "title": "Chọn đúng từ loại trong câu",
+      "topic": "Ngữ pháp",
+      "courseId": "1q6WGPjWqybM8_n7IAXj19NnxTwS0b6Xt",
+      "folderId": "1i-l0DlilxTjFmSil7CsGtBdm0Sm9RxZ1",
+      "description": "Làm bài, xem giải thích rồi ôn lại câu sai.",
+      "origin": "Chuyển từ tài liệu / biên soạn theo nội dung đã đọc",
+      "sources": [
+        {
+          "id": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "title": "tuan-1-noi-dung-hoc-khoa-mat-goc-toi-8-m-pdf.pdf",
+          "pages": [
+            1,
+            2
+          ],
+          "url": "https://drive.google.com/file/d/1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN/view"
+        }
+      ],
+      "summary": [
+        "Xác định từ loại cần điền từ vị trí trong câu.",
+        "Sau mạo từ hoặc tính từ thường cần danh từ; sau be / seem / feel thường cần tính từ.",
+        "Phân biệt -ed diễn tả cảm nhận và -ing diễn tả điều gây ra cảm nhận."
+      ],
+      "questions": [
+        {
+          "id": "word-form-001",
+          "type": "choice",
+          "prompt": "The company's recent ___ of advanced technologies has significantly boosted productivity.",
+          "options": [
+            "applying",
+            "apply",
+            "applicable",
+            "application"
+          ],
+          "answer": 3,
+          "explanation": "Sau tính từ recent và trước of cần danh từ: application.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 1
+        },
+        {
+          "id": "word-form-002",
+          "type": "choice",
+          "prompt": "His speech was both ___ and entertaining, capturing everyone's attention.",
+          "options": [
+            "inform",
+            "informative",
+            "information",
+            "informing"
+          ],
+          "answer": 1,
+          "explanation": "Both ... and ... nối hai tính từ; informative song song với entertaining.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 1
+        },
+        {
+          "id": "word-form-003",
+          "type": "choice",
+          "prompt": "She was deeply ___ by the unexpected failure of the project.",
+          "options": [
+            "disappointing",
+            "disappointed",
+            "disappoint",
+            "disappointment"
+          ],
+          "answer": 1,
+          "explanation": "She là người chịu cảm xúc; dùng tính từ disappointed.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 1
+        },
+        {
+          "id": "word-form-004",
+          "type": "choice",
+          "prompt": "The film was highly ___, attracting a large number of viewers on its opening weekend.",
+          "options": [
+            "entertain",
+            "entertained",
+            "entertaining",
+            "entertainment"
+          ],
+          "answer": 2,
+          "explanation": "Bộ phim gây hứng thú nên dùng entertaining.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 1
+        },
+        {
+          "id": "word-form-005",
+          "type": "choice",
+          "prompt": "He remained ___ during the entire argument, which helped resolve the conflict peacefully.",
+          "options": [
+            "calmly",
+            "calming",
+            "calmed",
+            "calm"
+          ],
+          "answer": 3,
+          "explanation": "Remain là linking verb; dùng tính từ calm.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 1
+        },
+        {
+          "id": "word-form-006",
+          "type": "choice",
+          "prompt": "His ___ to the charity has helped improve the lives of many underprivileged children.",
+          "options": [
+            "donate",
+            "donation",
+            "donated",
+            "donating"
+          ],
+          "answer": 1,
+          "explanation": "Sau tính từ sở hữu His cần danh từ: donation.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 1
+        },
+        {
+          "id": "word-form-007",
+          "type": "choice",
+          "prompt": "It took her months to ___ from the injuries she sustained in the accident.",
+          "options": [
+            "recover",
+            "recovery",
+            "recovering",
+            "recovered"
+          ],
+          "answer": 0,
+          "explanation": "To + động từ nguyên mẫu: recover.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 1
+        },
+        {
+          "id": "word-form-008",
+          "type": "choice",
+          "prompt": "His speech was full of technical terms and jargon, making it ___ for the audience to understand without prior knowledge of the subject.",
+          "options": [
+            "access",
+            "accessible",
+            "inaccessibly",
+            "inaccessible"
+          ],
+          "answer": 3,
+          "explanation": "Make + tân ngữ + tính từ; nội dung khó hiểu nên chọn inaccessible.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 1
+        },
+        {
+          "id": "word-form-009",
+          "type": "choice",
+          "prompt": "The speaker's ___ inspired everyone in the room to work harder.",
+          "options": [
+            "motivation",
+            "motivate",
+            "motivational",
+            "motivated"
+          ],
+          "answer": 0,
+          "explanation": "Sau sở hữu speaker’s, vị trí chủ ngữ cần danh từ motivation.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 1
+        },
+        {
+          "id": "word-form-010",
+          "type": "choice",
+          "prompt": "The increasing demand for eco-friendly products has prompted companies to focus on the ___ of biodegradable materials.",
+          "options": [
+            "produce",
+            "production",
+            "productive",
+            "producing"
+          ],
+          "answer": 1,
+          "explanation": "Cụm the ... of yêu cầu danh từ: production.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-011",
+          "type": "choice",
+          "prompt": "The ___ growth of the city's population has led to housing shortages.",
+          "options": [
+            "rapids",
+            "rapidly",
+            "rapidity",
+            "rapid"
+          ],
+          "answer": 3,
+          "explanation": "Trước danh từ growth cần tính từ rapid.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-012",
+          "type": "choice",
+          "prompt": "The new employee is extremely ___ about learning all aspects of the job.",
+          "options": [
+            "enthusiasm",
+            "enthusiastic",
+            "enthusiastically",
+            "enthuse"
+          ],
+          "answer": 1,
+          "explanation": "Be + trạng từ + tính từ: extremely enthusiastic.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-013",
+          "type": "choice",
+          "prompt": "The government's main focus is on the ___ of renewable energy sources.",
+          "options": [
+            "develop",
+            "developer",
+            "development",
+            "developing"
+          ],
+          "answer": 2,
+          "explanation": "The development of: sự phát triển. Developer là người/đơn vị phát triển.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-014",
+          "type": "choice",
+          "prompt": "His presentation was so ___ that everyone stayed focused until the very end.",
+          "options": [
+            "interested",
+            "interest",
+            "interesting",
+            "interests"
+          ],
+          "answer": 2,
+          "explanation": "Bài thuyết trình gây hứng thú nên dùng interesting.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-015",
+          "type": "choice",
+          "prompt": "The weather was so ___ that we decided to postpone the picnic until next week.",
+          "options": [
+            "disappointed",
+            "disappointing",
+            "disappoint",
+            "disappointment"
+          ],
+          "answer": 1,
+          "explanation": "Thời tiết gây thất vọng nên dùng disappointing.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-016",
+          "type": "choice",
+          "prompt": "The audience was ___ by the performance of the young pianist.",
+          "options": [
+            "amazing",
+            "amazed",
+            "amaze",
+            "amazement"
+          ],
+          "answer": 1,
+          "explanation": "Khán giả có cảm giác ngạc nhiên: amazed.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-017",
+          "type": "choice",
+          "prompt": "The company aims to ___ its market share by launching a new advertising campaign.",
+          "options": [
+            "expand",
+            "expansion",
+            "expanded",
+            "expanding"
+          ],
+          "answer": 0,
+          "explanation": "Aim to + động từ nguyên mẫu: expand.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-018",
+          "type": "choice",
+          "prompt": "The manager issued a formal apology for the ___ of customer complaints, promising immediate improvements in service quality.",
+          "options": [
+            "handle",
+            "handled",
+            "mishandling",
+            "handles"
+          ],
+          "answer": 2,
+          "explanation": "Sau the và trước of cần danh từ/danh động từ: mishandling.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-019",
+          "type": "choice",
+          "prompt": "The school will ___ a new policy to address the issue of student absenteeism.",
+          "options": [
+            "implemented",
+            "implementation",
+            "implementing",
+            "implement"
+          ],
+          "answer": 3,
+          "explanation": "Sau will là động từ nguyên mẫu implement.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        },
+        {
+          "id": "word-form-020",
+          "type": "choice",
+          "prompt": "His calm and ___ attitude during the crisis earned him great respect.",
+          "options": [
+            "professionalism",
+            "professionally",
+            "profession",
+            "professional"
+          ],
+          "answer": 3,
+          "explanation": "Calm and professional cùng bổ nghĩa cho attitude.",
+          "sourceId": "1oc8t1Jz82dblqUom-wT1CWCbXnMcopLN",
+          "page": 2
+        }
+      ],
+      "cards": []
+    },
+    {
+      "id": "study4-vocab",
+      "title": "Từ vựng TOEIC · List 1",
+      "topic": "Từ vựng",
+      "courseId": "1m8UUnkpyTOffREm7GjITTPrDkZ5OmHUb",
+      "folderId": "1x8FuUqwLWWPy3YivHxvJmzDU_3l0Hy2R",
+      "description": "Làm bài, xem giải thích rồi ôn lại câu sai.",
+      "origin": "Chuyển từ tài liệu / biên soạn theo nội dung đã đọc",
+      "sources": [
+        {
+          "id": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "title": "Bản sao của 01.pdf",
+          "pages": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "url": "https://drive.google.com/file/d/1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq/view"
+        }
+      ],
+      "summary": [
+        "Học nghĩa theo ngữ cảnh công việc, đi lại và dịch vụ.",
+        "Lật thẻ để tự nhớ trước khi xem nghĩa.",
+        "Đánh dấu “Đã nhớ” hoặc “Cần ôn” để lên lịch nhắc lại trong góc học."
+      ],
+      "questions": [
+        {
+          "id": "study4-vocab-001",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “accountant” nghĩa là gì?",
+          "options": [
+            "kế toán viên",
+            "sân bay",
+            "người nộp hồ sơ",
+            "nhân viên phục vụ"
+          ],
+          "answer": 0,
+          "explanation": "accountant: kế toán viên — người phụ trách công việc tài chính, kế toán trong doanh nghiệp.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 1
+        },
+        {
+          "id": "study4-vocab-002",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “airport” nghĩa là gì?",
+          "options": [
+            "nhân viên phục vụ",
+            "sân bay",
+            "xe đạp",
+            "tờ gấp giới thiệu"
+          ],
+          "answer": 1,
+          "explanation": "airport: sân bay — nơi hành khách đến để đi máy bay.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 2
+        },
+        {
+          "id": "study4-vocab-003",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “applicant” nghĩa là gì?",
+          "options": [
+            "tờ gấp giới thiệu",
+            "quán ăn tự phục vụ",
+            "người nộp hồ sơ",
+            "người gọi điện"
+          ],
+          "answer": 2,
+          "explanation": "applicant: người nộp hồ sơ — người nộp đơn xin việc hoặc đăng ký một vị trí.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 2
+        },
+        {
+          "id": "study4-vocab-004",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “attendant” nghĩa là gì?",
+          "options": [
+            "sân bay",
+            "người nộp hồ sơ",
+            "xe đạp",
+            "nhân viên phục vụ"
+          ],
+          "answer": 3,
+          "explanation": "attendant: nhân viên phục vụ — người hỗ trợ hoặc phục vụ nhu cầu của người khác.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 2
+        },
+        {
+          "id": "study4-vocab-005",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “bicycle” nghĩa là gì?",
+          "options": [
+            "xe đạp",
+            "nhân viên phục vụ",
+            "tờ gấp giới thiệu",
+            "quán ăn tự phục vụ"
+          ],
+          "answer": 0,
+          "explanation": "bicycle: xe đạp — phương tiện có hai bánh và bàn đạp.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 3
+        },
+        {
+          "id": "study4-vocab-006",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “brochure” nghĩa là gì?",
+          "options": [
+            "kế toán viên",
+            "tờ gấp giới thiệu",
+            "sân bay",
+            "người nộp hồ sơ"
+          ],
+          "answer": 1,
+          "explanation": "brochure: tờ gấp giới thiệu — ấn phẩm nhỏ giới thiệu sản phẩm hoặc dịch vụ.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 3
+        },
+        {
+          "id": "study4-vocab-007",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “cafeteria” nghĩa là gì?",
+          "options": [
+            "người nộp hồ sơ",
+            "nhân viên phục vụ",
+            "quán ăn tự phục vụ",
+            "xe đạp"
+          ],
+          "answer": 2,
+          "explanation": "cafeteria: quán ăn tự phục vụ — nơi khách tự lấy món và trả tiền ở quầy.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 4
+        },
+        {
+          "id": "study4-vocab-008",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “caller” nghĩa là gì?",
+          "options": [
+            "xe đạp",
+            "tờ gấp giới thiệu",
+            "quán ăn tự phục vụ",
+            "người gọi điện"
+          ],
+          "answer": 3,
+          "explanation": "caller: người gọi điện — người đang gọi điện đến cho bạn.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 4
+        },
+        {
+          "id": "study4-vocab-009",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “candidate” nghĩa là gì?",
+          "options": [
+            "ứng viên được cân nhắc",
+            "sân bay",
+            "nhân viên phục vụ",
+            "xe đạp"
+          ],
+          "answer": 0,
+          "explanation": "candidate: ứng viên được cân nhắc — người được cân nhắc cho công việc hoặc chức vụ.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 5
+        },
+        {
+          "id": "study4-vocab-010",
+          "type": "choice",
+          "prompt": "Trong danh sách từ vựng, “chef” nghĩa là gì?",
+          "options": [
+            "nhân viên phục vụ",
+            "đầu bếp",
+            "xe đạp",
+            "tờ gấp giới thiệu"
+          ],
+          "answer": 1,
+          "explanation": "chef: đầu bếp — người nấu ăn chuyên nghiệp.",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 5
+        }
+      ],
+      "cards": [
+        {
+          "id": "study4-word-accountant",
+          "front": "accountant",
+          "back": "kế toán viên",
+          "example": "người phụ trách công việc tài chính, kế toán trong doanh nghiệp",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 1
+        },
+        {
+          "id": "study4-word-airport",
+          "front": "airport",
+          "back": "sân bay",
+          "example": "nơi hành khách đến để đi máy bay",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 2
+        },
+        {
+          "id": "study4-word-applicant",
+          "front": "applicant",
+          "back": "người nộp hồ sơ",
+          "example": "người nộp đơn xin việc hoặc đăng ký một vị trí",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 2
+        },
+        {
+          "id": "study4-word-attendant",
+          "front": "attendant",
+          "back": "nhân viên phục vụ",
+          "example": "người hỗ trợ hoặc phục vụ nhu cầu của người khác",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 2
+        },
+        {
+          "id": "study4-word-bicycle",
+          "front": "bicycle",
+          "back": "xe đạp",
+          "example": "phương tiện có hai bánh và bàn đạp",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 3
+        },
+        {
+          "id": "study4-word-brochure",
+          "front": "brochure",
+          "back": "tờ gấp giới thiệu",
+          "example": "ấn phẩm nhỏ giới thiệu sản phẩm hoặc dịch vụ",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 3
+        },
+        {
+          "id": "study4-word-cafeteria",
+          "front": "cafeteria",
+          "back": "quán ăn tự phục vụ",
+          "example": "nơi khách tự lấy món và trả tiền ở quầy",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 4
+        },
+        {
+          "id": "study4-word-caller",
+          "front": "caller",
+          "back": "người gọi điện",
+          "example": "người đang gọi điện đến cho bạn",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 4
+        },
+        {
+          "id": "study4-word-candidate",
+          "front": "candidate",
+          "back": "ứng viên được cân nhắc",
+          "example": "người được cân nhắc cho công việc hoặc chức vụ",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 5
+        },
+        {
+          "id": "study4-word-chef",
+          "front": "chef",
+          "back": "đầu bếp",
+          "example": "người nấu ăn chuyên nghiệp",
+          "sourceId": "1PetF-5NjsyD56y8BHMrJD2iejycjU1Bq",
+          "page": 5
+        }
+      ]
+    }
+  ]
+}
