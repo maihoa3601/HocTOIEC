@@ -1,5 +1,10 @@
 export const normalize = value => String(value ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g,'d').replace(/Đ/g,'D').toLowerCase();
-export const cleanTitle = value => String(value ?? '').replace(/(\.(mp4|mkv|avi|mov|webm|mp3|wav|pdf))+$/gi,'').replace(/\s*\(khoahocgiahoi[^)]*\)/gi,'').replace(/^\[(.*)\]$/,'$1').replace(/\s+/g,' ').trim();
+export const cleanTitle = value => String(value ?? '')
+  .replace(/(\.(mp4|mkv|avi|mov|webm|mp3|wav|pdf))+$/gi,'')
+  .replace(/\s*\(khoahocgiahoi[^)]*\)/gi,'')
+  .replace(/\s*[|–-]?\s*TÀI LIỆU ÔN THI OFFICIAL\s*[-–|]?\s*ZALO HỖ TRỢ\s*[:\-]?\s*[\d .+()-]+/gi,'')
+  .replace(/\s*\(+\s*Zalo\s+hỗ\s+trợ[^)]*\)+/gi,'')
+  .replace(/^\[(.*)\]$/,'$1').replace(/\s+/g,' ').trim();
 export function tagsFor(value) {
   const v=normalize(value), out=[];
   if(/listening|nghe|part\s*[1-4]\b|photograph|conversation|talks|hoi dap/.test(v))out.push('Listening');
@@ -18,4 +23,9 @@ export function safeProgress(value, ids) {
   const v=value&&typeof value==='object'?value:{};
   const keepMap=(source,fn)=>Object.fromEntries(Object.entries(source&&typeof source==='object'?source:{}).filter(([id,val])=>ids.has(id)&&fn(val)));
   return {version:1,completed:keepMap(v.completed,x=>typeof x==='string'&&Number.isFinite(Date.parse(x))),saved:Array.isArray(v.saved)?[...new Set(v.saved.filter(x=>ids.has(x)))]:[],notes:keepMap(v.notes,x=>typeof x==='string'&&x.length<=20000),last:ids.has(v.last)?v.last:null,goal:[450,650,850].includes(Number(v.goal))?Number(v.goal):650,daily:[1,2,3,5].includes(Number(v.daily))?Number(v.daily):1,focus:Math.max(0,Math.min(10000000,Number(v.focus)||0))};
+}
+
+export function isLearningResource(item) {
+  const promotional=/^(thong tin lien he|loi ich tham gia nhom|gioi thieu ve nhom|zalo ho tro|tai lieu on thi official|website[_\s:]|tailieuonthiofficial(?:[.\s]|$))/;
+  return !isFolder(item)&&Boolean(cleanTitle(item.name))&&!promotional.test(normalize(item.name).replace(/^[^a-z0-9]+/g,''));
 }

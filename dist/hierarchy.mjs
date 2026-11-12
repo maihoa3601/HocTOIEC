@@ -51,3 +51,11 @@ export function searchFolder(entry,query='') {
   const q=normalize(query.trim());
   return q?[...entry.videos,...entry.docs].filter(f=>normalize(f.search||f.name+' '+(f.path||'')).includes(q)):entry.files;
 }
+
+export function folderListing(entry,{query='',includeChildren=true,status='all',type='all'}={},completed={}) {
+  const source=query.trim()?searchFolder(entry,query):includeChildren?[...entry.videos,...entry.docs]:entry.files;
+  const filtered=source.filter(f=>status==='all'||isVideo(f)&&(status==='done'?Boolean(completed[f.id]):!completed[f.id]));
+  const videos=filtered.filter(isVideo),docs=filtered.filter(f=>!isVideo(f));
+  const items=(type==='videos'?videos:type==='docs'?docs:filtered).slice().sort((a,b)=>((a.path||'')+'/'+a.name).localeCompare((b.path||'')+'/'+b.name,'vi',{numeric:true}));
+  return {total:filtered.length,videoCount:videos.length,documentCount:docs.length,items};
+}
