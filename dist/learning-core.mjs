@@ -34,13 +34,13 @@ export function sanitizeLearning(value,bank,catalogIds){
   const clean=freshLearning(),v=value&&typeof value==='object'?value:{};
   const qids=new Set(bank.sets.flatMap(s=>s.questions.map(q=>q.id))),setIds=new Set([...bank.sets.map(s=>s.id),'review','smart']),draftIds=new Set([...setIds,...bank.sets.flatMap(s=>['choice','cloze','correction','translation'].map(mode=>s.id+':'+mode))]),cardIds=new Set(bank.sets.flatMap(s=>(s.cards||[]).map(c=>c.id)));
   const answersFor=answers=>Object.fromEntries(Object.entries(answers&&typeof answers==='object'?answers:{}).filter(([id,a])=>qids.has(id)&&(typeof a==='number'||typeof a==='string'&&a.length<=1000)));
-  for(const [id,d]of Object.entries(v.drafts||{}))if(draftIds.has(id)&&d&&typeof d==='object')clean.drafts[id]={answers:answersFor(d.answers),startedAt:typeof d.startedAt==='number'?d.startedAt:Date.now()};
+  for(const [id,d]of Object.entries(v.drafts||{}))if(draftIds.has(id)&&d&&typeof d==='object')clean.drafts[id]={answers:answersFor(d.answers),startedAt:Number.isFinite(d.startedAt)?d.startedAt:Date.now(),index:Math.max(0,Math.min(299,Math.trunc(Number(d.index)||0))),updatedAt:Number.isFinite(d.updatedAt)?d.updatedAt:Date.now(),questionIds:(Array.isArray(d.questionIds)?d.questionIds:[]).filter(id=>qids.has(id)).slice(0,300)};
   const attempts=(Array.isArray(v.attempts)?v.attempts:[]).filter(a=>setIds.has(a.setId)&&Number.isFinite(a.total)&&a.total>0&&a.total<=300&&Number.isFinite(a.correct)&&a.correct>=0&&a.correct<=a.total&&typeof a.date==='string'&&Number.isFinite(Date.parse(a.date))).map(a=>({setId:a.setId,total:a.total,correct:a.correct,date:a.date,answers:answersFor(a.answers),mode:['choice','cloze','correction','translation'].includes(a.mode)?a.mode:'all'}));
   clean.attempts=attempts.slice(-100);
   for(const attempt of attempts)for(const [id,answer]of Object.entries(attempt.answers))recordResponse(clean.responses,id,answer,attempt.date);
   for(const [id,record]of Object.entries(v.responses||{}))if(qids.has(id)&&record&&typeof record==='object')recordResponse(clean.responses,id,record.answer,record.date);
   clean.wrong=[...new Set((Array.isArray(v.wrong)?v.wrong:[]).filter(id=>qids.has(id)))];
-  for(const [id,c]of Object.entries(v.cards||{}))if(cardIds.has(id)&&c&&Number.isFinite(c.due))clean.cards[id]={due:c.due,streak:Math.max(0,Math.min(10,Number(c.streak)||0))};
+  for(const [id,c]of Object.entries(v.cards||{}))if(cardIds.has(id)&&c&&Number.isFinite(c.due))clean.cards[id]={due:c.due,streak:Math.max(0,Math.min(10,Number(c.streak)||0)),rating:['again','hard','good','easy'].includes(c.rating)?c.rating:undefined,lastReviewed:typeof c.lastReviewed==='string'&&Number.isFinite(Date.parse(c.lastReviewed))?c.lastReviewed:undefined,reviews:Math.max(0,Math.trunc(Number(c.reviews)||0))};
   for(const [id,w]of Object.entries(v.worksheets||{}))if(catalogIds.has(id)&&w&&typeof w==='object'){
     const count=Math.max(1,Math.min(100,Math.trunc(Number(w.count)||20))),answers={},checks={};
     for(const [n,a]of Object.entries(w.answers||{}))if(Number.isInteger(Number(n))&&Number(n)>=1&&Number(n)<=count&&typeof a==='string'&&a.length<=1000)answers[n]=a;
