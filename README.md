@@ -28,7 +28,7 @@ Ngân hàng tái tạo bằng node scripts/build-learning-bank.mjs. Nội dung m
 
 ## Chạy trên máy
 
-Yêu cầu Node.js. Chạy `node scripts/preview.mjs` rồi mở http://127.0.0.1:4173.
+Yêu cầu Node.js. Chạy `node scripts/build-server.mjs` rồi `node scripts/preview-backend.mjs`, mở http://127.0.0.1:4173. Preview dùng SQLite cục bộ và mô phỏng đăng nhập chỉ trên localhost; production dùng nhận diện tài khoản của Sites. Yêu cầu Node.js 24 có node:sqlite.
 
 Kiểm tra dữ liệu và các quy tắc tiến độ: `node scripts/check.mjs`.
 
@@ -44,4 +44,8 @@ Tên khóa học và chủ đề lấy từ tên tệp/thư mục; chưa phiên 
 
 ## Triển khai
 
-Ứng dụng HTML/CSS/JavaScript tĩnh, không cần cài thư viện. Cấu hình Sites nằm trong `.openai/hosting.json`, thư mục xuất bản là `dist`. Site hiện được chia sẻ công khai trong Sites. Quyền truy cập vào Sites và quyền xem nội dung trên Drive vẫn do nền tảng tương ứng quản lý. Font Be Vietnam Pro tải từ Google Fonts; có font hệ thống dự phòng.
+Giao diện HTML/CSS/JavaScript được nhúng trong Cloudflare Worker, không cần cài thư viện. Worker cung cấp API dữ liệu riêng theo tài khoản qua D1. Cấu hình Sites nằm trong `.openai/hosting.json`, thư mục xuất bản là `dist`. Site hiện được chia sẻ công khai trong Sites. Quyền truy cập vào Sites và quyền xem nội dung trên Drive vẫn do nền tảng tương ứng quản lý. Font Be Vietnam Pro tải từ Google Fonts; có font hệ thống dự phòng.
+
+## Lưu trữ theo tài khoản
+
+Trang Tài khoản & lịch sử hỗ trợ bản sao thủ công với kiểm tra xung đột, bật/tắt lưu lịch sử theo tài khoản, xem bài theo phiên bản, xuất lịch sử trên thiết bị và báo lỗi câu hỏi. Chi tiết bảo vệ dữ liệu, phạm vi lưu và giới hạn: docs/ACCOUNT-STORAGE.md. Chạy node scripts/check-backend.mjs để kiểm tra phân quyền, CAS, idempotency, điểm máy chủ và lịch sử bất biến. Build trước khi deploy bằng node scripts/build-server.mjs; schema chỉ được áp dụng bằng migration drizzle/, không tạo bảng trong request.
