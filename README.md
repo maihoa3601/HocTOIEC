@@ -49,3 +49,7 @@ Giao diện HTML/CSS/JavaScript được nhúng trong Cloudflare Worker, không 
 ## Lưu trữ theo tài khoản
 
 Trang Tài khoản & lịch sử hỗ trợ bản sao thủ công với kiểm tra xung đột, bật/tắt lưu lịch sử theo tài khoản, xem bài theo phiên bản, xuất lịch sử trên thiết bị và báo lỗi câu hỏi. Chi tiết bảo vệ dữ liệu, phạm vi lưu và giới hạn: docs/ACCOUNT-STORAGE.md. Chạy node scripts/check-backend.mjs để kiểm tra phân quyền, CAS, idempotency, điểm máy chủ và lịch sử bất biến. Build trước khi deploy bằng node scripts/build-server.mjs; schema chỉ được áp dụng bằng migration drizzle/, không tạo bảng trong request.
+
+## Quản trị nội dung
+
+Tài khoản có quyền Admin/Editor thấy liên kết quản trị trong trang Tài khoản. Quyền cấu hình bằng TOEIC_ADMIN_USER_IDS / TOEIC_EDITOR_USER_IDS trên Sites. Giao diện hỗ trợ đối chiếu PDF, lưu nháp và duyệt câu hỏi hiện có. Câu hỏi mới nhận đáp án/lời giải khi nộp bài lên máy chủ; mất mạng vẫn giữ nháp. Đây chưa phải chế độ thi chống gian lận. Xem docs/CONTENT-REVIEW.md.

@@ -1,0 +1,36 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {createWorker} from '../worker/index.mjs';
+import {DatabaseSync,d1Adapter} from './d1-local.mjs';
+const bank=JSON.parse(await readFile(new URL('../dist/learning-bank.json',import.meta.url),'utf8')),meta=JSON.parse(await readFile(new URL('../dist/content-version.json',import.meta.url),'utf8')),db=new DatabaseSync(':memory:');
+for(const file of ['0000_learning_accounts','0001_content_review'])db.exec(await readFile(new URL('../drizzle/'+file+'.sql',import.meta.url),'utf8'));
+const env={DB:d1Adapter(db),TOEIC_ADMIN_USER_IDS:'owner-user',TOEIC_EDITOR_USER_IDS:'editor-user'},worker=createWorker({bank,...meta,assets:{}}),set=bank.sets[0],q=set.questions[0];
+async function req(path,method='GET',data,user='owner-user',origin='https://test.site'){const headers={origin,'content-type':'application/json'};if(user)headers['oai-authenticated-user-id']=user;const response=await worker.fetch(new Request('https://test.site'+path,{method,headers,body:method==='GET'?undefined:JSON.stringify(data)}),env);return {status:response.status,data:await response.json()}}
+assert.equal((await req('/api/session','GET',null,'owner-user')).data.role,'admin');assert.equal((await req('/api/session','GET',null,'editor-user')).data.role,'editor');
+assert.equal((await req('/api/admin/overview','GET',null,'learner')).status,403);assert.equal((await req('/api/admin/overview','GET',null,null)).status,401);
+assert.equal((await req('/api/admin/drafts','POST',{role:'admin'},'learner')).status,403);
+const publicBank=await req('/learning-bank.json','GET',null,null);for(const item of publicBank.data.sets.flatMap(s=>s.questions)){for(const field of ['answer','accept','explanation'])assert.equal(Object.hasOwn(item,field),false,'Public bank must omit '+field)}
+assert.equal((await req('/api/grade','POST',{questionIds:[q.id],answers:{}},null,'https://evil.site')).status,403);
+const before={id:'before-publish-0001',setId:set.id,bankVersion:meta.bankVersion,questionIds:[q.id],answers:{[q.id]:q.answer},saveHistory:true};const old=await req('/api/grade','POST',before);assert.equal(old.status,201);assert.equal(old.data.score.correct,1);
+const change={questionId:q.id,baseVersion:meta.questionVersions[q.id],question:{...q,explanation:q.explanation+' Kiểm tra chủ ngữ trước khi chọn dạng động từ.'},note:'Đối chiếu lại quy tắc trong trang nguồn.'};
+assert.equal((await req('/api/admin/drafts','POST',{...change,question:{...change.question,page:999}})).status,400);
+const draft=await req('/api/admin/drafts','POST',change,'editor-user');assert.equal(draft.status,201);const other=await req('/api/admin/drafts','POST',change);assert.equal(other.status,201);
+assert.equal((await req('/learning-bank.json')).data.questionVersions[q.id],meta.questionVersions[q.id],'Draft must not change published content');
+assert.equal((await req('/api/admin/publish','POST',{revisionId:draft.data.id,sourceChecked:true},'editor-user')).status,403);
+assert.equal((await req('/api/admin/publish','POST',{revisionId:draft.data.id,sourceChecked:false})).status,400);
+const race=await Promise.all([req('/api/admin/publish','POST',{revisionId:draft.data.id,sourceChecked:true}),req('/api/admin/publish','POST',{revisionId:draft.data.id,sourceChecked:true})]);assert.deepEqual(race.map(r=>r.status).sort(),[200,409]);const published=race.find(r=>r.status===200);assert.notEqual(published.data.bankVersion,meta.bankVersion);
+assert.equal((await req('/api/admin/publish','POST',{revisionId:other.data.id,sourceChecked:true})).status,409,'Stale drafts must not overwrite a newer publication');
+const newer=(await req('/learning-bank.json')).data;assert.notEqual(newer.questionVersions[q.id],meta.questionVersions[q.id]);assert.equal(newer.sets[0].questions[0].explanation,undefined);
+const archived=(await req('/api/attempts/'+before.id)).data;assert.equal(archived.questions[0].explanation,q.explanation,'Publishing must not mutate history');
+assert.equal((await req('/api/grade','POST',{...before,id:'stale-submit-0001'})).status,409);
+const result=await req('/api/grade','POST',{...before,id:'newer-submit-0001',bankVersion:newer.contentVersion},null);assert.equal(result.status,200);assert.equal(result.data.questions[0].explanation,change.question.explanation);assert.equal(result.data.historySaved,false);
+const report={id:'shared-report-001',questionId:q.id,reason:'explanation',detail:'Đề nghị đối chiếu trang nguồn.'};
+await req('/api/reports','POST',report,'learner-a');await req('/api/reports','POST',report,'learner-b');
+const statusChange={reportId:report.id,reporterId:'learner-a',status:'reviewing'};
+assert.equal((await req('/api/admin/report-status','POST',statusChange,'learner-a')).status,403);
+assert.equal((await req('/api/admin/report-status','POST',statusChange,'editor-user')).status,403);
+assert.equal((await req('/api/admin/report-status','POST',statusChange)).status,200);
+assert.equal((await req('/api/reports','GET',null,'learner-a')).data.items[0].status,'reviewing');
+assert.equal((await req('/api/reports','GET',null,'learner-b')).data.items[0].status,'open');
+const audit=(await req('/api/admin/overview')).data.audit;assert.equal(audit.filter(a=>a.action==='publish').length,1);
+console.log(JSON.stringify({ok:true,adminRoles:true,noBulkAnswerKeys:true,draftIsolation:true,sourceValidation:true,publishConflicts:true,immutableHistory:true}));db.close();

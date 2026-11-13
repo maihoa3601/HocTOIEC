@@ -79,7 +79,7 @@ function latestResponses(bank,attempts){
     if(!answers||typeof answers!=='object'||Array.isArray(answers))continue;
     for(const [id,answer]of Object.entries(answers)){
       const item=known.get(id);if(!item)continue;
-      const result=gradeQuestion(item.question,answer);
+      const result=gradeQuestion(item.question,answer);if(typeof attempt.outcomes?.[id]==='boolean')result.correct=attempt.outcomes[id];
       if(result.answered)latest.set(id,{...result,setId:item.setId});
     }
   }
@@ -90,8 +90,8 @@ export function topicStats(bank,attempts=[]){
   const latest=latestResponses(bank,attempts);
   return (bank?.sets||[]).map(set=>{
     const questions=set.questions||[],results=questions.map(question=>latest.get(question.id)).filter(Boolean);
-    const attempted=results.length,correct=results.filter(result=>result.correct).length;
-    return {setId:set.id,total:questions.length,attempted,correct,accuracy:attempted?Math.round(100*correct/attempted):null,wrong:attempted-correct,unseen:questions.length-attempted};
+    const attempted=results.length,graded=results.filter(result=>typeof result.correct==='boolean').length,correct=results.filter(result=>result.correct===true).length;
+    return {setId:set.id,total:questions.length,attempted,correct,accuracy:graded?Math.round(100*correct/graded):null,wrong:results.filter(r=>r.correct===false).length,unseen:questions.length-attempted};
   });
 }
 

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createWorker,scoreQuestions} from '../worker/index.mjs';
 import {DatabaseSync,d1Adapter} from './d1-local.mjs';
-const bank=JSON.parse(await readFile(new URL('../dist/learning-bank.json',import.meta.url),'utf8')),metadata=JSON.parse(await readFile(new URL('../dist/content-version.json',import.meta.url),'utf8')),db=new DatabaseSync(':memory:');db.exec(await readFile(new URL('../drizzle/0000_learning_accounts.sql',import.meta.url),'utf8'));const env={DB:d1Adapter(db)},worker=createWorker({assets:{'/index.html':{body:'ok',type:'text/html'}},bank,...metadata});
+const bank=JSON.parse(await readFile(new URL('../dist/learning-bank.json',import.meta.url),'utf8')),metadata=JSON.parse(await readFile(new URL('../dist/content-version.json',import.meta.url),'utf8')),db=new DatabaseSync(':memory:');db.exec(await readFile(new URL('../drizzle/0000_learning_accounts.sql',import.meta.url),'utf8'));db.exec(await readFile(new URL('../drizzle/0001_content_review.sql',import.meta.url),'utf8'));const env={DB:d1Adapter(db)},worker=createWorker({assets:{'/index.html':{body:'ok',type:'text/html'}},bank,...metadata});
 const request=async(path,method='GET',data,user='user-A',origin='https://toeic.test')=>{const headers={'content-type':'application/json',origin};if(user)headers['oai-authenticated-user-id']=user;const response=await worker.fetch(new Request('https://toeic.test'+path,{method,headers,body:method==='GET'?undefined:JSON.stringify(data)}),env);return {status:response.status,data:await response.json()}};
 assert.equal((await request('/api/backup','GET',null,null)).status,401);
 assert.equal((await request('/api/backup','PUT',{},'user-A','https://evil.test')).status,403);
