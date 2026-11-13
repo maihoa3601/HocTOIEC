@@ -1,3 +1,4 @@
+import {freshPlanner,sanitizePlanner} from './planner-core.mjs';
 import {normalize,cleanTitle,isVideo,isLearningResource} from './core.mjs';
 export const LEARNING_KEY='toeic-studio-learning-v1';
 export const answerText=value=>String(value??'').normalize('NFKC').replace(/[’‘]/g,"'").replace(/[,;:]/g,'').trim().replace(/[.!?]+$/g,'').trim().replace(/\s+/g,' ').toLowerCase();
@@ -26,7 +27,7 @@ export function studyMaterials(index,folderId){
   docs=docs.filter(isLearningResource).sort((a,b)=>materialRole(a).localeCompare(materialRole(b))||a.name.localeCompare(b.name,'vi',{numeric:true}));
   return {videos,docs,related};
 }
-export function freshLearning(){return {version:1,drafts:{},attempts:[],responses:{},wrong:[],cards:{},worksheets:{},lessonRead:{},games:[]};}
+export function freshLearning(){return {version:1,drafts:{},attempts:[],responses:{},wrong:[],cards:{},worksheets:{},lessonRead:{},games:[],planner:freshPlanner()};}
 const recordedAnswer=answer=>typeof answer==='number'?Number.isFinite(answer):typeof answer==='string'&&answer.length<=1000&&Boolean(answer.trim());
 function recordResponse(target,id,answer,date,correct,version){if(!recordedAnswer(answer)||typeof date!=='string'||!Number.isFinite(Date.parse(date)))return;const prior=Object.hasOwn(target,id)?target[id]:null;if(!prior||Date.parse(date)>=Date.parse(prior.date))target[id]={answer,date,...(typeof correct==='boolean'?{correct}:{}),...(typeof version==='string'?{version}:{})};}
 export function learningHistory(state){const attempts=Array.isArray(state?.attempts)?state.attempts:[];const responses=Object.entries(state?.responses||{}).filter(([,record])=>record&&recordedAnswer(record.answer)&&typeof record.date==='string'&&Number.isFinite(Date.parse(record.date))).map(([id,record])=>({setId:'responses',date:record.date,answers:{[id]:record.answer},outcomes:typeof record.correct==='boolean'?{[id]:record.correct}:{}}));return [...attempts,...responses];}
@@ -50,6 +51,7 @@ export function sanitizeLearning(value,bank,catalogIds){
   }
   for(const [id,date] of Object.entries(v.lessonRead||{}))if(setIds.has(id)&&typeof date==='string'&&Number.isFinite(Date.parse(date)))clean.lessonRead[id]=date;
   clean.games=(Array.isArray(v.games)?v.games:[]).filter(g=>bank.sets.some(s=>s.id===g.setId)&&['match','order'].includes(g.type)&&Number.isInteger(g.total)&&g.total>0&&g.total<=100&&Number.isInteger(g.correct)&&g.correct>=0&&g.correct<=g.total&&Number.isInteger(g.tries)&&g.tries>=0&&g.tries<=10000&&typeof g.date==='string'&&Number.isFinite(Date.parse(g.date))).slice(-100).map(g=>({setId:g.setId,type:g.type,total:g.total,correct:g.correct,tries:g.tries,date:g.date}));
+  clean.planner=sanitizePlanner(v.planner,bank);
   return clean;
 }
 export function applyQuizResult(state,setId,questions,answers,draftKey=setId,verifiedScore){const score=verifiedScore||gradeQuiz(questions,answers),date=new Date().toISOString();state.responses||={};for(const result of score.results)if(result.answered)recordResponse(state.responses,result.id,result.answer,date,result.correct,questions.find(q=>q.id===result.id)?.version);state.attempts.push({setId,date,total:score.total,correct:score.correct,answers:{...answers},outcomes:Object.fromEntries(score.results.filter(r=>r.answered&&typeof r.correct==='boolean').map(r=>[r.id,r.correct]))});state.attempts=state.attempts.slice(-100);const wrong=new Set(state.wrong);for(const r of score.results){if(r.correct)wrong.delete(r.id);else if(r.answered)wrong.add(r.id)}state.wrong=[...wrong];delete state.drafts[draftKey];return score;}

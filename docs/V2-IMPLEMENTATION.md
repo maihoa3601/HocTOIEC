@@ -4,6 +4,7 @@ Master plan: TOEIC-STUDIO-V2-PLAN.md. Current delivery covers the core learning 
 
 ## Implemented
 - Real dashboard, focus timer, study streak, due vocabulary and exact quiz resume.
+- Personal study planner: targets, weekday/topic rotation, frozen day tasks, real activity progress, weekly/history view and backup/export support.
 - 13 source-linked lessons, 250 questions, 73 cards, varied drills, mistake review, games and notes.
 - Vocabulary search/filter, reverse/mixed flashcards, four memory ratings.
 - Sites account identity and D1-backed user-scoped manual backups; revision conflicts prevent silent overwrites.
@@ -26,7 +27,7 @@ Master plan: TOEIC-STUDIO-V2-PLAN.md. Current delivery covers the core learning 
 - Source fingerprints, idempotent import jobs and self-service PDF/OCR ingestion.
 - Full 17-topic verified coverage and Part 1–7 grouped question/media banks.
 - Listening/dictation/transcript timing and rich reading groups.
-- Study planner, fuller analytics, dark mode and resizable workspace.
+- Planner schedules for verified Listening/Reading Parts and advanced adaptive planning; fuller analytics, dark mode and resizable workspace.
 - Verified mock tests and AI integrations.
 
-Implementation details: ACCOUNT-STORAGE.md and CONTENT-REVIEW.md.
+Implementation details: ACCOUNT-STORAGE.md, CONTENT-REVIEW.md and STUDY-PLANNER.md.

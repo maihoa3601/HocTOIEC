@@ -53,3 +53,7 @@ Trang Tài khoản & lịch sử hỗ trợ bản sao thủ công với kiểm t
 ## Quản trị nội dung
 
 Tài khoản có quyền Admin/Editor thấy liên kết quản trị trong trang Tài khoản. Quyền cấu hình bằng TOEIC_ADMIN_USER_IDS / TOEIC_EDITOR_USER_IDS trên Sites. Giao diện hỗ trợ đối chiếu PDF, lưu nháp và duyệt câu hỏi hiện có. Câu hỏi mới nhận đáp án/lời giải khi nộp bài lên máy chủ; mất mạng vẫn giữ nháp. Đây chưa phải chế độ thi chống gian lận. Xem docs/CONTENT-REVIEW.md.
+
+## Kế hoạch học cá nhân
+
+Mở /#plan để đặt ngày mục tiêu, ngày học, thời gian và chỉ tiêu từ/câu mỗi ngày. Nhiệm vụ đọc bài, ôn thẻ, nộp câu luyện và tập trung cập nhật từ hoạt động thật. Lịch ngày đã mở được giữ nguyên khi chỉnh mục tiêu. Kế hoạch đi cùng bản xuất/sao lưu tiến độ; xem docs/STUDY-PLANNER.md.
