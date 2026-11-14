@@ -4,6 +4,8 @@ const importText=(value,label,max=3000)=>{if(typeof value!=='string'||!value.tri
 const importId=value=>typeof value==='string'&&/^[a-zA-Z0-9_-]{4,100}$/.test(value);
 const importArray=(value,label,max)=>{if(!Array.isArray(value)||!value.length||value.length>max)throw Error(label+' không hợp lệ.');return value};
 const originTypes=['Original','Adapted','Generated'];
+const importDraftList=(value,label,max)=>{if(!Array.isArray(value)||value.length>max)throw Error(label+' không hợp lệ.');return value};
+export function importPublicationIssues(bundle){const issues=[];if(!bundle.lessons.length)issues.push('Cần ít nhất một bài học.');for(const [i,l] of bundle.lessons.entries()){const name='Bài '+(i+1);if(!l.summary.length)issues.push(name+' cần ý chính.');if(!l.lesson.sections.length)issues.push(name+' cần phần kiến thức có trang nguồn.');if(!l.questions.length)issues.push(name+' cần câu luyện có đáp án và giải thích.');}return issues}
 
 export function validateImportBundle(input,file,reservedIds=new Set()) {
   if(input?.schema!==1||input.source?.id!==file.id||!/^[a-f0-9]{64}$/.test(input.source.sha256||''))throw Error('Nguồn và SHA-256 của PDF không hợp lệ.');
@@ -18,12 +20,12 @@ export function validateImportBundle(input,file,reservedIds=new Set()) {
   const pageIds=new Set(pages.map(p=>p.number)),lessonIds=new Set(),questionIds=new Set(),cardIds=new Set();
   function ref(value){if(value.sourceId!==file.id||!pageIds.has(value.page))throw Error('Nội dung phải trỏ tới đúng trang nguồn đã trích xuất.');return {sourceId:file.id,page:value.page}}
   if(!Array.isArray(input.lessons)||input.lessons.length>10)throw Error('Danh sách bài học không hợp lệ.');
-  const lessons=input.lessons.map(raw=>{
+  const lessons=input.lessons.map((raw,position)=>{
     if(!importId(raw.id)||reservedIds.has(raw.id)||lessonIds.has(raw.id))throw Error('Mã bài học bị trùng hoặc trùng bài nền tảng.');lessonIds.add(raw.id);
     const origin=originTypes.includes(raw.origin)?raw.origin:null;if(!origin)throw Error('Cần nhãn Original / Adapted / Generated.');
-    const summary=importArray(raw.summary,'Ý chính',12).map(t=>importText(t,'Ý chính',700));
-    const sections=importArray(raw.lesson?.sections,'Nội dung bài học',30).map(s=>({heading:importText(s.heading,'Tiêu đề phần',200),points:importArray(s.points,'Nội dung phần',15).map(t=>importText(t,'Ý bài học',1500)),examples:(s.examples||[]).slice(0,12).map(e=>({en:importText(e.en,'Ví dụ',500),vi:importText(e.vi,'Nghĩa ví dụ',700),orderable:e.orderable!==false})),...ref(s)}));
-    const questions=importArray(raw.questions,'Câu hỏi',200).map(q=>{
+    const summary=importDraftList(raw.summary,'Ý chính',12).map(t=>importText(t,'Ý chính',700));
+    const sections=importDraftList(raw.lesson?.sections,'Nội dung bài học',30).map(s=>({heading:importText(s.heading,'Tiêu đề phần',200),points:importArray(s.points,'Nội dung phần',15).map(t=>importText(t,'Ý bài học',1500)),examples:(s.examples||[]).slice(0,12).map(e=>({en:importText(e.en,'Ví dụ',500),vi:importText(e.vi,'Nghĩa ví dụ',700),orderable:e.orderable!==false})),...ref(s)}));
+    const questions=importDraftList(raw.questions,'Câu hỏi',200).map(q=>{
       if(!importId(q.id)||!q.id.startsWith(raw.id+'-')||questionIds.has(q.id)||!['choice','text'].includes(q.type))throw Error('Mã hoặc loại câu hỏi không hợp lệ.');questionIds.add(q.id);
       const result={id:q.id,type:q.type,activity:['choice','cloze','correction','translation'].includes(q.activity)?q.activity:q.type==='choice'?'choice':'cloze',prompt:importText(q.prompt,'Câu hỏi'),explanation:importText(q.explanation,'Giải thích',6000),origin:originTypes.includes(q.origin)?q.origin:origin,...ref(q)};
       if(q.type==='choice'){
@@ -32,8 +34,8 @@ export function validateImportBundle(input,file,reservedIds=new Set()) {
       }else result.accept=[...new Set(importArray(q.accept,'Đáp án chấp nhận',20).map(t=>importText(t,'Đáp án',1000)))];
       return result;
     });
-    const cards=(raw.cards||[]).slice(0,100).map(c=>{if(!importId(c.id)||!c.id.startsWith(raw.id+'-')||cardIds.has(c.id))throw Error('Mã thẻ từ không hợp lệ.');cardIds.add(c.id);return {id:c.id,front:importText(c.front,'Từ',200),back:importText(c.back,'Nghĩa',500),example:typeof c.example==='string'?c.example.slice(0,800):'',...ref(c)}});
-    return {id:raw.id,title:importText(raw.title,'Tên bài',250),topic:importText(raw.topic||'Ngữ pháp','Chủ đề',120),courseId:file.course,folderId:file.parent,description:importText(raw.description||'Học nhanh từ tài liệu đã đối chiếu.','Mô tả',1000),origin,summary,sources:[{id:file.id,title:file.name,pages:[...new Set([...sections.map(s=>s.page),...questions.map(q=>q.page),...cards.map(c=>c.page)])].sort((a,b)=>a-b),url:'https://drive.google.com/file/d/'+file.id+'/view'}],lesson:{sections,pitfalls:(raw.lesson.pitfalls||[]).slice(0,15).map(t=>importText(t,'Lưu ý',1500))},questions,cards};
+    const cards=(raw.cards||[]).slice(0,100).map(c=>{if(!importId(c.id)||!c.id.startsWith(raw.id+'-')||cardIds.has(c.id))throw Error('Mã thẻ từ không hợp lệ.');cardIds.add(c.id);return {id:c.id,front:importText(c.front,'Từ',200),back:importText(c.back,'Nghĩa',500),example:typeof c.example==='string'?c.example.slice(0,800):'',...(originTypes.includes(c.origin)?{origin:c.origin}:{}),...ref(c)}});
+    return {id:raw.id,...(Number.isInteger(raw.sequence)&&raw.sequence>=0&&raw.sequence<10?{sequence:raw.sequence}:{}),title:importText(raw.title,'Tên bài',250),topic:importText(raw.topic||'Ngữ pháp','Chủ đề',120),courseId:file.course,folderId:file.parent,description:importText(raw.description||'Học nhanh từ tài liệu đã đối chiếu.','Mô tả',1000),origin,summary,sources:[{id:file.id,title:file.name,pages:[...new Set([...sections.map(s=>s.page),...questions.map(q=>q.page),...cards.map(c=>c.page)])].sort((a,b)=>a-b),url:'https://drive.google.com/file/d/'+file.id+'/view'}],lesson:{sections,pitfalls:(raw.lesson.pitfalls||[]).slice(0,15).map(t=>importText(t,'Lưu ý',1500))},questions,cards};
   });
   if(questionIds.size>300)throw Error('Mỗi lần nhập tối đa 300 câu hỏi.');
   const bundle={schema:1,source,pipelineVersion,pages,lessons,reviewNotes:typeof input.reviewNotes==='string'?input.reviewNotes.slice(0,4000):''};
@@ -47,7 +49,7 @@ export function createDocumentImports({catalog,bank}) {
   const reservedIds=new Set(bank.sets.map(s=>s.id));
   async function loadPublished(env) {
     if(!env.DB)return {lessons:[],versions:{}};
-    const rows=(await env.DB.prepare('SELECT lesson_id,version,payload FROM published_lessons ORDER BY lesson_id').all()).results;
+    const rows=(await env.DB.prepare("SELECT lesson_id,version,payload FROM published_lessons ORDER BY source_id,coalesce(json_extract(payload,'$.sequence'),0),lesson_id").all()).results;
     const lessons=[],versions={};
     for(const row of rows){const lesson=JSON.parse(row.payload);if(lesson){lessons.push(lesson);versions[lesson.id]=row.version}}
     return {lessons,versions};
@@ -56,7 +58,7 @@ export function createDocumentImports({catalog,bank}) {
   function register(db,file,status,job,sha=null,alias=null) {
     return db.prepare('INSERT INTO source_files(drive_id,title,mime,course_id,folder_id,status,latest_job_id,sha256,alias_of,updated_at) VALUES(?,?,?,?,?,?,?,?,?,?) ON CONFLICT(drive_id) DO UPDATE SET status=excluded.status,latest_job_id=excluded.latest_job_id,sha256=coalesce(excluded.sha256,source_files.sha256),alias_of=excluded.alias_of,updated_at=excluded.updated_at').bind(file.id,file.name,file.mime,file.course,file.parent,status,job,sha,alias,new Date().toISOString());
   }
-  async function handle(request,env,user,role,readJSON,loadCurrent) {
+  async function handle(request,env,user,role,readJSON,loadCurrent,forkBaseVersion=null) {
     if(!['admin','editor'].includes(role))return importJSON({error:'Tài khoản không có quyền nhập học liệu.'},user?403:401);
     if(!env.DB)return importJSON({error:'Lưu trữ chưa sẵn sàng.'},503);
     const url=new URL(request.url),path=url.pathname,db=env.DB;
@@ -80,11 +82,28 @@ export function createDocumentImports({catalog,bank}) {
       const prior=await db.prepare("SELECT job_id,status FROM import_jobs WHERE source_id=? AND status IN ('pending','processing','needs_review','approved') ORDER BY updated_at DESC LIMIT 1").bind(file.id).first();if(prior)return importJSON({...prior,duplicate:true});
       const id=crypto.randomUUID(),now=new Date().toISOString();try{await db.batch([db.prepare('INSERT INTO import_jobs(job_id,source_id,status,created_by,created_at,updated_at) VALUES(?,?,?,?,?,?)').bind(id,file.id,'pending',user,now,now),register(db,file,'pending',id),audit(db,id,user,'queue')])}catch(error){const actual=await db.prepare("SELECT job_id,status FROM import_jobs WHERE source_id=? AND status IN ('pending','processing') ORDER BY updated_at DESC LIMIT 1").bind(file.id).first();if(actual)return importJSON({...actual,duplicate:true});throw error}return importJSON({job_id:id,status:'pending'},201);
     }
-    const match=path.match(/^\/api\/admin\/imports\/([A-Za-z0-9_-]+)(?:\/(approve|publish|retry|start|fail))?$/);
+    const match=path.match(/^\/api\/admin\/imports\/([A-Za-z0-9_-]+)(?:\/(approve|publish|retry|start|fail|fork))?$/);
     if(match&&request.method==='GET'&&!match[2]) {
       const row=await db.prepare('SELECT * FROM import_jobs WHERE job_id=?').bind(match[1]).first();if(!row)return importJSON({error:'Không tìm thấy lần nhập.'},404);
       const history=(await db.prepare('SELECT action,created_at,detail FROM import_audit WHERE job_id=? ORDER BY created_at,audit_id LIMIT 100').bind(row.job_id).all()).results;
-      return importJSON({job:{...row,created_by:undefined,reviewed_by:undefined,publication_token:undefined,transition_token:undefined,payload:undefined,base_versions:undefined,base_revisions:undefined},bundle:row.payload?JSON.parse(row.payload):null,source:files.get(row.source_id),audit:history,role});
+      const latestPublication=await db.prepare('SELECT job_id FROM published_lessons WHERE source_id=? ORDER BY published_at DESC,lesson_id LIMIT 1').bind(row.source_id).first();
+      return importJSON({currentPublication:latestPublication?.job_id||null,readiness:row.payload?importPublicationIssues(JSON.parse(row.payload)):['Chưa có văn bản trích xuất.'],job:{...row,created_by:undefined,reviewed_by:undefined,publication_token:undefined,transition_token:undefined,payload:undefined,base_versions:undefined,base_revisions:undefined},bundle:row.payload?JSON.parse(row.payload):null,source:files.get(row.source_id),audit:history,role});
+    }
+    if(match&&match[2]==='fork'&&request.method==='POST') {
+      const body=await readJSON(request),row=await db.prepare('SELECT * FROM import_jobs WHERE job_id=?').bind(match[1]).first();
+      if(!row||row.status!=='published')return importJSON({error:'Chỉ tạo phiên bản mới từ lần nhập đã xuất bản.'},409);
+      if(typeof body.id!=='string'||!/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(body.id))return importJSON({error:'Mã yêu cầu tạo phiên bản không hợp lệ.'},400);
+      const latest=await db.prepare('SELECT job_id FROM published_lessons WHERE source_id=? ORDER BY published_at DESC,lesson_id LIMIT 1').bind(row.source_id).first();
+      if(latest&&latest.job_id!==row.job_id)return importJSON({error:'Tài liệu đã có lần xuất bản mới hơn. Mở lần xuất bản hiện tại để tạo bản bổ sung.',currentJobId:latest.job_id},409);
+      const bundle=JSON.parse(row.payload);bundle.pipelineVersion='fork-'+row.job_id.slice(0,32)+'-'+body.id;bundle.pages.forEach(p=>p.reviewed=false);
+      const prior=await db.prepare('SELECT j.job_id,j.status FROM import_jobs j JOIN source_versions v ON v.version_id=j.version_id WHERE v.drive_id=? AND v.sha256=? AND v.pipeline_version=?').bind(row.source_id,bundle.source.sha256,bundle.pipelineVersion).first();if(prior)return importJSON({...prior,duplicate:true});
+      const live=await loadCurrent();
+      // Include current question edits instead of reverting them to the original import payload.
+      bundle.lessons=bundle.lessons.map(lesson=>({...lesson,questions:lesson.questions.map(q=>live.map.get(q.id)||q)}));
+      const stagedRequest=new Request(url.origin+'/api/admin/imports',{method:'POST',headers:{origin:url.origin,'content-type':'application/json'},body:JSON.stringify(bundle)});
+      const staged=await handle(stagedRequest,env,user,role,readJSON,loadCurrent,live.bankVersion);
+      if(staged.status===201){const info=await staged.clone().json();await audit(db,info.job_id,user,'fork',row.job_id).run()}
+      return staged;
     }
     if(match&&['start','fail'].includes(match[2])&&request.method==='POST') {
       const action=match[2],body=action==='fail'?await readJSON(request):{},row=await db.prepare('SELECT * FROM import_jobs WHERE job_id=?').bind(match[1]).first();
@@ -135,11 +154,12 @@ export function createDocumentImports({catalog,bank}) {
       }
       if(updating&&updating.payload_hash===payloadHash)return importJSON({job_id:updating.job_id,status:updating.status,unchanged:true});
       if(updating&&updating.version_id&&updating.version_id!==versionId)return importJSON({error:'Sửa nháp không được thay fingerprint hoặc phiên bản xử lý.'},409);
-      const current=await loadCurrent(),baseVersions={},baseRevisions={};
+      const current=await loadCurrent(),baseVersions={},baseRevisions={},storedVersions=JSON.parse(updating?.base_versions||'{}'),storedRevisions=JSON.parse(updating?.base_revisions||'{}');
+      if(forkBaseVersion&&current.bankVersion!==forkBaseVersion)return importJSON({error:'Nội dung vừa thay đổi trong lúc tạo phiên bản. Hãy thử tạo lại từ bản hiện tại.'},409);
       for(const lesson of bundle.lessons) {
         const existing=current.sets.get(lesson.id);if(existing&&existing.sources[0]?.id!==file.id)return importJSON({error:'Mã bài học đang thuộc tài liệu khác.'},409);
-        baseVersions[lesson.id]=current.lessonVersions?.[lesson.id]||null;
-        for(const q of lesson.questions)baseRevisions[q.id]=current.map.get(q.id)?._revisionId||null;
+        baseVersions[lesson.id]=Object.hasOwn(storedVersions,lesson.id)?storedVersions[lesson.id]:current.lessonVersions?.[lesson.id]||null;
+        for(const id of new Set([...lesson.questions.map(q=>q.id),...(existing?.questions||[]).map(q=>q.id)]))baseRevisions[id]=Object.hasOwn(storedRevisions,id)?storedRevisions[id]:current.map.get(id)?._revisionId||null;
       }
       const queued=updating||await db.prepare("SELECT * FROM import_jobs WHERE source_id=? AND version_id IS NULL AND status IN ('pending','processing','failed') ORDER BY updated_at DESC LIMIT 1").bind(file.id).first();
       const id=queued?.job_id||'imp-'+versionId.slice(0,40),now=new Date().toISOString(),transitionToken=crypto.randomUUID();
@@ -155,7 +175,7 @@ export function createDocumentImports({catalog,bank}) {
       if(role!=='admin')return importJSON({error:'Chỉ quản trị viên được duyệt học liệu.'},403);
       const body=await readJSON(request),row=await db.prepare('SELECT * FROM import_jobs WHERE job_id=?').bind(match[1]).first();
       if(!row||row.status!=='needs_review')return importJSON({error:'Lần nhập chưa ở trạng thái cần kiểm tra.'},409);
-      const bundle=JSON.parse(row.payload);if(!bundle.lessons.length)return importJSON({error:'Cần biên soạn ít nhất một bài học và câu luyện trước khi duyệt xuất bản.'},400);const qids=bundle.lessons.flatMap(s=>s.questions.map(q=>q.id)),pages=bundle.pages.map(p=>p.number);
+      const bundle=JSON.parse(row.payload),issues=importPublicationIssues(bundle);if(issues.length)return importJSON({error:'Bản nháp chưa đủ nội dung để xuất bản: '+issues.join(' '),issues},400);const qids=bundle.lessons.flatMap(s=>s.questions.map(q=>q.id)),pages=bundle.pages.map(p=>p.number);
       const exact=(a,b)=>Array.isArray(a)&&new Set(a).size===b.length&&a.length===b.length&&b.every(id=>a.includes(id));
       if(body.payloadHash!==row.payload_hash)return importJSON({error:'Nội dung đã thay đổi sau khi mở trang kiểm duyệt.'},409);
       if(body.sourceChecked!==true||!bundle.pages.every(p=>p.reviewed)||!exact(body.reviewedPages,pages)||!exact(body.reviewedQuestionIds,qids)||typeof body.note!=='string'||body.note.trim().length<8||body.note.length>2000)return importJSON({error:'Cần đối chiếu tất cả trang, câu hỏi/đáp án và ghi chú kiểm duyệt.'},400);
@@ -176,7 +196,7 @@ export function createDocumentImports({catalog,bank}) {
       statements.push(db.prepare('DELETE FROM active_questions WHERE question_id IN (SELECT key FROM json_each(?)) AND EXISTS(SELECT 1 FROM import_jobs WHERE job_id=? AND publication_token=?)').bind(JSON.stringify(revisions),row.job_id,token));
       statements.push(db.prepare("UPDATE source_files SET status='published',latest_job_id=?,updated_at=? WHERE drive_id=? AND EXISTS(SELECT 1 FROM import_jobs WHERE job_id=? AND publication_token=?)").bind(row.job_id,date,row.source_id,row.job_id,token));
       statements.push(db.prepare("INSERT INTO import_audit(audit_id,job_id,actor_id,action,created_at,detail) SELECT ?,?,?,'publish',?,'Source-reviewed lesson publication' WHERE EXISTS(SELECT 1 FROM import_jobs WHERE job_id=? AND publication_token=?)").bind(crypto.randomUUID(),row.job_id,user,date,row.job_id,token));
-      const results=await db.batch(statements);return results[0].meta.changes?importJSON({job_id:row.job_id,status:'published',bankVersion:(await loadCurrent()).bankVersion}):importJSON({error:'Có phiên bản khác đã xuất bản hoặc câu hỏi vừa được sửa. Mở lại bản nháp và kiểm tra trên nội dung mới nhất.'},409);
+      const results=await db.batch(statements);return results[0].meta.changes?importJSON({job_id:row.job_id,status:'published',bankVersion:(await loadCurrent()).bankVersion}):importJSON({error:'Có phiên bản khác đã xuất bản hoặc câu hỏi vừa được sửa. Tạo phiên bản bổ sung từ lần xuất bản hiện tại rồi hợp nhất thay đổi.'},409);
     }
     return importJSON({error:'Không tìm thấy API nhập tài liệu.'},404);
   }

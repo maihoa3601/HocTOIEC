@@ -85,3 +85,5 @@ Chi tiết: [cấu trúc và build](docs/PROJECT-STRUCTURE.md), [lưu trữ tài
 ## Từ tài liệu đến bài học nhanh
 
 Trang /#imports dành cho Admin/Editor: theo dõi PDF, nhập OCR theo trang, kiểm tra bài biên soạn, duyệt và xuất bản. Trang /#document?id=DRIVE_FILE_ID giúp học ý chính, tự nhớ, luyện câu và ôn thẻ từ một tài liệu đã chuyển đổi. Công cụ npm run content:extract tạo bản trích xuất/OCR để kiểm tra; xem docs/DOCUMENT-PIPELINE.md. Checklist đầy đủ của mục tiêu nằm ở docs/MASTER-PLAN-AUDIT.md; npm run plan:audit tái tạo bảng đối chiếu từ Master Plan. Toàn bộ kế hoạch vẫn đang được triển khai.
+
+Admin lesson authoring from extracted page text is available at /#imports. See [CONTENT-AUTHORING.md](docs/CONTENT-AUTHORING.md) for the source-first workflow, review gates and QA evidence.

@@ -40,3 +40,13 @@ The current extraction job supports PDFs up to 200 pages and review bundles up t
 npm test includes tests/imports.test.mjs for queue races, failure/retry, OCR-only review, no grading before publication, review invalidation, duplicate PDFs, source-version conflicts, private OCR and immutable histories. tests/build.test.mjs checks that raw review bundles and server/private paths cannot be fetched from public assets. Browser QA additionally exercises import → review → publish → document study → a six-question typed practice.
 
 Cloudflare references used for the transaction/JSON/boundary design: https://developers.cloudflare.com/d1/worker-api/d1-database/ ; https://developers.cloudflare.com/d1/sql-api/sql-statements/ ; https://developers.cloudflare.com/d1/platform/limits/ .
+
+## Browser authoring added after extraction
+
+Open a needs-review import and choose “Tạo bài học từ tài liệu”. The composer keeps the original PDF beside metadata, sections, bilingual examples, questions and cards. Select the source page separately for each section/question/card. The original Drive viewer stays connected during tab changes, preserving its page and zoom; its page must be changed manually to match the OCR page selector.
+
+Incomplete lessons without a summary/section/question can be saved privately. The review screen lists what is missing; server approval rejects incomplete lessons even if a client tries to bypass the UI. Individual authored questions still require valid keys and explanations before saving. Example-to-cloze uses an exact whole-word/phrase occurrence, rejects ambiguous repeated fragments, labels the question Generated and leaves the explanation empty for author review. It does not call an AI service.
+
+Published jobs remain immutable. “Tạo phiên bản để bổ sung bài học” creates an idempotent fork from the current publication, carries forward current question corrections and resets page review. Older published jobs link to the current publication. Draft saving compares the captured payload hash to prevent overwrites. Unsaved changes remain in the composer on conflict and may be downloaded as a private JSON draft.
+
+Guide and QA: CONTENT-AUTHORING.md. Full browser-side extraction/OCR, automatic Drive ingestion and the other master-plan modules remain open.
