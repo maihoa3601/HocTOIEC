@@ -1,6 +1,6 @@
 import {readFile,writeFile} from 'node:fs/promises';
-import {cleanTitle} from '../dist/core.mjs';
-const url=new URL('../dist/learning-bank.json',import.meta.url);
+import {cleanTitle} from '../src/client/core.mjs';
+const url=new URL('../data/learning-bank.json',import.meta.url);
 const bank=JSON.parse(await readFile(url,'utf8'));
 const baseIds=['who-what','present-simple','present-perfect','word-form','study4-vocab'];
 bank.sets=bank.sets.filter(set=>baseIds.includes(set.id));
@@ -81,7 +81,7 @@ add('study4-vocab','translation',[
  ['Viết từ tiếng Anh trong List 1 có nghĩa “tờ gấp giới thiệu”.',['brochure'],'Brochure là ấn phẩm giới thiệu sản phẩm hoặc dịch vụ.',3]
 ]);
 for(const set of bank.sets)for(const q of set.questions)q.activity||=q.type==='text'?'translation':'choice';
-for(const filename of ['learning-content-a.json','learning-content-b.json'])bank.sets.push(...JSON.parse(await readFile(new URL('./'+filename,import.meta.url),'utf8')));
+for(const filename of ['learning-content-a.json','learning-content-b.json'])bank.sets.push(...JSON.parse(await readFile(new URL('../data/'+filename,import.meta.url),'utf8')));
 const ids=new Set();for(const set of bank.sets){if(ids.has(set.id))throw Error('Duplicate set '+set.id);ids.add(set.id);for(const source of set.sources)source.title=cleanTitle(source.title);}
 const readingOrder=['to-be-basics','to-be-questions','who-what','where-when','verb-endings','word-classes-basics','present-simple','present-continuous','past-simple-affirmative','present-perfect','future-simple','word-form','study4-vocab'];
 bank.sets.sort((a,b)=>readingOrder.indexOf(a.id)-readingOrder.indexOf(b.id));

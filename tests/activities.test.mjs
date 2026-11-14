@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {activityOf,selectQuestions,shuffle,matchingRound,lessonSentences,sentenceCorrect,topicStats,pickPractice} from '../dist/activity-core.mjs';
-import {freshLearning,applyQuizResult,sanitizeLearning,learningHistory} from '../dist/learning-core.mjs';
+import {activityOf,selectQuestions,shuffle,matchingRound,lessonSentences,sentenceCorrect,topicStats,pickPractice} from '../src/client/activity-core.mjs';
+import {freshLearning,applyQuizResult,sanitizeLearning,learningHistory} from '../src/client/learning-core.mjs';
 
 const choice={id:'a1',type:'choice',options:['am','is'],answer:1};
 const text={id:'a2',type:'text',accept:['They are ready.'],activity:'correction'};
@@ -105,7 +105,7 @@ assert.equal(tied.responses.a1.answer,0,'Explicit cumulative records win timesta
 const skipped=sanitizeLearning({attempts:[legacyAttempts[0]],responses:{a1:{answer:' ',date:'2026-11-14T00:00:00Z'}}},bank,new Set());
 assert.equal(skipped.responses.a1.answer,1,'Imported blank responses must not erase an answer');
 
-const live=JSON.parse(await readFile(new URL('../dist/learning-bank.json',import.meta.url),'utf8'));
+const live=JSON.parse(await readFile(new URL('../data/learning-bank.json',import.meta.url),'utf8'));
 for(const set of live.sets){for(const mode of ['choice','cloze','correction','translation'])assert.ok(selectQuestions(set,mode).every(q=>activityOf(q)===mode));for(const sentence of lessonSentences(set)){assert.ok(sentence.sourceId&&sentence.page);assert.equal(sentenceCorrect(sentence.words,sentence),true)}}
 const livePick=pickPractice(live,[],[],10);assert.equal(new Set(livePick.map(q=>q.id)).size,Math.min(10,live.sets.reduce((sum,s)=>sum+s.questions.length,0)));
 const liveAvailable=new Set(live.sets.flatMap(s=>s.questions.map(activityOf))),liveModes=new Set(livePick.map(activityOf));

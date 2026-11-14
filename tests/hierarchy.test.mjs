@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {courseGroups,buildHierarchy,folderTrail,searchFolder,learningSort,resourceLabel,folderListing} from '../dist/hierarchy.mjs';
-import {isFolder,isVideo,isLearningResource,cleanTitle} from '../dist/core.mjs';
-const data=JSON.parse(await readFile(new URL('../dist/catalog.json',import.meta.url),'utf8'));
+import {courseGroups,buildHierarchy,folderTrail,searchFolder,learningSort,resourceLabel,folderListing} from '../src/client/hierarchy.mjs';
+import {isFolder,isVideo,isLearningResource,cleanTitle} from '../src/client/core.mjs';
+const data=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url),'utf8'));
 const courses=data.items.filter(n=>n.parent===data.rootId&&isFolder(n));
 const membership=courseGroups.flatMap(g=>g.courses);
 assert.equal(new Set(membership).size,20,'Every course has exactly one primary group');

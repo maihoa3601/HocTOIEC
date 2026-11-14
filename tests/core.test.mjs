@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {normalize,safeProgress,tagsFor,cleanTitle} from '../dist/core.mjs';
-const data=JSON.parse(await readFile(new URL('../dist/catalog.json',import.meta.url),'utf8'));
+import {normalize,safeProgress,tagsFor,cleanTitle} from '../src/client/core.mjs';
+const data=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url),'utf8'));
 const ids=new Set(data.items.map(f=>f.id));
 assert.equal(ids.size,data.items.length,'Catalog must not duplicate file IDs');
 assert.equal(data.items.filter(f=>f.parent===data.rootId&&f.mime.endsWith('.folder')).length,20);

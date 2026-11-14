@@ -1,8 +1,8 @@
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {prioritizeCards,dayKey,validDay,shiftDay,weekStart,freshPlanner,sanitizePlanner,forecastDay,ensurePlannerDay,recordPlannerActivity,recordPlannerFocus,summarizeDay} from '../dist/planner-core.mjs';
-import {freshLearning,sanitizeLearning} from '../dist/learning-core.mjs';
-const bank=JSON.parse(await readFile(new URL('../dist/learning-bank.json',import.meta.url),'utf8'));
+import {prioritizeCards,dayKey,validDay,shiftDay,weekStart,freshPlanner,sanitizePlanner,forecastDay,ensurePlannerDay,recordPlannerActivity,recordPlannerFocus,summarizeDay} from '../src/client/planner-core.mjs';
+import {freshLearning,sanitizeLearning} from '../src/client/learning-core.mjs';
+const bank=JSON.parse(await readFile(new URL('../data/learning-bank.json',import.meta.url),'utf8'));
 const set=bank.sets[0],qids=set.questions.map(q=>q.id),card=bank.sets.find(s=>s.cards.length).cards[0];
 const now=new Date(2026,10,16,12),state=freshLearning();
 assert.equal(validDay('2026-02-30'),false);assert.equal(validDay('2028-02-29'),true);assert.equal(shiftDay('2026-12-31',1),'2027-01-01');assert.equal(weekStart('2026-11-22'),'2026-11-16');

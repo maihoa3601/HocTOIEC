@@ -20,6 +20,6 @@ Planner config, snapshots and activity live under learning.planner in toeic-stud
 No automatic cloud merge, notifications or adaptive score model is implemented. Listening/Reading Part schedules wait for the corresponding reviewed content bank.
 
 ## Validation
-node scripts/check-planner.mjs covers stable targets, distinct counts, midnight splitting, rest days, malformed imports, and JSON/learning-state round trips. Existing learning, activities, backend and content-admin checks also pass. Browser QA covers setup, cards, read marking, server-graded practice, refresh persistence and weekly navigation.
+node --test tests/planner.test.mjs covers stable targets, distinct counts, midnight splitting, rest days, malformed imports, and JSON/learning-state round trips. Existing learning, activities, backend and content-admin checks also pass. Browser QA covers setup, cards, read marking, server-graded practice, refresh persistence and weekly navigation.
 
 Planner vocabulary links prioritize overdue cards, then unseen cards, then future-due cards. The normal vocabulary/card views keep their existing order.

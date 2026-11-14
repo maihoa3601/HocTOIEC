@@ -1,5 +1,5 @@
 import {readFile,writeFile} from 'node:fs/promises';
-const catalog=JSON.parse(await readFile(new URL('../dist/catalog.json',import.meta.url),'utf8'));
+const catalog=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url),'utf8'));
 const byId=new Map(catalog.items.map(f=>[f.id,f]));
 const source=(id,pages)=>({id,title:byId.get(id).name,pages,url:`https://drive.google.com/file/d/${id}/view`});
 const MAI='1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD';
@@ -114,7 +114,7 @@ for(const [i,w]of words.entries()){
  vocab.cards.push({id:'study4-word-'+word,front:word,back:meaning,example:definition,sourceId:vocab.sources[0].id,page});
 }
 const bank={version:1,reviewedDate:'12/11/2026',note:'Câu hỏi được chuyển hoặc biên soạn từ những trang tài liệu đã đọc. Giải thích do TOEIC Studio biên soạn; có liên kết nguồn để đối chiếu.',sets};
-await writeFile(new URL('../dist/learning-bank.json',import.meta.url),JSON.stringify(bank,null,2));
+await writeFile(new URL('../data/learning-bank.json',import.meta.url),JSON.stringify(bank,null,2));
 console.log(JSON.stringify({sets:sets.length,questions:sets.reduce((n,s)=>n+s.questions.length,0),cards:sets.reduce((n,s)=>n+s.cards.length,0),courses:new Set(sets.map(s=>s.courseId)).size}));
 
 await import('./enrich-learning-bank.mjs');

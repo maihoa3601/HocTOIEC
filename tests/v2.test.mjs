@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {studyStreak,rateVocabulary} from '../dist/studio-v2.mjs';
+import {studyStreak,rateVocabulary} from '../src/client/studio-v2.mjs';
 assert.equal(studyStreak([],new Date(2026,10,13,12)),0);
 assert.equal(studyStreak(['2026-11-11T12:00:00','2026-11-12T12:00:00'],new Date(2026,10,13,12)),2);
 assert.equal(studyStreak(['2026-11-10T12:00:00'],new Date(2026,10,13,12)),0);

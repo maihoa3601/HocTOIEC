@@ -1,59 +1,83 @@
 # TOEIC Studio
 
-Web học TOEIC cá nhân, giao diện tiếng Việt. Mở video và tài liệu từ Google Drive; tìm kiếm không dấu; lọc chủ đề và khóa học; lưu bài, ghi chú, đánh dấu hoàn thành; lộ trình gợi ý và bộ đếm giờ tập trung.
+Web học TOEIC bằng tiếng Việt, sử dụng danh mục và học liệu được đối chiếu từ Google Drive. Giao diện dùng HTML/CSS/JavaScript; API chạy trên Cloudflare Worker với D1. Dự án dùng Node.js tích hợp sẵn, không có thư viện npm cần cài thêm.
 
-Thư viện chia 20 khóa vào 5 hướng học. Mỗi khóa giữ cấu trúc thư mục nguồn để duyệt khóa nhỏ → chương → chủ đề → bài giảng/tài liệu. Mục lục mở theo nhánh đang xem, có đường dẫn quay lại từng cấp và liên kết trực tiếp đến chương. Tìm kiếm trong chương bao gồm các mục con; có lựa chọn xem toàn bộ học liệu con, lọc video/tài liệu, trạng thái hoàn thành và phân trang. Playlist của trình xem giới hạn theo chủ đề của bài đang mở.
+## Chạy dự án
 
-Kiểm tra phân nhóm, cây thư mục và tính đầy đủ của học liệu: `node scripts/check-hierarchy.mjs`.
+Yêu cầu **Node.js 24 trở lên**.
 
-## Học và luyện từ tài liệu
+```sh
+npm run dev
+```
 
-Mỗi chủ đề có Góc học: video, tài liệu gốc, phiếu trả lời và ghi chú. Tài liệu được phân vai bài học / đề bài / đáp án theo tên; gợi ý từ chương lân cận được ghi rõ để người học kiểm tra. Phiếu tự đối chiếu lưu riêng theo tài liệu, cho nhập 1–100 câu và tự đánh dấu sau khi mở đáp án gốc; không chấm tự động những tài liệu chưa chuyển đổi.
+Mở **http://127.0.0.1:4173**. Lệnh này build lần đầu, theo dõi thay đổi source, build lại và khởi động lại máy chủ. Tải lại trình duyệt sau khi terminal báo build xong.
 
-Đã đọc các trang nguồn để tạo 13 bộ gồm 250 câu và 73 thẻ từ. Ngoài Who/What, hiện tại đơn, hiện tại hoàn thành, từ loại và từ vựng TOEIC List 1, đã bổ sung to be, câu hỏi to be, Where/When, quy tắc động từ, từ loại căn bản, hiện tại tiếp diễn, quá khứ đơn và tương lai đơn. Nguồn thuộc 3 nhóm khóa. Câu hỏi được chuyển hoặc biên soạn theo tài liệu; lời giải do ứng dụng biên soạn, có liên kết tệp và số trang để đối chiếu. Phạm vi này chưa bao gồm toàn bộ tài liệu trong thư viện.
+```sh
+npm test          # Chạy toàn bộ kiểm thử
+npm run build    # Tạo mới dist từ source
+npm run preview  # Chạy bản build gần nhất
+```
 
-Bài luyện tự lưu nháp, chấm sau khi nộp, giải thích từng câu và tập hợp câu đã trả lời sai. Trả lời đúng khi ôn sẽ loại khỏi danh sách sai. Thẻ từ hẹn ôn theo 1/3/7/14/30 ngày khi đã nhớ và 10 phút khi cần ôn; lịch hiển thị trong ứng dụng, không gửi thông báo.
+Preview dùng SQLite cục bộ trong `.sites-runtime/preview.sqlite`. Luồng đăng nhập trên localhost mô phỏng một tài khoản quản trị chỉ để phát triển. Website production dùng danh tính do Sites cung cấp.
 
-Kết quả luyện tập, phiếu và thẻ từ lưu trong localStorage riêng, xuất/nhập cùng tiến độ. Chuyển máy cần xuất dữ liệu. Không đưa video/PDF gốc vào bản triển khai. Nội dung câu hỏi ở dist/learning-bank.json; tái tạo bằng node scripts/build-learning-bank.mjs. Kiểm tra chấm bài, nguồn và lưu dữ liệu bằng node scripts/check-learning.mjs.
+## Cấu trúc
 
-Có thể thu gọn thanh điều hướng thành dải biểu tượng trên máy tính, ẩn/hiện mục lục khóa học và bảng luyện tập / ghi chú. Lựa chọn bố cục lưu riêng trên trình duyệt. Điện thoại dùng menu trượt; bấm bên ngoài hoặc Escape để đóng.
+```text
+HocTOIEC/
+├── src/
+│   ├── client/          # Giao diện, CSS và logic học trên trình duyệt
+│   └── server/          # API, chấm bài, tài khoản và quản trị nội dung
+├── data/
+│   ├── catalog.json     # Danh mục Google Drive
+│   ├── learning-bank.json
+│   ├── learning-content-a.json
+│   ├── learning-content-b.json
+│   └── data-audit.json
+├── public/              # HTML đầu vào và favicon
+├── drizzle/             # Migration database
+├── scripts/             # Build, dev, preview và xử lý học liệu
+│   └── lib/             # Tiện ích dùng chung cho công cụ
+├── tests/               # Kiểm thử client, server, dữ liệu và bản build
+├── docs/                # Phạm vi tính năng, nguồn và kiến trúc
+├── .openai/hosting.json # Cấu hình Sites
+├── .env.example         # Tên biến môi trường; không chứa định danh/tokens
+├── package.json
+└── dist/                # Chỉ là kết quả build, không lưu vào Git
+    ├── client/          # Tài nguyên công khai; ngân hàng đã bỏ đáp án
+    ├── server/index.js  # Worker chứa logic server và dữ liệu chấm bài
+    └── .openai/hosting.json
+```
 
-## Học chủ động
+**Sửa code trong `src/`, HTML/icon trong `public/`, nội dung trong `data/`.** Build tạo lại toàn bộ `dist/`; các thay đổi trực tiếp trong đó sẽ bị thay thế. Dữ liệu phát triển cục bộ nằm ở `.sites-runtime/` và được bỏ qua trong Git.
 
-Trang Học chủ động có bài đọc được biên soạn từ tài liệu: quy tắc, ví dụ song ngữ, lỗi dễ nhầm và liên kết trang nguồn. Mỗi chủ đề có chế độ chọn đáp án, tự điền từ hoặc sửa lỗi theo nội dung thực tế. Các kiểu luyện lưu nháp riêng. Ghép từ/nghĩa và sắp xếp câu ví dụ lưu thành lượt chơi khi hoàn thành; không cộng vào tỷ lệ chấm câu hỏi. Thẻ từ có lịch ôn riêng.
+## Chức năng và học liệu
 
-Theo dõi chủ đề tính câu trả lời gần nhất theo ID, bao gồm ôn sai và buổi 10 câu, nên làm lại không tăng số câu đã thử. Buổi ôn ưu tiên câu sai rồi phần ít luyện. Dữ liệu cũ được giữ và các mục mới xuất/nhập cùng tiến độ. Chi tiết 100 lượt làm / lượt chơi gần nhất được giữ; câu trả lời gần nhất của từng câu được lưu riêng, không mất khi lịch sử lượt làm được rút gọn. Đây không phải dự đoán điểm TOEIC.
+- Danh mục 20 khóa trong 5 nhóm, duyệt theo khóa → chương → chủ đề → video/tài liệu; tìm kiếm và thu gọn bố cục.
+- 13 bài học có nguồn, 250 câu hỏi, 73 flashcard; luyện chọn đáp án, điền từ, sửa lỗi, ghép nghĩa, sắp xếp câu và ôn câu sai.
+- Dashboard từ hoạt động thực, lịch ôn thẻ và kế hoạch học theo ngày/tuần. Bài luyện giữ nháp và vị trí câu hỏi.
+- Chấm bài trên máy chủ, nhận lời giải sau khi nộp; lịch sử lưu nguyên phiên bản câu hỏi lúc làm.
+- Sao lưu thủ công theo tài khoản, xuất/nhập tiến độ và lịch sử. Quản trị viên đối chiếu PDF, lưu nháp, duyệt sửa câu hỏi và xử lý báo lỗi.
 
-Ngân hàng tái tạo bằng node scripts/build-learning-bank.mjs. Nội dung mở rộng nằm trong scripts/learning-content-a.json, scripts/learning-content-b.json và scripts/enrich-learning-bank.mjs. Nhật ký đọc nguồn ở docs/learning-source-review.md; PDF gốc không nằm trong bản triển khai. Kiểm tra chọn câu, thống kê, ghép từ và xếp câu: node scripts/check-activities.mjs.
+Nội dung tương tác chỉ bao phủ các tài liệu đã đọc, chưa bao gồm toàn bộ Drive hoặc ngân hàng đầy đủ Part 1–7. Xem [phạm vi V2](docs/V2-IMPLEMENTATION.md) và [nhật ký nguồn](docs/learning-source-review.md).
 
-## Chạy trên máy
+Video, audio và PDF gốc vẫn ở Google Drive, với quyền truy cập ban đầu. Danh mục chưa tự đồng bộ. Cập nhật `data/catalog.json` sau khi đọc lại Drive, kiểm thử rồi build/deploy. Ứng dụng không đọc được thời lượng/vị trí phát từ iframe Drive. Các tệp quảng bá được loại khỏi danh sách học liệu.
 
-Yêu cầu Node.js. Chạy `node scripts/build-server.mjs` rồi `node scripts/preview-backend.mjs`, mở http://127.0.0.1:4173. Preview dùng SQLite cục bộ và mô phỏng đăng nhập chỉ trên localhost; production dùng nhận diện tài khoản của Sites. Yêu cầu Node.js 24 có node:sqlite.
+## Cập nhật ngân hàng học liệu
 
-Kiểm tra dữ liệu và các quy tắc tiến độ: `node scripts/check.mjs`.
+`data/learning-bank.json` là đầu vào chuẩn của build, gồm đáp án và giải thích để Worker chấm bài. File này không được đưa nguyên vẹn vào tài nguyên công khai. Tạo lại từ nội dung biên soạn bằng:
 
-## Dữ liệu
+```sh
+npm run data:build
+npm test
+npm run build
+```
 
-`dist/catalog.json` là mục lục đã nhập từ thư mục Drive do người dùng cung cấp. Tệp video, âm thanh và tài liệu vẫn nằm trên Google Drive. Web dùng trình xem Drive; người xem cần tài khoản Google có quyền truy cập. Nếu không nhúng được, mở liên kết Drive gốc trong cửa sổ bài học.
+Chỉ chạy `data:build` khi muốn tái tạo ngân hàng: nó ghi lại `data/learning-bank.json` từ các định nghĩa nội dung. Build ứng dụng thông thường không tự thay nội dung hoặc phiên bản câu hỏi.
 
-Danh mục không tự đồng bộ khi Drive thay đổi. Cập nhật bằng cách đọc lại thư mục trong chat, thay `dist/catalog.json`, kiểm tra và triển khai lại. Không lưu token Google trong mã nguồn. Không thay đổi quyền chia sẻ của Drive.
+## Triển khai và dữ liệu cá nhân
 
-Tiến độ và ghi chú được lưu trong localStorage theo trình duyệt. Người dùng có thể xuất và nhập JSON trong trang Tiến độ. Web không đọc thời lượng hoặc vị trí xem trong trình phát Drive và không tự đánh dấu hoàn thành. Bộ đếm 25 phút tính thời gian được người dùng bật.
+Sites sử dụng `dist/server/index.js`; Worker nhúng tài nguyên từ `dist/client/`, giữ các URL giao diện hiện tại. `.openai/hosting.json` giữ ID website và D1 binding. Migration trong `drizzle/` được đóng gói lúc deploy; ứng dụng không tạo bảng trong request.
 
-Tên khóa học và chủ đề lấy từ tên tệp/thư mục; chưa phiên âm hoặc xác minh nội dung video. Lộ trình là gợi ý học tập của ứng dụng. Các tệp quảng bá nhóm và thông tin liên hệ được loại khỏi danh sách học liệu.
+Tiến độ trên trình duyệt lưu trong localStorage; lịch sử bài làm đầy đủ lưu trong IndexedDB. Các khóa lưu trữ và schema không thay đổi trong lần sắp xếp thư mục này. Bản sao theo tài khoản là thủ công, có phát hiện xung đột giữa thiết bị. Không lưu Google tokens hoặc định danh quản trị vào source/client.
 
-## Triển khai
-
-Giao diện HTML/CSS/JavaScript được nhúng trong Cloudflare Worker, không cần cài thư viện. Worker cung cấp API dữ liệu riêng theo tài khoản qua D1. Cấu hình Sites nằm trong `.openai/hosting.json`, thư mục xuất bản là `dist`. Site hiện được chia sẻ công khai trong Sites. Quyền truy cập vào Sites và quyền xem nội dung trên Drive vẫn do nền tảng tương ứng quản lý. Font Be Vietnam Pro tải từ Google Fonts; có font hệ thống dự phòng.
-
-## Lưu trữ theo tài khoản
-
-Trang Tài khoản & lịch sử hỗ trợ bản sao thủ công với kiểm tra xung đột, bật/tắt lưu lịch sử theo tài khoản, xem bài theo phiên bản, xuất lịch sử trên thiết bị và báo lỗi câu hỏi. Chi tiết bảo vệ dữ liệu, phạm vi lưu và giới hạn: docs/ACCOUNT-STORAGE.md. Chạy node scripts/check-backend.mjs để kiểm tra phân quyền, CAS, idempotency, điểm máy chủ và lịch sử bất biến. Build trước khi deploy bằng node scripts/build-server.mjs; schema chỉ được áp dụng bằng migration drizzle/, không tạo bảng trong request.
-
-## Quản trị nội dung
-
-Tài khoản có quyền Admin/Editor thấy liên kết quản trị trong trang Tài khoản. Quyền cấu hình bằng TOEIC_ADMIN_USER_IDS / TOEIC_EDITOR_USER_IDS trên Sites. Giao diện hỗ trợ đối chiếu PDF, lưu nháp và duyệt câu hỏi hiện có. Câu hỏi mới nhận đáp án/lời giải khi nộp bài lên máy chủ; mất mạng vẫn giữ nháp. Đây chưa phải chế độ thi chống gian lận. Xem docs/CONTENT-REVIEW.md.
-
-## Kế hoạch học cá nhân
-
-Mở /#plan để đặt ngày mục tiêu, ngày học, thời gian và chỉ tiêu từ/câu mỗi ngày. Nhiệm vụ đọc bài, ôn thẻ, nộp câu luyện và tập trung cập nhật từ hoạt động thật. Lịch ngày đã mở được giữ nguyên khi chỉnh mục tiêu. Kế hoạch đi cùng bản xuất/sao lưu tiến độ; xem docs/STUDY-PLANNER.md.
+Chi tiết: [cấu trúc và build](docs/PROJECT-STRUCTURE.md), [lưu trữ tài khoản](docs/ACCOUNT-STORAGE.md), [quản trị nội dung](docs/CONTENT-REVIEW.md), [kế hoạch học](docs/STUDY-PLANNER.md).

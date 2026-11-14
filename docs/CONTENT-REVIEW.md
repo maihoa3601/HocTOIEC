@@ -14,4 +14,4 @@ Authenticated, opt-in grade requests save a server-scored immutable snapshot in 
 ## Boundaries
 Review UI supports edits of the existing reviewed bank. It does not ingest unreviewed PDFs, add arbitrary question IDs, grant roles, or publish whole new courses. Admin queues show bounded latest100 reports/drafts and30 audit events; broader queue pagination remains future work. Role IDs and original keys are not placed in client source. New schema is append-only migration0001; migration0000 remains unchanged.
 
-Checks: node scripts/check-admin.mjs, node scripts/check-backend.mjs, node scripts/check-learning.mjs, node scripts/check-activities.mjs.
+Checks: node --test tests/admin.test.mjs, node --test tests/backend.test.mjs, node --test tests/learning.test.mjs, node --test tests/activities.test.mjs.

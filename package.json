@@ -1,0 +1,17 @@
+{
+  "name": "toeic-studio",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "TOEIC learning platform from reviewed Google Drive materials",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs",
+    "test": "node scripts/test.mjs",
+    "data:build": "node scripts/build-learning-bank.mjs"
+  }
+}

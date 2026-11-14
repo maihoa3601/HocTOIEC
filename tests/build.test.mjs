@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import {readFile,writeFile,access,readdir} from 'node:fs/promises';
+import {buildProject} from '../scripts/build.mjs';
+import {contentMetadata} from '../scripts/lib/content.mjs';
+
+const root=new URL('../',import.meta.url);
+const bank=JSON.parse(await readFile(new URL('data/learning-bank.json',root),'utf8'));
+const meta=contentMetadata(bank);
+const built=await buildProject();
+assert.equal(built.bankVersion,meta.bankVersion);
+const first=await readFile(new URL('dist/server/index.js',root),'utf8');
+await writeFile(new URL('dist/client/stale.js',root),'This must not survive a clean build.');
+await buildProject();
+await assert.rejects(access(new URL('dist/client/stale.js',root)));
+assert.equal(await readFile(new URL('dist/server/index.js',root),'utf8'),first,'Identical source must produce an identical Worker');
+const worker=(await import(new URL('dist/server/index.js',root))).default;
+const origin='https://build.toeic.test';
+const get=path=>worker.fetch(new Request(origin+path));
+const htmlResponse=await get('/'),html=await htmlResponse.text();assert.equal(htmlResponse.status,200);
+assert.equal(html,await readFile(new URL('public/index.html',root),'utf8'));
+for(const match of html.matchAll(/(?:src|href)="\.\/([^"]+)"/g))assert.equal((await get('/'+match[1])).status,200,'Missing HTML asset '+match[1]);
+const bankResponse=await get('/learning-bank.json'),safe=await bankResponse.json();assert.equal(bankResponse.status,200);
+assert.equal(safe.contentVersion,meta.bankVersion);assert.equal(safe.sets.flatMap(s=>s.questions).length,250);
+for(const q of safe.sets.flatMap(s=>s.questions))for(const key of ['answer','accept','explanation'])assert.equal(Object.hasOwn(q,key),false,'Public bank leaked '+key);
+const diskBank=JSON.parse(await readFile(new URL('dist/client/learning-bank.json',root),'utf8'));
+assert.equal(diskBank.contentVersion,safe.contentVersion);
+for(const [i,set] of diskBank.sets.entries())for(const [j,question] of set.questions.entries())assert.deepEqual(question,safe.sets[i].questions[j],'Generated client question differs from the public API');
+const catalog=JSON.parse(await readFile(new URL('data/catalog.json',root),'utf8'));assert.deepEqual(await (await get('/catalog.json')).json(),catalog);
+assert.deepEqual(await (await get('/content-version.json')).json(),meta);
+for(const file of ['server/index.js','src/server/index.mjs','data/learning-bank.json','.env.example'])assert.equal((await get('/'+file)).status,404);
+assert.equal((await get('/api/admin/overview')).status,401);
+const set=bank.sets[0],q=set.questions[0];
+const result=await worker.fetch(new Request(origin+'/api/grade',{method:'POST',headers:{origin,'content-type':'application/json'},body:JSON.stringify({setId:set.id,questionIds:[q.id],answers:{[q.id]:q.answer},bankVersion:meta.bankVersion,saveHistory:false})}));
+assert.equal(result.status,200);const grade=await result.json();assert.equal(grade.score.correct,1);assert.equal(grade.questions[0].explanation,q.explanation);assert.equal(grade.historySaved,false);
+for(const name of await readdir(new URL('src/client/',root))) {
+  if(!/\.(?:mjs|js)$/.test(name))continue;
+  const source=await readFile(new URL('src/client/'+name,root),'utf8');
+  for(const match of source.matchAll(/from\s+['"]\.\/([^'"]+)['"]/g))assert.equal((await get('/'+match[1])).status,200,'Missing browser import '+match[1]);
+}
+console.log(JSON.stringify({ok:true,cleanReproducibleBuild:true,publicAssets:true,serverGrading:true,privateBank:true}));
