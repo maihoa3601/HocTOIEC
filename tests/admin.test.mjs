@@ -10,18 +10,18 @@ async function req(path,method='GET',data,user='owner-user',origin='https://test
 assert.equal((await req('/api/session','GET',null,'owner-user')).data.role,'admin');assert.equal((await req('/api/session','GET',null,'editor-user')).data.role,'editor');
 assert.equal((await req('/api/admin/overview','GET',null,'learner')).status,403);assert.equal((await req('/api/admin/overview','GET',null,null)).status,401);
 assert.equal((await req('/api/admin/drafts','POST',{role:'admin'},'learner')).status,403);
-const publicBank=await req('/learning-bank.json','GET',null,null);for(const item of publicBank.data.sets.flatMap(s=>s.questions)){for(const field of ['answer','accept','explanation'])assert.equal(Object.hasOwn(item,field),false,'Public bank must omit '+field)}
+const publicBank=await req('/api/learning-bank','GET',null,null);for(const item of publicBank.data.sets.flatMap(s=>s.questions)){for(const field of ['answer','accept','explanation'])assert.equal(Object.hasOwn(item,field),false,'Public bank must omit '+field)}
 assert.equal((await req('/api/grade','POST',{questionIds:[q.id],answers:{}},null,'https://evil.site')).status,403);
 const before={id:'before-publish-0001',setId:set.id,bankVersion:meta.bankVersion,questionIds:[q.id],answers:{[q.id]:q.answer},saveHistory:true};const old=await req('/api/grade','POST',before);assert.equal(old.status,201);assert.equal(old.data.score.correct,1);
 const change={questionId:q.id,baseVersion:meta.questionVersions[q.id],question:{...q,explanation:q.explanation+' Kiểm tra chủ ngữ trước khi chọn dạng động từ.'},note:'Đối chiếu lại quy tắc trong trang nguồn.'};
 assert.equal((await req('/api/admin/drafts','POST',{...change,question:{...change.question,page:999}})).status,400);
 const draft=await req('/api/admin/drafts','POST',change,'editor-user');assert.equal(draft.status,201);const other=await req('/api/admin/drafts','POST',change);assert.equal(other.status,201);
-assert.equal((await req('/learning-bank.json')).data.questionVersions[q.id],meta.questionVersions[q.id],'Draft must not change published content');
+assert.equal((await req('/api/learning-bank')).data.questionVersions[q.id],meta.questionVersions[q.id],'Draft must not change published content');
 assert.equal((await req('/api/admin/publish','POST',{revisionId:draft.data.id,sourceChecked:true},'editor-user')).status,403);
 assert.equal((await req('/api/admin/publish','POST',{revisionId:draft.data.id,sourceChecked:false})).status,400);
 const race=await Promise.all([req('/api/admin/publish','POST',{revisionId:draft.data.id,sourceChecked:true}),req('/api/admin/publish','POST',{revisionId:draft.data.id,sourceChecked:true})]);assert.deepEqual(race.map(r=>r.status).sort(),[200,409]);const published=race.find(r=>r.status===200);assert.notEqual(published.data.bankVersion,meta.bankVersion);
 assert.equal((await req('/api/admin/publish','POST',{revisionId:other.data.id,sourceChecked:true})).status,409,'Stale drafts must not overwrite a newer publication');
-const newer=(await req('/learning-bank.json')).data;assert.notEqual(newer.questionVersions[q.id],meta.questionVersions[q.id]);assert.equal(newer.sets[0].questions[0].explanation,undefined);
+const newer=(await req('/api/learning-bank')).data;assert.notEqual(newer.questionVersions[q.id],meta.questionVersions[q.id]);assert.equal(newer.sets[0].questions[0].explanation,undefined);
 const archived=(await req('/api/attempts/'+before.id)).data;assert.equal(archived.questions[0].explanation,q.explanation,'Publishing must not mutate history');
 assert.equal((await req('/api/grade','POST',{...before,id:'stale-submit-0001'})).status,409);
 const result=await req('/api/grade','POST',{...before,id:'newer-submit-0001',bankVersion:newer.contentVersion},null);assert.equal(result.status,200);assert.equal(result.data.questions[0].explanation,change.question.explanation);assert.equal(result.data.historySaved,false);

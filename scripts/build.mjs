@@ -1,7 +1,7 @@
 import {readFile,writeFile,mkdir,readdir,rm,lstat,realpath} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {contentMetadata,publicLearningBank} from './lib/content.mjs';
+import {contentMetadata} from './lib/content.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const types={html:'text/html; charset=utf-8',css:'text/css; charset=utf-8',js:'text/javascript; charset=utf-8',mjs:'text/javascript; charset=utf-8',json:'application/json; charset=utf-8',svg:'image/svg+xml'};
@@ -32,8 +32,7 @@ export async function buildProject() {
   const bank=JSON.parse(await readFile(path.join(projectRoot,'data','learning-bank.json'),'utf8'));
   const metadata=contentMetadata(bank);
   assets['/catalog.json']={body:await readFile(path.join(projectRoot,'data','catalog.json'),'utf8'),type:types.json};
-  assets['/learning-bank.json']={body:JSON.stringify(publicLearningBank(bank,metadata)),type:types.json};
-  assets['/content-version.json']={body:JSON.stringify(metadata),type:types.json};
+  // Content is served by the Worker from D1, never by asset-first static routing.
 
   const importer=await readFile(path.join(projectRoot,'src','server','document-imports.mjs'),'utf8');
   const content=await readFile(path.join(projectRoot,'src','server','content-admin.mjs'),'utf8');

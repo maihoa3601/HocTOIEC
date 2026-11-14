@@ -22,9 +22,11 @@ for(const match of html.matchAll(/(?:src|href)="\.\/([^"]+)"/g))assert.equal((aw
 const bankResponse=await get('/learning-bank.json'),safe=await bankResponse.json();assert.equal(bankResponse.status,200);
 assert.equal(safe.contentVersion,meta.bankVersion);assert.equal(safe.sets.flatMap(s=>s.questions).length,250);
 for(const q of safe.sets.flatMap(s=>s.questions))for(const key of ['answer','accept','explanation'])assert.equal(Object.hasOwn(q,key),false,'Public bank leaked '+key);
-const diskBank=JSON.parse(await readFile(new URL('dist/client/learning-bank.json',root),'utf8'));
-assert.equal(diskBank.contentVersion,safe.contentVersion);
-for(const [i,set] of diskBank.sets.entries())for(const [j,question] of set.questions.entries())assert.deepEqual(question,safe.sets[i].questions[j],'Generated client question differs from the public API');
+for(const file of ['learning-bank.json','content-version.json'])await assert.rejects(access(new URL('dist/client/'+file,root)),'Dynamic content must not be shadowed by static hosting assets');
+assert.deepEqual(await (await get('/api/learning-bank')).json(),safe);
+assert.deepEqual(await (await get('/api/content-version')).json(),meta);
+assert.ok((await readFile(new URL('dist/client/learning.mjs',root),'utf8')).includes("fetch('/api/learning-bank'"));
+assert.ok((await readFile(new URL('dist/client/account-learning.mjs',root),'utf8')).includes("fetch('/api/content-version'"));
 const catalog=JSON.parse(await readFile(new URL('data/catalog.json',root),'utf8'));assert.deepEqual(await (await get('/catalog.json')).json(),catalog);
 assert.deepEqual(await (await get('/content-version.json')).json(),meta);
 for(const file of ['server/index.js','src/server/index.mjs','data/learning-bank.json','data/import-bundles/unit11.review.json','import-bundles/unit11.review.json','.env.example'])assert.equal((await get('/'+file)).status,404);

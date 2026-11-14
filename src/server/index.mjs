@@ -10,8 +10,8 @@ export function createWorker({assets,bank,bankVersion,questionVersions}){
  const content=createContentService({bank,bankVersion,questionVersions,score:scoreQuestions,loadPublished:imports.loadPublished});
  const questions=new Map(bank.sets.flatMap(s=>s.questions.map(q=>[q.id,{...q,setId:s.id,topic:s.title,version:questionVersions[q.id]}]))),sets=new Set(bank.sets.map(s=>s.id));
  return {async fetch(request,env={}){try{const url=new URL(request.url),path=url.pathname,user=request.headers.get('oai-authenticated-user-id');
-  if(path==='/learning-bank.json')return json(await content.publicBank(env));
-  if(path==='/content-version.json'){const current=await content.load(env);return json({bankVersion:current.bankVersion,questionVersions:current.versions})}
+  if(path==='/api/learning-bank'||path==='/learning-bank.json')return json(await content.publicBank(env));
+  if(path==='/api/content-version'||path==='/content-version.json'){const current=await content.load(env);return json({bankVersion:current.bankVersion,questionVersions:current.versions})}
   if(path==='/api/grade'&&request.method==='POST')return await content.grade(request,env,user,readJSON);
   if(path.startsWith('/api/admin/imports')||path.startsWith('/api/admin/sources'))return await imports.handle(request,env,user,contentRole(user,env),readJSON,()=>content.load(env));
   if(path.startsWith('/api/admin/'))return await content.admin(request,env,user,readJSON);

@@ -22,3 +22,7 @@ This increment does not complete the 16-module master plan. See MASTER-PLAN-AUDI
 ## Verification limits
 
 The above browser checks concern this increment on local preview. They do not certify every existing screen or every master-plan requirement. Native publication and live content import are checked separately during release. Full multilingual OCR, automated Drive ingestion, complete TOEIC media/Part coverage and the remaining modules are still open.
+
+## Live release correction
+
+The first v12 live import published successfully into D1, but asset-first hosting served the old static bank to learners. Content and version reads now use explicit no-store /api/learning-bank and /api/content-version routes. The build no longer emits either JSON file into client assets, including for legacy URLs. Build tests guard against this regression, and import tests exercise the API paths after publication. No PDF re-import or deletion is needed.

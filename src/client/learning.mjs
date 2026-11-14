@@ -15,7 +15,7 @@ export async function createLearning(ctx){
   const {index,courses,byId,esc,icon,fmt,button,heading,empty,toast}=ctx;
   const $=s=>document.querySelector(s);
   let bank={sets:[]},loadError=false,state=freshLearning(),session=null,cardSession=null,study=null,saveTimer;
-  try{const r=await fetch('./learning-bank.json');if(!r.ok)throw Error();bank=await r.json()}catch{loadError=true}
+  try{const r=await fetch('/api/learning-bank',{cache:'no-store'});if(!r.ok)throw Error();bank=await r.json()}catch{loadError=true}
   const catalogIds=new Set(byId.keys()),questions=new Map(bank.sets.flatMap(s=>s.questions.map(q=>[q.id,{...q,setId:s.id}]))),allCards=bank.sets.flatMap(s=>s.cards.map(c=>({...c,setId:s.id})));
   try{state=sanitizeLearning(JSON.parse(localStorage.getItem(LEARNING_KEY)||'{}'),bank,catalogIds)}catch{state=freshLearning()}
   const save=()=>{try{localStorage.setItem(LEARNING_KEY,JSON.stringify(state));return true}catch{toast('Chưa lưu được kết quả. Hãy xuất tiến độ trước khi đóng trang.');return false}};
