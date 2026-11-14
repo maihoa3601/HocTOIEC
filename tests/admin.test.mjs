@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {createWorker} from '../src/server/index.mjs';
 import {DatabaseSync,d1Adapter} from '../scripts/lib/d1-local.mjs';
 const bank=JSON.parse(await readFile(new URL('../data/learning-bank.json',import.meta.url),'utf8')),meta=contentMetadata(bank),db=new DatabaseSync(':memory:');
-for(const file of ['0000_learning_accounts','0001_content_review'])db.exec(await readFile(new URL('../drizzle/'+file+'.sql',import.meta.url),'utf8'));
+for(const file of ['0000_learning_accounts','0001_content_review','0002_document_imports'])db.exec(await readFile(new URL('../drizzle/'+file+'.sql',import.meta.url),'utf8'));
 const env={DB:d1Adapter(db),TOEIC_ADMIN_USER_IDS:'owner-user',TOEIC_EDITOR_USER_IDS:'editor-user'},worker=createWorker({bank,...meta,assets:{}}),set=bank.sets[0],q=set.questions[0];
 async function req(path,method='GET',data,user='owner-user',origin='https://test.site'){const headers={origin,'content-type':'application/json'};if(user)headers['oai-authenticated-user-id']=user;const response=await worker.fetch(new Request('https://test.site'+path,{method,headers,body:method==='GET'?undefined:JSON.stringify(data)}),env);return {status:response.status,data:await response.json()}}
 assert.equal((await req('/api/session','GET',null,'owner-user')).data.role,'admin');assert.equal((await req('/api/session','GET',null,'editor-user')).data.role,'editor');

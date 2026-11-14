@@ -3,6 +3,7 @@
 Master plan: TOEIC-STUDIO-V2-PLAN.md. Current delivery covers the core learning flow, account storage and content governance. The entire 16-module plan is not complete.
 
 ## Implemented
+- Document import pipeline: byte fingerprints, queue/failure/retry, OCR-first drafts, per-page and per-question admin review, duplicate aliases, atomic versioned publication and document quick-study pages.
 - Real dashboard, focus timer, study streak, due vocabulary and exact quiz resume.
 - Personal study planner: targets, weekday/topic rotation, frozen day tasks, real activity progress, weekly/history view and backup/export support.
 - 13 source-linked lessons, 250 questions, 73 cards, varied drills, mistake review, games and notes.
@@ -19,15 +20,17 @@ Master plan: TOEIC-STUDIO-V2-PLAN.md. Current delivery covers the core learning 
 - Backups are manual; no automatic multi-device merge or background synchronization.
 - Versioned history starts with its release. Older attempts without snapshots are not assigned invented content versions or per-question outcomes.
 - Practice returns solutions after submission; this is an educational practice API, not a tamper-proof examination.
-- Admin editing supports existing verified questions. New course import/OCR still runs in the coding workflow.
+- Admin supports existing-question editing and reviewed lesson-bundle imports. OCR runs in local tooling; full browser authoring and automatic ingestion remain incomplete.
 - Admin queues show the latest 100 reports/drafts and 30 audit events; broader pagination remains future work.
 - Original Drive permissions/media stay unchanged. Drive iframe cannot expose playback timestamps to this app.
 
 ## Outstanding
-- Source fingerprints, idempotent import jobs and self-service PDF/OCR ingestion.
+- Complete self-service PDF/OCR authoring, multilingual extraction and automatic Drive synchronization; source fingerprints and idempotent review-bundle jobs are implemented.
 - Full 17-topic verified coverage and Part 1–7 grouped question/media banks.
 - Listening/dictation/transcript timing and rich reading groups.
 - Planner schedules for verified Listening/Reading Parts and advanced adaptive planning; fuller analytics, dark mode and resizable workspace.
 - Verified mock tests and AI integrations.
 
 Implementation details: ACCOUNT-STORAGE.md, CONTENT-REVIEW.md and STUDY-PLANNER.md.
+
+Full goal requirement audit: MASTER-PLAN-AUDIT.md (647 source requirement/acceptance items; not a completion percentage). Working pipeline and remaining boundaries: DOCUMENT-PIPELINE.md.

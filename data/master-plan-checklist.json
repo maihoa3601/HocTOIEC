@@ -1,0 +1,6628 @@
+{
+  "scope": "Entire TOEIC Studio V2 master plan, including cross-cutting architecture, phases and MVP acceptance criteria.",
+  "goalComplete": false,
+  "rule": "Partial module coverage, existing green tests, or code presence do not prove all requirements complete. Each requirement needs direct current-state evidence and relevant UI/data validation.",
+  "modules": [
+    {
+      "id": "M01",
+      "name": "SMART DASHBOARD",
+      "line": 97,
+      "status": "partial",
+      "evidence": [
+        "src/client/studio-v2.mjs",
+        "src/client/app.js"
+      ]
+    },
+    {
+      "id": "M02",
+      "name": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "line": 167,
+      "status": "in_progress",
+      "evidence": [
+        "scripts/extract-pdf.py",
+        "src/server/document-imports.mjs",
+        "tests/imports.test.mjs"
+      ]
+    },
+    {
+      "id": "M03",
+      "name": "SMART LIBRARY",
+      "line": 295,
+      "status": "partial",
+      "evidence": [
+        "src/client/library-view.mjs",
+        "tests/hierarchy.test.mjs"
+      ]
+    },
+    {
+      "id": "M04",
+      "name": "VOCABULARY STUDIO",
+      "line": 362,
+      "status": "partial",
+      "evidence": [
+        "src/client/learning.mjs",
+        "tests/v2.test.mjs"
+      ]
+    },
+    {
+      "id": "M05",
+      "name": "GRAMMAR STUDIO",
+      "line": 442,
+      "status": "partial",
+      "evidence": [
+        "data/learning-bank.json",
+        "tests/learning.test.mjs"
+      ]
+    },
+    {
+      "id": "M06",
+      "name": "TOEIC PRACTICE ENGINE",
+      "line": 496,
+      "status": "partial",
+      "evidence": [
+        "src/client/learning.mjs",
+        "src/server/content-admin.mjs"
+      ]
+    },
+    {
+      "id": "M07",
+      "name": "LISTENING STUDIO",
+      "line": 601,
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M08",
+      "name": "READING STUDIO",
+      "line": 658,
+      "status": "partial",
+      "evidence": [
+        "src/client/learning.mjs"
+      ]
+    },
+    {
+      "id": "M09",
+      "name": "VIDEO LEARNING",
+      "line": 713,
+      "status": "partial",
+      "evidence": [
+        "src/client/app.js"
+      ]
+    },
+    {
+      "id": "M10",
+      "name": "MISTAKE REVIEW",
+      "line": 753,
+      "status": "partial",
+      "evidence": [
+        "src/client/learning-core.mjs",
+        "tests/activities.test.mjs"
+      ]
+    },
+    {
+      "id": "M11",
+      "name": "STUDY PLANNER",
+      "line": 811,
+      "status": "partial",
+      "evidence": [
+        "src/client/study-planner.mjs",
+        "tests/planner.test.mjs"
+      ]
+    },
+    {
+      "id": "M12",
+      "name": "MOCK TEST",
+      "line": 859,
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M13",
+      "name": "LEARNING ANALYTICS",
+      "line": 903,
+      "status": "partial",
+      "evidence": [
+        "src/client/active-learning.mjs"
+      ]
+    },
+    {
+      "id": "M14",
+      "name": "AI TOEIC ASSISTANT",
+      "line": 945,
+      "status": "not_started",
+      "evidence": []
+    },
+    {
+      "id": "M15",
+      "name": "GAMIFICATION",
+      "line": 991,
+      "status": "partial",
+      "evidence": [
+        "src/client/studio-v2.mjs"
+      ]
+    },
+    {
+      "id": "M16",
+      "name": "ADMIN & CONTENT MANAGEMENT",
+      "line": 1028,
+      "status": "in_progress",
+      "evidence": [
+        "src/client/import-ui.mjs",
+        "src/server/document-imports.mjs",
+        "tests/imports.test.mjs"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "id": "X-R001",
+      "module": "X",
+      "area": "Overview",
+      "section": "MASTER FEATURE PLAN",
+      "text": "MASTER FEATURE PLAN",
+      "line": 2,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R002",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "1. Mục tiêu",
+      "line": 14,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R003",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Thư viện học tập thông minh.",
+      "line": 20,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R004",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Bài học ngữ pháp tương tác.",
+      "line": 21,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R005",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Kho từ vựng và flashcard.",
+      "line": 22,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R006",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Hệ thống luyện tập TOEIC Part 1–7.",
+      "line": 23,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R007",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Luyện nghe và chép chính tả.",
+      "line": 24,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R008",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Luyện đọc hiểu và tài liệu song ngữ.",
+      "line": 25,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R009",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Sổ câu sai và lịch ôn tập.",
+      "line": 26,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R010",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Thi thử TOEIC.",
+      "line": 27,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R011",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Dashboard học tập cá nhân.",
+      "line": 28,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R012",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Trợ lý AI giải thích kiến thức.",
+      "line": 29,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R013",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "1. Mục tiêu",
+      "text": "Hệ thống quản trị và xử lý tài liệu.",
+      "line": 30,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R014",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "2. Nguồn nội dung",
+      "text": "2. Nguồn nội dung",
+      "line": 32,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R015",
+      "module": "X",
+      "area": "I. TỔNG QUAN SẢN PHẨM",
+      "section": "3. Quy trình học tập chính",
+      "text": "3. Quy trình học tập chính",
+      "line": 52,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R016",
+      "module": "X",
+      "area": "II. KIẾN TRÚC CHỨC NĂNG",
+      "section": "1. Content Engine",
+      "text": "1. Content Engine",
+      "line": 73,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R017",
+      "module": "X",
+      "area": "II. KIẾN TRÚC CHỨC NĂNG",
+      "section": "2. Learning Engine",
+      "text": "2. Learning Engine",
+      "line": 79,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R018",
+      "module": "X",
+      "area": "II. KIẾN TRÚC CHỨC NĂNG",
+      "section": "3. Personal Learning Engine",
+      "text": "3. Personal Learning Engine",
+      "line": 85,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R019",
+      "module": "X",
+      "area": "II. KIẾN TRÚC CHỨC NĂNG",
+      "section": "4. Intelligence & Management",
+      "text": "4. Intelligence & Management",
+      "line": 89,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R001",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Mục tiêu TOEIC.",
+      "line": 107,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R002",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Điểm thi thử gần nhất nếu có.",
+      "line": 108,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R003",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Tổng số bài đã hoàn thành.",
+      "line": 109,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R004",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Tổng thời gian học.",
+      "line": 110,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R005",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Số từ vựng đã học.",
+      "line": 111,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R006",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Số ngày học liên tiếp.",
+      "line": 112,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R007",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Tiến độ hoàn thành mục tiêu.",
+      "line": 113,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R008",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Tên bài.",
+      "line": 123,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R009",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Loại nội dung.",
+      "line": 124,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R010",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Tiến độ hoàn thành.",
+      "line": 125,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R011",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Thời điểm học gần nhất.",
+      "line": 126,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R012",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Nút tiếp tục.",
+      "line": 127,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R013",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Từ vựng đến hạn ôn.",
+      "line": 135,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R014",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Bài đang học.",
+      "line": 136,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R015",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Câu sai cần luyện lại.",
+      "line": 137,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R016",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Mục tiêu thời gian học.",
+      "line": 138,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R017",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Bài học được đề xuất.",
+      "line": 139,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R018",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Thời gian học theo ngày.",
+      "line": 145,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R019",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Số bài hoàn thành.",
+      "line": 146,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R020",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Tỷ lệ đúng theo Part.",
+      "line": 147,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R021",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Tiến bộ qua các lần luyện.",
+      "line": 148,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R022",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Kết quả thi thử.",
+      "line": 149,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R023",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Continue Learning.",
+      "line": 159,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R024",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Start Practice.",
+      "line": 160,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R025",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Review Vocabulary.",
+      "line": 161,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R026",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Review Mistakes.",
+      "line": 162,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M01-R027",
+      "module": "M01",
+      "area": "SMART DASHBOARD",
+      "section": "",
+      "text": "Open Library.",
+      "line": 163,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R001",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "1. Google Drive Integration",
+      "text": "1. Google Drive Integration",
+      "line": 171,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R002",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "1. Google Drive Integration",
+      "text": "Kết nối nguồn Google Drive được cấp quyền.",
+      "line": 175,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R003",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "1. Google Drive Integration",
+      "text": "Quét thư mục và thư mục con.",
+      "line": 176,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R004",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "1. Google Drive Integration",
+      "text": "Nhập danh sách PDF, audio và video.",
+      "line": 177,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R005",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "1. Google Drive Integration",
+      "text": "Đồng bộ thủ công.",
+      "line": 178,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R006",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "1. Google Drive Integration",
+      "text": "Phát hiện file mới.",
+      "line": 179,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R007",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "1. Google Drive Integration",
+      "text": "Phát hiện file cập nhật.",
+      "line": 180,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R008",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "1. Google Drive Integration",
+      "text": "Theo dõi file không còn truy cập được.",
+      "line": 181,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R009",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "1. Google Drive Integration",
+      "text": "Quản lý trạng thái đồng bộ.",
+      "line": 182,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R010",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "2. Smart File Detection",
+      "text": "2. Smart File Detection",
+      "line": 184,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R011",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "2. Smart File Detection",
+      "text": "Tên file.",
+      "line": 188,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R012",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "2. Smart File Detection",
+      "text": "Định dạng.",
+      "line": 189,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R013",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "2. Smart File Detection",
+      "text": "Kích thước.",
+      "line": 190,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R014",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "2. Smart File Detection",
+      "text": "Drive File ID.",
+      "line": 191,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R015",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "2. Smart File Detection",
+      "text": "Phiên bản file.",
+      "line": 192,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R016",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "2. Smart File Detection",
+      "text": "Dấu vân tay nội dung.",
+      "line": 193,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R017",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "2. Smart File Detection",
+      "text": "Đường dẫn thư mục.",
+      "line": 194,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R018",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "2. Smart File Detection",
+      "text": "Trạng thái xử lý.",
+      "line": 195,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R019",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "3. PDF Extraction",
+      "text": "3. PDF Extraction",
+      "line": 199,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R020",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "3. PDF Extraction",
+      "text": "Đọc văn bản có sẵn trong PDF.",
+      "line": 207,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R021",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "3. PDF Extraction",
+      "text": "Sử dụng OCR đối với trang scan cần thiết.",
+      "line": 208,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R022",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "3. PDF Extraction",
+      "text": "Nhận diện tiêu đề và mục lục.",
+      "line": 209,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R023",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "3. PDF Extraction",
+      "text": "Tách lý thuyết, ví dụ và bài tập.",
+      "line": 210,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R024",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "3. PDF Extraction",
+      "text": "Nhận diện câu hỏi và lựa chọn.",
+      "line": 211,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R025",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "3. PDF Extraction",
+      "text": "Nhận diện đáp án và giải thích.",
+      "line": 212,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R026",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "3. PDF Extraction",
+      "text": "Giữ bảng, hình ảnh và bố cục quan trọng.",
+      "line": 213,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R027",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "3. PDF Extraction",
+      "text": "Liên kết nội dung với số trang nguồn.",
+      "line": 214,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R028",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "4. Content Classification",
+      "line": 216,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R029",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Course.",
+      "line": 220,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R030",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Lesson.",
+      "line": 221,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R031",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Topic.",
+      "line": 222,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R032",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Grammar Theory.",
+      "line": 223,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R033",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Vocabulary.",
+      "line": 224,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R034",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Reading Passage.",
+      "line": 225,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R035",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Question.",
+      "line": 226,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R036",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Answer.",
+      "line": 227,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R037",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Explanation.",
+      "line": 228,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R038",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Transcript.",
+      "line": 229,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R039",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "4. Content Classification",
+      "text": "Media.",
+      "line": 230,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R040",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "5. Source Tracking",
+      "text": "5. Source Tracking",
+      "line": 232,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R041",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "5. Source Tracking",
+      "text": "File gốc.",
+      "line": 236,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R042",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "5. Source Tracking",
+      "text": "Drive ID.",
+      "line": 237,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R043",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "5. Source Tracking",
+      "text": "Trang nguồn.",
+      "line": 238,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R044",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "5. Source Tracking",
+      "text": "Phiên bản nhập.",
+      "line": 239,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R045",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "5. Source Tracking",
+      "text": "Trạng thái kiểm duyệt.",
+      "line": 240,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R046",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "5. Source Tracking",
+      "text": "Thời điểm cập nhật.",
+      "line": 241,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R047",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "6. Import Status",
+      "text": "6. Import Status",
+      "line": 245,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R048",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "7. Content Review",
+      "text": "7. Content Review",
+      "line": 262,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R049",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "7. Content Review",
+      "text": "Sửa văn bản OCR.",
+      "line": 272,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R050",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "7. Content Review",
+      "text": "Sửa câu hỏi.",
+      "line": 273,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R051",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "7. Content Review",
+      "text": "Sửa lựa chọn.",
+      "line": 274,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R052",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "7. Content Review",
+      "text": "Kiểm tra đáp án.",
+      "line": 275,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R053",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "7. Content Review",
+      "text": "Kiểm tra hình ảnh.",
+      "line": 276,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R054",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "7. Content Review",
+      "text": "Liên kết audio.",
+      "line": 277,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R055",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "7. Content Review",
+      "text": "Xác nhận trang nguồn.",
+      "line": 278,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R056",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "7. Content Review",
+      "text": "Duyệt và xuất bản bài học.",
+      "line": 279,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R057",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "8. Content Origin",
+      "text": "8. Content Origin",
+      "line": 283,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R058",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "8. Content Origin",
+      "text": "**Original:** Nội dung gốc trong PDF.",
+      "line": 287,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R059",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "8. Content Origin",
+      "text": "**Adapted:** Nội dung chỉnh sửa từ PDF.",
+      "line": 288,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M02-R060",
+      "module": "M02",
+      "area": "GOOGLE DRIVE & PDF CONTENT ENGINE",
+      "section": "8. Content Origin",
+      "text": "**Generated:** Nội dung được AI hoặc hệ thống tạo thêm.",
+      "line": 289,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R001",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "1. Library View",
+      "line": 301,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R002",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "Grid View.",
+      "line": 305,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R003",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "List View.",
+      "line": 306,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R004",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "Thumbnail.",
+      "line": 310,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R005",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "Tên.",
+      "line": 311,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R006",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "Loại tài liệu.",
+      "line": 312,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R007",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "Khóa học.",
+      "line": 313,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R008",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "TOEIC Part.",
+      "line": 314,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R009",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "Trạng thái học.",
+      "line": 315,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R010",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "1. Library View",
+      "text": "Tiến độ hoàn thành.",
+      "line": 316,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R011",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "2. Smart Search",
+      "text": "2. Smart Search",
+      "line": 318,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R012",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "2. Smart Search",
+      "text": "Tên tài liệu.",
+      "line": 322,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R013",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "2. Smart Search",
+      "text": "Tên bài học.",
+      "line": 323,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R014",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "2. Smart Search",
+      "text": "Từ vựng.",
+      "line": 324,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R015",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "2. Smart Search",
+      "text": "Chủ đề ngữ pháp.",
+      "line": 325,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R016",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "2. Smart Search",
+      "text": "Nội dung câu hỏi.",
+      "line": 326,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R017",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "2. Smart Search",
+      "text": "Nội dung PDF đã được lập chỉ mục.",
+      "line": 327,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R018",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "3. Advanced Filter",
+      "line": 329,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R019",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "All.",
+      "line": 335,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R020",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "Vocabulary.",
+      "line": 336,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R021",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "Grammar.",
+      "line": 337,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R022",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "Listening.",
+      "line": 338,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R023",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "Reading.",
+      "line": 339,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R024",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "Mock Test.",
+      "line": 340,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R025",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "TED Talks.",
+      "line": 341,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R026",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "Not Started.",
+      "line": 345,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R027",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "In Progress.",
+      "line": 346,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R028",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "Completed.",
+      "line": 347,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R029",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "3. Advanced Filter",
+      "text": "Bookmarked.",
+      "line": 348,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R030",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "4. My Collection",
+      "text": "4. My Collection",
+      "line": 350,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R031",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "4. My Collection",
+      "text": "Đánh dấu yêu thích.",
+      "line": 354,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R032",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "4. My Collection",
+      "text": "Ghim tài liệu.",
+      "line": 355,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R033",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "4. My Collection",
+      "text": "Tạo playlist.",
+      "line": 356,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R034",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "4. My Collection",
+      "text": "Xem lịch sử truy cập.",
+      "line": 357,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M03-R035",
+      "module": "M03",
+      "area": "SMART LIBRARY",
+      "section": "4. My Collection",
+      "text": "Lưu tài liệu cần học sau.",
+      "line": 358,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R001",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "1. Vocabulary Library",
+      "line": 366,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R002",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Khóa học.",
+      "line": 370,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R003",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Bài học.",
+      "line": 371,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R004",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Chủ đề.",
+      "line": 372,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R005",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "TOEIC Part.",
+      "line": 373,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R006",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Danh sách cá nhân.",
+      "line": 374,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R007",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Từ tiếng Anh.",
+      "line": 378,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R008",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Nghĩa.",
+      "line": 379,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R009",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Loại từ.",
+      "line": 380,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R010",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Phiên âm.",
+      "line": 381,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R011",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Ví dụ.",
+      "line": 382,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R012",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Bản dịch.",
+      "line": 383,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R013",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Audio phát âm.",
+      "line": 384,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R014",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "1. Vocabulary Library",
+      "text": "Trang tài liệu nguồn.",
+      "line": 385,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R015",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "2. Flashcard",
+      "text": "2. Flashcard",
+      "line": 389,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R016",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "2. Flashcard",
+      "text": "English → Vietnamese.",
+      "line": 393,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R017",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "2. Flashcard",
+      "text": "Vietnamese → English.",
+      "line": 394,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R018",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "2. Flashcard",
+      "text": "Random.",
+      "line": 395,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R019",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "2. Flashcard",
+      "text": "Review Due Cards.",
+      "line": 396,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R020",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "3. Memory Rating",
+      "text": "3. Memory Rating",
+      "line": 398,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R021",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "3. Memory Rating",
+      "text": "Again.",
+      "line": 402,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R022",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "3. Memory Rating",
+      "text": "Hard.",
+      "line": 403,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R023",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "3. Memory Rating",
+      "text": "Good.",
+      "line": 404,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R024",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "3. Memory Rating",
+      "text": "Easy.",
+      "line": 405,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R025",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "4. Vocabulary Practice",
+      "text": "4. Vocabulary Practice",
+      "line": 409,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R026",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "4. Vocabulary Practice",
+      "text": "Chọn nghĩa.",
+      "line": 413,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R027",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "4. Vocabulary Practice",
+      "text": "Gõ từ.",
+      "line": 414,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R028",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "4. Vocabulary Practice",
+      "text": "Điền từ.",
+      "line": 415,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R029",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "4. Vocabulary Practice",
+      "text": "Ghép từ và nghĩa.",
+      "line": 416,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R030",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "4. Vocabulary Practice",
+      "text": "Nhận diện từ qua audio.",
+      "line": 417,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R031",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "5. Personal Vocabulary",
+      "text": "5. Personal Vocabulary",
+      "line": 419,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R032",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "5. Personal Vocabulary",
+      "text": "Reading.",
+      "line": 423,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R033",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "5. Personal Vocabulary",
+      "text": "Grammar.",
+      "line": 424,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R034",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "5. Personal Vocabulary",
+      "text": "Practice.",
+      "line": 425,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R035",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "5. Personal Vocabulary",
+      "text": "Listening Transcript.",
+      "line": 426,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R036",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "5. Personal Vocabulary",
+      "text": "TED Talks.",
+      "line": 427,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R037",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "6. Vocabulary Statistics",
+      "text": "6. Vocabulary Statistics",
+      "line": 429,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R038",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "6. Vocabulary Statistics",
+      "text": "Tổng số từ đã lưu.",
+      "line": 433,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R039",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "6. Vocabulary Statistics",
+      "text": "Từ mới.",
+      "line": 434,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R040",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "6. Vocabulary Statistics",
+      "text": "Từ đã nhớ.",
+      "line": 435,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R041",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "6. Vocabulary Statistics",
+      "text": "Từ khó.",
+      "line": 436,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R042",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "6. Vocabulary Statistics",
+      "text": "Từ đến hạn ôn.",
+      "line": 437,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M04-R043",
+      "module": "M04",
+      "area": "VOCABULARY STUDIO",
+      "section": "6. Vocabulary Statistics",
+      "text": "Tỷ lệ ghi nhớ.",
+      "line": 438,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R001",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "1. Grammar Course",
+      "text": "1. Grammar Course",
+      "line": 448,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R002",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "1. Grammar Course",
+      "text": "Tiêu đề.",
+      "line": 452,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R003",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "1. Grammar Course",
+      "text": "Mục tiêu bài học.",
+      "line": 453,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R004",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "1. Grammar Course",
+      "text": "Lý thuyết.",
+      "line": 454,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R005",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "1. Grammar Course",
+      "text": "Công thức.",
+      "line": 455,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R006",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "1. Grammar Course",
+      "text": "Ví dụ.",
+      "line": 456,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R007",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "1. Grammar Course",
+      "text": "Lưu ý.",
+      "line": 457,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R008",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "1. Grammar Course",
+      "text": "Bài tập.",
+      "line": 458,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R009",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "1. Grammar Course",
+      "text": "Tài liệu nguồn.",
+      "line": 459,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R010",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "2. Interactive Learning",
+      "text": "2. Interactive Learning",
+      "line": 461,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R011",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "2. Interactive Learning",
+      "text": "Mục lục bài học.",
+      "line": 465,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R012",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "2. Interactive Learning",
+      "text": "Chuyển nhanh giữa các phần.",
+      "line": 466,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R013",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "2. Interactive Learning",
+      "text": "Đánh dấu nội dung quan trọng.",
+      "line": 467,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R014",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "2. Interactive Learning",
+      "text": "Ghi chú cá nhân.",
+      "line": 468,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R015",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "2. Interactive Learning",
+      "text": "Lưu vị trí đang đọc.",
+      "line": 469,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R016",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "2. Interactive Learning",
+      "text": "Tiếp tục học.",
+      "line": 470,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R017",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "3. Grammar Practice",
+      "text": "3. Grammar Practice",
+      "line": 472,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R018",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "4. Grammar Review",
+      "text": "4. Grammar Review",
+      "line": 476,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R019",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "4. Grammar Review",
+      "text": "Hiển thị giải thích.",
+      "line": 480,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R020",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "4. Grammar Review",
+      "text": "Chỉ ra kiến thức liên quan.",
+      "line": 481,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R021",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "4. Grammar Review",
+      "text": "Liên kết về phần lý thuyết.",
+      "line": 482,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R022",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "4. Grammar Review",
+      "text": "Cho phép lưu để ôn lại.",
+      "line": 483,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R023",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "5. Grammar Analytics",
+      "text": "5. Grammar Analytics",
+      "line": 485,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R024",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "5. Grammar Analytics",
+      "text": "Số bài hoàn thành.",
+      "line": 489,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R025",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "5. Grammar Analytics",
+      "text": "Tỷ lệ đúng từng chủ đề.",
+      "line": 490,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R026",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "5. Grammar Analytics",
+      "text": "Chủ đề thường sai.",
+      "line": 491,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M05-R027",
+      "module": "M05",
+      "area": "GRAMMAR STUDIO",
+      "section": "5. Grammar Analytics",
+      "text": "Chủ đề cần ôn tập.",
+      "line": 492,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R001",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "1. Practice by Part",
+      "text": "1. Practice by Part",
+      "line": 502,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R002",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "1. Practice by Part",
+      "text": "Part 1: Photographs.",
+      "line": 506,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R003",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "1. Practice by Part",
+      "text": "Part 2: Question–Response.",
+      "line": 507,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R004",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "1. Practice by Part",
+      "text": "Part 3: Conversations.",
+      "line": 508,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R005",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "1. Practice by Part",
+      "text": "Part 4: Talks.",
+      "line": 509,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R006",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "1. Practice by Part",
+      "text": "Part 5: Incomplete Sentences.",
+      "line": 513,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R007",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "1. Practice by Part",
+      "text": "Part 6: Text Completion.",
+      "line": 514,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R008",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "1. Practice by Part",
+      "text": "Part 7: Reading Comprehension.",
+      "line": 515,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R009",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "2. Practice Modes",
+      "line": 517,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R010",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Làm từng câu.",
+      "line": 521,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R011",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Không giới hạn thời gian.",
+      "line": 522,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R012",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Xem đáp án sau khi trả lời.",
+      "line": 523,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R013",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Xem giải thích.",
+      "line": 524,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R014",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Lưu câu hỏi.",
+      "line": 525,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R015",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Làm một nhóm câu hỏi.",
+      "line": 529,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R016",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Nộp bài để xem kết quả.",
+      "line": 530,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R017",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Hiển thị câu đúng và sai.",
+      "line": 531,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R018",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Lưu lượt làm.",
+      "line": 532,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R019",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Có thời gian giới hạn.",
+      "line": 536,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R020",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Không hiển thị đáp án trước khi nộp.",
+      "line": 537,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R021",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Tự động chấm các câu đủ điều kiện.",
+      "line": 538,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R022",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "2. Practice Modes",
+      "text": "Hiển thị kết quả sau khi hoàn thành.",
+      "line": 539,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R023",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "3. Question Types",
+      "text": "3. Question Types",
+      "line": 541,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R024",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "3. Question Types",
+      "text": "Multiple Choice.",
+      "line": 545,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R025",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "3. Question Types",
+      "text": "Fill in the Blank.",
+      "line": 546,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R026",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "3. Question Types",
+      "text": "Matching.",
+      "line": 547,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R027",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "3. Question Types",
+      "text": "Short Answer.",
+      "line": 548,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R028",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "3. Question Types",
+      "text": "Question Group.",
+      "line": 549,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R029",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "3. Question Types",
+      "text": "Audio-based Question.",
+      "line": 550,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R030",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "3. Question Types",
+      "text": "Passage-based Question.",
+      "line": 551,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R031",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "4. Question Navigation",
+      "text": "4. Question Navigation",
+      "line": 553,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R032",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "4. Question Navigation",
+      "text": "Tổng số câu.",
+      "line": 557,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R033",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "4. Question Navigation",
+      "text": "Câu đã trả lời.",
+      "line": 558,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R034",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "4. Question Navigation",
+      "text": "Câu chưa trả lời.",
+      "line": 559,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R035",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "4. Question Navigation",
+      "text": "Câu đánh dấu.",
+      "line": 560,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R036",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "4. Question Navigation",
+      "text": "Thời gian làm bài.",
+      "line": 561,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R037",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "5. Auto Save",
+      "text": "5. Auto Save",
+      "line": 563,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R038",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "5. Auto Save",
+      "text": "Câu trả lời.",
+      "line": 567,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R039",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "5. Auto Save",
+      "text": "Câu đánh dấu.",
+      "line": 568,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R040",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "5. Auto Save",
+      "text": "Vị trí câu hiện tại.",
+      "line": 569,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R041",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "5. Auto Save",
+      "text": "Thời gian đã làm.",
+      "line": 570,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R042",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "5. Auto Save",
+      "text": "Trạng thái phiên.",
+      "line": 571,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R043",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "6. Answer Review",
+      "text": "6. Answer Review",
+      "line": 573,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R044",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "6. Answer Review",
+      "text": "Lựa chọn của người học.",
+      "line": 577,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R045",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "6. Answer Review",
+      "text": "Đáp án đúng.",
+      "line": 578,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R046",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "6. Answer Review",
+      "text": "Giải thích.",
+      "line": 579,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R047",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "6. Answer Review",
+      "text": "Nội dung liên quan.",
+      "line": 580,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R048",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "6. Answer Review",
+      "text": "Trang PDF nguồn.",
+      "line": 581,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R049",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "7. Retake",
+      "text": "7. Retake",
+      "line": 583,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R050",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "8. Report Question",
+      "text": "8. Report Question",
+      "line": 589,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R051",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "8. Report Question",
+      "text": "Sai đáp án.",
+      "line": 593,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R052",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "8. Report Question",
+      "text": "Sai câu hỏi.",
+      "line": 594,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R053",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "8. Report Question",
+      "text": "Thiếu hình.",
+      "line": 595,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R054",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "8. Report Question",
+      "text": "Thiếu audio.",
+      "line": 596,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M06-R055",
+      "module": "M06",
+      "area": "TOEIC PRACTICE ENGINE",
+      "section": "8. Report Question",
+      "text": "Giải thích không chính xác.",
+      "line": 597,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R001",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "1. Advanced Audio Player",
+      "text": "1. Advanced Audio Player",
+      "line": 605,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R002",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "1. Advanced Audio Player",
+      "text": "Play/Pause.",
+      "line": 609,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R003",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "1. Advanced Audio Player",
+      "text": "Tua nhanh và tua lại.",
+      "line": 610,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R004",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "1. Advanced Audio Player",
+      "text": "Điều chỉnh tốc độ.",
+      "line": 611,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R005",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "1. Advanced Audio Player",
+      "text": "Lặp đoạn A–B.",
+      "line": 612,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R006",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "1. Advanced Audio Player",
+      "text": "Ghi nhớ vị trí đang nghe.",
+      "line": 613,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R007",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "1. Advanced Audio Player",
+      "text": "Đánh dấu đoạn khó.",
+      "line": 614,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R008",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "2. Listening Practice",
+      "text": "2. Listening Practice",
+      "line": 616,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R009",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "2. Listening Practice",
+      "text": "Câu hỏi.",
+      "line": 620,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R010",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "2. Listening Practice",
+      "text": "Đáp án lựa chọn.",
+      "line": 621,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R011",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "2. Listening Practice",
+      "text": "Hình minh họa.",
+      "line": 622,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R012",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "2. Listening Practice",
+      "text": "PDF nguồn.",
+      "line": 623,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R013",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "3. Dictation Mode",
+      "text": "3. Dictation Mode",
+      "line": 625,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R014",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "3. Dictation Mode",
+      "text": "Nghe audio.",
+      "line": 629,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R015",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "3. Dictation Mode",
+      "text": "Nhập nội dung nghe được.",
+      "line": 630,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R016",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "3. Dictation Mode",
+      "text": "Nộp câu trả lời.",
+      "line": 631,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R017",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "3. Dictation Mode",
+      "text": "Xem transcript.",
+      "line": 632,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R018",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "3. Dictation Mode",
+      "text": "Đối chiếu từ sai hoặc thiếu.",
+      "line": 633,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R019",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "3. Dictation Mode",
+      "text": "Lưu đoạn cần luyện lại.",
+      "line": 634,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R020",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "4. Transcript Mode",
+      "text": "4. Transcript Mode",
+      "line": 636,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R021",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "4. Transcript Mode",
+      "text": "Hide Transcript.",
+      "line": 640,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R022",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "4. Transcript Mode",
+      "text": "Show Transcript.",
+      "line": 641,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R023",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "4. Transcript Mode",
+      "text": "Highlight Vocabulary.",
+      "line": 642,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R024",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "4. Transcript Mode",
+      "text": "Save Vocabulary.",
+      "line": 643,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R025",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "5. Sentence Listening",
+      "text": "5. Sentence Listening",
+      "line": 645,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R026",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "5. Sentence Listening",
+      "text": "Nghe từng câu.",
+      "line": 651,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R027",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "5. Sentence Listening",
+      "text": "Lặp từng câu.",
+      "line": 652,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R028",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "5. Sentence Listening",
+      "text": "Tô sáng transcript đồng bộ.",
+      "line": 653,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M07-R029",
+      "module": "M07",
+      "area": "LISTENING STUDIO",
+      "section": "5. Sentence Listening",
+      "text": "Chuyển đến câu tương ứng.",
+      "line": 654,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R001",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "1. Reading Viewer",
+      "text": "1. Reading Viewer",
+      "line": 662,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R002",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "1. Reading Viewer",
+      "text": "Nội dung tiếng Anh.",
+      "line": 666,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R003",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "1. Reading Viewer",
+      "text": "Bản dịch tiếng Việt nếu có.",
+      "line": 667,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R004",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "1. Reading Viewer",
+      "text": "Chế độ song ngữ.",
+      "line": 668,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R005",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "1. Reading Viewer",
+      "text": "Điều chỉnh cỡ chữ.",
+      "line": 669,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R006",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "1. Reading Viewer",
+      "text": "Ghi nhớ vị trí đọc.",
+      "line": 670,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R007",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "2. Interactive Reading",
+      "text": "2. Interactive Reading",
+      "line": 672,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R008",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "2. Interactive Reading",
+      "text": "Chọn từ.",
+      "line": 676,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R009",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "2. Interactive Reading",
+      "text": "Lưu từ vựng.",
+      "line": 677,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R010",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "2. Interactive Reading",
+      "text": "Ghi chú.",
+      "line": 678,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R011",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "2. Interactive Reading",
+      "text": "Đánh dấu đoạn văn.",
+      "line": 679,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R012",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "2. Interactive Reading",
+      "text": "Tìm kiếm nội dung.",
+      "line": 680,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R013",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "3. Reading Practice",
+      "text": "3. Reading Practice",
+      "line": 682,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R014",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "4. Document Layout",
+      "text": "4. Document Layout",
+      "line": 688,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R015",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "4. Document Layout",
+      "text": "Email.",
+      "line": 692,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R016",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "4. Document Layout",
+      "text": "Advertisement.",
+      "line": 693,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R017",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "4. Document Layout",
+      "text": "Notice.",
+      "line": 694,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R018",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "4. Document Layout",
+      "text": "Table.",
+      "line": 695,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R019",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "4. Document Layout",
+      "text": "Chart.",
+      "line": 696,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R020",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "4. Document Layout",
+      "text": "Image.",
+      "line": 697,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R021",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "4. Document Layout",
+      "text": "Multiple Passages.",
+      "line": 698,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R022",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "5. TED Talks Learning",
+      "text": "5. TED Talks Learning",
+      "line": 700,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R023",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "5. TED Talks Learning",
+      "text": "Video.",
+      "line": 704,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R024",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "5. TED Talks Learning",
+      "text": "Transcript.",
+      "line": 705,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R025",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "5. TED Talks Learning",
+      "text": "Bản dịch nếu có.",
+      "line": 706,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R026",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "5. TED Talks Learning",
+      "text": "Ghi chú.",
+      "line": 707,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R027",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "5. TED Talks Learning",
+      "text": "Từ vựng.",
+      "line": 708,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M08-R028",
+      "module": "M08",
+      "area": "READING STUDIO",
+      "section": "5. TED Talks Learning",
+      "text": "Vị trí video.",
+      "line": 709,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M09-R001",
+      "module": "M09",
+      "area": "VIDEO LEARNING",
+      "section": "1. Video Player",
+      "text": "1. Video Player",
+      "line": 717,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M09-R002",
+      "module": "M09",
+      "area": "VIDEO LEARNING",
+      "section": "1. Video Player",
+      "text": "Play/Pause.",
+      "line": 723,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M09-R003",
+      "module": "M09",
+      "area": "VIDEO LEARNING",
+      "section": "1. Video Player",
+      "text": "Playback Speed.",
+      "line": 724,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M09-R004",
+      "module": "M09",
+      "area": "VIDEO LEARNING",
+      "section": "1. Video Player",
+      "text": "Continue Watching.",
+      "line": 725,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M09-R005",
+      "module": "M09",
+      "area": "VIDEO LEARNING",
+      "section": "1. Video Player",
+      "text": "Fullscreen.",
+      "line": 726,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M09-R006",
+      "module": "M09",
+      "area": "VIDEO LEARNING",
+      "section": "1. Video Player",
+      "text": "Learning Progress.",
+      "line": 727,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M09-R007",
+      "module": "M09",
+      "area": "VIDEO LEARNING",
+      "section": "2. Timestamp Notes",
+      "text": "2. Timestamp Notes",
+      "line": 729,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M09-R008",
+      "module": "M09",
+      "area": "VIDEO LEARNING",
+      "section": "3. Video Bookmarks",
+      "text": "3. Video Bookmarks",
+      "line": 743,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M09-R009",
+      "module": "M09",
+      "area": "VIDEO LEARNING",
+      "section": "4. Related Lessons",
+      "text": "4. Related Lessons",
+      "line": 747,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R001",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "1. My Mistakes",
+      "text": "1. My Mistakes",
+      "line": 757,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R002",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "2. Mistake Classification",
+      "text": "2. Mistake Classification",
+      "line": 761,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R003",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "2. Mistake Classification",
+      "text": "TOEIC Part.",
+      "line": 765,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R004",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "2. Mistake Classification",
+      "text": "Chủ đề.",
+      "line": 766,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R005",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "2. Mistake Classification",
+      "text": "Bài học.",
+      "line": 767,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R006",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "2. Mistake Classification",
+      "text": "Dạng câu hỏi.",
+      "line": 768,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R007",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "2. Mistake Classification",
+      "text": "Số lần trả lời sai.",
+      "line": 769,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R008",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "3. Mistake Reason",
+      "text": "3. Mistake Reason",
+      "line": 771,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R009",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "3. Mistake Reason",
+      "text": "Thiếu từ vựng.",
+      "line": 775,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R010",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "3. Mistake Reason",
+      "text": "Sai ngữ pháp.",
+      "line": 776,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R011",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "3. Mistake Reason",
+      "text": "Nghe nhầm.",
+      "line": 777,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R012",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "3. Mistake Reason",
+      "text": "Đọc thiếu thông tin.",
+      "line": 778,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R013",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "3. Mistake Reason",
+      "text": "Thiếu thời gian.",
+      "line": 779,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R014",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "3. Mistake Reason",
+      "text": "Nhầm đáp án.",
+      "line": 780,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R015",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "4. Review Mistakes",
+      "text": "4. Review Mistakes",
+      "line": 782,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R016",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "4. Review Mistakes",
+      "text": "Câu sai.",
+      "line": 786,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R017",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "4. Review Mistakes",
+      "text": "Câu đã đánh dấu.",
+      "line": 787,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R018",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "4. Review Mistakes",
+      "text": "Câu thường sai.",
+      "line": 788,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R019",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "4. Review Mistakes",
+      "text": "Câu chưa nắm vững.",
+      "line": 789,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R020",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "5. Learning Connection",
+      "text": "5. Learning Connection",
+      "line": 791,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R021",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "5. Learning Connection",
+      "text": "Bài ngữ pháp.",
+      "line": 795,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R022",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "5. Learning Connection",
+      "text": "Từ vựng liên quan.",
+      "line": 796,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R023",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "5. Learning Connection",
+      "text": "Đoạn nghe.",
+      "line": 797,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R024",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "5. Learning Connection",
+      "text": "Đoạn đọc.",
+      "line": 798,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R025",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "6. Mistake Progress",
+      "text": "6. Mistake Progress",
+      "line": 800,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R026",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "6. Mistake Progress",
+      "text": "Số lần sai.",
+      "line": 804,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R027",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "6. Mistake Progress",
+      "text": "Lần ôn gần nhất.",
+      "line": 805,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R028",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "6. Mistake Progress",
+      "text": "Kết quả gần nhất.",
+      "line": 806,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M10-R029",
+      "module": "M10",
+      "area": "MISTAKE REVIEW",
+      "section": "6. Mistake Progress",
+      "text": "Tình trạng đã nắm vững hay chưa.",
+      "line": 807,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R001",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "1. Goal Setting",
+      "text": "1. Goal Setting",
+      "line": 815,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R002",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "1. Goal Setting",
+      "text": "Điểm TOEIC mục tiêu.",
+      "line": 819,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R003",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "1. Goal Setting",
+      "text": "Thời hạn dự kiến.",
+      "line": 820,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R004",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "1. Goal Setting",
+      "text": "Thời gian học mỗi ngày.",
+      "line": 821,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R005",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "1. Goal Setting",
+      "text": "Số từ vựng mỗi ngày.",
+      "line": 822,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R006",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "1. Goal Setting",
+      "text": "Số câu luyện tập mỗi ngày.",
+      "line": 823,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R007",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "2. Learning Schedule",
+      "text": "2. Learning Schedule",
+      "line": 825,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R008",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "2. Learning Schedule",
+      "text": "Ngày.",
+      "line": 829,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R009",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "2. Learning Schedule",
+      "text": "Tuần.",
+      "line": 830,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R010",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "2. Learning Schedule",
+      "text": "Chủ đề.",
+      "line": 831,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R011",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "2. Learning Schedule",
+      "text": "TOEIC Part.",
+      "line": 832,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R012",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "3. Daily Tasks",
+      "text": "3. Daily Tasks",
+      "line": 834,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R013",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "3. Daily Tasks",
+      "text": "Học bài mới.",
+      "line": 838,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R014",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "3. Daily Tasks",
+      "text": "Ôn từ vựng.",
+      "line": 839,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R015",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "3. Daily Tasks",
+      "text": "Luyện câu sai.",
+      "line": 840,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R016",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "3. Daily Tasks",
+      "text": "Luyện Listening.",
+      "line": 841,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R017",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "3. Daily Tasks",
+      "text": "Luyện Reading.",
+      "line": 842,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R018",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "4. Schedule Tracking",
+      "text": "4. Schedule Tracking",
+      "line": 844,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R019",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "4. Schedule Tracking",
+      "text": "Nhiệm vụ hoàn thành.",
+      "line": 848,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R020",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "4. Schedule Tracking",
+      "text": "Nhiệm vụ chưa hoàn thành.",
+      "line": 849,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R021",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "4. Schedule Tracking",
+      "text": "Tiến độ mục tiêu.",
+      "line": 850,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R022",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "4. Schedule Tracking",
+      "text": "Lịch sử học.",
+      "line": 851,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M11-R023",
+      "module": "M11",
+      "area": "STUDY PLANNER",
+      "section": "5. Adaptive Planner",
+      "text": "5. Adaptive Planner",
+      "line": 853,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R001",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "1. Test Modes",
+      "text": "1. Test Modes",
+      "line": 865,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R002",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "1. Test Modes",
+      "text": "Listening Test.",
+      "line": 867,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R003",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "1. Test Modes",
+      "text": "Reading Test.",
+      "line": 868,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R004",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "1. Test Modes",
+      "text": "Full TOEIC Test.",
+      "line": 869,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R005",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "2. Exam Interface",
+      "text": "2. Exam Interface",
+      "line": 871,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R006",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "2. Exam Interface",
+      "text": "Đồng hồ đếm ngược.",
+      "line": 875,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R007",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "2. Exam Interface",
+      "text": "Phiếu trả lời.",
+      "line": 876,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R008",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "2. Exam Interface",
+      "text": "Điều hướng câu.",
+      "line": 877,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R009",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "2. Exam Interface",
+      "text": "Đánh dấu câu.",
+      "line": 878,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R010",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "2. Exam Interface",
+      "text": "Lưu trạng thái.",
+      "line": 879,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R011",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "2. Exam Interface",
+      "text": "Tự động nộp khi hết giờ.",
+      "line": 880,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R012",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "3. Exam Result",
+      "text": "3. Exam Result",
+      "line": 882,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R013",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "3. Exam Result",
+      "text": "Số câu đúng.",
+      "line": 886,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R014",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "3. Exam Result",
+      "text": "Số câu sai.",
+      "line": 887,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R015",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "3. Exam Result",
+      "text": "Accuracy.",
+      "line": 888,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R016",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "3. Exam Result",
+      "text": "Kết quả theo Part.",
+      "line": 889,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R017",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "3. Exam Result",
+      "text": "Thời gian hoàn thành.",
+      "line": 890,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R018",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "4. Test Analytics",
+      "text": "4. Test Analytics",
+      "line": 894,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R019",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "4. Test Analytics",
+      "text": "So sánh các lần thi.",
+      "line": 896,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R020",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "4. Test Analytics",
+      "text": "Phân tích Part yếu.",
+      "line": 897,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R021",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "4. Test Analytics",
+      "text": "Phân tích dạng câu thường sai.",
+      "line": 898,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M12-R022",
+      "module": "M12",
+      "area": "MOCK TEST",
+      "section": "4. Test Analytics",
+      "text": "Theo dõi xu hướng tiến bộ.",
+      "line": 899,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R001",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "1. Study Activity",
+      "text": "1. Study Activity",
+      "line": 907,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R002",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "2. Learning Heatmap",
+      "text": "2. Learning Heatmap",
+      "line": 911,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R003",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "3. Accuracy by Part",
+      "text": "3. Accuracy by Part",
+      "line": 915,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R004",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "4. Vocabulary Progress",
+      "text": "4. Vocabulary Progress",
+      "line": 919,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R005",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "5. Grammar Progress",
+      "text": "5. Grammar Progress",
+      "line": 923,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R006",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "6. Score History",
+      "text": "6. Score History",
+      "line": 927,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R007",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "7. Weakness Analysis",
+      "text": "7. Weakness Analysis",
+      "line": 931,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R008",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "7. Weakness Analysis",
+      "text": "Part yếu nhất.",
+      "line": 935,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R009",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "7. Weakness Analysis",
+      "text": "Chủ đề ngữ pháp yếu.",
+      "line": 936,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R010",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "7. Weakness Analysis",
+      "text": "Từ thường quên.",
+      "line": 937,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R011",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "7. Weakness Analysis",
+      "text": "Dạng câu thường sai.",
+      "line": 938,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M13-R012",
+      "module": "M13",
+      "area": "LEARNING ANALYTICS",
+      "section": "7. Weakness Analysis",
+      "text": "Bài học cần ôn lại.",
+      "line": 939,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R001",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "1. AI Explain",
+      "text": "1. AI Explain",
+      "line": 951,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R002",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "1. AI Explain",
+      "text": "Vì sao đáp án đúng.",
+      "line": 955,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R003",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "1. AI Explain",
+      "text": "Vì sao đáp án khác sai.",
+      "line": 956,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R004",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "1. AI Explain",
+      "text": "Kiến thức ngữ pháp.",
+      "line": 957,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R005",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "1. AI Explain",
+      "text": "Từ vựng quan trọng.",
+      "line": 958,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R006",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "1. AI Explain",
+      "text": "Ví dụ tương tự.",
+      "line": 959,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R007",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "2. AI Learning Coach",
+      "text": "2. AI Learning Coach",
+      "line": 961,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R008",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "3. AI Vocabulary Assistant",
+      "text": "3. AI Vocabulary Assistant",
+      "line": 965,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R009",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "3. AI Vocabulary Assistant",
+      "text": "Giải thích từ.",
+      "line": 969,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R010",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "3. AI Vocabulary Assistant",
+      "text": "Tạo ví dụ.",
+      "line": 970,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R011",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "3. AI Vocabulary Assistant",
+      "text": "Tạo flashcard.",
+      "line": 971,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R012",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "3. AI Vocabulary Assistant",
+      "text": "Tạo câu hỏi luyện tập.",
+      "line": 972,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R013",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "4. AI Reading Assistant",
+      "text": "4. AI Reading Assistant",
+      "line": 974,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R014",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "4. AI Reading Assistant",
+      "text": "Giải thích đoạn đọc.",
+      "line": 978,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R015",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "4. AI Reading Assistant",
+      "text": "Phân tích cấu trúc câu.",
+      "line": 979,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R016",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "4. AI Reading Assistant",
+      "text": "Làm rõ từ vựng.",
+      "line": 980,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R017",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "4. AI Reading Assistant",
+      "text": "Tóm tắt nội dung.",
+      "line": 981,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M14-R018",
+      "module": "M14",
+      "area": "AI TOEIC ASSISTANT",
+      "section": "5. AI Content Generation",
+      "text": "5. AI Content Generation",
+      "line": 983,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R001",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "1. Study Streak",
+      "text": "1. Study Streak",
+      "line": 997,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R002",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "2. Experience Points",
+      "text": "2. Experience Points",
+      "line": 1001,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R003",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "2. Experience Points",
+      "text": "Hoàn thành bài học.",
+      "line": 1005,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R004",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "2. Experience Points",
+      "text": "Làm bài luyện.",
+      "line": 1006,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R005",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "2. Experience Points",
+      "text": "Ôn từ vựng.",
+      "line": 1007,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R006",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "2. Experience Points",
+      "text": "Hoàn thành nhiệm vụ.",
+      "line": 1008,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R007",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "3. Achievements",
+      "text": "3. Achievements",
+      "line": 1010,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R008",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "3. Achievements",
+      "text": "First Lesson.",
+      "line": 1014,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R009",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "3. Achievements",
+      "text": "7-Day Streak.",
+      "line": 1015,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R010",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "3. Achievements",
+      "text": "100 Words Learned.",
+      "line": 1016,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R011",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "3. Achievements",
+      "text": "Grammar Master.",
+      "line": 1017,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R012",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "3. Achievements",
+      "text": "Listening Explorer.",
+      "line": 1018,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M15-R013",
+      "module": "M15",
+      "area": "GAMIFICATION",
+      "section": "4. Weekly Goals",
+      "text": "4. Weekly Goals",
+      "line": 1020,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R001",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "1. Admin Dashboard",
+      "text": "1. Admin Dashboard",
+      "line": 1032,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R002",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "1. Admin Dashboard",
+      "text": "Tổng số file.",
+      "line": 1036,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R003",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "1. Admin Dashboard",
+      "text": "File đã xử lý.",
+      "line": 1037,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R004",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "1. Admin Dashboard",
+      "text": "File lỗi.",
+      "line": 1038,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R005",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "1. Admin Dashboard",
+      "text": "File cần kiểm duyệt.",
+      "line": 1039,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R006",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "1. Admin Dashboard",
+      "text": "Bài đã xuất bản.",
+      "line": 1040,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R007",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "1. Admin Dashboard",
+      "text": "Câu hỏi chưa xác minh.",
+      "line": 1041,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R008",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "1. Admin Dashboard",
+      "text": "Báo lỗi từ người học.",
+      "line": 1042,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R009",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "2. Content Management",
+      "line": 1044,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R010",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "Course.",
+      "line": 1048,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R011",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "Lesson.",
+      "line": 1049,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R012",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "Vocabulary.",
+      "line": 1050,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R013",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "Grammar.",
+      "line": 1051,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R014",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "Questions.",
+      "line": 1052,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R015",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "Answers.",
+      "line": 1053,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R016",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "Reading Passages.",
+      "line": 1054,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R017",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "Audio.",
+      "line": 1055,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R018",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "2. Content Management",
+      "text": "Video.",
+      "line": 1056,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R019",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "3. PDF Review",
+      "text": "3. PDF Review",
+      "line": 1058,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R020",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "4. Question Review",
+      "text": "4. Question Review",
+      "line": 1062,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R021",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "5. Import History",
+      "text": "5. Import History",
+      "line": 1066,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R022",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "6. Content Versioning",
+      "text": "6. Content Versioning",
+      "line": 1070,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R023",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "7. Permissions",
+      "text": "7. Permissions",
+      "line": 1076,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R024",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "7. Permissions",
+      "text": "Admin.",
+      "line": 1080,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R025",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "7. Permissions",
+      "text": "Content Editor.",
+      "line": 1081,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "M16-R026",
+      "module": "M16",
+      "area": "ADMIN & CONTENT MANAGEMENT",
+      "section": "7. Permissions",
+      "text": "Learner.",
+      "line": 1082,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R020",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "1. Design Direction",
+      "text": "1. Design Direction",
+      "line": 1088,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R021",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "1. Design Direction",
+      "text": "Hiện đại.",
+      "line": 1092,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R022",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "1. Design Direction",
+      "text": "Tối giản.",
+      "line": 1093,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R023",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "1. Design Direction",
+      "text": "Dễ tập trung học.",
+      "line": 1094,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R024",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "1. Design Direction",
+      "text": "Thân thiện.",
+      "line": 1095,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R025",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "1. Design Direction",
+      "text": "Responsive.",
+      "line": 1096,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R026",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "1. Design Direction",
+      "text": "Hỗ trợ Dark Mode.",
+      "line": 1097,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R027",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "1. Design Direction",
+      "text": "Phù hợp cả desktop và mobile.",
+      "line": 1098,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R028",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "2. Desktop Navigation",
+      "line": 1100,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R029",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "🏠 Dashboard",
+      "line": 1106,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R030",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "📚 Library",
+      "line": 1107,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R031",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "📖 Vocabulary",
+      "line": 1108,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R032",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "🧠 Grammar",
+      "line": 1109,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R033",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "🎧 Listening",
+      "line": 1110,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R034",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "📄 Reading",
+      "line": 1111,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R035",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "✅ Practice",
+      "line": 1112,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R036",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "📝 My Mistakes",
+      "line": 1116,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R037",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "📅 Study Planner",
+      "line": 1117,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R038",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "📊 Analytics",
+      "line": 1118,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R039",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "⭐ My Collection",
+      "line": 1119,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R040",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "⏱️ Mock Tests",
+      "line": 1123,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R041",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "🤖 AI Tutor",
+      "line": 1124,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R042",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "⚙️ Settings",
+      "line": 1128,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R043",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "2. Desktop Navigation",
+      "text": "🛠️ Admin",
+      "line": 1129,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R044",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "3. Dashboard Layout",
+      "text": "3. Dashboard Layout",
+      "line": 1133,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R045",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "4. Learning Workspace",
+      "text": "4. Learning Workspace",
+      "line": 1163,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R046",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "5. Mobile Navigation",
+      "text": "5. Mobile Navigation",
+      "line": 1175,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R047",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "5. Mobile Navigation",
+      "text": "Home.",
+      "line": 1179,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R048",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "5. Mobile Navigation",
+      "text": "Library.",
+      "line": 1180,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R049",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "5. Mobile Navigation",
+      "text": "Practice.",
+      "line": 1181,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R050",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "5. Mobile Navigation",
+      "text": "Progress.",
+      "line": 1182,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R051",
+      "module": "X",
+      "area": "IV. THIẾT KẾ GIAO DIỆN",
+      "section": "5. Mobile Navigation",
+      "text": "Profile.",
+      "line": 1183,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R052",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "1. Data Architecture",
+      "text": "1. Data Architecture",
+      "line": 1191,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R053",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "2. Data Relationships",
+      "text": "2. Data Relationships",
+      "line": 1218,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R054",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "3. Storage",
+      "text": "3. Storage",
+      "line": 1228,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R055",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "3. Storage",
+      "text": "Database lưu dữ liệu có cấu trúc.",
+      "line": 1230,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R056",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "3. Storage",
+      "text": "Google Drive hoặc file storage lưu tài liệu gốc và media.",
+      "line": 1231,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R057",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "3. Storage",
+      "text": "Cache hỗ trợ truy cập nội dung thường dùng.",
+      "line": 1232,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R058",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "3. Storage",
+      "text": "Search Index hỗ trợ tìm kiếm toàn văn.",
+      "line": 1233,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R059",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "4. Security",
+      "text": "4. Security",
+      "line": 1235,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R060",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "4. Security",
+      "text": "Xác thực người dùng.",
+      "line": 1239,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R061",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "4. Security",
+      "text": "Phân quyền truy cập.",
+      "line": 1240,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R062",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "4. Security",
+      "text": "Bảo vệ dữ liệu cá nhân.",
+      "line": 1241,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R063",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "4. Security",
+      "text": "Đáp án chấm điểm nằm ở phía máy chủ.",
+      "line": 1242,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R064",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "4. Security",
+      "text": "Không công khai tài liệu Drive riêng tư.",
+      "line": 1243,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R065",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "4. Security",
+      "text": "Kiểm tra quyền sử dụng tài liệu trước khi trích xuất và xuất bản.",
+      "line": 1244,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R066",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "4. Security",
+      "text": "Lưu lịch sử chỉnh sửa nội dung.",
+      "line": 1245,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R067",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "5. Reliability",
+      "text": "5. Reliability",
+      "line": 1247,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R068",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "5. Reliability",
+      "text": "Tự lưu tiến độ.",
+      "line": 1249,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R069",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "5. Reliability",
+      "text": "Khôi phục phiên học.",
+      "line": 1250,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R070",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "5. Reliability",
+      "text": "Nhập file không tạo dữ liệu trùng.",
+      "line": 1251,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R071",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "5. Reliability",
+      "text": "Cho phép xử lý lại file lỗi.",
+      "line": 1252,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R072",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "5. Reliability",
+      "text": "Lưu phiên bản câu hỏi.",
+      "line": 1253,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R073",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "5. Reliability",
+      "text": "Sao lưu dữ liệu.",
+      "line": 1254,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R074",
+      "module": "X",
+      "area": "V. DATABASE & SYSTEM ARCHITECTURE",
+      "section": "5. Reliability",
+      "text": "Theo dõi lỗi hệ thống.",
+      "line": 1255,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R075",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 0 — FOUNDATION",
+      "text": "PHASE 0 — FOUNDATION",
+      "line": 1261,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R076",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 0 — FOUNDATION",
+      "text": "Khôi phục quyền truy cập tài liệu.",
+      "line": 1267,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R077",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 0 — FOUNDATION",
+      "text": "Kiểm kê thư mục Google Drive.",
+      "line": 1268,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R078",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 0 — FOUNDATION",
+      "text": "Phân loại PDF, audio, video.",
+      "line": 1269,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R079",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 0 — FOUNDATION",
+      "text": "Kiểm tra các định dạng PDF mẫu.",
+      "line": 1270,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R080",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 0 — FOUNDATION",
+      "text": "Thiết kế database ban đầu.",
+      "line": 1271,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R081",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 0 — FOUNDATION",
+      "text": "Xây dựng cơ chế quản lý nguồn.",
+      "line": 1272,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R082",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 0 — FOUNDATION",
+      "text": "Thiết lập xác thực và phân quyền.",
+      "line": 1273,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R083",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "line": 1281,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R084",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "PDF Extraction.",
+      "line": 1287,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R085",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "OCR khi cần.",
+      "line": 1288,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R086",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Content Classification.",
+      "line": 1289,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R087",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "PDF Review.",
+      "line": 1290,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R088",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Grammar Lesson.",
+      "line": 1291,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R089",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Practice Questions.",
+      "line": 1292,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R090",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Answer Validation.",
+      "line": 1293,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R091",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Auto Save.",
+      "line": 1294,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R092",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Basic Progress Tracking.",
+      "line": 1295,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R093",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Mở một bài ngữ pháp được nhập từ PDF.",
+      "line": 1301,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R094",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Học lý thuyết.",
+      "line": 1302,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R095",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Làm bài tập.",
+      "line": 1303,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R096",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Xem đáp án và giải thích.",
+      "line": 1304,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R097",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Lưu kết quả.",
+      "line": 1305,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R098",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Thoát website.",
+      "line": 1306,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R099",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 1 — PDF CONTENT ENGINE + FIRST LEARNING FLOW",
+      "text": "Quay lại và tiếp tục học.",
+      "line": 1307,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R100",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "PHASE 2 — CORE LEARNING PLATFORM",
+      "line": 1313,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R101",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Smart Dashboard.",
+      "line": 1319,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R102",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Smart Library.",
+      "line": 1320,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R103",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Search & Filter.",
+      "line": 1321,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R104",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Vocabulary Library.",
+      "line": 1322,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R105",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Flashcards.",
+      "line": 1323,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R106",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Grammar Courses.",
+      "line": 1324,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R107",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Practice Engine.",
+      "line": 1325,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R108",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Continue Learning.",
+      "line": 1326,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R109",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Favorites.",
+      "line": 1327,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R110",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Personal Notes.",
+      "line": 1328,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R111",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 2 — CORE LEARNING PLATFORM",
+      "text": "Responsive Layout.",
+      "line": 1329,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R112",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "PHASE 3 — CONTENT EXPANSION",
+      "line": 1339,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R113",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Nhập thêm tài liệu.",
+      "line": 1345,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R114",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Chống trùng nội dung.",
+      "line": 1346,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R115",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Quản lý phiên bản.",
+      "line": 1347,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R116",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Xử lý file lỗi.",
+      "line": 1348,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R117",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Kiểm duyệt câu hỏi.",
+      "line": 1349,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R118",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Liên kết audio.",
+      "line": 1350,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R119",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Phân loại đầy đủ theo Part.",
+      "line": 1351,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R120",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Tìm kiếm toàn văn.",
+      "line": 1352,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R121",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Đã nhập.",
+      "line": 1360,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R122",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Đã kiểm duyệt.",
+      "line": 1361,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R123",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Đã xuất bản.",
+      "line": 1362,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R124",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Còn thiếu dữ liệu.",
+      "line": 1363,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R125",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 3 — CONTENT EXPANSION",
+      "text": "Cần xử lý lại.",
+      "line": 1364,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R126",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "PHASE 4 — ADVANCED LEARNING",
+      "line": 1368,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R127",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "Listening Studio.",
+      "line": 1374,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R128",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "Dictation Mode.",
+      "line": 1375,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R129",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "Advanced Audio Player.",
+      "line": 1376,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R130",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "Reading Studio.",
+      "line": 1377,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R131",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "Bilingual Reading.",
+      "line": 1378,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R132",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "Video Learning.",
+      "line": 1379,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R133",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "Timestamp Notes.",
+      "line": 1380,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R134",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "Mistake Review.",
+      "line": 1381,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R135",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 4 — ADVANCED LEARNING",
+      "text": "Spaced Repetition.",
+      "line": 1382,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R136",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 5 — PERSONALIZATION",
+      "text": "PHASE 5 — PERSONALIZATION",
+      "line": 1390,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R137",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 5 — PERSONALIZATION",
+      "text": "Learning Analytics.",
+      "line": 1396,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R138",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 5 — PERSONALIZATION",
+      "text": "Study Planner.",
+      "line": 1397,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R139",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 5 — PERSONALIZATION",
+      "text": "Daily Missions.",
+      "line": 1398,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R140",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 5 — PERSONALIZATION",
+      "text": "Goal Tracking.",
+      "line": 1399,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R141",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 5 — PERSONALIZATION",
+      "text": "Learning Heatmap.",
+      "line": 1400,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R142",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 5 — PERSONALIZATION",
+      "text": "Progress Charts.",
+      "line": 1401,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R143",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 5 — PERSONALIZATION",
+      "text": "Weakness Analysis.",
+      "line": 1402,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R144",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 5 — PERSONALIZATION",
+      "text": "Smart Recommendations.",
+      "line": 1403,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R145",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 6 — EXAM & INTELLIGENCE",
+      "text": "PHASE 6 — EXAM & INTELLIGENCE",
+      "line": 1411,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R146",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 6 — EXAM & INTELLIGENCE",
+      "text": "Mock Test.",
+      "line": 1417,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R147",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 6 — EXAM & INTELLIGENCE",
+      "text": "Test Analytics.",
+      "line": 1418,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R148",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 6 — EXAM & INTELLIGENCE",
+      "text": "AI Explain.",
+      "line": 1419,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R149",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 6 — EXAM & INTELLIGENCE",
+      "text": "AI Learning Coach.",
+      "line": 1420,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R150",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 6 — EXAM & INTELLIGENCE",
+      "text": "AI Vocabulary Assistant.",
+      "line": 1421,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R151",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 6 — EXAM & INTELLIGENCE",
+      "text": "AI Reading Assistant.",
+      "line": 1422,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R152",
+      "module": "X",
+      "area": "VI. ROADMAP PHÁT TRIỂN",
+      "section": "PHASE 6 — EXAM & INTELLIGENCE",
+      "text": "Gamification.",
+      "line": 1423,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R153",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Mục tiêu MVP",
+      "line": 1468,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R154",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Kết nối nguồn.",
+      "line": 1476,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R155",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Chọn PDF.",
+      "line": 1477,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R156",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Nhập nội dung.",
+      "line": 1478,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R157",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Trích xuất.",
+      "line": 1482,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R158",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Chuẩn hóa.",
+      "line": 1483,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R159",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Kiểm duyệt.",
+      "line": 1484,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R160",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Xuất bản.",
+      "line": 1485,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R161",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Hiển thị bài học thật.",
+      "line": 1489,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R162",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Lý thuyết và ví dụ.",
+      "line": 1490,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R163",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Liên kết trang nguồn.",
+      "line": 1491,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R164",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Làm câu hỏi.",
+      "line": 1495,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R165",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Chấm điểm.",
+      "line": 1496,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R166",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Xem giải thích.",
+      "line": 1497,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R167",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Lưu câu sai.",
+      "line": 1498,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R168",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Hiển thị bài đang học.",
+      "line": 1502,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R169",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Continue Learning.",
+      "line": 1503,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R170",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Tiến độ cơ bản.",
+      "line": 1504,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R171",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Lưu kết quả.",
+      "line": 1508,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R172",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Khôi phục trạng thái.",
+      "line": 1509,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R173",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "Mục tiêu MVP",
+      "text": "Lưu lịch sử làm bài.",
+      "line": 1510,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R174",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "MVP User Flow",
+      "line": 1512,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R175",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "Một PDF thật được nhập thành công.",
+      "line": 1555,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R176",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "Nội dung hiển thị đúng và có thể truy ngược nguồn.",
+      "line": 1556,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R177",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "Câu hỏi được kiểm duyệt trước khi chấm tự động.",
+      "line": 1557,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R178",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "Người học hoàn thành được một bài luyện.",
+      "line": 1558,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R179",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "Kết quả được lưu.",
+      "line": 1559,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R180",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "Lượt làm cũ không bị mất.",
+      "line": 1560,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R181",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "Tiến độ được khôi phục khi đăng nhập lại.",
+      "line": 1561,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R182",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "Nhập lại PDF không tạo nội dung trùng.",
+      "line": 1562,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R183",
+      "module": "X",
+      "area": "VIII. MVP — PHIÊN BẢN NÊN XÂY ĐẦU TIÊN",
+      "section": "MVP User Flow",
+      "text": "Giao diện hoạt động tốt trên desktop và mobile.",
+      "line": 1563,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R184",
+      "module": "X",
+      "area": "IX. NGUYÊN TẮC PHÁT TRIỂN",
+      "section": "1. Source First",
+      "text": "1. Source First",
+      "line": 1569,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R185",
+      "module": "X",
+      "area": "IX. NGUYÊN TẮC PHÁT TRIỂN",
+      "section": "2. Quality Before Quantity",
+      "text": "2. Quality Before Quantity",
+      "line": 1575,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R186",
+      "module": "X",
+      "area": "IX. NGUYÊN TẮC PHÁT TRIỂN",
+      "section": "3. Reusable Content",
+      "text": "3. Reusable Content",
+      "line": 1579,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R187",
+      "module": "X",
+      "area": "IX. NGUYÊN TẮC PHÁT TRIỂN",
+      "section": "4. User Data Ownership",
+      "text": "4. User Data Ownership",
+      "line": 1583,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R188",
+      "module": "X",
+      "area": "IX. NGUYÊN TẮC PHÁT TRIỂN",
+      "section": "5. Progressive Enhancement",
+      "text": "5. Progressive Enhancement",
+      "line": 1587,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R189",
+      "module": "X",
+      "area": "IX. NGUYÊN TẮC PHÁT TRIỂN",
+      "section": "6. Mobile Friendly",
+      "text": "6. Mobile Friendly",
+      "line": 1593,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R190",
+      "module": "X",
+      "area": "IX. NGUYÊN TẮC PHÁT TRIỂN",
+      "section": "7. Traceability",
+      "text": "7. Traceability",
+      "line": 1597,
+      "status": "unverified",
+      "evidence": []
+    },
+    {
+      "id": "X-R191",
+      "module": "X",
+      "area": "IX. NGUYÊN TẮC PHÁT TRIỂN",
+      "section": "8. Data Integrity",
+      "text": "8. Data Integrity",
+      "line": 1601,
+      "status": "unverified",
+      "evidence": []
+    }
+  ]
+}

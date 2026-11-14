@@ -81,3 +81,7 @@ Sites sử dụng `dist/server/index.js`; Worker nhúng tài nguyên từ `dist/
 Tiến độ trên trình duyệt lưu trong localStorage; lịch sử bài làm đầy đủ lưu trong IndexedDB. Các khóa lưu trữ và schema không thay đổi trong lần sắp xếp thư mục này. Bản sao theo tài khoản là thủ công, có phát hiện xung đột giữa thiết bị. Không lưu Google tokens hoặc định danh quản trị vào source/client.
 
 Chi tiết: [cấu trúc và build](docs/PROJECT-STRUCTURE.md), [lưu trữ tài khoản](docs/ACCOUNT-STORAGE.md), [quản trị nội dung](docs/CONTENT-REVIEW.md), [kế hoạch học](docs/STUDY-PLANNER.md).
+
+## Từ tài liệu đến bài học nhanh
+
+Trang /#imports dành cho Admin/Editor: theo dõi PDF, nhập OCR theo trang, kiểm tra bài biên soạn, duyệt và xuất bản. Trang /#document?id=DRIVE_FILE_ID giúp học ý chính, tự nhớ, luyện câu và ôn thẻ từ một tài liệu đã chuyển đổi. Công cụ npm run content:extract tạo bản trích xuất/OCR để kiểm tra; xem docs/DOCUMENT-PIPELINE.md. Checklist đầy đủ của mục tiêu nằm ở docs/MASTER-PLAN-AUDIT.md; npm run plan:audit tái tạo bảng đối chiếu từ Master Plan. Toàn bộ kế hoạch vẫn đang được triển khai.

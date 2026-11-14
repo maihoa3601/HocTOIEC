@@ -12,6 +12,8 @@
     "build": "node scripts/build.mjs",
     "preview": "node scripts/preview.mjs",
     "test": "node scripts/test.mjs",
-    "data:build": "node scripts/build-learning-bank.mjs"
+    "data:build": "node scripts/build-learning-bank.mjs",
+    "content:extract": "python scripts/extract-pdf.py",
+    "plan:audit": "node scripts/plan-audit.mjs"
   }
 }

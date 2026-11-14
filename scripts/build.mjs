@@ -35,11 +35,12 @@ export async function buildProject() {
   assets['/learning-bank.json']={body:JSON.stringify(publicLearningBank(bank,metadata)),type:types.json};
   assets['/content-version.json']={body:JSON.stringify(metadata),type:types.json};
 
+  const importer=await readFile(path.join(projectRoot,'src','server','document-imports.mjs'),'utf8');
   const content=await readFile(path.join(projectRoot,'src','server','content-admin.mjs'),'utf8');
   const server=await readFile(path.join(projectRoot,'src','server','index.mjs'),'utf8');
   const imported="import {createContentService,contentRole} from './content-admin.mjs';";
   if(!server.includes(imported))throw Error('Server entry imports changed; update the Worker build');
-  const bundle=content+'\n'+server.replace(imported,'')+'\nexport default createWorker('+JSON.stringify({assets,bank,...metadata})+');\n';
+  const bundle=importer+'\n'+content+'\n'+server.replace(imported,'').replace("import {createDocumentImports} from './document-imports.mjs';",'')+'\nexport default createWorker('+JSON.stringify({assets,bank,...metadata})+');\n';
   const manifest=await readFile(path.join(projectRoot,'.openai','hosting.json'),'utf8');
 
   await rm(output,{recursive:true,force:true});

@@ -27,7 +27,7 @@ assert.equal(diskBank.contentVersion,safe.contentVersion);
 for(const [i,set] of diskBank.sets.entries())for(const [j,question] of set.questions.entries())assert.deepEqual(question,safe.sets[i].questions[j],'Generated client question differs from the public API');
 const catalog=JSON.parse(await readFile(new URL('data/catalog.json',root),'utf8'));assert.deepEqual(await (await get('/catalog.json')).json(),catalog);
 assert.deepEqual(await (await get('/content-version.json')).json(),meta);
-for(const file of ['server/index.js','src/server/index.mjs','data/learning-bank.json','.env.example'])assert.equal((await get('/'+file)).status,404);
+for(const file of ['server/index.js','src/server/index.mjs','data/learning-bank.json','data/import-bundles/unit11.review.json','import-bundles/unit11.review.json','.env.example'])assert.equal((await get('/'+file)).status,404);
 assert.equal((await get('/api/admin/overview')).status,401);
 const set=bank.sets[0],q=set.questions[0];
 const result=await worker.fetch(new Request(origin+'/api/grade',{method:'POST',headers:{origin,'content-type':'application/json'},body:JSON.stringify({setId:set.id,questionIds:[q.id],answers:{[q.id]:q.answer},bankVersion:meta.bankVersion,saveHistory:false})}));

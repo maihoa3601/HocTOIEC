@@ -1,3 +1,4 @@
+import {createDocumentImports} from './document-imports.mjs';
 import {createContentService,contentRole} from './content-admin.mjs';
 const json=(value,status=200)=>new Response(JSON.stringify(value),{status,headers:{'content-type':'application/json; charset=utf-8','cache-control':'no-store','x-content-type-options':'nosniff'}});
 const normalize=value=>String(value??'').normalize('NFKC').replace(/[’‘]/g,"'").replace(/[,;:]/g,'').trim().replace(/[.!?]+$/g,'').trim().replace(/\s+/g,' ').toLowerCase();
@@ -5,12 +6,14 @@ export function scoreQuestions(questions,answers){const results=questions.map(q=
 async function readJSON(request){const reader=request.body?.getReader();if(!reader)throw new Error('Thiếu dữ liệu gửi lên.');let size=0;const chunks=[];while(true){const {done,value}=await reader.read();if(done)break;size+=value.byteLength;if(size>5500000){await reader.cancel();throw new Error('Dữ liệu vượt quá 5 MB.')}chunks.push(value)}const bytes=new Uint8Array(size);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length}return JSON.parse(new TextDecoder().decode(bytes))}
 const idOK=id=>typeof id==='string'&&/^[a-zA-Z0-9_-]{8,100}$/.test(id);
 export function createWorker({assets,bank,bankVersion,questionVersions}){
- const content=createContentService({bank,bankVersion,questionVersions,score:scoreQuestions});
+ const imports=createDocumentImports({catalog:assets['/catalog.json']?JSON.parse(assets['/catalog.json'].body):{items:[]},bank});
+ const content=createContentService({bank,bankVersion,questionVersions,score:scoreQuestions,loadPublished:imports.loadPublished});
  const questions=new Map(bank.sets.flatMap(s=>s.questions.map(q=>[q.id,{...q,setId:s.id,topic:s.title,version:questionVersions[q.id]}]))),sets=new Set(bank.sets.map(s=>s.id));
  return {async fetch(request,env={}){try{const url=new URL(request.url),path=url.pathname,user=request.headers.get('oai-authenticated-user-id');
   if(path==='/learning-bank.json')return json(await content.publicBank(env));
   if(path==='/content-version.json'){const current=await content.load(env);return json({bankVersion:current.bankVersion,questionVersions:current.versions})}
   if(path==='/api/grade'&&request.method==='POST')return await content.grade(request,env,user,readJSON);
+  if(path.startsWith('/api/admin/imports')||path.startsWith('/api/admin/sources'))return await imports.handle(request,env,user,contentRole(user,env),readJSON,()=>content.load(env));
   if(path.startsWith('/api/admin/'))return await content.admin(request,env,user,readJSON);
   if(path.startsWith('/api/')){
    if(path==='/api/session'&&request.method==='GET')return json({signedIn:Boolean(user),storage:Boolean(env.DB),role:contentRole(user,env),bankVersion});
