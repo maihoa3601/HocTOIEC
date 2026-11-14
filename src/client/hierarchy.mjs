@@ -1,3 +1,4 @@
+import {coursePresentation} from './course-presentation.mjs';
 import {cleanTitle,isFolder,isVideo,normalize} from './core.mjs';
 
 export const courseGroups = [
@@ -21,6 +22,7 @@ export function resourceLabel(file,parentName='') {
 // Every resource belongs to its actual parent. Aggregates let navigation show
 // subtree counts without copying resources into unrelated chapters.
 export function buildHierarchy(nodes, resources) {
+  ({nodes,resources}=coursePresentation(nodes,resources));
   const byId=new Map(nodes.map(n=>[n.id,n]));
   const folders=new Map(nodes.filter(isFolder).map(n=>[n.id,{node:n,folders:[],files:[],videos:[],docs:[]}]));
   for(const n of nodes.filter(isFolder))folders.get(n.parent)?.folders.push(n);
