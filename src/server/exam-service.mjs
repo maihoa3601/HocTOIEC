@@ -229,12 +229,70 @@ export function createExamService({ examBank = { exams: [], contents: {} }, cont
       return ejson({ exams: [...exams.values()] });
     }
 
-    if (path.startsWith('/api/exams/') && request.method === 'GET') {
-      const examId = decodeURIComponent(path.slice('/api/exams/'.length));
-      const exam = exams.get(examId);
-      if (!exam) return ejson({ error: 'Không tìm thấy đề thi.' }, 404);
-      const content = sanitizePublicContent(contents[examId]);
-      return ejson({ exam, content });
+    if (path.startsWith('/api/exams/')) {
+      const sub = path.slice('/api/exams/'.length);
+      if (sub.endsWith('/check-question') && request.method === 'POST') {
+        const examId = decodeURIComponent(sub.slice(0, -'/check-question'.length));
+        const body = await readJSON(request);
+        const content = contents[examId];
+        const q = content?.questions?.find((x) => x.id === body.questionId);
+        const priv = content?.privateData?.[body.questionId];
+        if (!q || !priv) return ejson({ error: 'Không tìm thấy câu hỏi.' }, 404);
+        return ejson({
+          questionId: q.id,
+          answer: priv.answer,
+          explanation: priv.explanation,
+          evidence: priv.evidence || '',
+          transcript: priv.transcript || '',
+          reviewStatus: priv.reviewStatus || 'approved'
+        });
+      }
+
+      if (sub.endsWith('/grade') && request.method === 'POST') {
+        const examId = decodeURIComponent(sub.slice(0, -'/grade'.length));
+        const exam = exams.get(examId);
+        const content = contents[examId];
+        if (!exam || !content) return ejson({ error: 'Không tìm thấy đề thi.' }, 404);
+        const body = await readJSON(request);
+        const scopeType = ['full', 'skill', 'part'].includes(body.scopeType) ? body.scopeType : 'full';
+        const scopeParts = Array.isArray(body.scopeParts) && body.scopeParts.length ? body.scopeParts.map(Number) : [1, 2, 3, 4, 5, 6, 7];
+        const selectedQuestions = filterQuestionsByScope(content, scopeType, scopeParts);
+        const answers = body.answers && typeof body.answers === 'object' ? body.answers : {};
+        const score = gradeExamQuestions(selectedQuestions, content.privateData || {}, answers);
+        const now = new Date().toISOString();
+        const usedGroupIds = new Set(selectedQuestions.map((q) => q.groupId));
+        const snapshot = {
+          schema: 1,
+          attemptId: typeof body.attemptId === 'string' && body.attemptId ? body.attemptId : `guest_${crypto.randomUUID()}`,
+          examId: exam.id,
+          examTitle: exam.title,
+          versionId: exam.versionId,
+          mode: body.mode || 'practice',
+          scopeType,
+          scopeParts,
+          sourceOrigin: 'guest-graded',
+          startedAt: body.startedAt || now,
+          submittedAt: now,
+          answers,
+          flags: Array.isArray(body.flags) ? body.flags : [],
+          timing: body.timing && typeof body.timing === 'object' ? body.timing : {},
+          score,
+          groups: (content.groups || []).filter((g) => usedGroupIds.has(g.id)),
+          questions: selectedQuestions.map((q) => ({
+            ...q,
+            ...(content.privateData?.[q.id] || {})
+          }))
+        };
+        return ejson({ result: snapshot });
+      }
+
+      if (request.method === 'GET') {
+        const examId = decodeURIComponent(sub);
+        const exam = exams.get(examId);
+        if (!exam) return ejson({ error: 'Không tìm thấy đề thi.' }, 404);
+        const content = sanitizePublicContent(contents[examId]);
+        return ejson({ exam, content });
+      }
     }
 
     // Authenticated endpoints

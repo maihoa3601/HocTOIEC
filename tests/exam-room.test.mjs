@@ -54,6 +54,36 @@ for (const q of publicPilot.data.content.questions) {
   if (q.part === 2) assert.deepEqual(q.options, ['A', 'B', 'C']);
 }
 
+for (const exam of examBank.exams) {
+  const content = examBank.contents[exam.id];
+  assert.ok(content, `Exam ${exam.id} must have content in exam-bank`);
+  assert.equal(validateExamContent(content).length, 0, `Exam ${exam.id} must pass structural validation`);
+  assert.equal(content.questions.length, 200, `Exam ${exam.id} must have 200 questions`);
+  assert.equal(canStartMode(exam, 'practice'), true, `Exam ${exam.id} must be startable in practice mode`);
+}
+
+// Check non-pilot exam public API endpoint
+const publicEts24 = await req('/api/exams/ets-2024-test-01', 'GET', null, null);
+assert.equal(publicEts24.status, 200);
+assert.equal(publicEts24.data.content.questions.length, 200);
+assert.equal(publicEts24.data.content.questions[0].answer, undefined);
+
+// Check public guest practice check endpoint
+const guestCheck = await req('/api/exams/ets-2024-test-01/check-question', 'POST', { questionId: publicEts24.data.content.questions[0].id }, null);
+assert.equal(guestCheck.status, 200);
+assert.ok(guestCheck.data.explanation);
+assert.equal(typeof guestCheck.data.answer, 'number');
+
+// Check public guest grading endpoint
+const guestGrade = await req('/api/exams/ets-2024-test-01/grade', 'POST', {
+  answers: { [publicEts24.data.content.questions[0].id]: guestCheck.data.answer },
+  scopeType: 'part',
+  scopeParts: [1]
+}, null);
+assert.equal(guestGrade.status, 200);
+assert.equal(guestGrade.data.result.score.total, 6);
+assert.equal(guestGrade.data.result.score.correct, 1);
+
 // 2. Media & Readiness gating (A1 + A4)
 const ets24 = publicList.data.exams.find((e) => e.id === 'ets-2024-test-01');
 const ets25 = publicList.data.exams.find((e) => e.id === 'ets-2025-test-01');

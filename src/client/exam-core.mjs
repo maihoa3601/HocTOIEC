@@ -162,7 +162,7 @@ export function filterExams(exams, filters = {}, attemptStats = {}) {
 export function canStartMode(exam, mode) {
   if (!exam) return false;
   if (mode === 'simulation') return Boolean(exam.simulationEligible) && exam.readiness === 'full';
-  if (mode === 'practice') return exam.readiness === 'full' || exam.readiness === 'graded';
+  if (mode === 'practice') return ['full', 'graded', 'practice', 'reference'].includes(exam.readiness);
   return false;
 }
 

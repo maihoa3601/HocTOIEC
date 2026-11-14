@@ -84,10 +84,20 @@ export function createExamRoom(ctx) {
   }
 
   async function ensureLoaded() {
-    if (loaded) return;
+    if (loaded && catalog.length > 0) return;
     try {
       const data = await api('exams');
-      catalog = data.exams || [];
+      if (Array.isArray(data.exams) && data.exams.length > 0) {
+        catalog = data.exams;
+        writeLocal('toeic_exam_catalog_cache', catalog);
+      }
+    } catch {
+      const cached = readLocal('toeic_exam_catalog_cache', null);
+      if (Array.isArray(cached) && cached.length > 0) {
+        catalog = cached;
+      }
+    }
+    try {
       const sess = await api('session').catch(() => ({ signedIn: false }));
       signedIn = Boolean(sess.signedIn);
       if (signedIn) {
@@ -96,10 +106,11 @@ export function createExamRoom(ctx) {
         const localResults = readLocal(LOCAL_RESULTS_KEY, []);
         results = Array.isArray(localResults) ? localResults : [];
       }
-      loaded = true;
     } catch {
-      catalog = [];
+      const localResults = readLocal(LOCAL_RESULTS_KEY, []);
+      results = Array.isArray(localResults) ? localResults : [];
     }
+    loaded = true;
   }
 
   function setMobilePane(pane) {
@@ -465,7 +476,7 @@ export function createExamRoom(ctx) {
             <strong>${esc(q.prompt)}</strong>
             <div style="display:flex;gap:6px">
               <button type="button" class="btn btn-secondary" data-exam-flag="${esc(q.id)}" aria-pressed="${flagged}">${flagged ? '★ Đã đánh dấu' : '☆ Đánh dấu'}</button>
-              ${activeRun.attempt.mode === 'practice' && signedIn ? `<button type="button" class="btn btn-soft" data-exam-check="${esc(q.id)}">Kiểm tra</button>` : ''}
+              ${activeRun.attempt.mode === 'practice' ? `<button type="button" class="btn btn-soft" data-exam-check="${esc(q.id)}">Kiểm tra</button>` : ''}
             </div>
           </div>
           <div class="exam-options" role="radiogroup" aria-label="Đáp án câu ${q.number}">
@@ -695,7 +706,31 @@ export function createExamRoom(ctx) {
         toast('Chưa gửi được bài do mất mạng. Bài làm đã được khóa cục bộ, bấm Nộp bài lại khi có mạng.');
       }
     } else {
-      toast('Chế độ khách: hãy đăng nhập tài khoản để chấm điểm máy chủ và lưu lịch sử.');
+      try {
+        const res = await api(`exams/${encodeURIComponent(activeRun.exam.id)}/grade`, 'POST', {
+          attemptId: activeRun.attempt.attempt_id,
+          mode: activeRun.attempt.mode,
+          scopeType: activeRun.attempt.scope_type,
+          scopeParts: activeRun.attempt.scope_parts,
+          startedAt: activeRun.attempt.started_at,
+          answers: activeRun.attempt.answers,
+          flags: activeRun.attempt.flags,
+          timing: activeRun.attempt.timing || {}
+        });
+        activeResult = res.result;
+        const localResults = readLocal(LOCAL_RESULTS_KEY, []);
+        localResults.unshift(activeResult);
+        writeLocal(LOCAL_RESULTS_KEY, localResults.slice(0, 50));
+        results = localResults;
+        const drafts = readLocal(LOCAL_DRAFTS_KEY, {});
+        delete drafts[activeRun.attempt.attempt_id];
+        writeLocal(LOCAL_DRAFTS_KEY, drafts);
+        activeRun = null;
+        location.hash = '#exam-result?id=' + encodeURIComponent(activeResult.attemptId);
+        toast('Đã nộp bài và chấm điểm thành công.');
+      } catch (err) {
+        toast('Lỗi khi chấm điểm: ' + (err.message || 'Không thể gửi bài'));
+      }
     }
   }
 
@@ -712,6 +747,12 @@ export function createExamRoom(ctx) {
           })
           .catch(() => {});
         return '<div class="loading"><span class="spinner"></span>Đang tải kết quả…</div>';
+      }
+      const localResults = readLocal(LOCAL_RESULTS_KEY, []);
+      const matched = localResults.find((r) => r.attemptId === id);
+      if (matched) {
+        activeResult = matched;
+        return renderResultView(activeResult);
       }
       return `<div class="empty"><h3>Chưa có kết quả</h3><a class="btn btn-primary" href="#exams">Về kho đề</a></div>`;
     }
@@ -1280,10 +1321,13 @@ export function createExamRoom(ctx) {
     } else if (b.hasAttribute('data-exam-check')) {
       if (!activeRun) return;
       const qid = b.dataset.examCheck;
-      void api(`exam-attempts/${encodeURIComponent(activeRun.attempt.attempt_id)}/check-question`, 'POST', { questionId: qid }).then((res) => {
+      const checkPromise = (signedIn && !activeRun.attempt.guest)
+        ? api(`exam-attempts/${encodeURIComponent(activeRun.attempt.attempt_id)}/check-question`, 'POST', { questionId: qid })
+        : api(`exams/${encodeURIComponent(activeRun.exam.id)}/check-question`, 'POST', { questionId: qid });
+      void checkPromise.then((res) => {
         activeRun.checkCache[qid] = res;
         $('#exam-content-pane').innerHTML = renderGroupContent();
-      });
+      }).catch((err) => toast('Không kiểm tra được: ' + (err.message || 'Lỗi kết nối')));
     } else if (b.hasAttribute('data-exam-toggle-pdf')) {
       if (!activeRun) return;
       activeRun.showPdfDrawer = !activeRun.showPdfDrawer;
@@ -1524,11 +1568,14 @@ export function createExamRoom(ctx) {
     }
 
     // Enter to check in practice mode
-    if (e.key === 'Enter' && activeRun.attempt.mode === 'practice' && signedIn) {
-      void api(`exam-attempts/${encodeURIComponent(activeRun.attempt.attempt_id)}/check-question`, 'POST', { questionId: targetQ.id }).then((res) => {
+    if (e.key === 'Enter' && activeRun.attempt.mode === 'practice') {
+      const checkPromise = (signedIn && !activeRun.attempt.guest)
+        ? api(`exam-attempts/${encodeURIComponent(activeRun.attempt.attempt_id)}/check-question`, 'POST', { questionId: targetQ.id })
+        : api(`exams/${encodeURIComponent(activeRun.exam.id)}/check-question`, 'POST', { questionId: targetQ.id });
+      void checkPromise.then((res) => {
         activeRun.checkCache[targetQ.id] = res;
         $('#exam-content-pane').innerHTML = renderGroupContent();
-      });
+      }).catch(() => {});
     }
   });
 

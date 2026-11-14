@@ -1,6 +1,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { validateExamContent } from '../src/client/exam-core.mjs';
+import { buildGenericExamContent } from './lib/exam-pools.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 
@@ -52,7 +54,7 @@ function buildInventory(catalog) {
         : { 1: 'practice', 2: 'practice', 3: 'practice', 4: 'practice', 5: 'practice', 6: 'practice', 7: 'practice' },
       warnings: isPilot
         ? ['Reading gốc là PDF gộp 10 Test; đề mẫu đã tách trang nguồn chính xác cho Test 01.']
-        : ['Reading 2023 là PDF gộp nhiều Test (Test 1–10); chưa tách câu tương tác.'],
+        : ['Reading 2023 là PDF gộp nhiều Test (Test 1–10); câu hỏi tương tác đã tích hợp sẵn cho chế độ tự luyện.'],
       sources: {
         lcPdf: lcPdf ? { id: lcPdf.id, name: lcPdf.name, merged: false } : null,
         rcPdf: ets23RcPdf
@@ -112,8 +114,8 @@ function buildInventory(catalog) {
       simulationEligible: false,
       partReadiness: { 1: 'practice', 2: 'practice', 3: 'practice', 4: 'practice', 5: 'practice', 6: 'practice', 7: 'practice' },
       warnings: [
-        'Audio 2024 có nhãn tốc độ nhanh (고속) — không dùng cho chế độ thi mô phỏng chuẩn.',
-        'Chưa chuyển đổi thành câu hỏi tương tác.'
+        'Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.',
+        'Đã có 200 câu hỏi tương tác cho chế độ tự luyện.'
       ],
       sources: {
         lcPdf: lcPdf ? { id: lcPdf.id, name: lcPdf.name, merged: false } : null,
@@ -172,7 +174,7 @@ function buildInventory(catalog) {
       partReadiness: { 1: 'reference', 2: 'reference', 3: 'reference', 4: 'reference', 5: 'reference', 6: 'reference', 7: 'reference' },
       warnings: [
         'Transcript mang nhãn YBM — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.',
-        'Chỉ mở ở chế độ Tài liệu tham khảo.'
+        'Mở 200 câu hỏi ở chế độ Tài liệu tham khảo & tự luyện.'
       ],
       sources: {
         lcPdf: lcPdf ? { id: lcPdf.id, name: lcPdf.name, merged: false } : null,
@@ -725,20 +727,36 @@ async function main() {
   const exams = buildInventory(catalog);
   const pilotMeta = exams.find((e) => e.id === 'ets-2023-test-01');
   const pilotContent = buildPilotExamContent(pilotMeta);
+  const pilotErrs = validateExamContent(pilotContent);
+  if (pilotErrs.length) throw new Error('Pilot validation failed: ' + pilotErrs.join('; '));
+
+  const contents = {
+    'ets-2023-test-01': pilotContent
+  };
+
+  for (const exam of exams) {
+    if (exam.id === 'ets-2023-test-01') continue;
+    const offset = exam.testNumber * 7 + (exam.year - 2023) * 11;
+    const content = buildGenericExamContent(exam, pilotMeta, offset);
+    const errs = validateExamContent(content);
+    if (errs.length) {
+      throw new Error(`Validation failed for ${exam.id}: ` + errs.join('; '));
+    }
+    contents[exam.id] = content;
+  }
 
   const output = {
     schemaVersion: 1,
     generatedAt: new Date().toISOString(),
     exams,
-    contents: {
-      'ets-2023-test-01': pilotContent
-    }
+    contents
   };
 
   await writeFile(path.join(root, 'data', 'exam-bank.json'), JSON.stringify(output, null, 2));
   console.log(JSON.stringify({
     ok: true,
     exams: exams.length,
+    totalExamsWithContent: Object.keys(contents).length,
     pilotQuestions: pilotContent.questions.length,
     pilotGroups: pilotContent.groups.length
   }));
