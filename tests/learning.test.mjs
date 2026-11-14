@@ -2,7 +2,8 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {buildHierarchy} from '../src/client/hierarchy.mjs';
 import {isLearningResource} from '../src/client/core.mjs';
-import {answerText,gradeQuestion,gradeQuiz,freshLearning,sanitizeLearning,applyQuizResult,materialRole,studyMaterials,scheduleCard} from '../src/client/learning-core.mjs';
+import {answerText,gradeQuestion,gradeQuiz,freshLearning,sanitizeLearning,applyQuizResult,materialRole,studyMaterials,scheduleCard,formatDuration} from '../src/client/learning-core.mjs';
+import {canSpeak,speakEnglish} from '../src/client/speech.mjs';
 const catalog=JSON.parse(await readFile(new URL('../data/catalog.json',import.meta.url),'utf8'));
 const bank=JSON.parse(await readFile(new URL('../data/learning-bank.json',import.meta.url),'utf8'));
 const byId=new Map(catalog.items.map(f=>[f.id,f])),ids=new Set(byId.keys());
@@ -45,4 +46,17 @@ console.log(JSON.stringify({ok:true,sets:bank.sets.length,questions:qids.size,ca
 const newState=freshLearning(),modeKey=first.id+':cloze';newState.drafts[first.id]={answers:{[q.id]:0}};newState.drafts[modeKey]={answers:{[q.id]:0}};applyQuizResult(newState,first.id,[q],{[q.id]:q.answer},modeKey);assert.ok(newState.drafts[first.id]);assert.equal(newState.drafts[modeKey],undefined,'Submitting a mode preserves the comprehensive draft');
 const modeSaved=sanitizeLearning({drafts:{[modeKey]:{answers:{[q.id]:0}}},lessonRead:{[first.id]:'2026-11-13T10:00:00Z',unknown:'x'},games:[{setId:first.id,type:'match',total:6,correct:6,tries:8,date:'2026-11-13T10:00:00Z'},{setId:'unknown',type:'match',total:6,correct:6,tries:8,date:'2026-11-13T10:00:00Z'}]},bank,ids);assert.ok(modeSaved.drafts[modeKey]);assert.equal(Object.keys(modeSaved.lessonRead).length,1);assert.equal(modeSaved.games.length,1);
 for(const set of bank.sets)for(const section of set.lesson?.sections||[]){assert.ok(section.heading&&section.points.length);assert.ok(set.sources.some(s=>s.id===section.sourceId&&s.pages.includes(section.page)));for(const example of section.examples||[]){assert.ok(example.en&&example.vi);if(example.sourceId)assert.ok(set.sources.some(s=>s.id===example.sourceId&&s.pages.includes(example.page)));}}
-console.log(JSON.stringify({ok:true,modeDrafts:true,newProgressFields:true,lessonSources:true}));
+assert.equal(formatDuration(0),'00:00');assert.equal(formatDuration(65000),'01:05');assert.equal(formatDuration(3661000),'1:01:01');
+assert.equal(canSpeak(),false);assert.equal(speakEnglish('hello'),false);
+const metaState=freshLearning();
+applyQuizResult(metaState,first.id,[q],{[q.id]:(q.answer+1)%q.options.length});
+assert.equal(metaState.mistakeMeta[q.id].count,1);
+applyQuizResult(metaState,first.id,[q],{[q.id]:(q.answer+1)%q.options.length});
+assert.equal(metaState.mistakeMeta[q.id].count,2);
+const sanitizedMeta=sanitizeLearning({drafts:{[first.id]:{answers:{[q.id]:0},flags:[q.id,q.id,'unknown']}},mistakeMeta:{[q.id]:{reason:'grammar',note:'Nhầm thì',count:3},unknown:{reason:'vocab',note:'x',count:1},[first.questions[1].id]:{reason:'invalid',note:'ok',count:0}}},bank,ids);
+assert.deepEqual(sanitizedMeta.drafts[first.id].flags,[q.id]);
+assert.equal(sanitizedMeta.mistakeMeta[q.id].reason,'grammar');
+assert.equal(sanitizedMeta.mistakeMeta[q.id].count,3);
+assert.equal(sanitizedMeta.mistakeMeta[first.questions[1].id].reason,'');
+assert.equal(sanitizedMeta.mistakeMeta.unknown,undefined);
+console.log(JSON.stringify({ok:true,modeDrafts:true,newProgressFields:true,lessonSources:true,learningEnhancements:true}));

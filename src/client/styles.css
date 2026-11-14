@@ -8,3 +8,31 @@
 @media(max-width:390px){main{padding-left:15px;padding-right:15px}.hero h2{font-size:24px}.hero-content{max-width:85%}.hero-art{right:-50px;opacity:.7}.hero p{max-width:210px}.course-art .art-word{font-size:25px}.course-art .art-symbol{right:10px}.course-art .art-symbol .icon{width:27px}.btn{padding:9px 12px}.source-banner{padding:17px}.source-summary{gap:15px}}
 @media(max-width:760px){.hero-content{max-width:100%;width:100%}.hero h2{font-size:25px}.hero p{max-width:185px}.hero-art{right:-42px;bottom:-25px;transform:scale(.7);transform-origin:bottom right;opacity:1}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+.row-note-badge{font-size:10px;padding:3px 8px;border-radius:999px;background:#f0ecfc;color:#5d49bf;white-space:nowrap}
+.row-complete-btn.is-done{background:#eaf4e8;color:#38633d}
+.course-title-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.folder-progress-track{margin-top:8px;max-width:260px}
+.continue-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.dashboard-courses-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:24px}
+.dashboard-course-card{display:grid;gap:8px;padding:16px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
+.dashboard-course-card strong{font-size:13px;line-height:1.5;color:var(--ink)}
+.dashboard-course-card small{font-size:11px;color:var(--muted)}
+@media(max-width:760px){.dashboard-courses-grid{grid-template-columns:1fr}}
+
+html.dark{color-scheme:dark;--bg:#111520;--paper:#181d2c;--ink:#e8edf7;--muted:#9aa6be;--line:#2a3247;--purple:#9c88f5;--purple-dark:#836ce8;--lilac:#262342}
+html.dark body{background:var(--bg);color:var(--ink)}
+html.dark .sidebar,html.dark .topbar,html.dark .panel,html.dark .goal-card,html.dark .stat,html.dark .course-card,html.dark .daily-card,html.dark .continue-strip,html.dark .video-row,html.dark .folder-group,html.dark .note-card,html.dark .timer-card,html.dark .stage-content,html.dark .search-box,html.dark .filters select,html.dark .form-field select,html.dark .chip,html.dark .date-badge,html.dark .btn-secondary,html.dark .learning-stat-strip>span,html.dark .practice-card,html.dark .question-panel,html.dark .quiz-map,html.dark .answer-review-card,html.dark .flashcard,html.dark .dictation-card,html.dark .study-video-box,html.dark .study-document-box,html.dark .study-side,html.dark .active-topic-card,html.dark .active-capabilities>div,html.dark .lesson-section,html.dark .active-lesson-practice,html.dark .matching-game,html.dark .sentence-game,html.dark .topic-progress-list article,html.dark .v2-word,html.dark .dashboard-course-card,html.dark .module-card,html.dark .course-outline,html.dark .folder-overview,html.dark .mistake-list article,html.dark .instant-feedback,html.dark .study-focus-inline{background:var(--paper);border-color:var(--line);color:var(--ink)}
+html.dark .topbar{background:rgba(17,21,32,.85)}
+html.dark h1,html.dark h2,html.dark h3,html.dark .course-card h3,html.dark .module-card h3,html.dark .video-info h3,html.dark .lesson-examples strong,html.dark .practice-card h3,html.dark .mistake-list h3,html.dark .answer-review-card h3{color:var(--ink)}
+html.dark .subtitle,html.dark .fine-print,html.dark .result-summary,html.dark .video-info p,html.dark .course-meta,html.dark .course-bottom,html.dark .nav-item,html.dark .practice-card>p,html.dark .question-progress,html.dark .lesson-section>ul,html.dark .lesson-section>p,html.dark .lesson-examples span,html.dark .active-topic-card>p,html.dark .topic-progress-copy p,html.dark .answer-review-card p{color:var(--muted)}
+html.dark .hero,html.dark .learning-note,html.dark .review-intro,html.dark .quiz-result,html.dark .lesson-overview,html.dark .active-intro,html.dark .active-journey,html.dark .study-start-strip,html.dark .document-study-hero{background:#1f1d38;border-color:#35305c}
+html.dark .workspace,html.dark .encouragement,html.dark .study-side-tabs,html.dark .answer-explanation,html.dark .lesson-examples>div,html.dark .sentence-meaning,html.dark .dictation-meaning{background:#21273a;border-color:var(--line)}
+html.dark .note-editor,html.dark .written-answer input,html.dark .worksheet-row input,html.dark .mistake-filters select,html.dark .mistake-meta-row select,html.dark .mistake-meta-row input,html.dark .practice-course-filter select,html.dark .study-resource-label select,html.dark .active-course-filter select,html.dark .worksheet-choice-btn,html.dark .match-tile,html.dark .sentence-word-pool>button{background:#141824;border-color:var(--line);color:var(--ink)}
+html.dark .quiz-option{border-color:var(--line);color:var(--ink)}
+html.dark .quiz-option:hover{background:#242140;border-color:#6956b8}
+html.dark .quiz-option.chosen{background:#2c2652;border-color:var(--purple);color:#e5defe}
+html.dark .option-letter,html.dark .note-tag-chip{background:#262342;color:#c3b5fc;border-color:#3b3566}
+html.dark .player-dialog,html.dark .settings-dialog{background:var(--bg);color:var(--ink)}
+html.dark .player-header,html.dark .player-aside{background:var(--paper);border-color:var(--line)}
+html.dark .playlist button.active,html.dark .nav-item.active{background:var(--lilac);color:var(--purple)}

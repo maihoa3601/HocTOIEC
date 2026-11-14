@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="./study-planner.css">
   <link rel="stylesheet" href="./document-study.css">
   <link rel="stylesheet" href="./import-authoring.css">
+  <link rel="stylesheet" href="./exam-room.css">
+  <link rel="stylesheet" href="./study-room.css">
   <script type="module" src="./app.js"></script>
 </head>
 <body>
@@ -26,14 +28,26 @@
     <div class="workspace"><span class="workspace-avatar">S</span><div>Không gian của bạn<small>Học theo nhịp riêng</small></div><span class="tiny-star">✧</span></div>
     <div class="nav-label">GÓC HỌC TẬP</div>
     <nav aria-label="Điều hướng chính" id="nav"></nav>
+    <div class="sidebar-secondary" id="sidebar-secondary" style="margin-top:14px;border-top:1px solid var(--line);padding-top:10px;display:grid;gap:6px">
+      <a href="#notes" class="nav-item" data-nav-label="Sổ ghi chú"><span id="side-ic-notes"></span><span>Sổ ghi chú</span></a>
+      <a href="#account" class="nav-item" data-nav-label="Tài khoản &amp; Dữ liệu"><span id="side-ic-account"></span><span>Tài khoản &amp; Dữ liệu</span></a>
+    </div>
     <div class="sidebar-bottom"><div class="encouragement"><span>✦</span><strong>Từng chút, mỗi ngày.</strong><p>Một bài học hôm nay là một bước tiến ngày mai.</p></div><button class="source-link" data-nav="source" aria-label="Nguồn Google Drive" title="Nguồn Google Drive"><span id="drive-icon"></span><span>Nguồn Google Drive<small>Danh mục đã nhập</small></span><span class="status-dot"></span></button></div>
   </aside>
   <div class="scrim" id="scrim"></div>
   <div class="page-shell">
-    <header class="topbar"><button class="icon-button sidebar-toggle" id="menu-toggle" aria-controls="sidebar" aria-label="Thu gọn thanh điều hướng" aria-expanded="true"></button><div class="breadcrumb">Không gian học tập <span>/</span> <strong id="page-label">Tổng quan</strong></div><div class="top-actions"><button class="search-shortcut" id="search-shortcut" aria-label="Tìm bài học"><span id="search-icon"></span><span>Tìm bài học…</span><kbd>/</kbd></button><button class="profile" data-nav="progress" aria-label="Xem tiến độ cá nhân">S</button></div></header>
+    <header class="topbar"><button class="icon-button sidebar-toggle" id="menu-toggle" aria-controls="sidebar" aria-label="Thu gọn thanh điều hướng" aria-expanded="true"></button><div class="breadcrumb">Không gian học tập <span>/</span> <strong id="page-label">Tổng quan</strong></div><div class="top-actions"><button class="search-shortcut" id="search-shortcut" aria-label="Tìm bài học"><span id="search-icon"></span><span>Tìm bài học…</span><kbd>/</kbd></button><button class="icon-button" id="theme-toggle" aria-label="Chuyển giao diện sáng/tối" title="Chuyển giao diện sáng/tối"></button><button class="profile" data-nav="progress" aria-label="Xem tiến độ cá nhân">S</button></div></header>
     <main id="main" tabindex="-1"><div class="loading"><span class="spinner"></span>Đang mở thư viện của bạn…</div></main>
     <footer>TOEIC Studio <span>✦</span> Một không gian nhỏ, cho mục tiêu lớn.</footer>
   </div>
+  <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Điều hướng di động">
+    <a href="#home" class="mobile-nav-item" data-mobile-nav="home"><span class="icon-wrap" id="mob-ic-home"></span><span>Hôm nay</span></a>
+    <a href="#courses" class="mobile-nav-item" data-mobile-nav="courses"><span class="icon-wrap" id="mob-ic-courses"></span><span>Khóa học</span></a>
+    <a href="#review" class="mobile-nav-item" data-mobile-nav="review"><span class="icon-wrap" id="mob-ic-review"></span><span>Ôn tập</span></a>
+    <button type="button" class="mobile-nav-item" id="mobile-more-btn"><span class="icon-wrap" id="mob-ic-more"></span><span>Thêm</span></button>
+  </nav>
+  <dialog id="mobile-more-sheet" class="mobile-more-sheet" aria-labelledby="mobile-more-title"></dialog>
+  <dialog id="search-dialog" class="search-modal-dialog" aria-labelledby="unified-search-input"></dialog>
   <dialog id="player" class="player-dialog" aria-labelledby="player-title"></dialog>
   <dialog id="settings" class="settings-dialog" aria-labelledby="settings-title"></dialog>
   <div id="toast" role="status" aria-live="polite"></div>

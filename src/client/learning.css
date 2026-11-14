@@ -6,3 +6,58 @@
 @media(prefers-reduced-motion:reduce){.quiz-option,.practice-card{transition:none}}
 
 .content-breadcrumbs>span{color:#566174}.worksheet-count-controls{display:flex;align-items:center;gap:7px}.worksheet-count-controls .btn{font-size:10px;padding:8px}.study-session-layout :focus-visible,.quiz-layout :focus-visible,.flashcard-wrap :focus-visible{outline:3px solid #7555ac;outline-offset:3px}
+
+.quiz-timer-pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;background:#fff;border:1px solid #d7cde9;color:#55358a;font-weight:700;font-variant-numeric:tabular-nums}
+.quiz-instant-btn{padding:6px 11px;font-size:11px;margin-left:auto}
+.quiz-instant-btn[aria-pressed="true"]{background:#55358a;color:#fff}
+.quiz-mode-context a{margin-left:0}
+.question-progress-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.quiz-flag-btn{padding:5px 10px;font-size:11px;display:inline-flex;align-items:center;gap:5px}
+.quiz-flag-btn .icon{width:13px;height:13px}
+.quiz-flag-btn.is-flagged{background:#fff3e0;color:#9a5b13;border:1px solid #e7c288}
+.question-numbers button.flagged{border-color:#d98c2b;box-shadow:inset 0 0 0 1px #d98c2b;color:#8e4f0e}
+.instant-check-bar{margin-top:16px}
+.instant-feedback{margin-top:16px;padding:16px 18px;border-radius:11px;border:1px solid #e1e5ed;background:#fff}
+.instant-feedback.is-correct{border-color:#b8d4b5;background:#f2f8f1}
+.instant-feedback.is-wrong{border-color:#e2beb2;background:#fdf4f2}
+.instant-feedback>strong{display:block;font-size:14px;margin-bottom:6px;color:#2b3b51}
+.instant-feedback.is-correct>strong{color:#35633c}
+.instant-feedback.is-wrong>strong{color:#9a4436}
+.instant-feedback>p{font-size:13px;color:#4a586e;margin:0 0 8px}
+.flashcard-audio-bar{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0 4px}
+.flashcard-audio-bar .btn{font-size:12px;padding:8px 14px}
+.card-mode-switch,.review-intro-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.dictation-card{background:#fff;border:1px solid #d9d1e8;border-radius:18px;padding:28px;text-align:left;margin-bottom:18px}
+.dictation-meaning{font-size:15px;color:#334155;background:#f4f1fb;padding:12px 15px;border-radius:9px;margin:16px 0 0}
+.dictation-form{display:grid;gap:14px;margin-top:18px}
+.dictation-form .btn{justify-self:start}
+.mistake-filters{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 18px}
+.mistake-filters label{display:grid;gap:6px;font-size:11px;color:#4e5b6f;min-width:210px;flex:1}
+.mistake-filters select{border:1px solid #dce1e9;background:#fff;border-radius:8px;padding:9px 11px;font-size:12px;color:#36465c}
+.mistake-card-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.mistake-count-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:999px;background:#fae8e4;color:#9d4a3e}
+.mistake-meta-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:12px;margin:14px 0}
+.mistake-meta-row label{display:grid;gap:5px;font-size:11px;color:#566277}
+.mistake-meta-row select,.mistake-meta-row input{border:1px solid #dce1e9;border-radius:7px;padding:8px 10px;font-size:12px;color:#2c3a4f;background:#fcfdff;min-width:0}
+.mistake-card-actions{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:12px}
+.v2-word-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+@media(max-width:760px){.mistake-meta-row{grid-template-columns:1fr}.dictation-card{padding:20px}.quiz-instant-btn{margin-left:0}}
+
+.study-focus-inline{display:inline-flex;align-items:center;gap:8px;padding:4px 10px;border:1px solid #dce2ee;border-radius:8px;background:#fff;font-size:11px;color:#55358a;margin-left:auto}
+.study-focus-inline .icon{width:14px;height:14px}
+.study-focus-inline .btn{padding:4px 9px;font-size:10px}
+.study-video-progress{font-weight:500;font-size:12px;color:#5a6578;margin-left:4px}
+.study-video-primary-actions,.study-video-nav,.study-doc-header-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.study-pdf-frame.expanded{height:82vh}
+.study-doc-expand-btn{font-size:10px;padding:5px 10px}
+.worksheet-quick-choices{display:flex;gap:4px;flex-shrink:0}
+.worksheet-choice-btn{width:27px;height:29px;border:1px solid #d5dce9;border-radius:6px;background:#fff;font-size:11px;font-weight:700;color:#4b5b73;display:grid;place-items:center}
+.worksheet-choice-btn:hover{background:#f3eefc;border-color:#a891d2}
+.worksheet-choice-btn.chosen{background:#55358a;border-color:#55358a;color:#fff}
+.worksheet-footer-actions{display:grid;gap:8px;margin-top:20px}
+.worksheet-footer-actions .worksheet-finish{margin-top:0}
+.worksheet-reset{width:100%;font-size:11px}
+.note-tag-bar{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
+.note-tag-chip{padding:4px 9px;border:1px solid #d9d0ec;background:#f5f2fc;color:#57399d;border-radius:999px;font-size:10px;font-weight:650}
+.note-tag-chip:hover{background:#eae2fa}
+@media(max-width:760px){.study-focus-inline{margin-left:0}.worksheet-row>label{flex-wrap:wrap}.worksheet-row input{min-width:70px}}

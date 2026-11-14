@@ -5,3 +5,11 @@
 @media(prefers-reduced-motion:reduce){.activity-mode-list>a{transition:none}}
 
 @media(max-width:760px){.active-study-view .page-heading{flex-direction:column;align-items:flex-start;gap:16px}.active-study-view .page-heading>div{width:100%}.active-study-view .page-heading h1{font-size:25px;line-height:1.65;overflow-wrap:anywhere}.active-study-view .page-heading>.btn{align-self:flex-start}}
+
+.lesson-overview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.lesson-recall-toggle{font-size:11px;padding:6px 11px}
+.lesson-recall-toggle[aria-pressed="true"]{background:#55358a;color:#fff}
+.lesson-example-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.lesson-example-copy{min-width:0;flex:1}
+.active-reading.hide-vi .example-vi{opacity:0;filter:blur(4px);transition:opacity .15s,filter .15s;user-select:none}
+.active-reading.hide-vi .lesson-example-row:hover .example-vi{opacity:.45;filter:none}

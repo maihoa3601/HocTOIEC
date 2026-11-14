@@ -2,3 +2,8 @@
 @media(max-width:1000px){.import-review-layout .admin-source{position:static}.document-study-hero{align-items:flex-start;flex-direction:column}.document-study-lesson>.import-list-heading{align-items:flex-start;flex-direction:column}}@media(max-width:650px){.import-list-heading{align-items:flex-start;flex-direction:column}.document-study-hero,.document-study-lesson{padding:22px}.document-study-hero h2{font-size:19px}.document-study-steps{display:grid;gap:13px}.import-question{padding:17px}.import-question>.text-button{margin:13px 0 0}.import-review-layout{display:block}.import-review-layout .admin-source{margin-bottom:24px}.import-upload{padding:22px}}
 
 .document-source-name{font-size:11px;line-height:1.8;color:#47536c}.document-source-name summary{cursor:pointer}.document-source-name p{overflow-wrap:anywhere}
+
+.document-hero-actions,.document-lesson-header-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.doc-inline-preview{margin:0 0 24px}
+.doc-study-content.hide-vi .example-vi{opacity:0;filter:blur(4px);transition:opacity .15s,filter .15s;user-select:none}
+.doc-study-content.hide-vi .lesson-example-row:hover .example-vi{opacity:.45;filter:none}

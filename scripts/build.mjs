@@ -30,16 +30,18 @@ export async function buildProject() {
   await collect(path.join(projectRoot,'src','client'));
   await collect(path.join(projectRoot,'public'));
   const bank=JSON.parse(await readFile(path.join(projectRoot,'data','learning-bank.json'),'utf8'));
+  const examBank=JSON.parse(await readFile(path.join(projectRoot,'data','exam-bank.json'),'utf8'));
   const metadata=contentMetadata(bank);
   assets['/catalog.json']={body:await readFile(path.join(projectRoot,'data','catalog.json'),'utf8'),type:types.json};
   // Content is served by the Worker from D1, never by asset-first static routing.
 
   const importer=await readFile(path.join(projectRoot,'src','server','document-imports.mjs'),'utf8');
   const content=await readFile(path.join(projectRoot,'src','server','content-admin.mjs'),'utf8');
+  const examService=await readFile(path.join(projectRoot,'src','server','exam-service.mjs'),'utf8');
   const server=await readFile(path.join(projectRoot,'src','server','index.mjs'),'utf8');
   const imported="import {createContentService,contentRole} from './content-admin.mjs';";
   if(!server.includes(imported))throw Error('Server entry imports changed; update the Worker build');
-  const bundle=importer+'\n'+content+'\n'+server.replace(imported,'').replace("import {createDocumentImports} from './document-imports.mjs';",'')+'\nexport default createWorker('+JSON.stringify({assets,bank,...metadata})+');\n';
+  const bundle=importer+'\n'+content+'\n'+examService+'\n'+server.replace(imported,'').replace("import {createDocumentImports} from './document-imports.mjs';",'').replace("import {createExamService} from './exam-service.mjs';",'')+'\nexport default createWorker('+JSON.stringify({assets,bank,...metadata,examBank})+');\n';
   const manifest=await readFile(path.join(projectRoot,'.openai','hosting.json'),'utf8');
 
   await rm(output,{recursive:true,force:true});

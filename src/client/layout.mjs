@@ -1,11 +1,14 @@
-const KEY='toeic-studio-layout-v1';
+const KEY='toeic-studio-layout-v1',THEME_KEY='toeic-studio-theme-v1';
 export function createLayout({icon}){
   const $=selector=>document.querySelector(selector),root=document.documentElement;
   const mobile=matchMedia('(max-width:760px)');
-  let preferences={sidebar:false,outline:false,study:false};
+  let preferences={sidebar:false,outline:false,study:false},dark=false;
+  try{dark=localStorage.getItem(THEME_KEY)==='dark'}catch{}
   try{const stored=JSON.parse(localStorage.getItem(KEY)||'{}');for(const key of Object.keys(preferences))preferences[key]=stored[key]===true}catch{}
   const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(preferences))}catch{}};
+  const syncTheme=()=>{root.classList.toggle('dark',dark);const btn=$('#theme-toggle');if(btn){btn.innerHTML=icon(dark?'sun':'moon');btn.setAttribute('aria-pressed',String(dark));btn.title=dark?'Chuyển sang giao diện sáng':'Chuyển sang giao diện tối'}};
   function sync(){
+    syncTheme();
     for(const key of Object.keys(preferences))root.classList.toggle(key+'-collapsed',preferences[key]);
     const expanded=mobile.matches?$('#sidebar').classList.contains('open'):!preferences.sidebar;
     const menu=$('#menu-toggle'),label=mobile.matches?(expanded?'Đóng menu':'Mở menu'):(expanded?'Thu gọn thanh điều hướng':'Mở rộng thanh điều hướng');
@@ -19,6 +22,7 @@ export function createLayout({icon}){
   }
   function closeMobile(returnFocus=false){const wasOpen=$('#sidebar').classList.contains('open');$('#sidebar').classList.remove('open');$('#scrim').classList.remove('open');sync();if(returnFocus&&wasOpen)$('#menu-toggle').focus()}
   $('#menu-toggle').onclick=()=>{if(mobile.matches){const open=$('#sidebar').classList.toggle('open');$('#scrim').classList.toggle('open',open)}else{preferences.sidebar=!preferences.sidebar;save()}sync()};
+  const themeBtn=$('#theme-toggle');if(themeBtn)themeBtn.onclick=()=>{dark=!dark;try{localStorage.setItem(THEME_KEY,dark?'dark':'light')}catch{}syncTheme()};
   $('#scrim').onclick=()=>closeMobile(true);
   document.addEventListener('keydown',event=>{if(event.key==='Escape'&&mobile.matches&&$('#sidebar').classList.contains('open')){event.preventDefault();closeMobile(true)}});
   document.addEventListener('click',event=>{const button=event.target.closest('[data-layout-panel]');if(button){const name=button.dataset.layoutPanel;if(!Object.hasOwn(preferences,name))return;preferences[name]=!preferences[name];save();sync()}});
