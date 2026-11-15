@@ -1,0 +1,28 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/.sites-runtime": true,
+    "**/dist": true,
+    "**/.openai": true,
+    "**/*.sqlite": true,
+    "**/*.sqlite-journal": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/.sites-runtime": true
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.mjs": "$(capture).css, $(capture).test.mjs, $(capture).d.ts",
+    "*.js": "$(capture).css, $(capture).test.js, $(capture).d.ts",
+    "package.json": "package-lock.json, .gitignore, .env*, README.md, AGENTS.md",
+    "build.mjs": "preview.mjs, dev.mjs, test.mjs, preview-ui.mjs, slice-exam-media.mjs, ocr-windows.ps1"
+  }
+}
