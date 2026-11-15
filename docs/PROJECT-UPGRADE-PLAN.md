@@ -138,4 +138,4 @@ test; cùng đầu vào cho kết quả nhất quán; múi giờ và thao tác l
 | 0 | Đã tải nguồn | `.sites-runtime/reference-repos/`; báo cáo đối chiếu |
 | 1 | Đã hoàn thành | `src/client/listening-studio.mjs`, `tests/listening.test.mjs`; parser SRT/VTT/WhisperX, sample practice loader, LCS word diff, phím tắt Space/Arrow/R/L, speech synthesis fallback, mobile nav `#listening` |
 | 5 | Đã hoàn thành | `src/client/exam-room.mjs`, `src/client/exam-room.css`, `tests/exam-audio.test.mjs`; highlight dẫn chứng passage `.exam-evidence-highlight`, phân tích phương án nhiễu `choiceNotes`, review hub `#exam-review-run?filter=wrong` |
-| 2–4, 6–7 | Kế hoạch tiếp theo | Chuẩn bị cho các đợt tiếp theo theo lộ trình dự án |
+| 2–4, 6–7 | Kế hoạch tiếp theo | Xem tài liệu chi tiết và Master Prompt tại [DEVELOPMENT-ROADMAP.md](docs/DEVELOPMENT-ROADMAP.md) |
