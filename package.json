@@ -14,6 +14,7 @@
     "test": "node scripts/test.mjs",
     "data:build": "node scripts/build-learning-bank.mjs",
     "content:extract": "python scripts/extract-pdf.py",
+    "slice-exam": "node scripts/slice-exam-media.mjs",
     "plan:audit": "node scripts/plan-audit.mjs"
   }
 }

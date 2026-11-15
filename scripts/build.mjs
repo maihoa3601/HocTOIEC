@@ -1,4 +1,4 @@
-import {readFile,writeFile,mkdir,readdir,rm,lstat,realpath} from 'node:fs/promises';
+import {readFile,writeFile,copyFile,mkdir,readdir,rm,lstat,realpath} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {contentMetadata} from './lib/content.mjs';
@@ -29,6 +29,23 @@ export async function buildProject() {
   }
   await collect(path.join(projectRoot,'src','client'));
   await collect(path.join(projectRoot,'public'));
+  // Sites serves these as static assets; keep binary media out of the Worker bundle.
+  const mediaRoot=path.join(projectRoot,'data','exam-media'),mediaFiles=[];
+  const mediaDirectory=await lstat(mediaRoot).catch(error=>{if(error.code!=='ENOENT')throw error});
+  async function collectMedia(directory,prefix='') {
+    for(const entry of (await readdir(directory,{withFileTypes:true})).sort((a,b)=>a.name.localeCompare(b.name,'en'))) {
+      const name=prefix+entry.name;
+      if(entry.isSymbolicLink())throw Error('Exam media must not be symbolic links: '+name);
+      if(entry.isDirectory()){await collectMedia(path.join(directory,entry.name),name+'/');continue}
+      if(!entry.isFile()||! /\.(?:json|mp3|wav|m4a|png|jpe?g|webp)$/i.test(name))throw Error('Unhandled exam media: '+name);
+      if(assets['/exam-media/'+name])throw Error('Duplicate exam media: '+name);
+      mediaFiles.push(name);
+    }
+  }
+  if(mediaDirectory){
+    if(!mediaDirectory.isDirectory()||mediaDirectory.isSymbolicLink())throw Error('Invalid exam media directory');
+    await collectMedia(mediaRoot);
+  }
   const bank=JSON.parse(await readFile(path.join(projectRoot,'data','learning-bank.json'),'utf8'));
   const examBank=JSON.parse(await readFile(path.join(projectRoot,'data','exam-bank.json'),'utf8'));
   const metadata=contentMetadata(bank);
@@ -37,11 +54,15 @@ export async function buildProject() {
 
   const importer=await readFile(path.join(projectRoot,'src','server','document-imports.mjs'),'utf8');
   const content=await readFile(path.join(projectRoot,'src','server','content-admin.mjs'),'utf8');
-  const examService=await readFile(path.join(projectRoot,'src','server','exam-service.mjs'),'utf8');
+  const examCore=await readFile(path.join(projectRoot,'src','client','exam-core.mjs'),'utf8');
+  const examServiceSource=await readFile(path.join(projectRoot,'src','server','exam-service.mjs'),'utf8');
+  const examCoreImport="import { VALID_PARTS, validateExamContent } from '../client/exam-core.mjs';";
+  if(!examServiceSource.includes(examCoreImport))throw Error('Exam service imports changed; update the Worker build');
+  const examService=examServiceSource.replace(examCoreImport,'').replace('export { VALID_PARTS, validateExamContent };','');
   const server=await readFile(path.join(projectRoot,'src','server','index.mjs'),'utf8');
   const imported="import {createContentService,contentRole} from './content-admin.mjs';";
   if(!server.includes(imported))throw Error('Server entry imports changed; update the Worker build');
-  const bundle=importer+'\n'+content+'\n'+examService+'\n'+server.replace(imported,'').replace("import {createDocumentImports} from './document-imports.mjs';",'').replace("import {createExamService} from './exam-service.mjs';",'')+'\nexport default createWorker('+JSON.stringify({assets,bank,...metadata,examBank})+');\n';
+  const bundle=importer+'\n'+content+'\n'+examCore+'\n'+examService+'\n'+server.replace(imported,'').replace("import {createDocumentImports} from './document-imports.mjs';",'').replace("import {createExamService} from './exam-service.mjs';",'')+'\nexport default createWorker('+JSON.stringify({assets,bank,...metadata,examBank})+');\n';
   const manifest=await readFile(path.join(projectRoot,'.openai','hosting.json'),'utf8');
 
   await rm(output,{recursive:true,force:true});
@@ -50,11 +71,16 @@ export async function buildProject() {
     await mkdir(path.dirname(target),{recursive:true});
     await writeFile(target,asset.body);
   }
+  for(const name of mediaFiles) {
+    const target=path.join(output,'client','exam-media',name);
+    await mkdir(path.dirname(target),{recursive:true});
+    await copyFile(path.join(mediaRoot,name),target);
+  }
   await mkdir(path.join(output,'server'),{recursive:true});
   await mkdir(path.join(output,'.openai'),{recursive:true});
   await writeFile(path.join(output,'server','index.js'),bundle);
   await writeFile(path.join(output,'.openai','hosting.json'),manifest);
-  return {bankVersion:metadata.bankVersion,assets:Object.keys(assets).length,questions:Object.keys(metadata.questionVersions).length};
+  return {bankVersion:metadata.bankVersion,assets:Object.keys(assets).length,mediaFiles:mediaFiles.length,questions:Object.keys(metadata.questionVersions).length};
 }
 
 if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)) {

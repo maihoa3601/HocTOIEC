@@ -549,10 +549,10 @@ export function buildGenericExamContent(examMeta, pilotMeta, offset = 0) {
       sourcePage: Math.ceil(qNum / 2),
       audioRef: { id: audioId, name: audioName, segmentVerified: false },
       visual: {
-        kind: 'photo-scene',
-        title: s.title,
-        caption: s.svgLabel,
-        sceneIndex: ((qNum - 1 + offset) % 6) + 1
+        kind: 'pdf-figure',
+        title: `Hình ảnh Câu ${qNum} · Trang ${Math.ceil(qNum / 2)} PDF gốc`,
+        caption: `Ảnh câu ${qNum} nằm trên trang ${Math.ceil(qNum / 2)} của tài liệu PDF Listening gốc.`,
+        page: Math.ceil(qNum / 2)
       }
     });
     questions.push({

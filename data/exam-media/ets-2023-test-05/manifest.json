@@ -1,0 +1,659 @@
+{
+  "schema": 1,
+  "examId": "ets-2023-test-05",
+  "generatedAt": "2026-11-15T13:09:55.715Z",
+  "audio": {
+    "ets23-t05-g-p1-01": {
+      "startSec": 95.55,
+      "endSec": 117.07,
+      "durationSec": 21.52,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p1-01.mp3"
+    },
+    "ets23-t05-g-p1-02": {
+      "startSec": 121.53,
+      "endSec": 141.84,
+      "durationSec": 20.31,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p1-02.mp3"
+    },
+    "ets23-t05-g-p1-03": {
+      "startSec": 153.05,
+      "endSec": 172.55,
+      "durationSec": 19.5,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p1-03.mp3"
+    },
+    "ets23-t05-g-p1-04": {
+      "startSec": 177.04,
+      "endSec": 198.31,
+      "durationSec": 21.27,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p1-04.mp3"
+    },
+    "ets23-t05-g-p1-05": {
+      "startSec": 202.76,
+      "endSec": 225.23,
+      "durationSec": 22.47,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p1-05.mp3"
+    },
+    "ets23-t05-g-p1-06": {
+      "startSec": 229.7,
+      "endSec": 252.19,
+      "durationSec": 22.49,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p1-06.mp3"
+    },
+    "ets23-t05-g-p2-07": {
+      "startSec": 290.66,
+      "endSec": 306.39,
+      "durationSec": 15.73,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-07.mp3"
+    },
+    "ets23-t05-g-p2-08": {
+      "startSec": 310.87,
+      "endSec": 325.15,
+      "durationSec": 14.28,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-08.mp3"
+    },
+    "ets23-t05-g-p2-09": {
+      "startSec": 329.7,
+      "endSec": 344.58,
+      "durationSec": 14.88,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-09.mp3"
+    },
+    "ets23-t05-g-p2-10": {
+      "startSec": 349.09,
+      "endSec": 364.34,
+      "durationSec": 15.25,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-10.mp3"
+    },
+    "ets23-t05-g-p2-11": {
+      "startSec": 368.8,
+      "endSec": 383.1,
+      "durationSec": 14.3,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-11.mp3"
+    },
+    "ets23-t05-g-p2-12": {
+      "startSec": 387.57,
+      "endSec": 402.58,
+      "durationSec": 15.01,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-12.mp3"
+    },
+    "ets23-t05-g-p2-13": {
+      "startSec": 407.39,
+      "endSec": 424.31,
+      "durationSec": 16.92,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-13.mp3"
+    },
+    "ets23-t05-g-p2-14": {
+      "startSec": 428.78,
+      "endSec": 443.68,
+      "durationSec": 14.9,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-14.mp3"
+    },
+    "ets23-t05-g-p2-15": {
+      "startSec": 448.14,
+      "endSec": 461.85,
+      "durationSec": 13.71,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-15.mp3"
+    },
+    "ets23-t05-g-p2-16": {
+      "startSec": 466.33,
+      "endSec": 481.65,
+      "durationSec": 15.32,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-16.mp3"
+    },
+    "ets23-t05-g-p2-17": {
+      "startSec": 486.2,
+      "endSec": 502.58,
+      "durationSec": 16.38,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-17.mp3"
+    },
+    "ets23-t05-g-p2-18": {
+      "startSec": 507.06,
+      "endSec": 523.21,
+      "durationSec": 16.15,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-18.mp3"
+    },
+    "ets23-t05-g-p2-19": {
+      "startSec": 527.66,
+      "endSec": 544.93,
+      "durationSec": 17.27,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-19.mp3"
+    },
+    "ets23-t05-g-p2-20": {
+      "startSec": 549.47,
+      "endSec": 565.44,
+      "durationSec": 15.97,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-20.mp3"
+    },
+    "ets23-t05-g-p2-21": {
+      "startSec": 569.85,
+      "endSec": 585.9,
+      "durationSec": 16.05,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-21.mp3"
+    },
+    "ets23-t05-g-p2-22": {
+      "startSec": 590.36,
+      "endSec": 606.8,
+      "durationSec": 16.44,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-22.mp3"
+    },
+    "ets23-t05-g-p2-23": {
+      "startSec": 611.29,
+      "endSec": 629.02,
+      "durationSec": 17.73,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-23.mp3"
+    },
+    "ets23-t05-g-p2-24": {
+      "startSec": 633.49,
+      "endSec": 650.12,
+      "durationSec": 16.63,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-24.mp3"
+    },
+    "ets23-t05-g-p2-25": {
+      "startSec": 654.59,
+      "endSec": 670.07,
+      "durationSec": 15.48,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-25.mp3"
+    },
+    "ets23-t05-g-p2-26": {
+      "startSec": 674.53,
+      "endSec": 691.71,
+      "durationSec": 17.18,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-26.mp3"
+    },
+    "ets23-t05-g-p2-27": {
+      "startSec": 696.17,
+      "endSec": 712.57,
+      "durationSec": 16.4,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-27.mp3"
+    },
+    "ets23-t05-g-p2-28": {
+      "startSec": 717.02,
+      "endSec": 731.1,
+      "durationSec": 14.08,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-28.mp3"
+    },
+    "ets23-t05-g-p2-29": {
+      "startSec": 735.59,
+      "endSec": 752.13,
+      "durationSec": 16.54,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-29.mp3"
+    },
+    "ets23-t05-g-p2-30": {
+      "startSec": 756.59,
+      "endSec": 772.73,
+      "durationSec": 16.14,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-30.mp3"
+    },
+    "ets23-t05-g-p2-31": {
+      "startSec": 777.19,
+      "endSec": 795.15,
+      "durationSec": 17.96,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p2-31.mp3"
+    },
+    "ets23-t05-g-p3-01": {
+      "startSec": 835.5,
+      "endSec": 889.8,
+      "durationSec": 54.3,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-01.mp3",
+      "questionCues": [
+        {
+          "q": 32,
+          "offsetSec": 23.73
+        },
+        {
+          "q": 33,
+          "offsetSec": 35.82
+        },
+        {
+          "q": 34,
+          "offsetSec": 47.69
+        }
+      ]
+    },
+    "ets23-t05-g-p3-02": {
+      "startSec": 895.29,
+      "endSec": 969.5,
+      "durationSec": 74.21,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-02.mp3",
+      "questionCues": [
+        {
+          "q": 35,
+          "offsetSec": 40.43
+        },
+        {
+          "q": 36,
+          "offsetSec": 52.92
+        },
+        {
+          "q": 37,
+          "offsetSec": 66.37
+        }
+      ]
+    },
+    "ets23-t05-g-p3-03": {
+      "startSec": 974.98,
+      "endSec": 1044.22,
+      "durationSec": 69.24,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-03.mp3",
+      "questionCues": [
+        {
+          "q": 38,
+          "offsetSec": 36.92
+        },
+        {
+          "q": 39,
+          "offsetSec": 50.05
+        },
+        {
+          "q": 40,
+          "offsetSec": 62.86
+        }
+      ]
+    },
+    "ets23-t05-g-p3-04": {
+      "startSec": 1049.73,
+      "endSec": 1124.4,
+      "durationSec": 74.67,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-04.mp3",
+      "questionCues": [
+        {
+          "q": 41,
+          "offsetSec": 42.33
+        },
+        {
+          "q": 42,
+          "offsetSec": 54.85
+        },
+        {
+          "q": 43,
+          "offsetSec": 67.42
+        }
+      ]
+    },
+    "ets23-t05-g-p3-05": {
+      "startSec": 1136.63,
+      "endSec": 1213.81,
+      "durationSec": 77.18,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-05.mp3",
+      "questionCues": [
+        {
+          "q": 44,
+          "offsetSec": 43.18
+        },
+        {
+          "q": 45,
+          "offsetSec": 56.55
+        },
+        {
+          "q": 46,
+          "offsetSec": 68.61
+        }
+      ]
+    },
+    "ets23-t05-g-p3-06": {
+      "startSec": 1219.32,
+      "endSec": 1294.82,
+      "durationSec": 75.5,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-06.mp3",
+      "questionCues": [
+        {
+          "q": 47,
+          "offsetSec": 44.05
+        },
+        {
+          "q": 48,
+          "offsetSec": 56.94
+        },
+        {
+          "q": 49,
+          "offsetSec": 68.94
+        }
+      ]
+    },
+    "ets23-t05-g-p3-07": {
+      "startSec": 1300.28,
+      "endSec": 1378.98,
+      "durationSec": 78.7,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-07.mp3",
+      "questionCues": [
+        {
+          "q": 50,
+          "offsetSec": 48.24
+        },
+        {
+          "q": 51,
+          "offsetSec": 59.98
+        },
+        {
+          "q": 52,
+          "offsetSec": 72.03
+        }
+      ]
+    },
+    "ets23-t05-g-p3-08": {
+      "startSec": 1384.48,
+      "endSec": 1466.61,
+      "durationSec": 82.13,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-08.mp3",
+      "questionCues": [
+        {
+          "q": 53,
+          "offsetSec": 48.75
+        },
+        {
+          "q": 54,
+          "offsetSec": 60.63
+        },
+        {
+          "q": 55,
+          "offsetSec": 73.31
+        }
+      ]
+    },
+    "ets23-t05-g-p3-09": {
+      "startSec": 1472.12,
+      "endSec": 1554.78,
+      "durationSec": 82.66,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-09.mp3",
+      "questionCues": [
+        {
+          "q": 56,
+          "offsetSec": 46.5
+        },
+        {
+          "q": 57,
+          "offsetSec": 59.01
+        },
+        {
+          "q": 58,
+          "offsetSec": 73.64
+        }
+      ]
+    },
+    "ets23-t05-g-p3-10": {
+      "startSec": 1560.27,
+      "endSec": 1632.03,
+      "durationSec": 71.76,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-10.mp3",
+      "questionCues": [
+        {
+          "q": 59,
+          "offsetSec": 38.23
+        },
+        {
+          "q": 60,
+          "offsetSec": 51.09
+        },
+        {
+          "q": 61,
+          "offsetSec": 62.88
+        }
+      ]
+    },
+    "ets23-t05-g-p3-11": {
+      "startSec": 1637.55,
+      "endSec": 1713.59,
+      "durationSec": 76.04,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-11.mp3",
+      "questionCues": [
+        {
+          "q": 62,
+          "offsetSec": 42.89
+        },
+        {
+          "q": 63,
+          "offsetSec": 54.7
+        },
+        {
+          "q": 64,
+          "offsetSec": 66.92
+        }
+      ]
+    },
+    "ets23-t05-g-p3-12": {
+      "startSec": 1729.73,
+      "endSec": 1805.71,
+      "durationSec": 75.98,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-12.mp3",
+      "questionCues": [
+        {
+          "q": 65,
+          "offsetSec": 41.44
+        },
+        {
+          "q": 66,
+          "offsetSec": 54.02
+        },
+        {
+          "q": 67,
+          "offsetSec": 66.65
+        }
+      ]
+    },
+    "ets23-t05-g-p3-13": {
+      "startSec": 1815.22,
+      "endSec": 1897.64,
+      "durationSec": 82.42,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p3-13.mp3",
+      "questionCues": [
+        {
+          "q": 68,
+          "offsetSec": 43.64
+        },
+        {
+          "q": 69,
+          "offsetSec": 56.86
+        },
+        {
+          "q": 70,
+          "offsetSec": 75.2
+        }
+      ]
+    },
+    "ets23-t05-g-p4-01": {
+      "startSec": 1938.11,
+      "endSec": 1998.01,
+      "durationSec": 59.9,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-01.mp3",
+      "questionCues": [
+        {
+          "q": 71,
+          "offsetSec": 28.73
+        },
+        {
+          "q": 72,
+          "offsetSec": 40.03
+        },
+        {
+          "q": 73,
+          "offsetSec": 53.15
+        }
+      ]
+    },
+    "ets23-t05-g-p4-02": {
+      "startSec": 2003.5,
+      "endSec": 2080.6,
+      "durationSec": 77.1,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-02.mp3",
+      "questionCues": [
+        {
+          "q": 74,
+          "offsetSec": 39.85
+        },
+        {
+          "q": 75,
+          "offsetSec": 52.62
+        },
+        {
+          "q": 76,
+          "offsetSec": 69.03
+        }
+      ]
+    },
+    "ets23-t05-g-p4-03": {
+      "startSec": 2086.12,
+      "endSec": 2160.94,
+      "durationSec": 74.82,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-03.mp3",
+      "questionCues": [
+        {
+          "q": 77,
+          "offsetSec": 41.81
+        },
+        {
+          "q": 78,
+          "offsetSec": 54.62
+        },
+        {
+          "q": 79,
+          "offsetSec": 67.09
+        }
+      ]
+    },
+    "ets23-t05-g-p4-04": {
+      "startSec": 2166.47,
+      "endSec": 2243.63,
+      "durationSec": 77.16,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-04.mp3",
+      "questionCues": [
+        {
+          "q": 80,
+          "offsetSec": 42.42
+        },
+        {
+          "q": 81,
+          "offsetSec": 54.09
+        },
+        {
+          "q": 82,
+          "offsetSec": 67.45
+        }
+      ]
+    },
+    "ets23-t05-g-p4-05": {
+      "startSec": 2255.8,
+      "endSec": 2328.33,
+      "durationSec": 72.53,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-05.mp3",
+      "questionCues": [
+        {
+          "q": 83,
+          "offsetSec": 40.97
+        },
+        {
+          "q": 84,
+          "offsetSec": 52.71
+        },
+        {
+          "q": 85,
+          "offsetSec": 65.55
+        }
+      ]
+    },
+    "ets23-t05-g-p4-06": {
+      "startSec": 2333.86,
+      "endSec": 2413.09,
+      "durationSec": 79.23,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-06.mp3",
+      "questionCues": [
+        {
+          "q": 86,
+          "offsetSec": 45.32
+        },
+        {
+          "q": 87,
+          "offsetSec": 57.97
+        },
+        {
+          "q": 88,
+          "offsetSec": 70.28
+        }
+      ]
+    },
+    "ets23-t05-g-p4-07": {
+      "startSec": 2418.57,
+      "endSec": 2494.4,
+      "durationSec": 75.83,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-07.mp3",
+      "questionCues": [
+        {
+          "q": 89,
+          "offsetSec": 42.22
+        },
+        {
+          "q": 90,
+          "offsetSec": 55.59
+        },
+        {
+          "q": 91,
+          "offsetSec": 68.33
+        }
+      ]
+    },
+    "ets23-t05-g-p4-08": {
+      "startSec": 2499.87,
+      "endSec": 2573.95,
+      "durationSec": 74.08,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-08.mp3",
+      "questionCues": [
+        {
+          "q": 92,
+          "offsetSec": 40.24
+        },
+        {
+          "q": 93,
+          "offsetSec": 52.48
+        },
+        {
+          "q": 94,
+          "offsetSec": 65.5
+        }
+      ]
+    },
+    "ets23-t05-g-p4-09": {
+      "startSec": 2579.56,
+      "endSec": 2657.96,
+      "durationSec": 78.4,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-09.mp3",
+      "questionCues": [
+        {
+          "q": 95,
+          "offsetSec": 44.8
+        },
+        {
+          "q": 96,
+          "offsetSec": 57.05
+        },
+        {
+          "q": 97,
+          "offsetSec": 69.83
+        }
+      ]
+    },
+    "ets23-t05-g-p4-10": {
+      "startSec": 2667.43,
+      "endSec": 2740.37,
+      "durationSec": 72.94,
+      "url": "/exam-media/ets-2023-test-05/audio/ets23-t05-g-p4-10.mp3",
+      "questionCues": [
+        {
+          "q": 98,
+          "offsetSec": 37.97
+        },
+        {
+          "q": 99,
+          "offsetSec": 50.02
+        },
+        {
+          "q": 100,
+          "offsetSec": 62.96
+        }
+      ]
+    }
+  },
+  "pages": {},
+  "images": {},
+  "audioFile": "ets2023_test05.mp3",
+  "totalDurationSec": 2752.885625,
+  "clipOffset": 3,
+  "audioStrategy": "ets-studio-54"
+}

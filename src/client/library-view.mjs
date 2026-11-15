@@ -38,9 +38,10 @@ export function createLibraryView(ctx) {
 
   function priorityCoursesSection(){
     const p=progress();
+    const state=ctx.getState?.()||{};
     const enrolled=courses.filter(c=>done(index.folders.get(c.id))>0||c.videos.some(v=>v.id===p.last));
-    const primaryId='1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD';
-    const primary=courses.find(c=>c.id===primaryId);
+    const primaryId=state.priorityCourse||'1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD';
+    const primary=courses.find(c=>c.id===primaryId)||courses[0];
     const topList=[primary,...enrolled.filter(c=>c.id!==primaryId)].filter(Boolean).slice(0,3);
 
     if(!topList.length)return '';
@@ -51,6 +52,7 @@ export function createLibraryView(ctx) {
           <span class="eyebrow">CHƯƠNG TRÌNH ĐANG THEO HỌC</span>
           <h2>Khóa ưu tiên & đang học</h2>
         </div>
+        ${primary?`<span class="course-priority-pill">${icon('spark')}Khóa chính: ${esc(primary.title)}</span>`:''}
       </div>
       <div class="course-grid">
         ${topList.map(c=>courseCard(c,c.index)).join('')}
@@ -127,6 +129,10 @@ export function createLibraryView(ctx) {
       </div>
     </div>`:'' ;
 
+    const studyFolderId=next?.parent||folder.id;
+    const studyHref=`#study?course=${encodeURIComponent(c.id)}&folder=${encodeURIComponent(studyFolderId)}${next?'&file='+encodeURIComponent(next.id):''}`;
+    const isPriority=(ctx.getState?.()?.priorityCourse||'1EcEHLSxxlsRFtJCXMGimzy2rKd2Ej-zD')===c.id;
+
     return `
     <nav class="content-breadcrumbs" aria-label="Đường dẫn khóa học">
       <a href="#courses">Khóa học</a><span>›</span>${g?`<a href="${groupLink(g)}">${esc(g.title)}</a><span>›</span>`:''}${trail.map((f,i)=>trailLink(c.id,f.id,i===0?c.title:folderLabel(f),i===trail.length-1)).join('<span>›</span>')}
@@ -137,23 +143,23 @@ export function createLibraryView(ctx) {
         <div class="eyebrow">${isRoot?'TỔNG QUAN KHÓA HỌC':'CHƯƠNG & CHỦ ĐỀ'}</div>
         <h1>${esc(isRoot?c.title:folderLabel(folder))}</h1>
         <p class="course-description">${countLine(entry)} · ${completed} video đã hoàn thành${entry.videos.length?` (${percent}%)`:''}</p>
-        <span class="badge" style="font-size:10px;margin-top:6px;display:inline-block">${esc(meta.status)}</span>
+        <span class="badge course-status-badge">${esc(meta.status)}</span>
       </div>
       <div class="course-title-actions">
-        ${next?button(last?'Học tiếp bài gần nhất':'Học bài chưa hoàn thành',`data-play="${next.id}"`,'btn-primary','play'):''}
-        <a class="btn btn-soft" href="#study?course=${encodeURIComponent(c.id)}&folder=${encodeURIComponent(next?.parent||folder.id)}${next?'&file='+encodeURIComponent(next.id):''}">${icon('target')}Mở phòng học</a>
+        <a class="btn btn-primary" href="${studyHref}">${icon('play')}${next?(last?'Tiếp tục trong phòng học':'Học bài chưa hoàn thành'):'Mở phòng học'}</a>
+        <button type="button" class="btn ${isPriority?'btn-soft is-priority':'btn-secondary'}" data-course-priority="${esc(c.id)}" aria-pressed="${isPriority}">${icon(isPriority?'check':'spark')}<span>${isPriority?'Đang là khóa chính':'Đặt làm khóa chính'}</span></button>
       </div>
     </div>
 
     <!-- Verified Course Overview (Section 5) -->
     ${isRoot?`
-    <section class="panel" style="margin-bottom:24px">
-      <h3 style="margin-bottom:12px">Thông tin khóa học đã đối chiếu</h3>
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;font-size:12px">
-        <div><strong>Đối tượng:</strong> <span style="color:var(--muted)">${esc(meta.target)}</span></div>
-        <div><strong>Kiến thức đầu vào:</strong> <span style="color:var(--muted)">${esc(meta.prerequisites)}</span></div>
-        <div><strong>Cấu trúc khóa học:</strong> <span style="color:var(--muted)">${esc(meta.structure)}</span></div>
-        <div><strong>Kỹ năng đạt được:</strong> <span style="color:var(--muted)">${esc(meta.skills)}</span></div>
+    <section class="panel course-verified-panel">
+      <h3>Thông tin khóa học đã đối chiếu</h3>
+      <div class="course-meta-grid">
+        <div><strong>Đối tượng:</strong> <span>${esc(meta.target)}</span></div>
+        <div><strong>Kiến thức đầu vào:</strong> <span>${esc(meta.prerequisites)}</span></div>
+        <div><strong>Cấu trúc khóa học:</strong> <span>${esc(meta.structure)}</span></div>
+        <div><strong>Kỹ năng đạt được:</strong> <span>${esc(meta.skills)}</span></div>
       </div>
     </section>`:''}
 
@@ -192,19 +198,27 @@ export function createLibraryView(ctx) {
               <p>${entry.folders.length?'Chọn chương để học theo thứ tự; bật mục bên dưới nếu muốn tìm trong toàn bộ mục con.':'Video, bài tập, âm thanh và tài liệu trong cùng một mục.'}</p>
             </div>
           </div>
-          <div class="scope-tools">
-            <label class="search-box">
-              ${icon('search')}
-              <input type="search" id="folder-search" aria-label="Tìm trong mục này và các mục con" value="${esc(query)}" placeholder="Tìm bài học trong mục này và các mục con…">
-            </label>
-            <select id="folder-status" aria-label="Trạng thái học">
-              <option value="all">Tất cả trạng thái</option>
-              <option value="new" ${status==='new'?'selected':''}>Bài chưa học</option>
-              <option value="done" ${status==='done'?'selected':''}>Bài đã hoàn thành</option>
-              <option value="flagged" ${status==='flagged'?'selected':''}>Bài cần xem lại</option>
-            </select>
+          <div class="ui-filter-panel folder-filter-panel">
+            <div class="ui-filter-bar">
+              <label class="ui-field ui-field--search" for="folder-search">
+                <span class="ui-field-label">Tìm bài học</span>
+                <span class="ui-input-wrap">
+                  ${icon('search')}
+                  <input type="search" id="folder-search" class="ui-input" value="${esc(query)}" placeholder="Tìm trong mục này và các mục con…">
+                </span>
+              </label>
+              <label class="ui-field" for="folder-status">
+                <span class="ui-field-label">Trạng thái học</span>
+                <select id="folder-status">
+                  <option value="all">Tất cả trạng thái</option>
+                  <option value="new" ${status==='new'?'selected':''}>Bài chưa học</option>
+                  <option value="done" ${status==='done'?'selected':''}>Bài đã hoàn thành</option>
+                  <option value="flagged" ${status==='flagged'?'selected':''}>Bài cần xem lại</option>
+                </select>
+              </label>
+            </div>
+            ${entry.folders.length?`<label class="include-children"><input id="include-children" type="checkbox" ${includeChildren?'checked':''}> Bao gồm học liệu trong các mục con (${fmt(entry.videos.length+entry.docs.length)})</label>`:''}
           </div>
-          ${entry.folders.length?`<label class="include-children"><input id="include-children" type="checkbox" ${includeChildren?'checked':''}> Bao gồm học liệu trong các mục con (${fmt(entry.videos.length+entry.docs.length)})</label>`:''}
           <div id="folder-files" aria-live="polite"></div>
         </section>
       </section>
@@ -246,6 +260,19 @@ export function createLibraryView(ctx) {
     if(el.hasAttribute('data-category')){category=el.dataset.category;ctx.refreshLibrary(category)}
     else if(el.hasAttribute('data-scope-type')){type=el.dataset.scopeType;page=1;fillFolder()}
     else if(el.hasAttribute('data-scope-page')){page=Number(el.dataset.scopePage);fillFolder();$('#folder-files').scrollIntoView({block:'start',behavior:'instant'})}
+    else if(el.hasAttribute('data-course-priority')){
+      const cid=el.dataset.coursePriority;
+      const state=ctx.getState?.();
+      if(!state||!cid)return;
+      state.priorityCourse=cid;
+      ctx.saveLearning?.();
+      const targetCourse=courses.find(item=>item.id===cid);
+      el.classList.remove('btn-secondary');
+      el.classList.add('btn-soft','is-priority');
+      el.setAttribute('aria-pressed','true');
+      el.innerHTML=`${icon('check')}<span>Đang là khóa chính</span>`;
+      ctx.toast?.(`Đã đặt “${targetCourse?.title||'Khóa học'}” làm khóa chính trên Hôm nay.`);
+    }
   });
 
   document.addEventListener('input',event=>{

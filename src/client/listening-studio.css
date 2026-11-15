@@ -1,0 +1,27 @@
+.listening-studio { display: grid; gap: 24px; }
+.listening-import .ui-filter-bar { align-items: end; }
+.listening-import .ui-field { flex: 1; min-width: 0; }
+.listening-sample-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
+.listening-workspace { display: grid; grid-template-columns: minmax(0, 2fr) minmax(230px, 1fr); gap: 24px; }
+.listening-workspace[hidden] { display: none; }
+.listening-practice, .listening-cues { min-width: 0; padding: 24px; }
+.listening-practice h2 { overflow-wrap: anywhere; }
+.listening-practice audio { width: 100%; margin: 16px 0; }
+.listening-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 8px; }
+.listening-controls .ui-field { max-width: 130px; }
+.listening-kbd-hints { display: flex; gap: 12px; flex-wrap: wrap; font-size: 11.5px; color: var(--muted); margin-top: 10px; }
+.listening-kbd-hints kbd { background: var(--studio-soft); border: 1px solid var(--line); padding: 1px 5px; border-radius: 4px; font-family: inherit; font-size: 11px; }
+.listening-transcript { padding: 16px; border-radius: 12px; background: var(--studio-soft); color: var(--ink); overflow-wrap: anywhere; }
+.listening-practice form { display: grid; gap: 12px; margin-top: 16px; }
+.listening-practice textarea { width: 100%; resize: vertical; }
+.listening-cues [data-listening-cues] { display: grid; gap: 8px; max-height: 480px; overflow: auto; margin-top: 16px; padding: 4px; }
+.listening-cues [aria-current="true"], .listening-controls [aria-pressed="true"] { background: var(--studio-soft); border-color: var(--purple); color: var(--purple-dark); }
+.listening-diff { display: flex; flex-wrap: wrap; gap: 8px; overflow-wrap: anywhere; }
+.listening-diff span { padding: 4px 8px; border: 1px solid var(--line); border-radius: 7px; }
+.listening-diff .is-missing { border-style: dashed; font-weight: 600; }
+.listening-diff .is-extra { text-decoration: line-through; }
+@media (max-width: 760px) {
+  .listening-workspace { grid-template-columns: minmax(0, 1fr); }
+  .listening-import .ui-filter-bar { display: grid; grid-template-columns: minmax(0, 1fr); }
+  .listening-practice, .listening-cues { padding: 16px; }
+}

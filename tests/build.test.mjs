@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile,writeFile,access,readdir} from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {buildProject} from '../scripts/build.mjs';
 import {contentMetadata} from '../scripts/lib/content.mjs';
 
@@ -9,6 +11,16 @@ const meta=contentMetadata(bank);
 const built=await buildProject();
 assert.equal(built.bankVersion,meta.bankVersion);
 const first=await readFile(new URL('dist/server/index.js',root),'utf8');
+// Production deploys a single Worker module; sibling client files are static assets.
+assert.doesNotMatch(first,/^\s*import\s/m,'Worker must not import separate modules unavailable in production');
+const mediaRoot=new URL('data/exam-media/',root);
+const mediaFiles=(await readdir(mediaRoot,{recursive:true,withFileTypes:true})).filter(entry=>entry.isFile());
+assert.equal(built.mediaFiles,mediaFiles.length);
+for(const entry of mediaFiles) {
+  const source=path.join(entry.parentPath,entry.name);
+  const relative=path.relative(fileURLToPath(mediaRoot),source);
+  assert.deepEqual(await readFile(path.join(fileURLToPath(root),'dist','client','exam-media',relative)),await readFile(source),'Missing or corrupted deployed media '+relative);
+}
 await writeFile(new URL('dist/client/stale.js',root),'This must not survive a clean build.');
 await buildProject();
 await assert.rejects(access(new URL('dist/client/stale.js',root)));

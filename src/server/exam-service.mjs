@@ -252,6 +252,28 @@ export function createExamService({ examBank = { exams: [], contents: {} }, cont
         });
       }
 
+      if (sub.endsWith('/audio-cue') && request.method === 'POST') {
+        const examId = decodeURIComponent(sub.slice(0, -'/audio-cue'.length));
+        const exam = exams.get(examId);
+        const content = contents[examId];
+        if (!exam || !content) return ejson({ error: 'Không tìm thấy đề thi.' }, 404);
+        const body = await readJSON(request);
+        const grp = content.groups?.find((g) => g.id === body.groupId);
+        if (!grp || grp.part > 4) return ejson({ error: 'Không tìm thấy đoạn audio Listening.' }, 404);
+        const qs = (content.questions || []).filter((q) => q.groupId === grp.id);
+        const firstQ = qs[0];
+        const priv = firstQ ? content.privateData?.[firstQ.id] : null;
+        const header = grp.part <= 2 ? `Number ${grp.startQ}.` : `Questions ${grp.startQ} through ${grp.endQ}.`;
+        const spoken = `${header} ${String(priv?.transcript || '').trim()}`.trim();
+        return ejson({
+          groupId: grp.id,
+          part: grp.part,
+          startQ: grp.startQ,
+          endQ: grp.endQ,
+          spoken
+        });
+      }
+
       if (sub.endsWith('/grade') && request.method === 'POST') {
         const examId = decodeURIComponent(sub.slice(0, -'/grade'.length));
         const exam = exams.get(examId);

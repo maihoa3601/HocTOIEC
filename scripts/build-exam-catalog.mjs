@@ -30,24 +30,71 @@ export async function buildExamCatalog() {
   const ets23AnsLc = ets23AnsDir ? findChild(items, ets23AnsDir.id, (i) => /listening/i.test(i.name)) : null;
   const ets23AnsRc = ets23AnsDir ? findChild(items, ets23AnsDir.id, (i) => /reading/i.test(i.name)) : null;
 
+  const publicEts23Overrides = {
+    1: {
+      unifiedPdf: { id: '1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a', name: 'ETS 2023 Test 01.pdf' },
+      key: { id: '1yFfzwoUg6Eyt0b6YFnh_cK8GuHa_IwEs', name: 'Test 01 Key.png' },
+      fullReady: true,
+      note: 'Đã tích hợp 43 trang ảnh PDF gốc & khóa 200 câu đối chiếu công khai.'
+    },
+    2: {
+      key: { id: '1Q_0ViDaSl1CmQtLC-X4fOFBxI2ptIX09', name: 'Test 02 Key.jpg' }
+    },
+    3: {
+      key: { id: '14GQO_BLA4UfpxQM87Pk4nUxVlSbHKEXw', name: 'Test 03 Key.jpg' }
+    },
+    4: {
+      unifiedPdf: { id: '1ponAGH1DRk28QmcvZYHHgmJsA8RD9AuK', name: 'ETS 2023 Test 04.pdf' },
+      audio: { id: '1_xVRzsMc9wV5z7tWzpZkNErlz9o6c-hC', name: 'ETS 2023 Test 04.mp3', playable: 'server-sliced' },
+      key: { id: '1F43AciE626KLSr8mFy9M1JMUWnacc6QO', name: 'Test 04 Key.jpg' },
+      fullReady: true,
+      hasPreCutAudio: true,
+      note: 'Đề chuẩn đầy đủ: 41 trang ảnh PDF gốc, 54 đoạn audio cắt sẵn từng câu/nhóm & khóa 200 câu.'
+    },
+    5: {
+      audio: { id: '1Q55_JxWmOQpiQo7oUTsEjVqao135DICC', name: 'ETS 2023 Test 05.mp3', playable: 'server-sliced' },
+      key: { id: '1fyJ8NZBGtmWnz74qUq2ulp9F4QMHi21S', name: 'Test 05 Key.jpg' },
+      hasPreCutAudio: true
+    },
+    6: {
+      audio: { id: '1qY6yIuwoH-WdgatyvyDysRcekSxz9e-s', name: 'ETS 2023 Test 06.mp3', playable: 'server-sliced' },
+      key: { id: '1gNXYDUxvsRXz8iE4sviJPJBu7LUqvVk-', name: 'Test 06 Key.jpg' },
+      hasPreCutAudio: true
+    }
+  };
+
   for (let n = 1; n <= 10; n++) {
     const examId = `ets-2023-test-${pad2(n)}`;
     const reviewInfo = reviewMap.get(examId) || {};
     const keyVersion = examKeys.activeVersions[examId] || 'v1';
-    const isPilot = n === 1;
-    const lcPdf = ets23LcEdit
-      ? findChild(items, ets23LcEdit.id, (i) => new RegExp(`^test\\s*0?${n}\\.pdf$`, 'i').test(i.name))
-      : null;
-    const audio = ets23AudioDir
-      ? findChild(items, ets23AudioDir.id, (i) => new RegExp(`test\\s*0?${n}\\.mp3$`, 'i').test(i.name))
-      : null;
-
+    const ov = publicEts23Overrides[n] || {};
+    const isFull = Boolean(ov.fullReady);
     const rcStartPage = 2 + (n - 1) * 34;
     const rcEndPage = 1 + n * 34;
 
+    const lcPdf = ov.unifiedPdf
+      ? { id: ov.unifiedPdf.id, name: ov.unifiedPdf.name, merged: false }
+      : (ets23LcEdit
+          ? findChild(items, ets23LcEdit.id, (i) => new RegExp(`^test\\s*0?${n}\\.pdf$`, 'i').test(i.name))
+          : null);
+    const rcPdf = ets23RcPdf
+      ? {
+          id: ets23RcPdf.id,
+          name: ets23RcPdf.name,
+          merged: true,
+          startPage: rcStartPage,
+          endPage: rcEndPage,
+          note: `PDF gộp Test 1–10 (Test ${pad2(n)}: Trang ${rcStartPage}–${rcEndPage})`
+        }
+      : null;
+    const catalogAudio = ets23AudioDir
+      ? findChild(items, ets23AudioDir.id, (i) => new RegExp(`test\\s*0?${n}\\.mp3$`, 'i').test(i.name))
+      : null;
+    const audioMeta = ov.audio || catalogAudio;
+
     const warnings = [];
-    if (isPilot) {
-      warnings.push(`Reading gốc là PDF gộp 10 Test; Test 01 từ trang ${rcStartPage}–${rcEndPage}. Đề mẫu đã tách nội dung 200 câu trực tiếp.`);
+    if (ov.note) {
+      warnings.push(ov.note);
     } else {
       warnings.push(`Reading 2023 là PDF gộp 10 Test (Test ${pad2(n)}: Trang ${rcStartPage}–${rcEndPage}). Có khóa nguồn, đang rà soát.`);
     }
@@ -64,38 +111,35 @@ export async function buildExamCatalog() {
       testNumber: n,
       publisher: 'ETS',
       sourceLabel: 'ETS 2023',
-      readiness: isPilot ? 'full' : 'practice',
-      readinessNote: isPilot ? 'Đề mẫu 200 câu hoàn chỉnh có chữa bài' : 'Có khóa nguồn, đang rà soát',
-      simulationEligible: isPilot,
-      partReadiness: isPilot
+      readiness: isFull ? 'full' : 'practice',
+      readinessNote: ov.note || 'Có khóa nguồn, đang rà soát',
+      simulationEligible: isFull,
+      partReadiness: isFull
         ? { 1: 'full', 2: 'full', 3: 'full', 4: 'full', 5: 'full', 6: 'full', 7: 'full' }
         : { 1: 'practice', 2: 'practice', 3: 'practice', 4: 'practice', 5: 'practice', 6: 'practice', 7: 'practice' },
       warnings,
       sources: {
         lcPdf: lcPdf ? { id: lcPdf.id, name: lcPdf.name, merged: false } : null,
-        rcPdf: ets23RcPdf
+        rcPdf,
+        audio: audioMeta
           ? {
-              id: ets23RcPdf.id,
-              name: ets23RcPdf.name,
-              merged: true,
-              startPage: rcStartPage,
-              endPage: rcEndPage,
-              note: `PDF gộp Test 1–10 (Test ${pad2(n)}: Trang ${rcStartPage}–${rcEndPage})`
+              id: audioMeta.id,
+              name: audioMeta.name,
+              speed: 'normal',
+              speedNote: ov.hasPreCutAudio ? 'Đã cắt sẵn 54 đoạn Listening chuẩn ETS' : 'Tốc độ chuẩn',
+              playable: ov.audio?.playable || 'drive-preview'
             }
           : null,
-        audio: audio
-          ? { id: audio.id, name: audio.name, speed: 'normal', speedNote: 'Tốc độ chuẩn', playable: 'drive-preview' }
-          : null,
-        answerKeyLc: ets23AnsLc ? { id: ets23AnsLc.id, name: ets23AnsLc.name, sourcePage: n } : null,
-        answerKeyRc: ets23AnsRc ? { id: ets23AnsRc.id, name: ets23AnsRc.name, sourcePage: n } : null,
+        answerKeyLc: ov.key ? { id: ov.key.id, name: ov.key.name, sourcePage: 1 } : (ets23AnsLc ? { id: ets23AnsLc.id, name: ets23AnsLc.name, sourcePage: n } : null),
+        answerKeyRc: ov.key ? { id: ov.key.id, name: ov.key.name, sourcePage: 1 } : (ets23AnsRc ? { id: ets23AnsRc.id, name: ets23AnsRc.name, sourcePage: n } : null),
         transcript: null
       },
       checklist: {
-        sourceVerified: isPilot,
-        questionsVerified: isPilot,
-        mediaVerified: isPilot,
-        keyVerified: isPilot || examId === 'ets-2023-test-03',
-        explanationsVerified: isPilot
+        sourceVerified: isFull || Boolean(ov.audio),
+        questionsVerified: isFull,
+        mediaVerified: isFull,
+        keyVerified: isFull || examId === 'ets-2023-test-03',
+        explanationsVerified: isFull
       },
       auditReview: reviewInfo
     });

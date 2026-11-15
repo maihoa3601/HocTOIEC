@@ -267,6 +267,26 @@ export function analyzeExamHistory(results = [], exams = []) {
   };
 }
 
+export function resolveGroupPdfInfo(exam, grp) {
+  if (!grp) return { sourceId: null, pdfName: 'Tài liệu PDF gốc', page: 1, merged: false, startPage: null, endPage: null };
+  const useUnifiedLc = Boolean(grp.sourceId && exam?.sources?.lcPdf?.id && grp.sourceId === exam.sources.lcPdf.id);
+  const isRc = !useUnifiedLc && grp.part >= 5;
+  const src = isRc ? exam?.sources?.rcPdf : exam?.sources?.lcPdf;
+  const sourceId = grp.sourceId || src?.id || null;
+  const rawPage = Math.max(1, Number(grp.sourcePage) || 1);
+  const page = isRc && src?.merged && Number(src.startPage) > 1 && rawPage < Number(src.startPage)
+    ? Number(src.startPage) + rawPage - 1
+    : rawPage;
+  return {
+    sourceId,
+    pdfName: src?.name || (isRc ? 'Reading PDF' : 'Listening PDF'),
+    page,
+    merged: Boolean(src?.merged),
+    startPage: src?.startPage || null,
+    endPage: src?.endPage || null
+  };
+}
+
 export function renderPart1SceneSvg(visual) {
   if (!visual) return '';
   const idx = visual.sceneIndex || 1;

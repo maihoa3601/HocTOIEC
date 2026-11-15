@@ -283,6 +283,12 @@ const pub = await req(`/api/admin/exams/${verifiedDraft.data.versionId}/publish`
 assert.equal(pub.status, 200);
 assert.equal(pub.data.status, 'published');
 
+// Verify public Part 5 per-question groups via live API
+const t04Detail = await req('/api/exams/ets-2023-test-04', 'GET');
+assert.equal(t04Detail.status, 200);
+const t04P5 = (t04Detail.data.content?.groups || []).filter((g) => g.part === 5);
+assert.equal(t04P5.length, 30, 'Test 04 API must serve 30 per-question Part 5 groups');
+
 db.close();
 console.log(JSON.stringify({
   ok: true,

@@ -50,6 +50,10 @@ HocTOIEC/
 
 **Sửa code trong `src/`, HTML/icon trong `public/`, nội dung trong `data/`.** Build tạo lại toàn bộ `dist/`; các thay đổi trực tiếp trong đó sẽ bị thay thế. Dữ liệu phát triển cục bộ nằm ở `.sites-runtime/` và được bỏ qua trong Git.
 
+**Khi phát triển giao diện:** theo [quy chuẩn UX/UI](docs/DESIGN-SYSTEM.md).
+Các select và biểu mẫu dùng component chung trong `src/client/ui-controls.css`;
+hướng dẫn cho các lần phát triển tiếp theo nằm ở [AGENTS.md](AGENTS.md).
+
 ## Chức năng và học liệu
 
 - Danh mục 20 khóa trong 5 nhóm, duyệt theo khóa → chương → chủ đề → video/tài liệu; tìm kiếm và thu gọn bố cục.

@@ -1,0 +1,452 @@
+/* Shared form components. See docs/DESIGN-SYSTEM.md before adding variants. */
+:root {
+  --control-bg: var(--paper);
+  --control-text: var(--ink);
+  --control-border: #e1d6ee;
+  --control-border-hover: #b59acf;
+  --control-focus: #7959bd;
+  --control-ring: #7959bd20;
+  --control-selected-bg: var(--studio-soft);
+  --control-selected-text: #62449f;
+  --control-hover-bg: #f7f2fc;
+  --control-invalid: #b34c42;
+  --control-radius: 10px;
+  --control-height: 46px;
+  --control-font-size: 13px;
+}
+
+html.dark {
+  --control-border: #584368;
+  --control-border-hover: #a98ac7;
+  --control-focus: #c7b0f0;
+  --control-ring: #c7b0f026;
+  --control-selected-text: #e6d4fc;
+  --control-hover-bg: #3b2d4c;
+  --control-invalid: #f1a89b;
+}
+
+/* Native select is the baseline, including forms rendered after navigation. */
+body select:not([multiple]):is(:not([size]), [size="1"]),
+body input.ui-input {
+  appearance: none;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+  min-block-size: var(--control-height);
+  padding: 11px 38px 11px 14px;
+  border: 1px solid var(--control-border);
+  border-radius: var(--control-radius);
+  background-color: var(--control-bg);
+  color: var(--control-text);
+  font-family: var(--font);
+  font-size: var(--control-font-size);
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: 0 1px 2px #4e367504;
+  transition: border-color .15s, box-shadow .15s, background-color .15s;
+}
+
+body select:not([multiple]):is(:not([size]), [size="1"]) {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%23856e9e' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  background-size: 16px;
+}
+
+body select:not([multiple]):is(:not([size]), [size="1"]):hover:not(:disabled),
+body input.ui-input:hover:not(:disabled) {
+  border-color: var(--control-border-hover);
+}
+
+body select:not([multiple]):is(:not([size]), [size="1"]):focus-visible,
+body input.ui-input:focus-visible {
+  border-color: var(--control-focus);
+  outline: 2px solid var(--control-focus);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px var(--control-ring);
+}
+
+body select:not([multiple]):is(:not([size]), [size="1"])[aria-invalid="true"],
+body input.ui-input[aria-invalid="true"] {
+  border-color: var(--control-invalid);
+}
+
+body select:not([multiple]):is(:not([size]), [size="1"]):disabled,
+body input.ui-input:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  background-color: var(--bg);
+  box-shadow: none;
+}
+
+body select.field-sm,
+body select.ui-select--compact {
+  --control-height: 38px;
+  block-size: var(--control-height);
+  padding-block: 7px;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+select>.ui-select-trigger {
+  display: none;
+}
+
+/* Progressive enhancement: the browser still owns focus, selection and events. */
+@supports (appearance: base-select) {
+
+  body select:not([multiple]):is(:not([size]), [size="1"]),
+  select::picker(select) {
+    appearance: base-select;
+  }
+
+  body select:not([multiple]):is(:not([size]), [size="1"]) {
+    background-image: none;
+    padding-inline-end: 14px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  body select.field-sm,
+  body select.ui-select--compact {
+    display: flex;
+    align-items: center;
+    inline-size: 100%;
+    min-inline-size: 0;
+    max-inline-size: 100%;
+    block-size: var(--control-height);
+    white-space: normal;
+  }
+
+  select>.ui-select-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex: 1 1 0%;
+    inline-size: 100%;
+    min-inline-size: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: start;
+    cursor: inherit;
+  }
+
+  select>.ui-select-trigger>selectedcontent {
+    display: block;
+    flex: 1 1 0%;
+    min-inline-size: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .ui-select-caret {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    color: var(--muted);
+    transition: rotate .15s, color .15s;
+  }
+
+  select:open .ui-select-caret {
+    rotate: 180deg;
+    color: var(--control-focus);
+  }
+
+  select:has(> .ui-select-trigger)::picker-icon {
+    display: none;
+  }
+
+  select::picker-icon {
+    color: var(--muted);
+    transition: rotate .15s;
+    flex-shrink: 0;
+  }
+
+  select:open::picker-icon {
+    rotate: 180deg;
+    color: var(--control-focus);
+  }
+
+  select:open {
+    border-color: var(--control-focus);
+    box-shadow: 0 0 0 3px var(--control-ring);
+  }
+
+  select::picker(select) {
+    box-sizing: border-box;
+    min-inline-size: anchor-size(self-inline);
+    max-inline-size: min(32rem, calc(100vw - 32px));
+    max-block-size: min(320px, calc(100dvh - 32px));
+    overflow: auto;
+    scrollbar-width: thin;
+    margin-block: 7px;
+    padding: 6px;
+    border: 1px solid var(--control-border);
+    border-radius: 12px;
+    background: var(--control-bg);
+    color: var(--control-text);
+    box-shadow: 0 12px 32px #4e367526, 0 2px 6px #4e367508;
+    font: 500 var(--control-font-size)/1.5 var(--font);
+  }
+
+  select option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-block-size: 42px;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 7px;
+    background: transparent;
+    color: var(--control-text);
+    overflow-wrap: anywhere;
+    white-space: normal;
+    cursor: pointer;
+  }
+
+  select option+option {
+    margin-block-start: 2px;
+  }
+
+  select option:hover,
+  select option:focus {
+    background: var(--control-hover-bg);
+  }
+
+  select option:checked {
+    background: var(--control-selected-bg);
+    color: var(--control-selected-text);
+    font-weight: 650;
+  }
+
+  select option:focus-visible {
+    outline: 2px solid var(--control-focus);
+    outline-offset: -2px;
+  }
+
+  select option::checkmark {
+    order: 1;
+    margin-inline-start: auto;
+    color: var(--control-selected-text);
+  }
+
+  select option:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+  }
+
+  select optgroup {
+    padding: 5px 4px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+  }
+}
+
+/* Reusable field and filter layouts; page modules supply labels and options. */
+.ui-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 8px;
+  min-width: 0;
+  margin: 0;
+}
+
+.ui-field-label {
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.ui-field-hint {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.ui-field-error {
+  color: var(--control-invalid);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.ui-field>select,
+.ui-field>.ui-input,
+.ui-input-wrap>.ui-input {
+  width: 100%;
+}
+
+.ui-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.ui-input-wrap>.icon {
+  position: absolute;
+  inset-inline-start: 14px;
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+body .ui-input-wrap>.ui-input {
+  padding-inline-start: 40px;
+  padding-inline-end: 14px;
+}
+
+body input.ui-input::placeholder {
+  color: var(--muted);
+  font-weight: 400;
+  opacity: 1;
+}
+
+.ui-filter-panel {
+  padding: 20px;
+  margin-bottom: 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.ui-filter-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 17px;
+}
+
+.ui-filter-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.ui-filter-title>.icon {
+  width: 16px;
+  height: 16px;
+  color: var(--purple);
+}
+
+.ui-filter-heading>small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.ui-filter-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  align-items: end;
+  gap: 14px;
+  margin: 0;
+}
+
+.ui-filter-bar--catalog {
+  grid-template-columns: minmax(190px, 1.25fr) repeat(4, minmax(140px, 1fr));
+}
+
+.ui-filter-bar--short {
+  grid-template-columns: repeat(2, minmax(140px, 1fr));
+  max-width: 560px;
+  margin-bottom: 20px;
+}
+
+.ui-filter-bar .ui-field:has(select option:checked:not(:first-child)) .ui-field-label {
+  color: var(--purple);
+}
+
+.ui-filter-bar .ui-field:has(select option:checked:not(:first-child)) select {
+  border-color: var(--control-border-hover);
+  background-color: var(--control-selected-bg);
+}
+
+@media (max-width: 1150px) {
+
+  .ui-filter-bar,
+  .ui-filter-bar--catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ui-filter-bar>.ui-field--search {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  :root {
+    --control-height: 48px;
+    --control-font-size: 16px;
+  }
+
+  .ui-filter-panel {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .ui-filter-bar,
+  .ui-filter-bar--catalog {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .ui-field-label {
+    font-size: 12px;
+  }
+
+  .ui-filter-heading {
+    margin-bottom: 18px;
+  }
+
+  .ui-filter-heading>small {
+    font-size: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  body select,
+  body input.ui-input,
+  select::picker-icon,
+  .ui-select-caret {
+    transition: none;
+  }
+}
+
+@media (forced-colors: active) {
+  body select {
+    appearance: auto;
+    background-image: none;
+  }
+
+  select>.ui-select-trigger {
+    display: none;
+  }
+
+  body select:focus-visible,
+  body input.ui-input:focus-visible {
+    outline: 2px solid Highlight;
+  }
+}

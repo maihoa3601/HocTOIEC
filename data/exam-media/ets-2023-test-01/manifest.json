@@ -1,0 +1,445 @@
+{
+  "schema": 1,
+  "examId": "ets-2023-test-01",
+  "generatedAt": "2026-11-15T13:15:27.138Z",
+  "audio": {},
+  "pages": {
+    "1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a": {
+      "1": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-001.jpg",
+      "2": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-002.jpg",
+      "3": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-003.jpg",
+      "4": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-004.jpg",
+      "5": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-005.jpg",
+      "6": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-006.jpg",
+      "7": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-007.jpg",
+      "8": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-008.jpg",
+      "9": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-009.jpg",
+      "10": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-010.jpg",
+      "11": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-011.jpg",
+      "12": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-012.jpg",
+      "13": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-013.jpg",
+      "14": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-014.jpg",
+      "15": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-015.jpg",
+      "16": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-016.jpg",
+      "17": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-017.jpg",
+      "18": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-018.jpg",
+      "19": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-019.jpg",
+      "20": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-020.jpg",
+      "21": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-021.jpg",
+      "22": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-022.jpg",
+      "23": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-023.jpg",
+      "24": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-024.jpg",
+      "25": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-025.jpg",
+      "26": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-026.jpg",
+      "27": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-027.jpg",
+      "28": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-028.jpg",
+      "29": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-029.jpg",
+      "30": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-030.jpg",
+      "31": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-031.jpg",
+      "32": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-032.jpg",
+      "33": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-033.jpg",
+      "34": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-034.jpg",
+      "35": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-035.jpg",
+      "36": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-036.jpg",
+      "37": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-037.jpg",
+      "38": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-038.jpg",
+      "39": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-039.jpg",
+      "40": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-040.jpg",
+      "41": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-041.jpg",
+      "42": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-042.jpg",
+      "43": "/exam-media/ets-2023-test-01/pages/1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a/page-043.jpg"
+    }
+  },
+  "images": {
+    "ets23-t01-g-p1-01": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p1-01.jpg",
+      "cropped": true,
+      "caption": "Part 1 · Câu 1 (Trang 3 PDF gốc)"
+    },
+    "ets23-t01-g-p1-02": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p1-02.jpg",
+      "cropped": true,
+      "caption": "Part 1 · Câu 2 (Trang 3 PDF gốc)"
+    },
+    "ets23-t01-g-p1-03": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p1-03.jpg",
+      "cropped": true,
+      "caption": "Part 1 · Câu 3 (Trang 4 PDF gốc)"
+    },
+    "ets23-t01-g-p1-04": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p1-04.jpg",
+      "cropped": true,
+      "caption": "Part 1 · Câu 4 (Trang 4 PDF gốc)"
+    },
+    "ets23-t01-g-p1-05": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p1-05.jpg",
+      "cropped": true,
+      "caption": "Part 1 · Câu 5 (Trang 5 PDF gốc)"
+    },
+    "ets23-t01-g-p1-06": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p1-06.jpg",
+      "cropped": true,
+      "caption": "Part 1 · Câu 6 (Trang 5 PDF gốc)"
+    },
+    "ets23-t01-g-p7-06": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-06.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 158–161 (Trang 26–27 PDF)"
+    },
+    "ets23-t01-g-p7-07": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-07.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 162–165 (Trang 28–29 PDF)"
+    },
+    "ets23-t01-g-p7-10": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-10.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 172–175 (Trang 32–33 PDF)"
+    },
+    "ets23-t01-g-p7-11": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-11.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 176–180 (Trang 34–35 PDF)"
+    },
+    "ets23-t01-g-p7-12": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-12.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 181–185 (Trang 36–37 PDF)"
+    },
+    "ets23-t01-g-p7-13": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-13.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 186–190 (Trang 38–39 PDF)"
+    },
+    "ets23-t01-g-p7-14": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-14.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 191–195 (Trang 40–41 PDF)"
+    },
+    "ets23-t01-g-p7-15": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-15.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 196–200 (Trang 42–43 PDF)"
+    },
+    "ets23-t01-g-p3-01": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-01.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 32–34 (Trang 7 PDF)"
+    },
+    "ets23-t01-g-p3-02": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-02.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 35–37 (Trang 7 PDF)"
+    },
+    "ets23-t01-g-p3-03": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-03.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 38–40 (Trang 7 PDF)"
+    },
+    "ets23-t01-g-p3-04": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-04.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 41–43 (Trang 7 PDF)"
+    },
+    "ets23-t01-g-p3-05": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-05.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 44–46 (Trang 8 PDF)"
+    },
+    "ets23-t01-g-p3-06": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-06.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 47–49 (Trang 8 PDF)"
+    },
+    "ets23-t01-g-p3-07": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-07.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 50–52 (Trang 8 PDF)"
+    },
+    "ets23-t01-g-p3-08": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-08.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 53–55 (Trang 8 PDF)"
+    },
+    "ets23-t01-g-p3-09": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-09.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 56–58 (Trang 9 PDF)"
+    },
+    "ets23-t01-g-p3-10": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-10.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 59–61 (Trang 9 PDF)"
+    },
+    "ets23-t01-g-p3-11": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-11.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 62–64 (Trang 9 PDF)"
+    },
+    "ets23-t01-g-p3-12": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-12.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 65–67 (Trang 10 PDF)"
+    },
+    "ets23-t01-g-p3-13": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p3-13.jpg",
+      "cropped": true,
+      "caption": "Part 3 · Câu 68–70 (Trang 10 PDF)"
+    },
+    "ets23-t01-g-p4-01": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-01.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 71–73 (Trang 11 PDF)"
+    },
+    "ets23-t01-g-p4-02": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-02.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 74–76 (Trang 11 PDF)"
+    },
+    "ets23-t01-g-p4-03": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-03.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 77–79 (Trang 11 PDF)"
+    },
+    "ets23-t01-g-p4-04": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-04.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 80–82 (Trang 11 PDF)"
+    },
+    "ets23-t01-g-p4-05": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-05.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 83–85 (Trang 12 PDF)"
+    },
+    "ets23-t01-g-p4-06": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-06.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 86–88 (Trang 12 PDF)"
+    },
+    "ets23-t01-g-p4-07": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-07.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 89–91 (Trang 12 PDF)"
+    },
+    "ets23-t01-g-p4-08": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-08.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 92–94 (Trang 12 PDF)"
+    },
+    "ets23-t01-g-p4-09": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-09.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 95–97 (Trang 13 PDF)"
+    },
+    "ets23-t01-g-p4-10": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p4-10.jpg",
+      "cropped": true,
+      "caption": "Part 4 · Câu 98–100 (Trang 13 PDF)"
+    },
+    "ets23-t01-g-p6-01": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p6-01.jpg",
+      "cropped": true,
+      "caption": "Part 6 · Câu 131–134 (Trang 17 PDF)"
+    },
+    "ets23-t01-g-p6-02": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p6-02.jpg",
+      "cropped": true,
+      "caption": "Part 6 · Câu 135–138 (Trang 18 PDF)"
+    },
+    "ets23-t01-g-p6-03": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p6-03.jpg",
+      "cropped": true,
+      "caption": "Part 6 · Câu 139–142 (Trang 19 PDF)"
+    },
+    "ets23-t01-g-p6-04": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p6-04.jpg",
+      "cropped": true,
+      "caption": "Part 6 · Câu 143–146 (Trang 20 PDF)"
+    },
+    "ets23-t01-g-p7-01": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-01.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 147–148 (Trang 21 PDF)"
+    },
+    "ets23-t01-g-p7-02": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-02.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 149–150 (Trang 22 PDF)"
+    },
+    "ets23-t01-g-p7-03": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-03.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 151–153 (Trang 23 PDF)"
+    },
+    "ets23-t01-g-p7-04": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-04.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 154–155 (Trang 24 PDF)"
+    },
+    "ets23-t01-g-p7-05": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-05.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 156–157 (Trang 25 PDF)"
+    },
+    "ets23-t01-g-p7-08": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-08.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 166–168 (Trang 30 PDF)"
+    },
+    "ets23-t01-g-p7-09": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p7-09.jpg",
+      "cropped": true,
+      "caption": "Part 7 · Câu 169–171 (Trang 31 PDF)"
+    },
+    "ets23-t01-g-p5-101": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-101.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 101 (Trang 14 PDF)"
+    },
+    "ets23-t01-g-p5-102": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-102.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 102 (Trang 14 PDF)"
+    },
+    "ets23-t01-g-p5-103": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-103.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 103 (Trang 14 PDF)"
+    },
+    "ets23-t01-g-p5-104": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-104.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 104 (Trang 14 PDF)"
+    },
+    "ets23-t01-g-p5-105": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-105.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 105 (Trang 14 PDF)"
+    },
+    "ets23-t01-g-p5-106": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-106.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 106 (Trang 14 PDF)"
+    },
+    "ets23-t01-g-p5-107": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-107.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 107 (Trang 14 PDF)"
+    },
+    "ets23-t01-g-p5-108": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-108.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 108 (Trang 14 PDF)"
+    },
+    "ets23-t01-g-p5-109": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-109.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 109 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-110": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-110.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 110 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-111": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-111.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 111 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-112": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-112.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 112 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-113": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-113.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 113 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-114": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-114.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 114 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-115": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-115.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 115 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-116": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-116.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 116 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-117": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-117.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 117 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-118": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-118.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 118 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-119": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-119.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 119 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-120": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-120.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 120 (Trang 15 PDF)"
+    },
+    "ets23-t01-g-p5-121": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-121.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 121 (Trang 16 PDF)"
+    },
+    "ets23-t01-g-p5-122": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-122.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 122 (Trang 16 PDF)"
+    },
+    "ets23-t01-g-p5-123": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-123.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 123 (Trang 16 PDF)"
+    },
+    "ets23-t01-g-p5-124": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-124.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 124 (Trang 16 PDF)"
+    },
+    "ets23-t01-g-p5-125": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-125.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 125 (Trang 16 PDF)"
+    },
+    "ets23-t01-g-p5-126": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-126.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 126 (Trang 16 PDF)"
+    },
+    "ets23-t01-g-p5-127": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-127.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 127 (Trang 16 PDF)"
+    },
+    "ets23-t01-g-p5-128": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-128.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 128 (Trang 16 PDF)"
+    },
+    "ets23-t01-g-p5-129": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-129.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 129 (Trang 16 PDF)"
+    },
+    "ets23-t01-g-p5-130": {
+      "url": "/exam-media/ets-2023-test-01/images/ets23-t01-g-p5-130.jpg",
+      "cropped": true,
+      "caption": "Part 5 · Câu 130 (Trang 16 PDF)"
+    }
+  }
+}

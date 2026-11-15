@@ -12,12 +12,12 @@ Full goal remains active. This checklist preserves all 16 modules and the archit
 | M04 VOCABULARY STUDIO | partial | [src/client/learning.mjs](../src/client/learning.mjs), [tests/v2.test.mjs](../tests/v2.test.mjs) |
 | M05 GRAMMAR STUDIO | partial | [data/learning-bank.json](../data/learning-bank.json), [tests/learning.test.mjs](../tests/learning.test.mjs) |
 | M06 TOEIC PRACTICE ENGINE | partial | [src/client/learning.mjs](../src/client/learning.mjs), [src/server/content-admin.mjs](../src/server/content-admin.mjs) |
-| M07 LISTENING STUDIO | not_started |  |
+| M07 LISTENING STUDIO | in_progress | [src/client/listening-studio.mjs](../src/client/listening-studio.mjs), [tests/listening.test.mjs](../tests/listening.test.mjs) |
 | M08 READING STUDIO | partial | [src/client/learning.mjs](../src/client/learning.mjs) |
 | M09 VIDEO LEARNING | partial | [src/client/app.js](../src/client/app.js) |
 | M10 MISTAKE REVIEW | partial | [src/client/learning-core.mjs](../src/client/learning-core.mjs), [tests/activities.test.mjs](../tests/activities.test.mjs) |
 | M11 STUDY PLANNER | partial | [src/client/study-planner.mjs](../src/client/study-planner.mjs), [tests/planner.test.mjs](../tests/planner.test.mjs) |
-| M12 MOCK TEST | not_started |  |
+| M12 MOCK TEST | in_progress | [src/client/exam-room.mjs](../src/client/exam-room.mjs), [src/client/exam-audio-player.mjs](../src/client/exam-audio-player.mjs), [tests/exam-room.test.mjs](../tests/exam-room.test.mjs), [tests/exam-audio.test.mjs](../tests/exam-audio.test.mjs) |
 | M13 LEARNING ANALYTICS | partial | [src/client/active-learning.mjs](../src/client/active-learning.mjs) |
 | M14 AI TOEIC ASSISTANT | not_started |  |
 | M15 GAMIFICATION | partial | [src/client/studio-v2.mjs](../src/client/studio-v2.mjs) |
@@ -323,10 +323,10 @@ Read each source requirement in TOEIC-STUDIO-V2-PLAN.md at the recorded line. Do
 ### LISTENING STUDIO
 
 - [ ] **M07-R001** 1. Advanced Audio Player — unverified; plan line 605.
-- [ ] **M07-R002** Play/Pause. — unverified; plan line 609.
+- [x] **M07-R002** Play/Pause. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L97-L113) and [tests/listening.test.mjs](../tests/listening.test.mjs).
 - [ ] **M07-R003** Tua nhanh và tua lại. — unverified; plan line 610.
-- [ ] **M07-R004** Điều chỉnh tốc độ. — unverified; plan line 611.
-- [ ] **M07-R005** Lặp đoạn A–B. — unverified; plan line 612.
+- [x] **M07-R004** Điều chỉnh tốc độ. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L60) and [tests/listening.test.mjs](../tests/listening.test.mjs).
+- [x] **M07-R005** Lặp đoạn A–B. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L143-L148) and [tests/listening.test.mjs](../tests/listening.test.mjs).
 - [ ] **M07-R006** Ghi nhớ vị trí đang nghe. — unverified; plan line 613.
 - [ ] **M07-R007** Đánh dấu đoạn khó. — unverified; plan line 614.
 - [ ] **M07-R008** 2. Listening Practice — unverified; plan line 616.
@@ -334,23 +334,23 @@ Read each source requirement in TOEIC-STUDIO-V2-PLAN.md at the recorded line. Do
 - [ ] **M07-R010** Đáp án lựa chọn. — unverified; plan line 621.
 - [ ] **M07-R011** Hình minh họa. — unverified; plan line 622.
 - [ ] **M07-R012** PDF nguồn. — unverified; plan line 623.
-- [ ] **M07-R013** 3. Dictation Mode — unverified; plan line 625.
-- [ ] **M07-R014** Nghe audio. — unverified; plan line 629.
-- [ ] **M07-R015** Nhập nội dung nghe được. — unverified; plan line 630.
-- [ ] **M07-R016** Nộp câu trả lời. — unverified; plan line 631.
-- [ ] **M07-R017** Xem transcript. — unverified; plan line 632.
-- [ ] **M07-R018** Đối chiếu từ sai hoặc thiếu. — unverified; plan line 633.
+- [x] **M07-R013** 3. Dictation Mode — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L71-L73) and [tests/listening.test.mjs](../tests/listening.test.mjs).
+- [x] **M07-R014** Nghe audio. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L97-L113).
+- [x] **M07-R015** Nhập nội dung nghe được. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L71).
+- [x] **M07-R016** Nộp câu trả lời. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L173-L188).
+- [x] **M07-R017** Xem transcript. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L69-L70).
+- [x] **M07-R018** Đối chiếu từ sai hoặc thiếu. — verified in [src/client/listening-core.mjs](../src/client/listening-core.mjs#L107-L147) and [tests/listening.test.mjs](../tests/listening.test.mjs).
 - [ ] **M07-R019** Lưu đoạn cần luyện lại. — unverified; plan line 634.
-- [ ] **M07-R020** 4. Transcript Mode — unverified; plan line 636.
-- [ ] **M07-R021** Hide Transcript. — unverified; plan line 640.
-- [ ] **M07-R022** Show Transcript. — unverified; plan line 641.
+- [x] **M07-R020** 4. Transcript Mode — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L69-L70).
+- [x] **M07-R021** Hide Transcript. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L69-L70).
+- [x] **M07-R022** Show Transcript. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L69-L70).
 - [ ] **M07-R023** Highlight Vocabulary. — unverified; plan line 642.
 - [ ] **M07-R024** Save Vocabulary. — unverified; plan line 643.
-- [ ] **M07-R025** 5. Sentence Listening — unverified; plan line 645.
-- [ ] **M07-R026** Nghe từng câu. — unverified; plan line 651.
-- [ ] **M07-R027** Lặp từng câu. — unverified; plan line 652.
+- [x] **M07-R025** 5. Sentence Listening — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L80-L95).
+- [x] **M07-R026** Nghe từng câu. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L97-L113).
+- [x] **M07-R027** Lặp từng câu. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L143-L148).
 - [ ] **M07-R028** Tô sáng transcript đồng bộ. — unverified; plan line 653.
-- [ ] **M07-R029** Chuyển đến câu tương ứng. — unverified; plan line 654.
+- [x] **M07-R029** Chuyển đến câu tương ứng. — verified in [src/client/listening-studio.mjs](../src/client/listening-studio.mjs#L92-L95).
 
 ### READING STUDIO
 

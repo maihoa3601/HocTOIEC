@@ -9,12 +9,19 @@ import {
   computeTimerState,
   analyzeExamHistory,
   computePartMatrix,
-  renderPart1SceneSvg,
+  resolveGroupPdfInfo,
   validateExamContent
 } from './exam-core.mjs';
+import { formatTimeMMSS } from './exam-audio-core.mjs';
+import { speakEnglish, stopSpeaking, canSpeak } from './speech.mjs';
+import { loadExamMediaState } from './exam-media.mjs';
+import { createExamAudioPlayer } from './exam-audio-player.mjs';
 
 const LOCAL_DRAFTS_KEY = 'toeic-exam-drafts-v1';
 const LOCAL_RESULTS_KEY = 'toeic-exam-results-v1';
+const AUTOPLAY_KEY = 'toeic-exam-autoplay-v1';
+const AUTONEXT_KEY = 'toeic-exam-autonext-v1';
+const PLAYBACK_RATE_KEY = 'toeic-exam-audio-rate-v1';
 
 export function createExamRoom(ctx) {
   const { esc, icon, heading, toast, previewURL, fileURL } = ctx;
@@ -33,6 +40,97 @@ export function createExamRoom(ctx) {
   let reviewSession = null; // { items: [], index: 0, checked: {}, userChoices: {}, filter: 'all', part: 'all' }
   let activeReportTarget = null; // { questionId, questionVersion, questionNum }
   let adminData = { exams: [], versions: [], audit: [], draftModal: null };
+  const mediaCache = new Map();
+  const visualModeMap = new Map(); // groupId -> 'cropped' | 'full'
+  const audioPlayer = createExamAudioPlayer();
+  window.addEventListener('hashchange', () => audioPlayer.clear());
+  window.addEventListener('pagehide', () => audioPlayer.clear());
+  document.addEventListener('play', (event) => {
+    const audio = event.target;
+    if (audio instanceof HTMLAudioElement && audio.closest('#main') && audio.getAttribute('src')?.startsWith('/exam-media/')) {
+      void audioPlayer.prepare(audio).catch(() => {});
+    }
+  }, true);
+  let activeLightbox = null; // { src, altSrc, mode, title, caption, groupId }
+  let paletteFilter = { status: 'all', part: 'all' };
+  let resultFilter = { status: 'all', part: 'all' };
+  let autoPlayOnGroupChange = false;
+  let autoAdvanceSingle = false;
+  let audioPlaybackRate = 1;
+  try {
+    autoPlayOnGroupChange = Boolean(JSON.parse(localStorage.getItem(AUTOPLAY_KEY) || 'false'));
+    autoAdvanceSingle = Boolean(JSON.parse(localStorage.getItem(AUTONEXT_KEY) || 'false'));
+    audioPlaybackRate = Number(JSON.parse(localStorage.getItem(PLAYBACK_RATE_KEY) || '1')) || 1;
+  } catch { /* ignore storage parse failures */ }
+
+  function getExamMedia(examId) {
+    return examId ? mediaCache.get(examId) || null : null;
+  }
+
+  async function ensureExamMedia(exam, force = false) {
+    if (!exam?.id) return null;
+    if (!force && mediaCache.has(exam.id)) return mediaCache.get(exam.id);
+    const sourceIds = [exam.sources?.lcPdf?.id, exam.sources?.rcPdf?.id].filter(Boolean);
+    const state = await loadExamMediaState(exam.id, sourceIds).catch(() => null);
+    if (state) mediaCache.set(exam.id, state);
+    return state;
+  }
+
+  function updateActiveCueHighlight(currentTime) {
+    const cueBtns = Array.from(document.querySelectorAll('#exam-audio-dock [data-exam-audio-jump]'));
+    if (!cueBtns.length) return;
+    let activeIdx = -1;
+    cueBtns.forEach((btn, idx) => {
+      const start = Number(btn.dataset.examAudioJump || 0);
+      if (currentTime + 0.15 >= start) activeIdx = idx;
+    });
+    cueBtns.forEach((btn, idx) => btn.classList.toggle('active', idx === activeIdx));
+  }
+
+  function syncAudioElement(autoPlay = false) {
+    const audioEl = $('#exam-group-audio-el');
+    if (!audioEl) return;
+    audioEl.playbackRate = audioPlaybackRate || 1;
+    audioEl.ontimeupdate = () => updateActiveCueHighlight(audioEl.currentTime || 0);
+    audioEl.onended = () => {
+      updateActiveCueHighlight(audioEl.duration || 0);
+      if (!activeRun || activeRun.attempt.status !== 'in_progress') return;
+      const curGrp = activeRun.content.groups[activeRun.groupIndex];
+      if (!curGrp || activeRun.pendingAutoAdvanceGroupId !== curGrp.id) return;
+      const groupQs = activeRun.content.questions.filter((q) => q.groupId === curGrp.id);
+      const allAnswered = groupQs.length === 1 && groupQs.every((q) => activeRun.attempt.answers[q.id] !== undefined);
+      activeRun.pendingAutoAdvanceGroupId = null;
+      if (autoAdvanceSingle && allAnswered && activeRun.groupIndex < activeRun.content.groups.length - 1) {
+        activeRun.groupIndex++;
+        refreshRunGroupUI(true);
+      }
+    };
+    updateActiveCueHighlight(audioEl.currentTime || 0);
+    void audioPlayer.prepare(audioEl).catch(() => {});
+    if (autoPlay && autoPlayOnGroupChange) {
+      void audioEl.play().catch(() => {});
+    }
+  }
+
+  function refreshRunGroupUI(autoPlay = false) {
+    stopSpeaking();
+    if (activeRun) {
+      activeRun.pendingAutoAdvanceGroupId = null;
+      saveRunLocalDraft();
+    }
+    const contentPane = $('#exam-content-pane');
+    if (contentPane) contentPane.innerHTML = renderGroupContent();
+    const palettePane = $('#exam-palette-panel');
+    if (palettePane) palettePane.innerHTML = renderPalette();
+    const audioDock = $('#exam-audio-dock');
+    if (audioDock) {
+      audioPlayer.release($('#exam-group-audio-el'));
+      audioDock.outerHTML = renderAudioDock();
+    }
+    const pdfDrawer = $('#exam-pdf-drawer');
+    if (pdfDrawer && activeRun?.showPdfDrawer) pdfDrawer.outerHTML = renderPdfDrawer();
+    syncAudioElement(autoPlay);
+  }
 
   async function api(path, method = 'GET', body) {
     const res = await fetch('/api/' + path, {
@@ -196,32 +294,65 @@ export function createExamRoom(ctx) {
         <button type="button" class="btn btn-soft" data-exam-import-v17>Nhập lịch sử bản 17</button>
       </div>`
     )}
-    <div class="exam-filters">
-      <input id="exam-filter-q" type="search" placeholder="Tìm tên đề, ETS 2023…" value="${esc(filters.query)}" aria-label="Tìm đề thi">
+    <section class="ui-filter-panel" aria-label="Bộ lọc đề thi">
+    <div class="ui-filter-heading"><span class="ui-filter-title">${icon('search')}Tìm đề phù hợp</span><small>Kết hợp các bộ lọc để chọn đề bạn cần</small></div>
+    <div class="exam-filters ui-filter-bar ui-filter-bar--catalog">
+      <label class="ui-field ui-field--search"><span class="ui-field-label">Tìm kiếm</span><span class="ui-input-wrap">${icon('search')}<input class="ui-input" id="exam-filter-q" type="search" placeholder="Tên đề, ví dụ ETS 2023…" value="${esc(filters.query)}" aria-label="Tìm đề thi"></span></label>
+      <label class="ui-field"><span class="ui-field-label">Năm phát hành</span>
       <select id="exam-filter-year" aria-label="Lọc theo năm">
         <option value="all">Tất cả năm</option>
         <option value="2023" ${filters.year === '2023' ? 'selected' : ''}>2023</option>
         <option value="2024" ${filters.year === '2024' ? 'selected' : ''}>2024</option>
         <option value="2025" ${filters.year === '2025' ? 'selected' : ''}>2025 (YBM)</option>
       </select>
+      </label>
+      <label class="ui-field"><span class="ui-field-label">Mức sẵn sàng</span>
       <select id="exam-filter-readiness" aria-label="Lọc mức sẵn sàng">
         <option value="all">Mọi mức sẵn sàng</option>
         <option value="full" ${filters.readiness === 'full' ? 'selected' : ''}>Có chữa bài đầy đủ</option>
         <option value="practice" ${filters.readiness === 'practice' ? 'selected' : ''}>Có thể tự luyện</option>
         <option value="reference" ${filters.readiness === 'reference' ? 'selected' : ''}>Tài liệu tham khảo</option>
       </select>
+      </label>
+      <label class="ui-field"><span class="ui-field-label">Phần thi</span>
       <select id="exam-filter-part" aria-label="Lọc theo Part">
         <option value="all">Tất cả Part</option>
         ${PART_SPECS.map((p) => `<option value="${p.part}" ${String(filters.part) === String(p.part) ? 'selected' : ''}>Part ${p.part}</option>`).join('')}
       </select>
+      </label>
+      <label class="ui-field"><span class="ui-field-label">Tiến độ làm bài</span>
       <select id="exam-filter-status" aria-label="Lọc trạng thái làm">
         <option value="all">Mọi trạng thái</option>
         <option value="in_progress" ${filters.status === 'in_progress' ? 'selected' : ''}>Đang làm dở</option>
         <option value="completed" ${filters.status === 'completed' ? 'selected' : ''}>Đã từng làm</option>
         <option value="unstarted" ${filters.status === 'unstarted' ? 'selected' : ''}>Chưa làm</option>
       </select>
+      </label>
     </div>
+    </section>
     <div id="exam-catalog-root">${loaded ? renderCatalogGrid() : '<div class="loading"><span class="spinner"></span>Đang tải kho đề…</div>'}</div>`;
+  }
+
+  function renderPrepMediaSummary(exam, media) {
+    if (!exam) return '';
+    if (!media) {
+      return '<div class="exam-media-progress">Đang kiểm tra gói audio &amp; ảnh cắt sẵn theo từng câu…</div>';
+    }
+    const audioCount = media.audioClips?.size || 0;
+    const imgCount = media.groupImages?.size || 0;
+    const croppedCount = [...(media.groupImages?.values() || [])].filter((v) => v?.cropped).length;
+    const pageCount = Object.values(media.staticPages || {}).reduce((acc, m) => acc + Object.keys(m || {}).length, 0);
+    if (!audioCount && !imgCount && !pageCount) {
+      return '<p class="exam-callout exam-callout--warn" style="margin:0 0 12px;font-size:12.5px">Đề này chưa có gói audio/ảnh cắt sẵn trên máy; hệ thống dùng liên kết Audio &amp; PDF gốc từ Google Drive bên dưới.</p>';
+    }
+    const pills = [];
+    if (audioCount) pills.push(`<span class="exam-badge full">${audioCount} đoạn audio cắt riêng</span>`);
+    else if (exam.sources?.audio) pills.push(`<span class="exam-badge warn">Chưa có audio cắt riêng (dùng Drive)</span>`);
+    if (croppedCount) pills.push(`<span class="exam-badge full">${croppedCount} ảnh cắt gọn theo câu</span>`);
+    else if (imgCount) pills.push(`<span class="exam-badge full">${imgCount} ảnh câu hỏi</span>`);
+    else if (exam.sources?.lcPdf || exam.sources?.rcPdf) pills.push(`<span class="exam-badge warn">Chưa có ảnh PDF cắt riêng</span>`);
+    if (pageCount) pills.push(`<span class="exam-badge practice">${pageCount} trang PDF gốc</span>`);
+    return `<div style="display:flex;gap:6px;flex-wrap:wrap;margin:0 0 12px">${pills.join('')}</div>`;
   }
 
   function examPrepPage(params) {
@@ -233,11 +364,18 @@ export function createExamRoom(ctx) {
       const stats = attemptStatsMap()[exam.id] || { inProgress: null, count: 0 };
       const simOk = canStartMode(exam, 'simulation');
       const pracOk = canStartMode(exam, 'practice');
+      const cachedMedia = getExamMedia(exam.id);
+      if (!cachedMedia) {
+        void ensureExamMedia(exam).then((m) => {
+          const el = $('#prep-media-summary');
+          if (el) el.innerHTML = renderPrepMediaSummary(exam, m);
+        });
+      }
 
       return `${heading(esc(exam.title), `${esc(exam.sourceLabel)} · ${esc(READINESS_LABELS[exam.readiness])}`, `<a class="btn btn-secondary" href="#exams">${icon('back')}Kho đề</a>`)}
-      ${exam.warnings?.length ? `<div class="exam-prep-warnings" style="margin-bottom:16px;background:#fff8e6;border:1px solid #ffe082;border-radius:10px;padding:12px 16px">
-        <strong style="color:#b26a00">Lưu ý nguồn và phạm vi đối chiếu:</strong>
-        <ul style="margin:6px 0 0 18px;font-size:12px;color:#555">
+      ${exam.warnings?.length ? `<div class="exam-prep-warnings exam-callout exam-callout--warn">
+        <strong>Lưu ý nguồn và phạm vi đối chiếu:</strong>
+        <ul style="margin:6px 0 0 18px;font-size:12.5px">
           ${exam.warnings.map((w) => `<li>${esc(w)}</li>`).join('')}
         </ul>
       </div>` : ''}
@@ -265,16 +403,16 @@ export function createExamRoom(ctx) {
               <p class="fine-print">Chọn cả bài, theo kỹ năng hoặc từng Part. Có thể đặt giới hạn thời gian tùy chọn; xem giải thích từng câu.</p>
               ${pracOk
                 ? `<div style="display:grid;gap:10px;margin-bottom:12px">
-                    <label class="form-field">Phạm vi luyện
-                      <select id="prep-practice-scope">
+                    <label class="ui-field"><span class="ui-field-label">Phạm vi luyện</span>
+                      <select id="prep-practice-scope" class="ui-input">
                         <option value="full">Cả bài (200 câu)</option>
                         <option value="lc">Chỉ Listening (Part 1–4)</option>
                         <option value="rc">Chỉ Reading (Part 5–7)</option>
                         ${PART_SPECS.map((p) => `<option value="p${p.part}" ${prePart === p.part ? 'selected' : ''}>${esc(p.name)} (${p.count} câu)</option>`).join('')}
                       </select>
                     </label>
-                    <label class="form-field">Thời gian làm bài
-                      <select id="prep-time-limit">
+                    <label class="ui-field"><span class="ui-field-label">Thời gian làm bài</span>
+                      <select id="prep-time-limit" class="ui-input">
                         <option value="0" selected>Không giới hạn</option>
                         <option value="15">15 phút</option>
                         <option value="30">30 phút</option>
@@ -292,7 +430,14 @@ export function createExamRoom(ctx) {
         </section>
         <section class="panel">
           <h2>2. Kiểm tra Audio & Tài liệu nguồn</h2>
-          <p class="fine-print">Kiểm tra phát thử trước khi vào phòng thi. Tài liệu gốc vẫn mở được trên Google Drive để đối chiếu.</p>
+          <p class="fine-print">Đề hỗ trợ cắt audio và ảnh câu hỏi sẵn trên hệ thống (vẫn giữ liên kết Drive gốc để đối chiếu).</p>
+          <div id="prep-media-summary">${renderPrepMediaSummary(exam, cachedMedia)}</div>
+          <details class="exam-prep-parts" open>
+            <summary>Cấu trúc đề chuẩn 7 Part (200 câu · LC 45’ + RC 75’)</summary>
+            <div class="exam-prep-part-list">
+              ${PART_SPECS.map((p) => `<div class="exam-prep-part-item"><span>${esc(p.name)}</span><span class="fine-print">Câu ${p.start}–${p.end} (${p.count} câu)</span></div>`).join('')}
+            </div>
+          </details>
           ${exam.sources?.audio ? `<div style="margin-bottom:12px">
             <strong>Audio: ${esc(exam.sources.audio.name)}</strong>
             <p class="fine-print">${esc(exam.sources.audio.speedNote || '')}</p>
@@ -378,6 +523,8 @@ export function createExamRoom(ctx) {
 
     const filteredGroups = content.groups.filter((g) => scopeParts.includes(g.part));
     const filteredQuestions = content.questions.filter((q) => scopeParts.includes(q.part));
+    paletteFilter = { status: 'all', part: 'all' };
+    activeLightbox = null;
     activeRun = {
       attempt,
       exam,
@@ -392,6 +539,11 @@ export function createExamRoom(ctx) {
       hasConflict: false
     };
     saveRunLocalDraft();
+    void ensureExamMedia(exam).then(() => {
+      if (activeRun && activeRun.exam.id === exam.id && $('#exam-run-layout')) {
+        refreshRunGroupUI(false);
+      }
+    });
     location.hash = '#exam-run?attempt=' + encodeURIComponent(attempt.attempt_id);
   }
 
@@ -400,6 +552,7 @@ export function createExamRoom(ctx) {
     const drafts = readLocal(LOCAL_DRAFTS_KEY, {});
     drafts[activeRun.attempt.attempt_id] = {
       attempt: activeRun.attempt,
+      groupIndex: activeRun.groupIndex,
       savedAt: new Date().toISOString()
     };
     writeLocal(LOCAL_DRAFTS_KEY, drafts);
@@ -452,33 +605,270 @@ export function createExamRoom(ctx) {
     }, 350);
   }
 
+  function resolveGroupVisualUrls(exam, grp) {
+    const media = getExamMedia(exam?.id);
+    const pdfInfo = resolveGroupPdfInfo(exam, grp);
+    const groupImg = media?.groupImages?.get(grp?.id);
+    const croppedUrl = grp?.visual?.imageUrl || groupImg?.url || null;
+    const pageUrl = media?.staticPages?.[pdfInfo.sourceId]?.[String(pdfInfo.page)] || null;
+    const hasBoth = Boolean(croppedUrl && pageUrl && croppedUrl !== pageUrl);
+    const mode = hasBoth && visualModeMap.get(grp.id) === 'full' ? 'full' : 'cropped';
+    const displayUrl = mode === 'full' ? pageUrl : (croppedUrl || pageUrl || null);
+    return {
+      pdfInfo,
+      croppedUrl,
+      pageUrl,
+      hasBoth,
+      mode,
+      displayUrl,
+      isCropped: Boolean(groupImg?.cropped && mode === 'cropped')
+    };
+  }
+
+  function renderLightboxModal() {
+    if (!activeLightbox) return '';
+    const lb = activeLightbox;
+    return `<div class="exam-lightbox-backdrop" id="exam-lightbox-overlay" data-lightbox-backdrop role="dialog" aria-modal="true" aria-label="${esc(lb.title || 'Phóng to đề gốc')}">
+      <div class="exam-lightbox-dialog">
+        <div class="exam-lightbox-head">
+          <div>
+            <strong>${esc(lb.title || 'Đề gốc')}</strong>
+            ${lb.caption ? `<small class="fine-print" style="margin-left:8px">${esc(lb.caption)}</small>` : ''}
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            ${lb.altSrc ? `<button type="button" class="btn btn-sm btn-secondary" data-lightbox-toggle-mode>${lb.mode === 'full' ? 'Xem khung câu đã cắt' : 'Xem toàn trang gốc'}</button>` : ''}
+            <button type="button" class="btn btn-sm btn-primary" data-lightbox-close>Đóng (Esc)</button>
+          </div>
+        </div>
+        <div class="exam-lightbox-body">
+          <img src="${lb.src}" alt="${esc(lb.title || 'Ảnh phóng to')}" class="exam-lightbox-img" />
+        </div>
+      </div>
+    </div>`;
+  }
+
+  function updateLightboxMount() {
+    let mount = $('#exam-lightbox-mount');
+    if (!mount && activeLightbox) {
+      mount = document.createElement('div');
+      mount.id = 'exam-lightbox-mount';
+      document.body.appendChild(mount);
+    }
+    if (mount) mount.innerHTML = renderLightboxModal();
+  }
+
+  function closeLightbox() {
+    activeLightbox = null;
+    const mount = $('#exam-lightbox-mount');
+    if (mount) mount.innerHTML = '';
+  }
+
+  function renderHighlightedPassage(passage, rawEvidence) {
+    if (!passage) return '';
+    if (!rawEvidence) return esc(passage);
+    const ev = String(rawEvidence).trim();
+    const quoteMatch = ev.match(/["“]([^"”]{4,})["”]/);
+    const target = (quoteMatch ? quoteMatch[1] : ev).trim();
+    if (target.length >= 4) {
+      const lowerPassage = passage.toLowerCase();
+      const lowerTarget = target.toLowerCase();
+      const idx = lowerPassage.indexOf(lowerTarget);
+      if (idx >= 0) {
+        const before = esc(passage.slice(0, idx));
+        const matched = esc(passage.slice(idx, idx + target.length));
+        const after = esc(passage.slice(idx + target.length));
+        return `${before}<mark class="exam-evidence-highlight">${matched}</mark>${after}`;
+      }
+    }
+    return esc(passage);
+  }
+
+  function renderGroupVisual(exam, grp, context = 'run') {
+    if (!grp) return '';
+    const v = resolveGroupVisualUrls(exam, grp);
+    const needsPhoto = grp.part === 1 || grp.visual?.kind === 'pdf-figure' || grp.visual?.kind === 'photo-scene';
+    const qRange = `Câu ${grp.startQ}${grp.endQ > grp.startQ ? `–${grp.endQ}` : ''}`;
+    const caption = `Trang ${v.pdfInfo.page} · ${v.pdfInfo.pdfName}`;
+
+    const tableHtml = grp.visual?.kind === 'table'
+      ? `<table class="exam-table"><caption>${esc(grp.visual.title)}</caption><thead><tr>${grp.visual.headers.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${grp.visual.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`
+      : '';
+
+    if (v.displayUrl) {
+      const altUrl = v.hasBoth ? (v.mode === 'full' ? v.croppedUrl : v.pageUrl) : '';
+      return `${tableHtml}<figure class="exam-visual-card exam-visual-real ${grp.part >= 3 && !v.isCropped ? 'exam-visual-page' : ''}">
+        <div class="exam-visual-toolbar">
+          <span class="fine-print"><strong>${v.isCropped ? 'Khung câu đã cắt' : (v.mode === 'full' ? 'Trang PDF gốc' : 'Ảnh đề gốc')}</strong> · ${esc(qRange)} (${esc(caption)})</span>
+          <div class="exam-visual-actions">
+            ${v.hasBoth ? `<button type="button" class="btn btn-sm btn-secondary" data-exam-toggle-visual="${esc(grp.id)}">${v.mode === 'full' ? 'Xem khung đã cắt' : 'Xem cả trang'}</button>` : ''}
+            <button type="button" class="btn btn-sm btn-soft" data-exam-lightbox data-group-id="${esc(grp.id)}" data-src="${v.displayUrl}" data-alt-src="${altUrl}" data-mode="${v.mode}" data-title="${esc(qRange)}" data-caption="${esc(caption)}">Phóng to</button>
+          </div>
+        </div>
+        <button type="button" class="exam-visual-img-btn" data-exam-lightbox data-group-id="${esc(grp.id)}" data-src="${v.displayUrl}" data-alt-src="${altUrl}" data-mode="${v.mode}" data-title="${esc(qRange)}" data-caption="${esc(caption)}" aria-label="Phóng to ảnh ${esc(qRange)}">
+          <img src="${v.displayUrl}" alt="Hình ảnh đề gốc ${esc(qRange)}" class="exam-real-photo ${v.isCropped ? 'exam-real-photo--cropped' : ''}" ${context === 'result' ? 'loading="lazy"' : ''} />
+        </button>
+      </figure>`;
+    }
+
+    if (needsPhoto && v.pdfInfo.sourceId) {
+      const frameSrc = previewURL(v.pdfInfo.sourceId);
+      return `${tableHtml}<div class="exam-visual-card exam-pdf-visual">
+        <div class="exam-visual-toolbar">
+          <div>
+            <strong>Hình ảnh đề gốc câu ${grp.startQ} · Trang ${v.pdfInfo.page}</strong>
+            <small class="fine-print" style="display:block">${esc(v.pdfInfo.pdfName)}</small>
+          </div>
+          <div class="exam-visual-actions">
+            <a class="btn btn-sm btn-secondary" href="${fileURL(v.pdfInfo.sourceId)}" target="_blank" rel="noopener noreferrer">Mở PDF ${icon('external')}</a>
+          </div>
+        </div>
+        ${context === 'run' ? `<iframe src="${frameSrc}" class="exam-inline-pdf" title="Ảnh đề gốc câu ${grp.startQ} trang ${v.pdfInfo.page}" allow="fullscreen"></iframe>` : ''}
+      </div>`;
+    }
+
+    return tableHtml;
+  }
+
+  function renderPdfDrawer() {
+    if (!activeRun || !activeRun.showPdfDrawer) return '';
+    const { exam } = activeRun;
+    const curGrp = activeRun.content.groups[activeRun.groupIndex];
+    const pdfInfo = resolveGroupPdfInfo(exam, curGrp);
+    if (!pdfInfo.sourceId) return '';
+    const media = getExamMedia(exam.id);
+    const staticPageImgUrl = media?.staticPages?.[pdfInfo.sourceId]?.[String(pdfInfo.page)] || null;
+    const frameSrc = previewURL(pdfInfo.sourceId);
+    return `<div class="exam-pdf-drawer" id="exam-pdf-drawer">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--surface-alt);border-bottom:1px solid var(--border);gap:8px;flex-wrap:wrap">
+        <div>
+          <strong>Đối chiếu đề gốc: ${esc(pdfInfo.pdfName)} · Trang ${pdfInfo.page}</strong>
+          ${pdfInfo.merged ? `<small class="fine-print" style="margin-left:8px">(PDF gộp · Đề này từ trang ${pdfInfo.startPage}–${pdfInfo.endPage})</small>` : ''}
+        </div>
+        <div style="display:flex;gap:6px;align-items:center">
+          <a class="btn btn-sm btn-secondary" href="${fileURL(pdfInfo.sourceId)}" target="_blank" rel="noopener noreferrer">Mở Drive ${icon('external')}</a>
+          <button type="button" class="btn btn-sm btn-secondary" data-exam-toggle-pdf>Đóng</button>
+        </div>
+      </div>
+      ${staticPageImgUrl
+        ? `<div class="exam-drawer-img-wrap"><img src="${staticPageImgUrl}" alt="Trang ${pdfInfo.page} đề gốc" style="width:100%;height:auto;display:block" /></div>`
+        : `<iframe src="${frameSrc}" title="Bản PDF đối chiếu trang ${pdfInfo.page}" allow="fullscreen"></iframe>`}
+    </div>`;
+  }
+
+  function renderAudioDock() {
+    if (!activeRun) return '';
+    const { attempt, exam } = activeRun;
+    const listeningGroups = activeRun.content.groups.filter((g) => g.part <= 4);
+    if (!listeningGroups.length || !exam.sources?.audio) return '';
+    const curGrp = activeRun.content.groups[activeRun.groupIndex];
+    const isListeningGroup = curGrp && curGrp.part <= 4;
+    const media = getExamMedia(exam.id);
+    const clip = isListeningGroup ? media?.audioClips?.get(curGrp.id) : null;
+    const cues = Array.isArray(clip?.questionCues) ? clip.questionCues : [];
+    const qRangeLabel = curGrp
+      ? (curGrp.startQ === curGrp.endQ ? `Câu ${curGrp.startQ}` : `Câu ${curGrp.startQ}–${curGrp.endQ}`)
+      : '';
+
+    return `<div class="exam-audio-dock" id="exam-audio-dock">
+      <div class="exam-audio-header">
+        <div>
+          <strong>${isListeningGroup ? `Audio riêng ${qRangeLabel} (Part ${curGrp.part})` : `Audio Listening (${listeningGroups.length} đoạn)`}</strong>
+          ${clip
+            ? `<span class="exam-badge full" style="margin-left:6px">Đã cắt riêng · ${formatTimeMMSS(clip.durationSec)} (${formatTimeMMSS(clip.startSec)} → ${formatTimeMMSS(clip.endSec)})</span>`
+            : `<span class="exam-badge warn" style="margin-left:6px">Audio đề thi</span>`}
+        </div>
+        <div class="exam-audio-actions">
+          <a class="text-button" href="${fileURL(exam.sources.audio.id)}" target="_blank" rel="noopener noreferrer">Tải ${esc(exam.sources.audio.name)} ${icon('external')}</a>
+        </div>
+      </div>
+      ${isListeningGroup && clip ? `<div class="exam-clip-player">
+        <audio id="exam-group-audio-el" controls preload="metadata" src="${clip.url}"></audio>
+        ${cues.length ? `<div class="exam-audio-cues" aria-label="Nhảy nhanh tới từng câu trong đoạn audio">
+          <span class="fine-print">Nhảy nhanh:</span>
+          <button type="button" class="exam-cue-btn" data-exam-audio-jump="0">▶ Đoạn đầu (0:00)</button>
+          ${cues.map((c) => `<button type="button" class="exam-cue-btn" data-exam-audio-jump="${Number(c.offsetSec || 0)}">Câu ${Number(c.q)} (${formatTimeMMSS(Number(c.offsetSec || 0))})</button>`).join('')}
+        </div>` : ''}
+        <div class="exam-clip-controls">
+          <button type="button" class="btn btn-sm btn-secondary" data-exam-audio-replay title="Phím tắt R">↺ Nghe lại (R)</button>
+          <button type="button" class="btn btn-sm btn-secondary" data-exam-audio-seek="-5">-5s</button>
+          <button type="button" class="btn btn-sm btn-secondary" data-exam-audio-seek="5">+5s</button>
+          <label class="exam-inline-control">Tốc độ
+            <select data-exam-audio-rate class="ui-select--compact" aria-label="Tốc độ phát audio">
+              ${[0.85, 1, 1.15, 1.25].map((r) => `<option value="${r}" ${audioPlaybackRate === r ? 'selected' : ''}>${r}x</option>`).join('')}
+            </select>
+          </label>
+          <label class="exam-inline-control"><input type="checkbox" data-exam-audio-autoplay ${autoPlayOnGroupChange ? 'checked' : ''}> Tự phát khi chuyển câu</label>
+        </div>
+      </div>` : ''}
+      ${isListeningGroup && !clip ? `<div class="exam-clip-fallback-row">
+        ${attempt.mode === 'practice' && canSpeak() ? `<div class="exam-audio-actions">
+          <button type="button" class="btn btn-sm btn-soft" data-exam-speak-cue="${esc(curGrp.id)}">🔊 Nghe đọc ${esc(qRangeLabel)}</button>
+          <button type="button" class="btn btn-sm btn-secondary" data-exam-stop-speak>⏹ Dừng</button>
+        </div>` : ''}
+        <details class="exam-full-audio-fallback" ${attempt.mode === 'simulation' ? 'open' : ''}>
+          <summary>Mở trình phát audio nguyên bài (${esc(exam.sources.audio.name)})</summary>
+          <iframe src="${previewURL(exam.sources.audio.id)}" title="Audio đề thi gốc" style="width:100%;height:72px;border:0;border-radius:8px;margin-top:8px" allow="autoplay"></iframe>
+        </details>
+      </div>` : ''}
+    </div>`;
+  }
+
+  function applyChoiceToActiveRun(qid, idx) {
+    if (!activeRun || activeRun.attempt.status !== 'in_progress') return;
+    activeRun.attempt.answers[qid] = idx;
+    const curGrp = activeRun.content.groups[activeRun.groupIndex];
+    const groupQs = curGrp ? activeRun.content.questions.filter((q) => q.groupId === curGrp.id) : [];
+    const audioEl = $('#exam-group-audio-el');
+    const audioPlaying = Boolean(curGrp && curGrp.part <= 4 && audioEl && !audioEl.paused && !audioEl.ended);
+    const canAutoAdvance = autoAdvanceSingle && groupQs.length === 1 && activeRun.groupIndex < activeRun.content.groups.length - 1;
+    activeRun.pendingAutoAdvanceGroupId = (canAutoAdvance && audioPlaying) ? curGrp.id : null;
+    scheduleServerSync();
+    if (canAutoAdvance && !audioPlaying) {
+      activeRun.groupIndex++;
+      refreshRunGroupUI(true);
+      return;
+    }
+    if ($('#exam-content-pane')) $('#exam-content-pane').innerHTML = renderGroupContent();
+    if ($('#exam-palette-panel')) $('#exam-palette-panel').innerHTML = renderPalette();
+  }
+
+  function toggleFlagInActiveRun(qid) {
+    if (!activeRun) return;
+    const set = new Set(activeRun.attempt.flags);
+    if (set.has(qid)) set.delete(qid);
+    else set.add(qid);
+    activeRun.attempt.flags = [...set];
+    if ($('#exam-content-pane')) $('#exam-content-pane').innerHTML = renderGroupContent();
+    if ($('#exam-palette-panel')) $('#exam-palette-panel').innerHTML = renderPalette();
+    scheduleServerSync();
+  }
+
   function renderGroupContent() {
     if (!activeRun) return '';
     const grp = activeRun.content.groups[activeRun.groupIndex];
     if (!grp) return '';
     const qs = activeRun.content.questions.filter((q) => q.groupId === grp.id);
-    const pdfId = grp.sourceId;
+    const pdfInfo = resolveGroupPdfInfo(activeRun.exam, grp);
 
     return `<article class="exam-group-card">
       <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap">
         <div>
-          <span class="exam-badge">Part ${grp.part} · Câu ${grp.startQ}${grp.endQ > grp.startQ ? '–' + grp.endQ : ''}</span>
+          <span class="exam-badge">Part ${grp.part} · Câu ${grp.startQ}${grp.endQ > grp.startQ ? '–' + grp.endQ : ''} · Nhóm ${activeRun.groupIndex + 1}/${activeRun.content.groups.length}</span>
           ${grp.title ? `<h2 style="margin:6px 0 0;font-size:18px">${esc(grp.title)}</h2>` : ''}
         </div>
-        <div style="display:flex;gap:6px">
-          ${pdfId ? `<a class="text-button" href="${fileURL(pdfId)}" target="_blank" rel="noopener noreferrer">PDF trang ${grp.sourcePage || 1} ${icon('external')}</a>` : ''}
+        <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
+          ${pdfInfo.sourceId ? `<a class="text-button" href="${fileURL(pdfInfo.sourceId)}" target="_blank" rel="noopener noreferrer">PDF trang ${pdfInfo.page} ${icon('external')}</a>` : ''}
           <button type="button" class="btn btn-sm btn-secondary" data-exam-toggle-pdf>${icon('book')} ${activeRun.showPdfDrawer ? 'Đóng PDF' : 'Mở PDF'}</button>
         </div>
       </div>
-      ${grp.visual?.kind === 'photo-scene' ? renderPart1SceneSvg(grp.visual) : ''}
-      ${grp.visual?.kind === 'table' ? `<table class="exam-table"><caption>${esc(grp.visual.title)}</caption><thead><tr>${grp.visual.headers.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${grp.visual.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}
+      ${renderGroupVisual(activeRun.exam, grp, 'run')}
       ${grp.passage ? `<div class="exam-passage">${esc(grp.passage)}</div>` : ''}
       ${qs.map((q) => {
         const chosen = activeRun.attempt.answers[q.id];
         const flagged = activeRun.attempt.flags.includes(q.id);
         const checked = activeRun.checkCache[q.id];
         return `<div class="exam-question-block" data-q-id="${esc(q.id)}">
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
             <strong>${esc(q.prompt)}</strong>
             <div style="display:flex;gap:6px">
               <button type="button" class="btn btn-secondary" data-exam-flag="${esc(q.id)}" aria-pressed="${flagged}">${flagged ? '★ Đã đánh dấu' : '☆ Đánh dấu'}</button>
@@ -491,7 +881,7 @@ export function createExamRoom(ctx) {
               const isSel = chosen === idx;
               return `<button type="button" class="exam-option-btn ${isSel ? 'selected' : ''}" data-exam-choose="${esc(q.id)}" data-idx="${idx}" aria-pressed="${isSel}">
                 <span>(${letter})</span>
-                ${q.part === 2 ? '' : `<span>${esc(opt)}</span>`}
+                ${q.part === 2 || opt === letter ? '' : `<span>${esc(opt)}</span>`}
               </button>`;
             }).join('')}
           </div>
@@ -499,6 +889,7 @@ export function createExamRoom(ctx) {
             <strong>Đáp án đúng: (${['A', 'B', 'C', 'D'][checked.answer]}) · ${checked.reviewStatus === 'draft' ? 'Gợi ý nháp' : 'Đã duyệt'}</strong>
             <p style="margin:4px 0">${esc(checked.explanation)}</p>
             ${checked.evidence ? `<div class="review-evidence"><strong>Căn cứ:</strong> ${esc(checked.evidence)}</div>` : ''}
+            ${checked.choiceNotes && typeof checked.choiceNotes === 'object' ? `<div class="exam-choice-notes"><strong>Phân tích các phương án:</strong><ul>${Object.entries(checked.choiceNotes).map(([k, v]) => `<li><strong>(${esc(k)}):</strong> ${esc(v)}</li>`).join('')}</ul></div>` : ''}
             ${checked.transcript ? `<details style="margin-top:6px"><summary>Transcript</summary><pre style="white-space:pre-wrap;font:inherit">${esc(checked.transcript)}</pre></details>` : ''}
           </div>` : ''}
         </div>`;
@@ -507,6 +898,13 @@ export function createExamRoom(ctx) {
         <button type="button" class="btn btn-secondary" data-exam-prev-group ${activeRun.groupIndex === 0 ? 'disabled' : ''}>${icon('back')}Nhóm trước</button>
         <button type="button" class="btn btn-primary" data-exam-next-group ${activeRun.groupIndex >= activeRun.content.groups.length - 1 ? 'disabled' : ''}>Nhóm tiếp ${icon('arrow')}</button>
       </div>
+      <div class="exam-kbd-bar" aria-label="Phím tắt làm bài">
+        <span><kbd>1</kbd>–<kbd>4</kbd> / <kbd>A</kbd>–<kbd>D</kbd> Chọn</span>
+        <span><kbd>←</kbd><kbd>→</kbd> Đổi nhóm</span>
+        <span><kbd>R</kbd> Nghe lại</span>
+        <span><kbd>F</kbd> Đánh dấu</span>
+        ${activeRun.attempt.mode === 'practice' ? '<span><kbd>Enter</kbd> Kiểm tra</span>' : ''}
+      </div>
     </article>`;
   }
 
@@ -514,22 +912,50 @@ export function createExamRoom(ctx) {
     if (!activeRun) return '';
     const currentGrp = activeRun.content.groups[activeRun.groupIndex];
     const currentQIds = new Set(activeRun.content.questions.filter((q) => q.groupId === currentGrp?.id).map((q) => q.id));
-    const answeredCount = Object.keys(activeRun.attempt.answers).length;
+    const totalCount = activeRun.content.questions.length;
+    const answeredCount = activeRun.content.questions.filter((q) => activeRun.attempt.answers[q.id] !== undefined).length;
+    const flaggedCount = activeRun.content.questions.filter((q) => activeRun.attempt.flags.includes(q.id)).length;
+    const unansweredCount = totalCount - answeredCount;
+    const pct = totalCount ? Math.round((answeredCount / totalCount) * 100) : 0;
+    const partsPresent = [...new Set(activeRun.content.questions.map((q) => q.part))].sort((a, b) => a - b);
+
+    const visibleQs = activeRun.content.questions.filter((q) => {
+      if (paletteFilter.part !== 'all' && String(q.part) !== String(paletteFilter.part)) return false;
+      const ans = activeRun.attempt.answers[q.id] !== undefined;
+      const flag = activeRun.attempt.flags.includes(q.id);
+      if (paletteFilter.status === 'unanswered' && ans) return false;
+      if (paletteFilter.status === 'flagged' && !flag) return false;
+      return true;
+    });
+
     return `<div>
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <strong>Phiếu trả lời</strong>
-        <small>${answeredCount}/${activeRun.content.questions.length} câu</small>
+      <div class="exam-progress-wrap">
+        <div class="exam-progress-head">
+          <strong>Phiếu trả lời</strong>
+          <span><strong>${answeredCount}/${totalCount}</strong> câu (${pct}%)</span>
+        </div>
+        <div class="exam-progress-track" aria-hidden="true"><div class="exam-progress-fill" style="width:${pct}%"></div></div>
       </div>
+      <div class="exam-chip-bar" role="group" aria-label="Lọc trạng thái câu">
+        <button type="button" class="exam-chip ${paletteFilter.status === 'all' ? 'active' : ''}" data-palette-status="all">Tất cả</button>
+        <button type="button" class="exam-chip ${paletteFilter.status === 'unanswered' ? 'active' : ''}" data-palette-status="unanswered">Chưa làm (${unansweredCount})</button>
+        <button type="button" class="exam-chip ${paletteFilter.status === 'flagged' ? 'active' : ''}" data-palette-status="flagged">Đánh dấu (${flaggedCount})</button>
+      </div>
+      ${partsPresent.length > 1 ? `<div class="exam-chip-bar" role="group" aria-label="Lọc theo Part">
+        <button type="button" class="exam-chip ${paletteFilter.part === 'all' ? 'active' : ''}" data-palette-part="all">Mọi Part</button>
+        ${partsPresent.map((p) => `<button type="button" class="exam-chip ${String(paletteFilter.part) === String(p) ? 'active' : ''}" data-palette-part="${p}">P${p}</button>`).join('')}
+      </div>` : ''}
       <div class="exam-palette-grid">
-        ${activeRun.content.questions
-          .map((q) => {
-            const ans = activeRun.attempt.answers[q.id] !== undefined;
-            const flag = activeRun.attempt.flags.includes(q.id);
-            const cur = currentQIds.has(q.id);
-            return `<button type="button" class="exam-palette-btn ${ans ? 'answered' : ''} ${flag ? 'flagged' : ''} ${cur ? 'current' : ''}" data-exam-jump-q="${esc(q.id)}" aria-label="Câu ${q.number}${ans ? ' đã trả lời' : ''}${flag ? ' đã đánh dấu' : ''}">${q.number}</button>`;
-          })
-          .join('')}
+        ${visibleQs.length
+          ? visibleQs.map((q) => {
+              const ans = activeRun.attempt.answers[q.id] !== undefined;
+              const flag = activeRun.attempt.flags.includes(q.id);
+              const cur = currentQIds.has(q.id);
+              return `<button type="button" class="exam-palette-btn ${ans ? 'answered' : ''} ${flag ? 'flagged' : ''} ${cur ? 'current' : ''}" data-exam-jump-q="${esc(q.id)}" aria-label="Câu ${q.number}${ans ? ' đã trả lời' : ''}${flag ? ' đã đánh dấu' : ''}">${q.number}</button>`;
+            }).join('')
+          : '<p class="fine-print" style="grid-column:1/-1;margin:6px 0">Không có câu thuộc bộ lọc này.</p>'}
       </div>
+      <label class="exam-inline-control" style="margin:6px 0 10px"><input type="checkbox" data-exam-autonext ${autoAdvanceSingle ? 'checked' : ''}> Tự sang câu tiếp (nhóm 1 câu)</label>
       ${activeRun.attempt.mode === 'simulation' && activeRun.attempt.current_section === 'listening'
         ? `<button type="button" class="btn btn-secondary" style="width:100%;margin-bottom:8px" data-exam-to-reading>Chuyển sang Reading (75p)</button>`
         : ''}
@@ -540,9 +966,6 @@ export function createExamRoom(ctx) {
   function renderRunShell() {
     const { attempt, exam } = activeRun;
     const tState = computeTimerState(attempt);
-    const hasAudio = activeRun.content.groups.some((g) => g.part <= 4) && exam.sources?.audio;
-    const curGrp = activeRun.content.groups[activeRun.groupIndex];
-    const pdfSourceId = curGrp?.sourceId || exam.sources?.lcPdf?.id || exam.sources?.rcPdf?.id;
 
     return `<div class="exam-run-topbar">
       <div>
@@ -560,20 +983,8 @@ export function createExamRoom(ctx) {
       <span>${icon('alert')} Phiên làm bài đã được cập nhật từ thiết bị hoặc tab khác.</span>
       <button type="button" class="btn btn-sm btn-primary" data-exam-reload-attempt>Tải lại phiên từ máy chủ</button>
     </div>` : ''}
-    ${activeRun.showPdfDrawer && pdfSourceId ? `<div class="exam-pdf-drawer">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 14px;background:var(--surface-alt);border-bottom:1px solid var(--border)">
-        <strong>Tài liệu đề gốc để đối chiếu trực tiếp</strong>
-        <button type="button" class="btn btn-sm btn-secondary" data-exam-toggle-pdf>Đóng</button>
-      </div>
-      <iframe src="${previewURL(pdfSourceId)}" title="Bản PDF đối chiếu" allow="fullscreen"></iframe>
-    </div>` : ''}
-    ${hasAudio ? `<div class="exam-audio-dock" id="exam-audio-dock">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-        <strong>Audio phòng thi: ${esc(exam.sources.audio.name)}</strong>
-        <a class="text-button" href="${fileURL(exam.sources.audio.id)}" target="_blank" rel="noopener noreferrer">Mở Drive ${icon('external')}</a>
-      </div>
-      <iframe src="${previewURL(exam.sources.audio.id)}" title="Audio đề thi" style="width:100%;height:72px;border:0;border-radius:8px" allow="autoplay"></iframe>
-    </div>` : ''}
+    ${renderPdfDrawer()}
+    ${renderAudioDock()}
     <div class="exam-mobile-tabs">
       <button type="button" class="btn ${activeRun.mobilePane === 'content' ? 'btn-primary' : 'btn-secondary'}" data-exam-mobile-pane="content">Nội dung đề</button>
       <button type="button" class="btn ${activeRun.mobilePane === 'sheet' ? 'btn-primary' : 'btn-secondary'}" data-exam-mobile-pane="sheet">Phiếu trả lời</button>
@@ -581,12 +992,14 @@ export function createExamRoom(ctx) {
     <div class="exam-run-layout" id="exam-run-layout" data-mobile-pane="${activeRun.mobilePane}">
       <div class="exam-content-pane" id="exam-content-pane">${renderGroupContent()}</div>
       <aside class="exam-palette-panel" id="exam-palette-panel">${renderPalette()}</aside>
-    </div>`;
+    </div>
+    <div id="exam-lightbox-mount">${renderLightboxModal()}</div>`;
   }
 
   function startRunTimer() {
     stopRunTimer();
     if (!activeRun) return;
+    let tickCount = 0;
     activeRun.timerHandle = setInterval(() => {
       if (!activeRun) return stopRunTimer();
       // Track active interaction time excluding background tab periods
@@ -595,6 +1008,8 @@ export function createExamRoom(ctx) {
         if (curGrp) {
           activeRun.attempt.timing[curGrp.part] = (activeRun.attempt.timing[curGrp.part] || 0) + 1;
         }
+        tickCount++;
+        if (tickCount % 5 === 0) saveRunLocalDraft();
       }
       if (!activeRun.attempt.deadline_at) return;
       const st = computeTimerState(activeRun.attempt);
@@ -620,13 +1035,13 @@ export function createExamRoom(ctx) {
       if (attemptId) {
         void (async () => {
           await ensureLoaded();
+          const local = readLocal(LOCAL_DRAFTS_KEY, {})[attemptId];
           let loadedAttempt = null;
           if (signedIn) {
             const res = await api('exam-attempts/' + encodeURIComponent(attemptId)).catch(() => null);
             loadedAttempt = res?.attempt;
           }
           if (!loadedAttempt) {
-            const local = readLocal(LOCAL_DRAFTS_KEY, {})[attemptId];
             loadedAttempt = local?.attempt;
           }
           if (!loadedAttempt) {
@@ -636,30 +1051,41 @@ export function createExamRoom(ctx) {
           const exam = catalog.find((e) => e.id === loadedAttempt.exam_id);
           const { content } = await api('exams/' + encodeURIComponent(loadedAttempt.exam_id));
           const scopeParts = loadedAttempt.scope_parts || [1, 2, 3, 4, 5, 6, 7];
+          const filteredGroups = content.groups.filter((g) => scopeParts.includes(g.part));
+          const filteredQuestions = content.questions.filter((q) => scopeParts.includes(q.part));
+          const restoredGroupIndex = Math.max(0, Math.min(Number(local?.groupIndex) || 0, Math.max(0, filteredGroups.length - 1)));
+          paletteFilter = { status: 'all', part: 'all' };
+          activeLightbox = null;
           activeRun = {
             attempt: loadedAttempt,
             exam,
             content: {
-              groups: content.groups.filter((g) => scopeParts.includes(g.part)),
-              questions: content.questions.filter((q) => scopeParts.includes(q.part))
+              groups: filteredGroups,
+              questions: filteredQuestions
             },
-            groupIndex: 0,
+            groupIndex: restoredGroupIndex,
             mobilePane: 'content',
             saveStatus: 'Đã khôi phục phiên',
             checkCache: {},
             saveTimer: null,
             timerHandle: null,
             showPdfDrawer: false,
-            hasConflict: false
+            hasConflict: false,
+            pendingAutoAdvanceGroupId: null
           };
+          await ensureExamMedia(exam);
           if ($('#main')) $('#main').innerHTML = renderRunShell();
+          syncAudioElement(false);
           startRunTimer();
         })();
         return '<div class="loading"><span class="spinner"></span>Đang khôi phục phiên thi…</div>';
       }
       return `<div class="empty"><h3>Chưa mở phiên thi</h3><a class="btn btn-primary" href="#exams">Chọn đề thi</a></div>`;
     }
-    setTimeout(startRunTimer, 0);
+    setTimeout(() => {
+      startRunTimer();
+      syncAudioElement(false);
+    }, 0);
     return renderRunShell();
   }
 
@@ -740,28 +1166,48 @@ export function createExamRoom(ctx) {
     }
   }
 
+  function ensureResultMediaLoaded(r) {
+    if (!r?.examId) return;
+    if (mediaCache.has(r.examId)) return;
+    const exam = catalog.find((e) => e.id === r.examId);
+    if (!exam) return;
+    void ensureExamMedia(exam).then((m) => {
+      if (m && location.hash.slice(1).split('?')[0] === 'exam-result' && activeResult?.attemptId === r.attemptId && $('#main')) {
+        $('#main').innerHTML = renderResultView(activeResult);
+      }
+    });
+  }
+
   function examResultPage(params) {
     const id = params.get('id');
     if (!activeResult || (id && activeResult.attemptId !== id)) {
+      resultFilter = { status: 'all', part: 'all' };
+      activeLightbox = null;
       if (id && signedIn) {
-        void api('exam-attempts/' + encodeURIComponent(id))
-          .then((res) => {
-            if (res.result) {
-              activeResult = res.result;
-              if ($('#main')) $('#main').innerHTML = renderResultView(activeResult);
+        void (async () => {
+          await ensureLoaded();
+          const res = await api('exam-attempts/' + encodeURIComponent(id)).catch(() => null);
+          if (res?.result) {
+            activeResult = res.result;
+            const exam = catalog.find((e) => e.id === activeResult.examId);
+            if (exam) await ensureExamMedia(exam);
+            if ($('#main') && location.hash.slice(1).split('?')[0] === 'exam-result') {
+              $('#main').innerHTML = renderResultView(activeResult);
             }
-          })
-          .catch(() => {});
+          }
+        })();
         return '<div class="loading"><span class="spinner"></span>Đang tải kết quả…</div>';
       }
       const localResults = readLocal(LOCAL_RESULTS_KEY, []);
       const matched = localResults.find((r) => r.attemptId === id);
       if (matched) {
         activeResult = matched;
+        ensureResultMediaLoaded(activeResult);
         return renderResultView(activeResult);
       }
       return `<div class="empty"><h3>Chưa có kết quả</h3><a class="btn btn-primary" href="#exams">Về kho đề</a></div>`;
     }
+    ensureResultMediaLoaded(activeResult);
     return renderResultView(activeResult);
   }
 
@@ -769,8 +1215,28 @@ export function createExamRoom(ctx) {
     const sc = r.score;
     const grpMap = new Map((r.groups || []).map((g) => [g.id, g]));
     const exam = catalog.find((e) => e.id === r.examId);
+    const media = getExamMedia(r.examId);
     const hasLC = (r.questions || []).some((q) => q.part <= 4);
     const isOutdated = r.versionId && exam && r.versionId !== exam.versionId;
+
+    const allItems = (r.questions || []).map((q, idx) => ({
+      q,
+      resItem: sc.results?.[idx] || {},
+      grp: grpMap.get(q.groupId)
+    }));
+    const countAll = allItems.length;
+    const countWrong = allItems.filter((x) => x.resItem.answered && !x.resItem.correct).length;
+    const countBlank = allItems.filter((x) => !x.resItem.answered).length;
+    const countCorrect = allItems.filter((x) => x.resItem.correct).length;
+    const partsPresent = [...new Set(allItems.map((x) => x.q.part))].sort((a, b) => a - b);
+
+    const visibleItems = allItems.filter(({ q, resItem }) => {
+      if (resultFilter.part !== 'all' && String(q.part) !== String(resultFilter.part)) return false;
+      if (resultFilter.status === 'wrong' && (!resItem.answered || resItem.correct)) return false;
+      if (resultFilter.status === 'blank' && resItem.answered) return false;
+      if (resultFilter.status === 'correct' && !resItem.correct) return false;
+      return true;
+    });
 
     return `${heading(
       `Kết quả · ${esc(r.examTitle || r.examId)}`,
@@ -781,51 +1247,80 @@ export function createExamRoom(ctx) {
         <a class="btn btn-secondary" href="#exams">Kho đề</a>
       </div>`
     )}
-    ${isOutdated ? `<div class="exam-result-version-alert" style="margin-bottom:16px;padding:12px 16px;background:#e8f4fd;border:1px solid #b3e5fc;border-radius:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+    ${isOutdated ? `<div class="exam-result-version-alert exam-callout exam-callout--info" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
       <div>
-        <strong style="color:#0277bd">Thông báo phiên bản khóa đáp án:</strong>
-        <p style="margin:2px 0 0;font-size:12px;color:#455a64">
+        <strong>Thông báo phiên bản khóa đáp án:</strong>
+        <p style="margin:2px 0 0;font-size:12.5px">
           Khóa đáp án của đề này đã được hiệu chỉnh sang phiên bản mới <strong>${esc(exam.versionId)}</strong>.
           Kết quả đang hiển thị theo khóa lúc bạn làm bài (<strong>${esc(r.versionId)}</strong>). Lịch sử cũ được giữ nguyên bất biến.
         </p>
       </div>
       ${signedIn && r.attemptId ? `<button type="button" class="btn btn-primary" data-exam-regrade="${esc(r.attemptId)}" data-exam-id="${esc(r.examId)}">Chấm lại theo khóa mới (tạo bản liên kết)</button>` : ''}
     </div>` : ''}
-    ${hasLC && exam?.sources?.audio ? `<div class="exam-audio-dock" style="margin-bottom:16px">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-        <strong>Audio đề thi để nghe lại: ${esc(exam.sources.audio.name)}</strong>
+    ${hasLC && exam?.sources?.audio ? `<details class="exam-audio-dock" style="margin-bottom:16px">
+      <summary style="cursor:pointer;font-weight:600">Audio cả đề (${esc(exam.sources.audio.name)}) · Mỗi câu bên dưới đã có đoạn audio cắt riêng</summary>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin:8px 0 6px">
+        <span class="fine-print">File Drive gốc (~45 phút)</span>
         <a class="text-button" href="${fileURL(exam.sources.audio.id)}" target="_blank" rel="noopener noreferrer">Mở Drive ${icon('external')}</a>
       </div>
       <iframe src="${previewURL(exam.sources.audio.id)}" title="Audio nghe lại" style="width:100%;height:72px;border:0;border-radius:8px"></iframe>
-    </div>` : ''}
-    <div class="stat-grid" style="margin-bottom:18px">
+    </details>` : ''}
+    <div class="stat-grid" style="margin-bottom:14px">
       ${Object.values(sc.byPart || {})
         .filter((p) => p.total > 0)
         .map((p) => `<div class="stat"><div><strong>Part ${p.part}: ${p.correct}/${p.total}</strong><small>Sai ${p.wrong} · Trống ${p.blank}</small></div></div>`)
         .join('')}
     </div>
+    <section class="panel" style="padding:12px 14px;margin-bottom:16px" aria-label="Bộ lọc câu trong kết quả">
+      <div class="exam-chip-bar" role="group" aria-label="Lọc kết quả câu">
+        <button type="button" class="exam-chip ${resultFilter.status === 'all' ? 'active' : ''}" data-result-status="all">Tất cả (${countAll})</button>
+        <button type="button" class="exam-chip ${resultFilter.status === 'wrong' ? 'active' : ''}" data-result-status="wrong">Câu sai (${countWrong})</button>
+        <button type="button" class="exam-chip ${resultFilter.status === 'blank' ? 'active' : ''}" data-result-status="blank">Bỏ trống (${countBlank})</button>
+        <button type="button" class="exam-chip ${resultFilter.status === 'correct' ? 'active' : ''}" data-result-status="correct">Câu đúng (${countCorrect})</button>
+      </div>
+      ${partsPresent.length > 1 ? `<div class="exam-chip-bar" role="group" aria-label="Lọc theo Part trong kết quả" style="margin-bottom:0">
+        <button type="button" class="exam-chip ${resultFilter.part === 'all' ? 'active' : ''}" data-result-part="all">Tất cả Part</button>
+        ${partsPresent.map((p) => `<button type="button" class="exam-chip ${String(resultFilter.part) === String(p) ? 'active' : ''}" data-result-part="${p}">Part ${p}</button>`).join('')}
+      </div>` : ''}
+    </section>
     <div class="video-list">
-      ${(r.questions || [])
-        .map((q, idx) => {
-          const resItem = sc.results?.[idx] || {};
-          const grp = grpMap.get(q.groupId);
+      ${visibleItems.length ? visibleItems
+        .map(({ q, resItem, grp }) => {
           const statusLabel = resItem.correct ? 'Đúng' : resItem.answered ? 'Sai' : 'Bỏ trống';
           const statusCls = resItem.correct ? 'full' : resItem.answered ? 'warn' : 'reference';
           const revItem = reviewItems.find((x) => x.question_id === q.id);
           const itemNote = revItem?.note || '';
+          const clip = q.part <= 4 ? media?.audioClips?.get(q.groupId) : null;
+          const cue = clip?.questionCues?.find((c) => Number(c.q) === Number(q.number));
+          const visualUrl = exam && grp ? resolveGroupVisualUrls(exam, grp).displayUrl : null;
+          const hasVisual = Boolean(visualUrl || grp?.visual?.kind === 'table');
           return `<article class="exam-group-card" style="margin-bottom:14px">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
               <strong>Câu ${q.number} (Part ${q.part})</strong>
               <div style="display:flex;gap:6px">
                 <span class="exam-badge ${statusCls}">${statusLabel}</span>
                 <span class="exam-badge">${q.reviewStatus === 'draft' ? 'Bản nháp' : 'Đã duyệt'}</span>
               </div>
             </div>
-            ${grp?.passage ? `<details style="margin:8px 0"><summary>Xem đoạn đọc gốc</summary><div class="exam-passage">${esc(grp.passage)}</div></details>` : ''}
+            ${q.part <= 4 ? (() => {
+              if (clip) {
+                return `<div style="margin:8px 0">
+                  <audio id="res-audio-${esc(q.id)}" controls preload="none" src="${clip.url}" style="width:100%;height:36px"></audio>
+                  ${cue ? `<button type="button" class="exam-cue-btn" style="margin-top:4px" data-result-audio-jump="res-audio-${esc(q.id)}" data-offset="${Number(cue.offsetSec || 0)}">▶ Nhảy đúng tới Câu ${q.number} (${formatTimeMMSS(Number(cue.offsetSec || 0))})</button>` : ''}
+                </div>`;
+              }
+              if (q.transcript && canSpeak()) {
+                return `<div style="margin:6px 0"><button type="button" class="btn btn-sm btn-soft" data-exam-speak-text="${esc(q.transcript)}">🔊 Nghe lại riêng câu ${q.number}</button></div>`;
+              }
+              return '';
+            })() : ''}
+            ${hasVisual && exam && grp ? `<details class="exam-result-visual-details"><summary>Xem ảnh đề gốc câu ${q.number}</summary><div style="margin-top:8px">${renderGroupVisual(exam, grp, 'result')}</div></details>` : ''}
+            ${grp?.passage ? `<details style="margin:8px 0" open><summary>Xem đoạn đọc gốc ${q.evidence ? '(Đã đánh dấu căn cứ)' : ''}</summary><div class="exam-passage">${renderHighlightedPassage(grp.passage, q.evidence)}</div></details>` : ''}
             <p>${esc(q.prompt)}</p>
             <p class="fine-print">Bạn chọn: <strong>${resItem.answered ? ['A', 'B', 'C', 'D'][resItem.chosen] : 'Bỏ trống'}</strong> · Đáp án đúng: <strong>${['A', 'B', 'C', 'D'][q.answer]}</strong></p>
             <p>${esc(q.explanation || '')}</p>
             ${q.evidence ? `<div class="review-evidence"><strong>Căn cứ:</strong> ${esc(q.evidence)}</div>` : ''}
+            ${q.choiceNotes && typeof q.choiceNotes === 'object' ? `<div class="exam-choice-notes"><strong>Phân tích các phương án:</strong><ul>${Object.entries(q.choiceNotes).map(([k, v]) => `<li><strong>(${esc(k)}):</strong> ${esc(v)}</li>`).join('')}</ul></div>` : ''}
             ${q.transcript ? `<details style="margin:8px 0"><summary>Transcript</summary><pre style="white-space:pre-wrap;font:inherit">${esc(q.transcript)}</pre></details>` : ''}
             <details class="learning-note" style="margin-top:10px" ${itemNote ? 'open' : ''}>
               <summary>Ghi chú cá nhân (${itemNote ? 'Có ghi chú' : 'Thêm ghi chú'})</summary>
@@ -833,7 +1328,7 @@ export function createExamRoom(ctx) {
                 <div class="tag-chips">
                   ${EXAM_NOTE_TAGS.map((t) => `<button type="button" class="tag-chip" data-insert-tag="${esc(t)}" data-target-note="res-${esc(q.id)}">${esc(t)}</button>`).join('')}
                 </div>
-                <textarea id="note-res-${esc(q.id)}" rows="2" class="field" style="width:100%;margin:8px 0" placeholder="Ghi chú từ mới, quy tắc hay bẫy câu này…">${esc(itemNote)}</textarea>
+                <textarea id="note-res-${esc(q.id)}" rows="2" class="ui-input" style="margin:8px 0" placeholder="Ghi chú từ mới, quy tắc hay bẫy câu này…">${esc(itemNote)}</textarea>
                 <button type="button" class="btn btn-sm btn-primary" data-exam-save-result-note="${esc(q.id)}" data-exam-id="${esc(r.examId)}">Lưu ghi chú</button>
               </div>
             </details>
@@ -844,9 +1339,11 @@ export function createExamRoom(ctx) {
             </div>
           </article>`;
         })
-        .join('')}
+        .join('')
+        : '<div class="empty"><h3>Không có câu hỏi khớp bộ lọc</h3><p>Chọn "Tất cả" để xem lại toàn bộ bài thi.</p></div>'}
     </div>
-    ${renderReportModal()}`;
+    ${renderReportModal()}
+    <div id="exam-lightbox-mount">${renderLightboxModal()}</div>`;
   }
 
   function renderReportModal() {
@@ -855,8 +1352,8 @@ export function createExamRoom(ctx) {
       <div class="report-modal" role="dialog" aria-modal="true" aria-labelledby="report-modal-title">
         <h3 id="report-modal-title" style="margin-top:0">Báo lỗi câu hỏi ${esc(activeReportTarget.questionNum || activeReportTarget.questionId)}</h3>
         <p class="fine-print">Phản hồi của bạn sẽ được lưu vào hệ thống kiểm định và gửi trực tiếp tới đội biên tập.</p>
-        <label class="form-field" style="margin:12px 0">Loại lỗi
-          <select id="report-reason" class="field">
+        <label class="ui-field" style="margin:12px 0"><span class="ui-field-label">Loại lỗi</span>
+          <select id="report-reason" class="ui-input">
             <option value="answer">Sai đáp án chính thức</option>
             <option value="question">Sai đề / lỗi chính tả / thiếu từ</option>
             <option value="explanation">Lời giải thích chưa chuẩn / thiếu căn cứ</option>
@@ -864,8 +1361,8 @@ export function createExamRoom(ctx) {
             <option value="other">Khác</option>
           </select>
         </label>
-        <label class="form-field" style="margin-bottom:16px">Chi tiết lỗi
-          <textarea id="report-detail" rows="3" placeholder="Mô tả cụ thể để biên tập viên kiểm tra lại…" class="field"></textarea>
+        <label class="ui-field" style="margin-bottom:16px"><span class="ui-field-label">Chi tiết lỗi</span>
+          <textarea id="report-detail" rows="3" placeholder="Mô tả cụ thể để biên tập viên kiểm tra lại…" class="ui-input"></textarea>
         </label>
         <div style="display:flex;justify-content:flex-end;gap:8px">
           <button type="button" class="btn btn-secondary" data-report-cancel>Hủy</button>
@@ -893,17 +1390,21 @@ export function createExamRoom(ctx) {
         <a class="btn btn-secondary" href="#exams">${icon('back')}Kho đề</a>
       </div>`
     )}
-    <div class="exam-filters" style="max-width:520px">
+    <div class="exam-filters ui-filter-bar ui-filter-bar--short">
+      <label class="ui-field"><span class="ui-field-label">Phần thi</span>
       <select id="review-filter-part" aria-label="Lọc Part">
         <option value="all" ${filterPart === 'all' ? 'selected' : ''}>Tất cả Part</option>
         ${PART_SPECS.map((p) => `<option value="${p.part}" ${String(filterPart) === String(p.part) ? 'selected' : ''}>Part ${p.part}</option>`).join('')}
       </select>
+      </label>
+      <label class="ui-field"><span class="ui-field-label">Loại cần ôn</span>
       <select id="review-filter-type" aria-label="Lọc loại lỗi">
         <option value="all" ${filterType === 'all' ? 'selected' : ''}>Tất cả loại</option>
         <option value="wrong" ${filterType === 'wrong' ? 'selected' : ''}>Làm sai</option>
         <option value="blank" ${filterType === 'blank' ? 'selected' : ''}>Bỏ trống</option>
         <option value="uncertain" ${filterType === 'uncertain' ? 'selected' : ''}>Chưa hiểu</option>
       </select>
+      </label>
     </div>
     <p class="result-summary">${filtered.length} câu cần ôn</p>
     ${filtered.length ? `<div class="video-list">${filtered
@@ -971,8 +1472,17 @@ export function createExamRoom(ctx) {
             <span class="exam-badge">Ngữ cảnh: Part ${q.part}</span>
             <small class="fine-print">Nhóm câu gốc</small>
           </div>
-          ${grp?.visual?.kind === 'photo-scene' ? renderPart1SceneSvg(grp.visual) : ''}
-          ${grp?.visual?.kind === 'table' ? `<table class="exam-table"><caption>${esc(grp.visual.title)}</caption><thead><tr>${grp.visual.headers.map((h) => `<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${grp.visual.rows.map((r) => `<tr>${r.map((c) => `<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>` : ''}
+          ${renderGroupVisual(catalog.find((e) => e.id === cur?.examId), grp, 'review')}
+          ${q.part <= 4 ? (() => {
+            const clip = getExamMedia(cur?.examId)?.audioClips?.get(grp?.id);
+            if (clip) {
+              return `<div style="margin:8px 0"><audio controls preload="none" src="${clip.url}" style="width:100%;height:36px"></audio></div>`;
+            }
+            if (checked?.transcript && canSpeak()) {
+              return `<div style="margin:8px 0"><button type="button" class="btn btn-sm btn-soft" data-exam-speak-text="${esc(checked.transcript)}">🔊 Nghe lại câu ${q.number}</button></div>`;
+            }
+            return '';
+          })() : ''}
           ${grp?.passage ? `<div class="exam-passage">${esc(grp.passage)}</div>` : ''}
           ${checked?.transcript ? `<div class="exam-passage" style="margin-top:10px;background:#fdf4ff;border-color:#e879f9"><strong>Transcript audio:</strong><p style="margin:4px 0 0">${esc(checked.transcript)}</p></div>` : ''}
         </section>
@@ -986,7 +1496,7 @@ export function createExamRoom(ctx) {
               const isSel = userChoice === idx;
               return `<button type="button" class="exam-option-btn ${isSel ? 'selected' : ''}" data-review-choose="${idx}" ${checked ? 'disabled' : ''}>
                 <span>(${letter})</span>
-                ${q.part === 2 ? '' : `<span>${esc(opt)}</span>`}
+                ${q.part === 2 || opt === letter ? '' : `<span>${esc(opt)}</span>`}
               </button>`;
             }).join('')}
           </div>
@@ -996,15 +1506,16 @@ export function createExamRoom(ctx) {
             <p style="margin:6px 0">${esc(checked.explanation)}</p>
             ${checked.evidence ? `<div class="review-evidence"><strong>Căn cứ:</strong> ${esc(checked.evidence)}</div>` : ''}
             <div style="margin-top:12px">
-              <label class="fine-print">Lý do sai / lưu ý:</label>
-              <select data-review-save-reason="${esc(cur.reviewId)}" class="field" style="width:100%;margin:4px 0 8px">
-                <option value="">Chọn lý do sai…</option>
-                ${Object.entries(EXAM_ERROR_REASONS).map(([k, v]) => `<option value="${k}" ${cur.item?.reason === k ? 'selected' : ''}>${esc(v)}</option>`).join('')}
-              </select>
+              <label class="ui-field"><span class="ui-field-label">Lý do sai / lưu ý</span>
+                <select data-review-save-reason="${esc(cur.reviewId)}" class="ui-input" style="margin:4px 0 8px">
+                  <option value="">Chọn lý do sai…</option>
+                  ${Object.entries(EXAM_ERROR_REASONS).map(([k, v]) => `<option value="${k}" ${cur.item?.reason === k ? 'selected' : ''}>${esc(v)}</option>`).join('')}
+                </select>
+              </label>
               <div class="tag-chips">
                 ${EXAM_NOTE_TAGS.map((t) => `<button type="button" class="tag-chip" data-insert-tag="${esc(t)}" data-target-note="rev-${esc(cur.reviewId)}">${esc(t)}</button>`).join('')}
               </div>
-              <textarea id="note-rev-${esc(cur.reviewId)}" rows="2" class="field" style="width:100%;margin:6px 0" placeholder="Ghi chú cá nhân…">${esc(cur.item?.note || '')}</textarea>
+              <textarea id="note-rev-${esc(cur.reviewId)}" rows="2" class="ui-input" style="margin:6px 0" placeholder="Ghi chú cá nhân…">${esc(cur.item?.note || '')}</textarea>
               <button type="button" class="btn btn-sm btn-secondary" data-review-save-note="${esc(cur.reviewId)}">Lưu ghi chú</button>
             </div>
             <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:10px">
@@ -1187,20 +1698,20 @@ export function createExamRoom(ctx) {
       return `<div class="report-modal-overlay" id="admin-draft-modal-overlay">
         <div class="report-modal" style="max-width:620px">
           <h3>Biên tập bản nháp: ${esc(dm.examId)}</h3>
-          <label class="form-field" style="margin-bottom:8px">Tiêu đề đề thi
-            <input id="admin-draft-title" class="field" value="${esc(dm.title)}">
+          <label class="ui-field" style="margin-bottom:8px"><span class="ui-field-label">Tiêu đề đề thi</span>
+            <input id="admin-draft-title" class="ui-input" value="${esc(dm.title)}">
           </label>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0">
-            <label class="form-field">Mức sẵn sàng
-              <select id="admin-draft-readiness" class="field">
+            <label class="ui-field"><span class="ui-field-label">Mức sẵn sàng</span>
+              <select id="admin-draft-readiness" class="ui-input">
                 <option value="reference" ${dm.readiness === 'reference' ? 'selected' : ''}>Tài liệu tham khảo</option>
                 <option value="practice" ${dm.readiness === 'practice' ? 'selected' : ''}>Có thể tự luyện</option>
                 <option value="graded" ${dm.readiness === 'graded' ? 'selected' : ''}>Có chấm đáp án</option>
                 <option value="full" ${dm.readiness === 'full' ? 'selected' : ''}>Có chữa bài đầy đủ</option>
               </select>
             </label>
-            <label class="form-field">Điều kiện thi mô phỏng
-              <select id="admin-draft-sim" class="field">
+            <label class="ui-field"><span class="ui-field-label">Điều kiện thi mô phỏng</span>
+              <select id="admin-draft-sim" class="ui-input">
                 <option value="1" ${dm.simulationEligible ? 'selected' : ''}>Cho phép thi mô phỏng</option>
                 <option value="0" ${!dm.simulationEligible ? 'selected' : ''}>Khóa thi mô phỏng</option>
               </select>
@@ -1216,8 +1727,8 @@ export function createExamRoom(ctx) {
               <label><input type="checkbox" id="chk-exp" ${dm.checklist?.explanationsVerified ? 'checked' : ''}> 5. Lời giải đã duyệt</label>
             </div>
           </div>
-          <label class="form-field" style="margin:8px 0">Ghi chú phiên bản
-            <input id="admin-draft-note" class="field" placeholder="Lý do cập nhật hoặc nguồn đối chiếu…">
+          <label class="ui-field" style="margin:8px 0"><span class="ui-field-label">Ghi chú phiên bản</span>
+            <input id="admin-draft-note" class="ui-input" placeholder="Lý do cập nhật hoặc nguồn đối chiếu…">
           </label>
           <div id="admin-validate-result" style="margin:8px 0"></div>
           <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:14px">
@@ -1266,6 +1777,20 @@ export function createExamRoom(ctx) {
     else if (t.matches('[data-review-save-reason]')) {
       void api('exam-review/' + encodeURIComponent(t.dataset.reviewSaveReason), 'PUT', { reason: t.value }).then(() => toast('Đã lưu lý do sai.'));
     }
+    else if (t.matches('[data-exam-audio-rate]')) {
+      audioPlaybackRate = Number(t.value) || 1;
+      writeLocal(PLAYBACK_RATE_KEY, audioPlaybackRate);
+      syncAudioElement(false);
+    }
+    else if (t.matches('[data-exam-audio-autoplay]')) {
+      autoPlayOnGroupChange = Boolean(t.checked);
+      writeLocal(AUTOPLAY_KEY, autoPlayOnGroupChange);
+    }
+    else if (t.matches('[data-exam-autonext]')) {
+      autoAdvanceSingle = Boolean(t.checked);
+      writeLocal(AUTONEXT_KEY, autoAdvanceSingle);
+      document.querySelectorAll('[data-exam-autonext]').forEach((el) => { el.checked = autoAdvanceSingle; });
+    }
   });
 
   document.addEventListener('input', (e) => {
@@ -1276,6 +1801,10 @@ export function createExamRoom(ctx) {
   });
 
   document.addEventListener('click', (e) => {
+    if (e.target && e.target.hasAttribute && e.target.hasAttribute('data-lightbox-backdrop')) {
+      closeLightbox();
+      return;
+    }
     const b = e.target.closest('button,a');
     if (!b) return;
 
@@ -1290,33 +1819,70 @@ export function createExamRoom(ctx) {
       const limitMinutes = mode === 'simulation' ? 0 : Number($('#prep-time-limit')?.value || 0);
       void startExamSession(id, mode, scope, limitMinutes);
     } else if (b.hasAttribute('data-exam-choose')) {
-      if (!activeRun || activeRun.attempt.status !== 'in_progress') return;
-      const qid = b.dataset.examChoose;
-      const idx = Number(b.dataset.idx);
-      activeRun.attempt.answers[qid] = idx;
-      $('#exam-content-pane').innerHTML = renderGroupContent();
-      $('#exam-palette-panel').innerHTML = renderPalette();
-      scheduleServerSync();
+      applyChoiceToActiveRun(b.dataset.examChoose, Number(b.dataset.idx));
     } else if (b.hasAttribute('data-exam-flag')) {
+      toggleFlagInActiveRun(b.dataset.examFlag);
+    } else if (b.hasAttribute('data-palette-status')) {
       if (!activeRun) return;
-      const qid = b.dataset.examFlag;
-      const set = new Set(activeRun.attempt.flags);
-      if (set.has(qid)) set.delete(qid);
-      else set.add(qid);
-      activeRun.attempt.flags = [...set];
-      $('#exam-content-pane').innerHTML = renderGroupContent();
-      $('#exam-palette-panel').innerHTML = renderPalette();
-      scheduleServerSync();
+      paletteFilter.status = b.dataset.paletteStatus;
+      if ($('#exam-palette-panel')) $('#exam-palette-panel').innerHTML = renderPalette();
+    } else if (b.hasAttribute('data-palette-part')) {
+      if (!activeRun) return;
+      paletteFilter.part = b.dataset.palettePart;
+      if ($('#exam-palette-panel')) $('#exam-palette-panel').innerHTML = renderPalette();
+    } else if (b.hasAttribute('data-result-status')) {
+      if (!activeResult) return;
+      resultFilter.status = b.dataset.resultStatus;
+      if ($('#main')) $('#main').innerHTML = renderResultView(activeResult);
+    } else if (b.hasAttribute('data-result-part')) {
+      if (!activeResult) return;
+      resultFilter.part = b.dataset.resultPart;
+      if ($('#main')) $('#main').innerHTML = renderResultView(activeResult);
+    } else if (b.hasAttribute('data-exam-toggle-visual')) {
+      const gid = b.dataset.examToggleVisual;
+      const nextMode = visualModeMap.get(gid) === 'full' ? 'cropped' : 'full';
+      visualModeMap.set(gid, nextMode);
+      const reviewEntry = reviewSession?.items?.find((x) => x.group?.id === gid);
+      const exam = activeRun?.exam
+        || (activeResult ? catalog.find((x) => x.id === activeResult.examId) : null)
+        || (reviewEntry ? catalog.find((x) => x.id === reviewEntry.examId) : null);
+      const grp = activeRun?.content?.groups?.find((g) => g.id === gid)
+        || activeResult?.groups?.find((g) => g.id === gid)
+        || reviewEntry?.group;
+      const card = b.closest('.exam-visual-card');
+      if (exam && grp && card) {
+        const ctxName = activeRun ? 'run' : activeResult ? 'result' : 'review';
+        card.outerHTML = renderGroupVisual(exam, grp, ctxName);
+      } else if ($('#exam-content-pane')) {
+        $('#exam-content-pane').innerHTML = renderGroupContent();
+      }
+    } else if (b.hasAttribute('data-exam-lightbox')) {
+      activeLightbox = {
+        groupId: b.dataset.groupId || '',
+        src: b.dataset.src,
+        altSrc: b.dataset.altSrc || '',
+        mode: b.dataset.mode || 'cropped',
+        title: b.dataset.title || '',
+        caption: b.dataset.caption || ''
+      };
+      updateLightboxMount();
+    } else if (b.hasAttribute('data-lightbox-close')) {
+      closeLightbox();
+    } else if (b.hasAttribute('data-lightbox-toggle-mode')) {
+      if (!activeLightbox || !activeLightbox.altSrc) return;
+      const nextSrc = activeLightbox.altSrc;
+      activeLightbox.altSrc = activeLightbox.src;
+      activeLightbox.src = nextSrc;
+      activeLightbox.mode = activeLightbox.mode === 'full' ? 'cropped' : 'full';
+      updateLightboxMount();
     } else if (b.hasAttribute('data-exam-prev-group')) {
       if (!activeRun || activeRun.groupIndex <= 0) return;
       activeRun.groupIndex--;
-      $('#exam-content-pane').innerHTML = renderGroupContent();
-      $('#exam-palette-panel').innerHTML = renderPalette();
+      refreshRunGroupUI(true);
     } else if (b.hasAttribute('data-exam-next-group')) {
       if (!activeRun || activeRun.groupIndex >= activeRun.content.groups.length - 1) return;
       activeRun.groupIndex++;
-      $('#exam-content-pane').innerHTML = renderGroupContent();
-      $('#exam-palette-panel').innerHTML = renderPalette();
+      refreshRunGroupUI(true);
     } else if (b.hasAttribute('data-exam-jump-q')) {
       if (!activeRun) return;
       const q = activeRun.content.questions.find((x) => x.id === b.dataset.examJumpQ);
@@ -1325,8 +1891,7 @@ export function createExamRoom(ctx) {
       if (gIdx >= 0) {
         activeRun.groupIndex = gIdx;
         setMobilePane('content');
-        $('#exam-content-pane').innerHTML = renderGroupContent();
-        $('#exam-palette-panel').innerHTML = renderPalette();
+        refreshRunGroupUI(true);
       }
     } else if (b.hasAttribute('data-exam-mobile-pane')) {
       if (!activeRun) return;
@@ -1552,25 +2117,75 @@ export function createExamRoom(ctx) {
         $('#main').innerHTML = adminExamsPage(new URLSearchParams());
         toast('Đã làm mới dữ liệu quản trị.');
       });
+    } else if (b.hasAttribute('data-exam-audio-replay')) {
+      const audioEl = $('#exam-group-audio-el');
+      if (audioEl) {
+        void audioPlayer.seek(audioEl, 0, { play: true, rate: audioPlaybackRate }).catch((err) => toast(err.message));
+      }
+    } else if (b.hasAttribute('data-exam-audio-jump')) {
+      const audioEl = $('#exam-group-audio-el');
+      if (audioEl) {
+        const offset = Math.max(0, Number(b.dataset.examAudioJump) || 0);
+        void audioPlayer.seek(audioEl, offset, { play: true, rate: audioPlaybackRate }).catch((err) => toast(err.message));
+      }
+    } else if (b.hasAttribute('data-result-audio-jump')) {
+      const audioEl = document.getElementById(b.dataset.resultAudioJump);
+      if (audioEl) {
+        void audioPlayer.seek(audioEl, Number(b.dataset.offset) || 0, { play: true, rate: audioPlaybackRate }).catch((err) => toast(err.message));
+      }
+    } else if (b.hasAttribute('data-exam-audio-seek')) {
+      const audioEl = $('#exam-group-audio-el');
+      if (audioEl) {
+        const delta = Number(b.dataset.examAudioSeek) || 0;
+        void audioPlayer.seek(audioEl, audioEl.currentTime + delta).catch((err) => toast(err.message));
+      }
+    } else if (b.hasAttribute('data-exam-speak-cue')) {
+      if (!activeRun) return;
+      const gid = b.dataset.examSpeakCue;
+      void api(`exams/${encodeURIComponent(activeRun.exam.id)}/audio-cue`, 'POST', { groupId: gid })
+        .then((res) => {
+          const ok = speakEnglish(res.spoken, { rate: audioPlaybackRate || 1 });
+          if (!ok) toast('Trình duyệt không hỗ trợ đọc giọng AI.');
+        })
+        .catch((err) => toast(err.message || 'Không phát được đoạn đọc thử.'));
+    } else if (b.hasAttribute('data-exam-stop-speak')) {
+      stopSpeaking();
+    } else if (b.hasAttribute('data-exam-speak-text')) {
+      const ok = speakEnglish(b.dataset.examSpeakText, { rate: audioPlaybackRate || 1 });
+      if (!ok) toast('Trình duyệt không hỗ trợ đọc giọng AI.');
     }
   });
 
   // Keyboard navigation & quick shortcuts
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && activeLightbox) {
+      closeLightbox();
+      return;
+    }
     if (!activeRun || location.hash.slice(1).split('?')[0] !== 'exam-run') return;
-    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) return;
+    if (activeLightbox || $('.report-modal-overlay') || document.querySelector('dialog[open]')) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const targetEl = e.target instanceof Element ? e.target : null;
+    if (targetEl && (['INPUT', 'TEXTAREA', 'SELECT', 'AUDIO', 'VIDEO'].includes(targetEl.tagName) || targetEl.isContentEditable)) return;
 
     if (e.key === 'ArrowRight' && activeRun.groupIndex < activeRun.content.groups.length - 1) {
       activeRun.groupIndex++;
-      $('#exam-content-pane').innerHTML = renderGroupContent();
-      $('#exam-palette-panel').innerHTML = renderPalette();
+      refreshRunGroupUI(true);
       return;
     }
     if (e.key === 'ArrowLeft' && activeRun.groupIndex > 0) {
       activeRun.groupIndex--;
-      $('#exam-content-pane').innerHTML = renderGroupContent();
-      $('#exam-palette-panel').innerHTML = renderPalette();
+      refreshRunGroupUI(true);
       return;
+    }
+
+    // Audio replay shortcut (R)
+    if (e.key === 'r' || e.key === 'R') {
+      const audioEl = $('#exam-group-audio-el');
+      if (audioEl) {
+        void audioPlayer.seek(audioEl, 0, { play: true, rate: audioPlaybackRate }).catch((err) => toast(err.message));
+        return;
+      }
     }
 
     const currentGrp = activeRun.content.groups[activeRun.groupIndex];
@@ -1586,27 +2201,19 @@ export function createExamRoom(ctx) {
       optIdx = { a: 0, b: 1, c: 2, d: 3 }[e.key.toLowerCase()];
     }
     if (optIdx !== null && optIdx < targetQ.options.length) {
-      activeRun.attempt.answers[targetQ.id] = optIdx;
-      $('#exam-content-pane').innerHTML = renderGroupContent();
-      $('#exam-palette-panel').innerHTML = renderPalette();
-      scheduleServerSync();
+      applyChoiceToActiveRun(targetQ.id, optIdx);
       return;
     }
 
     // Flag toggle (F)
     if (e.key === 'f' || e.key === 'F') {
-      const set = new Set(activeRun.attempt.flags);
-      if (set.has(targetQ.id)) set.delete(targetQ.id);
-      else set.add(targetQ.id);
-      activeRun.attempt.flags = [...set];
-      $('#exam-content-pane').innerHTML = renderGroupContent();
-      $('#exam-palette-panel').innerHTML = renderPalette();
-      scheduleServerSync();
+      toggleFlagInActiveRun(targetQ.id);
       return;
     }
 
-    // Enter to check in practice mode
+    // Enter to check in practice mode (ignore when activating native buttons/links/summaries)
     if (e.key === 'Enter' && activeRun.attempt.mode === 'practice') {
+      if (targetEl && targetEl.closest('button, a, summary, [role="button"]')) return;
       const checkPromise = (signedIn && !activeRun.attempt.guest)
         ? api(`exam-attempts/${encodeURIComponent(activeRun.attempt.attempt_id)}/check-question`, 'POST', { questionId: targetQ.id })
         : api(`exams/${encodeURIComponent(activeRun.exam.id)}/check-question`, 'POST', { questionId: targetQ.id });
@@ -1617,10 +2224,25 @@ export function createExamRoom(ctx) {
     }
   });
 
-  // Auto-sync when reconnecting
+  // Fallback notice when cropped/page image fails to load
+  document.addEventListener('error', (e) => {
+    const img = e.target;
+    if (!(img instanceof HTMLImageElement)) return;
+    if (!img.matches('.exam-real-photo, .exam-lightbox-img')) return;
+    const holder = img.closest('.exam-visual-img-btn, .exam-lightbox-body');
+    if (!holder || holder.querySelector('.exam-img-error-fallback')) return;
+    img.style.display = 'none';
+    const msg = document.createElement('div');
+    msg.className = 'exam-img-error-fallback';
+    msg.innerHTML = '<strong>Không tải được ảnh đề cắt sẵn.</strong><span>Thử chuyển sang "Xem cả trang" hoặc bấm "Mở PDF" ở góc trên để đối chiếu bản gốc.</span>';
+    holder.appendChild(msg);
+  }, true);
+
+  // Auto-sync when reconnecting and clean up modal overlays on route change
   window.addEventListener('online', () => {
     if (activeRun) scheduleServerSync();
   });
+  window.addEventListener('hashchange', closeLightbox);
 
   return {
     examsPage,

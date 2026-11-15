@@ -1,6 +1,6 @@
 {
   "schemaVersion": "2.0",
-  "generatedAt": "2026-11-15T02:54:20.257Z",
+  "generatedAt": "2026-11-15T13:04:47.727Z",
   "totalExams": 30,
   "exams": [
     {
@@ -13,7 +13,7 @@
       "publisher": "ETS",
       "sourceLabel": "ETS 2023",
       "readiness": "full",
-      "readinessNote": "Đề mẫu 200 câu hoàn chỉnh có chữa bài",
+      "readinessNote": "Đã tích hợp 43 trang ảnh PDF gốc & khóa 200 câu đối chiếu công khai.",
       "simulationEligible": true,
       "partReadiness": {
         "1": "full",
@@ -25,12 +25,12 @@
         "7": "full"
       },
       "warnings": [
-        "Reading gốc là PDF gộp 10 Test; Test 01 từ trang 2–35. Đề mẫu đã tách nội dung 200 câu trực tiếp."
+        "Đã tích hợp 43 trang ảnh PDF gốc & khóa 200 câu đối chiếu công khai."
       ],
       "sources": {
         "lcPdf": {
-          "id": "1fwxGf14uUz-XcJ0raZDGT70eK3gJPQPr",
-          "name": "TEST 1.pdf",
+          "id": "1GR2K3kNYqnXg0W7_6iMdH6VgqIuGMc6a",
+          "name": "ETS 2023 Test 01.pdf",
           "merged": false
         },
         "rcPdf": {
@@ -49,13 +49,13 @@
           "playable": "drive-preview"
         },
         "answerKeyLc": {
-          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
-          "name": "ĐÁP ÁN LISTENING.pdf",
+          "id": "1yFfzwoUg6Eyt0b6YFnh_cK8GuHa_IwEs",
+          "name": "Test 01 Key.png",
           "sourcePage": 1
         },
         "answerKeyRc": {
-          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
-          "name": "ĐÁP ÁN READING.pdf",
+          "id": "1yFfzwoUg6Eyt0b6YFnh_cK8GuHa_IwEs",
+          "name": "Test 01 Key.png",
           "sourcePage": 1
         },
         "transcript": null
@@ -129,14 +129,14 @@
           "playable": "drive-preview"
         },
         "answerKeyLc": {
-          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
-          "name": "ĐÁP ÁN LISTENING.pdf",
-          "sourcePage": 2
+          "id": "1Q_0ViDaSl1CmQtLC-X4fOFBxI2ptIX09",
+          "name": "Test 02 Key.jpg",
+          "sourcePage": 1
         },
         "answerKeyRc": {
-          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
-          "name": "ĐÁP ÁN READING.pdf",
-          "sourcePage": 2
+          "id": "1Q_0ViDaSl1CmQtLC-X4fOFBxI2ptIX09",
+          "name": "Test 02 Key.jpg",
+          "sourcePage": 1
         },
         "transcript": null
       },
@@ -210,14 +210,14 @@
           "playable": "drive-preview"
         },
         "answerKeyLc": {
-          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
-          "name": "ĐÁP ÁN LISTENING.pdf",
-          "sourcePage": 3
+          "id": "14GQO_BLA4UfpxQM87Pk4nUxVlSbHKEXw",
+          "name": "Test 03 Key.jpg",
+          "sourcePage": 1
         },
         "answerKeyRc": {
-          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
-          "name": "ĐÁP ÁN READING.pdf",
-          "sourcePage": 3
+          "id": "14GQO_BLA4UfpxQM87Pk4nUxVlSbHKEXw",
+          "name": "Test 03 Key.jpg",
+          "sourcePage": 1
         },
         "transcript": null
       },
@@ -255,25 +255,25 @@
       "testNumber": 4,
       "publisher": "ETS",
       "sourceLabel": "ETS 2023",
-      "readiness": "practice",
-      "readinessNote": "Có khóa nguồn, đang rà soát",
-      "simulationEligible": false,
+      "readiness": "full",
+      "readinessNote": "Đề chuẩn đầy đủ: 41 trang ảnh PDF gốc, 54 đoạn audio cắt sẵn từng câu/nhóm & khóa 200 câu.",
+      "simulationEligible": true,
       "partReadiness": {
-        "1": "practice",
-        "2": "practice",
-        "3": "practice",
-        "4": "practice",
-        "5": "practice",
-        "6": "practice",
-        "7": "practice"
+        "1": "full",
+        "2": "full",
+        "3": "full",
+        "4": "full",
+        "5": "full",
+        "6": "full",
+        "7": "full"
       },
       "warnings": [
-        "Reading 2023 là PDF gộp 10 Test (Test 04: Trang 104–137). Có khóa nguồn, đang rà soát."
+        "Đề chuẩn đầy đủ: 41 trang ảnh PDF gốc, 54 đoạn audio cắt sẵn từng câu/nhóm & khóa 200 câu."
       ],
       "sources": {
         "lcPdf": {
-          "id": "1auiO37cDkAq5_9HM-xCHjU5m4SLuNFj7",
-          "name": "TEST 4.pdf",
+          "id": "1ponAGH1DRk28QmcvZYHHgmJsA8RD9AuK",
+          "name": "ETS 2023 Test 04.pdf",
           "merged": false
         },
         "rcPdf": {
@@ -285,30 +285,30 @@
           "note": "PDF gộp Test 1–10 (Test 04: Trang 104–137)"
         },
         "audio": {
-          "id": "1xJxnHYH5POQqk_OMOY1wJeFeoKwtpjnW",
-          "name": "Test 04.mp3",
+          "id": "1_xVRzsMc9wV5z7tWzpZkNErlz9o6c-hC",
+          "name": "ETS 2023 Test 04.mp3",
           "speed": "normal",
-          "speedNote": "Tốc độ chuẩn",
-          "playable": "drive-preview"
+          "speedNote": "Đã cắt sẵn 54 đoạn Listening chuẩn ETS",
+          "playable": "server-sliced"
         },
         "answerKeyLc": {
-          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
-          "name": "ĐÁP ÁN LISTENING.pdf",
-          "sourcePage": 4
+          "id": "1F43AciE626KLSr8mFy9M1JMUWnacc6QO",
+          "name": "Test 04 Key.jpg",
+          "sourcePage": 1
         },
         "answerKeyRc": {
-          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
-          "name": "ĐÁP ÁN READING.pdf",
-          "sourcePage": 4
+          "id": "1F43AciE626KLSr8mFy9M1JMUWnacc6QO",
+          "name": "Test 04 Key.jpg",
+          "sourcePage": 1
         },
         "transcript": null
       },
       "checklist": {
-        "sourceVerified": false,
-        "questionsVerified": false,
-        "mediaVerified": false,
-        "keyVerified": false,
-        "explanationsVerified": false
+        "sourceVerified": true,
+        "questionsVerified": true,
+        "mediaVerified": true,
+        "keyVerified": true,
+        "explanationsVerified": true
       },
       "auditReview": {
         "examId": "ets-2023-test-04",
@@ -365,26 +365,26 @@
           "note": "PDF gộp Test 1–10 (Test 05: Trang 138–171)"
         },
         "audio": {
-          "id": "1nC9SqCEa_p-0plAD6UvW5APG89E-dsqX",
-          "name": "Test 05.mp3",
+          "id": "1Q55_JxWmOQpiQo7oUTsEjVqao135DICC",
+          "name": "ETS 2023 Test 05.mp3",
           "speed": "normal",
-          "speedNote": "Tốc độ chuẩn",
-          "playable": "drive-preview"
+          "speedNote": "Đã cắt sẵn 54 đoạn Listening chuẩn ETS",
+          "playable": "server-sliced"
         },
         "answerKeyLc": {
-          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
-          "name": "ĐÁP ÁN LISTENING.pdf",
-          "sourcePage": 5
+          "id": "1fyJ8NZBGtmWnz74qUq2ulp9F4QMHi21S",
+          "name": "Test 05 Key.jpg",
+          "sourcePage": 1
         },
         "answerKeyRc": {
-          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
-          "name": "ĐÁP ÁN READING.pdf",
-          "sourcePage": 5
+          "id": "1fyJ8NZBGtmWnz74qUq2ulp9F4QMHi21S",
+          "name": "Test 05 Key.jpg",
+          "sourcePage": 1
         },
         "transcript": null
       },
       "checklist": {
-        "sourceVerified": false,
+        "sourceVerified": true,
         "questionsVerified": false,
         "mediaVerified": false,
         "keyVerified": false,
@@ -445,26 +445,26 @@
           "note": "PDF gộp Test 1–10 (Test 06: Trang 172–205)"
         },
         "audio": {
-          "id": "1rLsEiUv9US80E1C1JGpNLp6UzbuW84N7",
-          "name": "Test 06.mp3",
+          "id": "1qY6yIuwoH-WdgatyvyDysRcekSxz9e-s",
+          "name": "ETS 2023 Test 06.mp3",
           "speed": "normal",
-          "speedNote": "Tốc độ chuẩn",
-          "playable": "drive-preview"
+          "speedNote": "Đã cắt sẵn 54 đoạn Listening chuẩn ETS",
+          "playable": "server-sliced"
         },
         "answerKeyLc": {
-          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
-          "name": "ĐÁP ÁN LISTENING.pdf",
-          "sourcePage": 6
+          "id": "1gNXYDUxvsRXz8iE4sviJPJBu7LUqvVk-",
+          "name": "Test 06 Key.jpg",
+          "sourcePage": 1
         },
         "answerKeyRc": {
-          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
-          "name": "ĐÁP ÁN READING.pdf",
-          "sourcePage": 6
+          "id": "1gNXYDUxvsRXz8iE4sviJPJBu7LUqvVk-",
+          "name": "Test 06 Key.jpg",
+          "sourcePage": 1
         },
         "transcript": null
       },
       "checklist": {
-        "sourceVerified": false,
+        "sourceVerified": true,
         "questionsVerified": false,
         "mediaVerified": false,
         "keyVerified": false,

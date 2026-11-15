@@ -1,4 +1,5 @@
 import {createLayout} from './layout.mjs';
+import {createListeningStudio} from './listening-studio.mjs';
 import {createLearning} from './learning.mjs';
 import {createExamRoom} from './exam-room.mjs';
 import {resourceLabel} from './hierarchy.mjs';
@@ -72,8 +73,8 @@ const names={
   '14y6jzzSzzLtR_j5yuvnET9sOQZJ9ZkWc':'Thư viện khóa học bổ trợ'
 };
 
-let libraryView,learning,examRoom,studyRoom,todayHub,reviewHub,evidenceProgress,unifiedSearch;
-let catalog,nodes,byId,courses,videos,docs,progress,storageOK=true,activeCourse=null,activeItem=null,libraryTab='courses',libPage=1,libQuery='',libTag='Tất cả',libCourse='',playerReturn=null,noteDebounce;
+let libraryView,learning,examRoom,studyRoom,todayHub,reviewHub,evidenceProgress,unifiedSearch,listeningStudio;
+let catalog,nodes,byId,courses,videos,docs,progress,ready=false,storageOK=true,activeCourse=null,activeItem=null,libraryTab='courses',libPage=1,libQuery='',libTag='Tất cả',libCourse='',playerReturn=null,noteDebounce;
 const timers={running:false,left:1500,interval:null,started:0,base:0};
 const dayKey=(date=new Date())=>`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}-${String(date.getDate()).padStart(2,'0')}`;
 const todayCount=()=>Object.values(progress.completed).filter(d=>dayKey(new Date(d))===dayKey()).length;
@@ -97,6 +98,7 @@ function renderNav(){
     ['courses','Khóa học','book'],
     ['review','Ôn tập','target'],
     ['exams','Thi thử','clock'],
+    ['listening','Luyện nghe','headphones'],
     ['progress','Tiến bộ','chart']
   ];
   const current=(location.hash.slice(1).split('?')[0]||'home');
@@ -187,6 +189,10 @@ function openMobileMore(){
         ${icon('clock')}
         <span><strong>Thi thử TOEIC</strong><br><small style="color:var(--muted)">Đề thi chuẩn cấu trúc</small></span>
       </a>
+      <a href="#listening" class="mobile-more-item" data-close-more>
+        ${icon('headphones')}
+        <span><strong>Luyện nghe từng câu</strong><br><small style="color:var(--muted)">Nghe lặp &amp; chép chính tả</small></span>
+      </a>
       <a href="#progress" class="mobile-more-item" data-close-more>
         ${icon('chart')}
         <span><strong>Tiến bộ có căn cứ</strong><br><small style="color:var(--muted)">Bằng chứng học thật</small></span>
@@ -242,7 +248,8 @@ function progressView(){const days=Array.from({length:7},(_,i)=>{const d=new Dat
 function source(){return `${heading('Từ thư viện của bạn','Học liệu gốc trên Google Drive, trong một không gian học tập riêng.')}<div class="source-banner">${driveIcon}<div><h3>Thư mục TOEIC đã được lập danh mục</h3><p>Nhập ngày ${esc(catalog.importedDate)} · Video và tài liệu vẫn nằm trên Google Drive.</p></div></div><div class="source-grid"><section class="panel"><h3>Combo khóa luyện thi TOEIC</h3><p>Danh mục được đọc từ thư mục bạn cung cấp, giữ liên kết đến từng bài giảng và tài liệu gốc.</p><div class="source-summary"><div class="source-number">${fmt(courses.length)}<small>nhóm khóa học</small></div><div class="source-number">${fmt(videos.length)}<small>video bài giảng</small></div><div class="source-number">${fmt(docs.length)}<small>tài liệu & âm thanh</small></div></div><a class="btn btn-primary" href="${ROOT_URL}" target="_blank" rel="noopener noreferrer">${icon('external')}Mở Google Drive gốc</a></section><section class="panel"><h3>Cách mở video và cập nhật thư viện</h3><p>Video được phát bằng trình xem Google Drive. Hãy đăng nhập tài khoản Google có quyền truy cập thư mục. Nếu video không hiển thị, bấm “Mở trên Drive” trong cửa sổ bài học.</p><p>Đây là danh mục đã nhập, chưa tự động đồng bộ thay đổi từ Drive. Khi bạn thêm bài mới, yêu cầu cập nhật thư viện trong chat để đọc lại danh mục.</p><p>Tiến độ do bạn đánh dấu thủ công. Web không đọc được vị trí xem trong trình phát của Google.</p></section></div>${catalog.incompleteFolders?`<p class="fine-print section-gap">${fmt(catalog.incompleteFolders)} thư mục chưa đọc hết hoặc chưa đọc được. Bạn vẫn có thể mở thư mục gốc để xem toàn bộ.</p>`:''}<p class="fine-print section-gap">Tên và cách nhóm bài học dựa trên danh mục nguồn; nội dung video chưa được phiên âm hay xác minh. Các tệp giới thiệu nhóm và quảng bá không được đưa vào danh sách học liệu.</p>`}
 
 function navigate(){
-  if(!catalog)return;
+  if(!ready||!catalog)return;
+  listeningStudio?.cleanup();
   const [route,query]=location.hash.slice(1).split('?'),params=new URLSearchParams(query||'');
   activeCourse=null;
   renderNav();
@@ -254,6 +261,9 @@ function navigate(){
   }
 
   switch(route){
+    case'listening':
+      html=listeningStudio.render();
+      break;
     case'today':
     case'home':
     case'':
@@ -358,6 +368,7 @@ function navigate(){
   if(route==='courses'||route==='library')fillLibrary();
   if(route==='course')libraryView.fillFolder();
   if(route==='study')studyRoom?.afterRender();
+  if(route==='listening')listeningStudio?.afterRender();
   learning?.afterRender();
   layout.sync();
   updateTimerUI();
@@ -506,12 +517,17 @@ async function boot(){
       videoRow,
       heading,
       empty,
+      toast,
       progress:()=>progress,
+      getState:()=>learning?.getState(),
+      saveLearning:()=>learning?.saveState(),
+      refresh,
       learningBlock:(c,f)=>learning?.courseBlock(c,f)||'',
       refreshLibrary:group=>{history.replaceState(null,'','#library?group='+group);refresh();}
     });
 
     progress=readState(new Set(nodes.map(n=>n.id)));
+    listeningStudio=createListeningStudio({esc,heading,toast});
     examRoom=createExamRoom({
       esc,
       icon,
@@ -612,6 +628,7 @@ async function boot(){
       toast
     });
 
+    ready=true;
     navigate();
     if(!storageOK)toast('Chế độ lưu bị hạn chế. Bạn có thể xuất tiến độ để giữ lại dữ liệu.');
   }catch(error){

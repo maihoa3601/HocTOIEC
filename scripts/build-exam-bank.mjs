@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateExamContent } from '../src/client/exam-core.mjs';
 import { buildGenericExamContent } from './lib/exam-pools.mjs';
+import { AUTHENTIC_ETS_SPECS, buildAuthenticExamContent } from './lib/authentic-ets-data.mjs';
 import { buildExamCatalog } from './build-exam-catalog.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -289,10 +290,10 @@ function buildPilotExamContent(pilotMeta) {
       sourcePage: Math.ceil(qNum / 2),
       audioRef: { id: audioId, name: 'Test 01.mp3', segmentVerified: false },
       visual: {
-        kind: 'photo-scene',
-        title: s.title,
-        caption: s.svgLabel,
-        sceneIndex: qNum
+        kind: 'pdf-figure',
+        title: `Hình ảnh Câu ${qNum} · Trang ${Math.ceil(qNum / 2)} PDF gốc`,
+        caption: `Ảnh câu ${qNum} nằm trên trang ${Math.ceil(qNum / 2)} của tài liệu PDF Listening gốc.`,
+        page: Math.ceil(qNum / 2)
       }
     });
     questions.push({
@@ -726,24 +727,22 @@ function buildPilotExamContent(pilotMeta) {
 async function main() {
   const exams = await buildExamCatalog();
   const pilotMeta = exams.find((e) => e.id === 'ets-2023-test-01');
-  const pilotContent = buildPilotExamContent(pilotMeta);
-  const pilotErrs = validateExamContent(pilotContent);
-  if (pilotErrs.length) throw new Error('Pilot validation failed: ' + pilotErrs.join('; '));
-
-  const contents = {
-    'ets-2023-test-01': pilotContent
-  };
+  const contents = {};
 
   for (const exam of exams) {
-    if (exam.id === 'ets-2023-test-01') continue;
+    const authSpec = AUTHENTIC_ETS_SPECS[exam.id];
     const offset = exam.testNumber * 7 + (exam.year - 2023) * 11;
-    const content = buildGenericExamContent(exam, pilotMeta, offset);
+    const content = authSpec
+      ? buildAuthenticExamContent(exam, authSpec)
+      : buildGenericExamContent(exam, pilotMeta, offset);
     const errs = validateExamContent(content);
     if (errs.length) {
       throw new Error(`Validation failed for ${exam.id}: ` + errs.join('; '));
     }
     contents[exam.id] = content;
   }
+
+  const pilotContent = contents['ets-2023-test-01'];
 
   const output = {
     schemaVersion: 1,

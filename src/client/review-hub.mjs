@@ -61,9 +61,10 @@ export function createReviewHub(ctx){
           <button type="button" class="review-budget-btn ${budget===30?'active':''}" data-review-budget="30">30 phút (${budget===30?'Đang chọn: ':''}10–15 mục)</button>
           <button type="button" class="review-budget-btn ${budget===60?'active':''}" data-review-budget="60">60 phút (${budget===60?'Đang chọn: ':''}20–30 mục)</button>
         </div>
-        <div style="margin-left:auto;display:flex;gap:10px">
+        <div style="margin-left:auto;display:flex;gap:10px;flex-wrap:wrap">
           ${dueCards.length?`<a href="#cards?id=due" class="btn btn-primary">${icon('play')}Ôn ${Math.min(dueCards.length,cardLimit)} thẻ ngay</a>`:''}
           ${mistakes.length?`<a href="#quiz?id=review" class="btn btn-secondary">${icon('refresh')}Luyện lại ${mistakes.length} câu sai</a>`:''}
+          <a href="#exam-review-run?filter=wrong" class="btn btn-secondary">${icon('clock')}Sổ câu sai đề thi</a>
         </div>
       </div>
 
@@ -208,7 +209,11 @@ export function createReviewHub(ctx){
       location.hash=`review?tab=${activeTab}`;
     }else if(b.hasAttribute('data-review-tab')){
       activeTab=b.dataset.reviewTab;
-      document.querySelectorAll('[data-review-tab]').forEach(btn=>btn.classList.toggle('active',btn.dataset.reviewTab===activeTab));
+      document.querySelectorAll('[data-review-tab]').forEach(btn=>{
+        const isActive=btn.dataset.reviewTab===activeTab;
+        btn.classList.toggle('active',isActive);
+        btn.setAttribute('aria-selected',String(isActive));
+      });
       const grid=$('#review-stream-grid');
       if(grid){
         const budget=getState().timeBudget||30;
