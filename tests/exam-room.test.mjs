@@ -159,6 +159,13 @@ assert.equal(sub2.status, 200);
 assert.equal(sub2.data.idempotent, true);
 assert.deepEqual(sub2.data.result, sub1.data.result);
 
+// Regrading endpoint check
+const regradeSim = await req(`/api/exam-attempts/${simId}/regrade`, 'POST', {});
+assert.equal(regradeSim.status, 200);
+assert.equal(regradeSim.data.regraded, true);
+assert.equal(regradeSim.data.originalAttemptId, simId);
+assert.equal(regradeSim.data.result.score.total, 200);
+
 // 4. Practice mode check-question allowed
 const prac = await req('/api/exam-attempts', 'POST', {
   examId: 'ets-2023-test-01',

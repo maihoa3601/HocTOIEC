@@ -509,7 +509,34 @@ export function buildGenericExamContent(examMeta, pilotMeta, offset = 0) {
   // Part 1: Q1-6 (6 photos, A/B/C/D)
   for (let i = 0; i < 6; i++) {
     const qNum = i + 1;
-    const s = POOL_PART1[(i + offset) % POOL_PART1.length];
+    let s = POOL_PART1[(i + offset) % POOL_PART1.length];
+    if (examMeta.id === 'ets-2023-test-03') {
+      if (qNum === 3) {
+        // ERR-KEY-2023-T03-Q03-04: Question 3 verified source key is B (index 1)
+        s = {
+          title: 'Ảnh 3 · Nhà hàng / Bàn ghế ngoài trời',
+          svgLabel: 'Những chiếc bàn gỗ và ghế ngoài trời được sắp xếp gọn gàng dưới bóng râm của mái hiên.',
+          transcript: '(A) Customers are waiting at the cashier.\n(B) Chairs are arranged around outdoor tables.\n(C) A worker is sweeping the floor.\n(D) An umbrella is being folded up.',
+          answer: 1, // B
+          skill: 'photo-state',
+          lessonId: 'present-perfect',
+          whyRight: 'Mô tả chính xác trạng thái ghế được xếp quanh bàn ngoài trời (Đáp án B, đối chiếu bảng nguồn 2023-lc-page-1.png TEST 3).',
+          whyWrong: 'A, C, D không có người hay hành động tương ứng trong khung hình.'
+        };
+      } else if (qNum === 4) {
+        // ERR-KEY-2023-T03-Q03-04: Question 4 verified source key is C (index 2)
+        s = {
+          title: 'Ảnh 4 · Phòng thí nghiệm / Thao tác',
+          svgLabel: 'Một kỹ thuật viên đeo kính bảo hộ đang cẩn thận điều chỉnh thiết bị trên bàn thí nghiệm.',
+          transcript: '(A) Boxes are stacked by the doorway.\n(B) Documents are scattered on the floor.\n(C) A technician is adjusting lab equipment.\n(D) People are walking down a hallway.',
+          answer: 2, // C
+          skill: 'photo-action',
+          lessonId: 'present-continuous',
+          whyRight: 'Mô tả chính xác kỹ thuật viên đang điều chỉnh thiết bị phòng thí nghiệm (Đáp án C, đối chiếu bảng nguồn 2023-lc-page-1.png TEST 3).',
+          whyWrong: 'A, B, D không xuất hiện trong ảnh phòng thí nghiệm.'
+        };
+      }
+    }
     const gid = `${prefix}-g-p1-${pad2(qNum)}`;
     const qid = `${prefix}-q${pad2(qNum)}`;
     groups.push({
@@ -543,7 +570,14 @@ export function buildGenericExamContent(examMeta, pilotMeta, offset = 0) {
       explanation: `${s.whyRight} ${s.whyWrong}`,
       transcript: s.transcript,
       evidence: s.svgLabel,
-      reviewStatus: 'approved'
+      reviewStatus: 'approved',
+      ...(examMeta.id === 'ets-2023-test-03' && (qNum === 3 || qNum === 4)
+        ? {
+            keyCorrectionId: 'ERR-KEY-2023-T03-Q03-04',
+            keyVersion: 'v2',
+            sourceNote: 'Đã hiệu chỉnh theo bảng nguồn 2023-lc-page-1.png TEST 3'
+          }
+        : {})
     };
   }
 

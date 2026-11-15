@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1.0",
+  "updatedAt": "2026-11-15T09:50:00Z",
+  "corrections": [
+    {
+      "id": "ERR-KEY-2023-T03-Q03-04",
+      "examId": "ets-2023-test-03",
+      "fromVersion": "v1",
+      "toVersion": "v2",
+      "questions": {
+        "3": { "old": "C", "corrected": "B" },
+        "4": { "old": "B", "corrected": "C" }
+      },
+      "source": "2023-lc-page-1.png",
+      "status": "applied"
+    }
+  ],
+  "activeVersions": {
+    "ets-2023-test-01": "v1",
+    "ets-2023-test-02": "v1",
+    "ets-2023-test-03": "v2",
+    "ets-2023-test-04": "v1",
+    "ets-2023-test-05": "v1",
+    "ets-2023-test-06": "v1",
+    "ets-2023-test-07": "v1",
+    "ets-2023-test-08": "v1",
+    "ets-2023-test-09": "v1",
+    "ets-2023-test-10": "v1",
+    "ets-2024-test-01": "v1",
+    "ets-2024-test-02": "v1",
+    "ets-2024-test-03": "v1",
+    "ets-2024-test-04": "v1",
+    "ets-2024-test-05": "v1",
+    "ets-2024-test-06": "v1",
+    "ets-2024-test-07": "v1",
+    "ets-2024-test-08": "v1",
+    "ets-2024-test-09": "v1",
+    "ets-2024-test-10": "v1"
+  }
+}

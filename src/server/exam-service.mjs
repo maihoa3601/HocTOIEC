@@ -233,6 +233,10 @@ export function createExamService({ examBank = { exams: [], contents: {} }, cont
       const sub = path.slice('/api/exams/'.length);
       if (sub.endsWith('/check-question') && request.method === 'POST') {
         const examId = decodeURIComponent(sub.slice(0, -'/check-question'.length));
+        const exam = exams.get(examId);
+        if (exam?.readiness === 'reference') {
+          return ejson({ error: 'Đề thuộc nhóm Tài liệu tham khảo, chưa chứng minh khớp khóa nên chưa bật tra cứu đáp án tự động.', referenceOnly: true }, 400);
+        }
         const body = await readJSON(request);
         const content = contents[examId];
         const q = content?.questions?.find((x) => x.id === body.questionId);
@@ -253,6 +257,9 @@ export function createExamService({ examBank = { exams: [], contents: {} }, cont
         const exam = exams.get(examId);
         const content = contents[examId];
         if (!exam || !content) return ejson({ error: 'Không tìm thấy đề thi.' }, 404);
+        if (exam.readiness === 'reference') {
+          return ejson({ error: 'Đề thuộc nhóm Tài liệu tham khảo, chưa đối chiếu khóa chính thức nên chưa bật tự động chấm.', referenceOnly: true }, 400);
+        }
         const body = await readJSON(request);
         const scopeType = ['full', 'skill', 'part'].includes(body.scopeType) ? body.scopeType : 'full';
         const scopeParts = Array.isArray(body.scopeParts) && body.scopeParts.length ? body.scopeParts.map(Number) : [1, 2, 3, 4, 5, 6, 7];
@@ -574,6 +581,8 @@ export function createExamService({ examBank = { exams: [], contents: {} }, cont
         const resRow = await env.DB.prepare('SELECT snapshot_json FROM exam_results WHERE attempt_id=? AND user_id=?')
           .bind(attemptId, user)
           .first();
+        const exam = exams.get(attempt.exam_id);
+        const isOutdated = exam && attempt.version_id !== exam.versionId;
         return ejson({
           attempt: {
             ...attempt,
@@ -583,7 +592,10 @@ export function createExamService({ examBank = { exams: [], contents: {} }, cont
             timing: JSON.parse(attempt.timing_json),
             meta: JSON.parse(attempt.meta_json)
           },
-          result: resRow ? JSON.parse(resRow.snapshot_json) : null
+          result: resRow ? JSON.parse(resRow.snapshot_json) : null,
+          isOutdated: Boolean(isOutdated),
+          currentVersionId: exam?.versionId || attempt.version_id,
+          keyCorrectionNote: isOutdated && exam?.id === 'ets-2023-test-03' ? 'Khóa đáp án đã được hiệu chỉnh sang phiên bản v2 (câu 3-4 theo nguồn 2023-lc-page-1.png).' : null
         });
       }
 
@@ -691,6 +703,74 @@ export function createExamService({ examBank = { exams: [], contents: {} }, cont
         if (!content || !exam) return ejson({ error: 'Không tìm thấy nội dung đề để chấm.' }, 404);
         const snapshot = await finalizeAttempt(env, user, attempt, content, exam);
         return ejson({ result: snapshot, idempotent: false }, 201);
+      }
+
+      if (action === 'regrade' && request.method === 'POST') {
+        const exam = exams.get(attempt.exam_id);
+        const content = contents[attempt.exam_id];
+        if (!exam || !content) return ejson({ error: 'Không tìm thấy nội dung đề để chấm lại.' }, 404);
+
+        const currentVersionId = exam.versionId;
+        const prevVersionId = attempt.version_id;
+
+        const scopeParts = JSON.parse(attempt.scope_parts || '[]');
+        const selectedQuestions = filterQuestionsByScope(content, attempt.scope_type, scopeParts);
+        const answers = JSON.parse(attempt.answers_json || '{}');
+        const score = gradeExamQuestions(selectedQuestions, content.privateData || {}, answers);
+        const now = new Date().toISOString();
+        const usedGroupIds = new Set(selectedQuestions.map((q) => q.groupId));
+
+        const regradeAttemptId = `${attemptId}__regrade_${currentVersionId}`;
+        const snapshot = {
+          schema: 1,
+          attemptId: regradeAttemptId,
+          originalAttemptId: attemptId,
+          examId: attempt.exam_id,
+          examTitle: exam.title,
+          versionId: currentVersionId,
+          previousVersionId: prevVersionId,
+          regradedAt: now,
+          mode: attempt.mode,
+          scopeType: attempt.scope_type,
+          scopeParts,
+          sourceOrigin: 'server-regraded',
+          startedAt: attempt.started_at,
+          submittedAt: now,
+          answers,
+          flags: JSON.parse(attempt.flags_json || '[]'),
+          timing: JSON.parse(attempt.timing_json || '{}'),
+          score,
+          groups: (content.groups || []).filter((g) => usedGroupIds.has(g.id)),
+          questions: selectedQuestions.map((q) => ({
+            ...q,
+            ...(content.privateData?.[q.id] || {})
+          }))
+        };
+
+        // Insert new linked record in exam_results, leaving original attempt intact!
+        await env.DB.prepare(
+          'INSERT OR REPLACE INTO exam_results(attempt_id,user_id,exam_id,version_id,mode,scope_type,source_origin,score_json,snapshot_json,created_at) VALUES(?,?,?,?,?,?,?,?,?,?)'
+        ).bind(
+          regradeAttemptId,
+          user,
+          attempt.exam_id,
+          currentVersionId,
+          attempt.mode,
+          attempt.scope_type,
+          'server-regraded',
+          JSON.stringify(score),
+          JSON.stringify(snapshot),
+          now
+        ).run();
+
+        return ejson({
+          regraded: true,
+          originalAttemptId: attemptId,
+          regradeAttemptId,
+          previousVersionId: prevVersionId,
+          currentVersionId,
+          result: snapshot
+        }, 200);
       }
     }
 

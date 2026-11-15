@@ -1,0 +1,2430 @@
+{
+  "schemaVersion": "2.0",
+  "generatedAt": "2026-11-15T02:54:20.257Z",
+  "totalExams": 30,
+  "exams": [
+    {
+      "id": "ets-2023-test-01",
+      "versionId": "ets-2023-test-01-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2023 · Test 01",
+      "year": 2023,
+      "testNumber": 1,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "full",
+      "readinessNote": "Đề mẫu 200 câu hoàn chỉnh có chữa bài",
+      "simulationEligible": true,
+      "partReadiness": {
+        "1": "full",
+        "2": "full",
+        "3": "full",
+        "4": "full",
+        "5": "full",
+        "6": "full",
+        "7": "full"
+      },
+      "warnings": [
+        "Reading gốc là PDF gộp 10 Test; Test 01 từ trang 2–35. Đề mẫu đã tách nội dung 200 câu trực tiếp."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1fwxGf14uUz-XcJ0raZDGT70eK3gJPQPr",
+          "name": "TEST 1.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 2,
+          "endPage": 35,
+          "note": "PDF gộp Test 1–10 (Test 01: Trang 2–35)"
+        },
+        "audio": {
+          "id": "1sbMSz4xo22sGnQeGc83rUCW165o8pxpL",
+          "name": "Test 01.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 1
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": true,
+        "mediaVerified": true,
+        "keyVerified": true,
+        "explanationsVerified": true
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-01",
+        "title": "ETS 2023 · Test 01",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "full",
+        "simulationEligible": true,
+        "keyVersion": "v1",
+        "lcStatus": "verified",
+        "rcStatus": "verified",
+        "rcPdfPages": "Trang 2–35 (tách từ PDF gộp 10 Test)",
+        "audioSpeed": "normal (tốc độ chuẩn)",
+        "explanationStatus": "fully-reviewed",
+        "notes": "Đề mẫu thí điểm hoàn chỉnh 200 câu trực tiếp, có giải thích và trích dẫn căn cứ."
+      }
+    },
+    {
+      "id": "ets-2023-test-02",
+      "versionId": "ets-2023-test-02-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2023 · Test 02",
+      "year": 2023,
+      "testNumber": 2,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "practice",
+      "readinessNote": "Có khóa nguồn, đang rà soát",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Reading 2023 là PDF gộp 10 Test (Test 02: Trang 36–69). Có khóa nguồn, đang rà soát."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1H_1YnMeoIKn7HH4a4ioewra3Yr2FmPmx",
+          "name": "TEST 2.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 36,
+          "endPage": 69,
+          "note": "PDF gộp Test 1–10 (Test 02: Trang 36–69)"
+        },
+        "audio": {
+          "id": "1oH9s5Cg1FMdp1QpMHndYeUXZSZ2USHUv",
+          "name": "Test 02.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 2
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 2
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-02",
+        "title": "ETS 2023 · Test 02",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "verified-file",
+        "rcStatus": "merged-pdf",
+        "rcPdfPages": "Trang 36–69 (trong PDF gộp RC)",
+        "audioSpeed": "normal",
+        "explanationStatus": "in-review",
+        "notes": "Có khóa nguồn, đang rà soát. Tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2023-test-03",
+      "versionId": "ets-2023-test-03-v2",
+      "keyVersion": "v2",
+      "title": "ETS 2023 · Test 03",
+      "year": 2023,
+      "testNumber": 3,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "practice",
+      "readinessNote": "Có khóa nguồn, đang rà soát",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Reading 2023 là PDF gộp 10 Test (Test 03: Trang 70–103). Có khóa nguồn, đang rà soát.",
+        "Khóa đáp án đã được đối chiếu và hiệu chỉnh câu 3 (B) và câu 4 (C) theo bảng nguồn 2023-lc-page-1.png (phiên bản khóa v2)."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1UrfumB9dKq7dxlrcpgU-j1MOZwzs3cN4",
+          "name": "TEST 3.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 70,
+          "endPage": 103,
+          "note": "PDF gộp Test 1–10 (Test 03: Trang 70–103)"
+        },
+        "audio": {
+          "id": "15eUB0ArycQ9rJpLbTYqZgI9Ei27e4Num",
+          "name": "Test 03.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 3
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 3
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": true,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-03",
+        "title": "ETS 2023 · Test 03",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v2",
+        "keyCorrected": true,
+        "keyCorrectionRef": "ERR-KEY-2023-T03-Q03-04",
+        "lcStatus": "verified-file",
+        "rcStatus": "merged-pdf",
+        "rcPdfPages": "Trang 70–103 (trong PDF gộp RC)",
+        "audioSpeed": "normal",
+        "explanationStatus": "in-review",
+        "notes": "Khóa đáp án đã được hiệu chỉnh câu 3 (B) và câu 4 (C) theo bảng nguồn 2023-lc-page-1.png."
+      }
+    },
+    {
+      "id": "ets-2023-test-04",
+      "versionId": "ets-2023-test-04-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2023 · Test 04",
+      "year": 2023,
+      "testNumber": 4,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "practice",
+      "readinessNote": "Có khóa nguồn, đang rà soát",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Reading 2023 là PDF gộp 10 Test (Test 04: Trang 104–137). Có khóa nguồn, đang rà soát."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1auiO37cDkAq5_9HM-xCHjU5m4SLuNFj7",
+          "name": "TEST 4.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 104,
+          "endPage": 137,
+          "note": "PDF gộp Test 1–10 (Test 04: Trang 104–137)"
+        },
+        "audio": {
+          "id": "1xJxnHYH5POQqk_OMOY1wJeFeoKwtpjnW",
+          "name": "Test 04.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 4
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 4
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-04",
+        "title": "ETS 2023 · Test 04",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "verified-file",
+        "rcStatus": "merged-pdf",
+        "rcPdfPages": "Trang 104–137",
+        "audioSpeed": "normal",
+        "explanationStatus": "in-review",
+        "notes": "Có khóa nguồn, đang rà soát."
+      }
+    },
+    {
+      "id": "ets-2023-test-05",
+      "versionId": "ets-2023-test-05-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2023 · Test 05",
+      "year": 2023,
+      "testNumber": 5,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "practice",
+      "readinessNote": "Có khóa nguồn, đang rà soát",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Reading 2023 là PDF gộp 10 Test (Test 05: Trang 138–171). Có khóa nguồn, đang rà soát."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "13BeRajmWqAsfJ0Kg3Th9SWTos9bX8E1e",
+          "name": "TEST 5.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 138,
+          "endPage": 171,
+          "note": "PDF gộp Test 1–10 (Test 05: Trang 138–171)"
+        },
+        "audio": {
+          "id": "1nC9SqCEa_p-0plAD6UvW5APG89E-dsqX",
+          "name": "Test 05.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 5
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 5
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-05",
+        "title": "ETS 2023 · Test 05",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "verified-file",
+        "rcStatus": "merged-pdf",
+        "rcPdfPages": "Trang 138–171",
+        "audioSpeed": "normal",
+        "explanationStatus": "in-review",
+        "notes": "Có khóa nguồn, đang rà soát."
+      }
+    },
+    {
+      "id": "ets-2023-test-06",
+      "versionId": "ets-2023-test-06-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2023 · Test 06",
+      "year": 2023,
+      "testNumber": 6,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "practice",
+      "readinessNote": "Có khóa nguồn, đang rà soát",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Reading 2023 là PDF gộp 10 Test (Test 06: Trang 172–205). Có khóa nguồn, đang rà soát."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1hn7YwWEEdd27kZLplzidVD4d2__18hm-",
+          "name": "TEST 6.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 172,
+          "endPage": 205,
+          "note": "PDF gộp Test 1–10 (Test 06: Trang 172–205)"
+        },
+        "audio": {
+          "id": "1rLsEiUv9US80E1C1JGpNLp6UzbuW84N7",
+          "name": "Test 06.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 6
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 6
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-06",
+        "title": "ETS 2023 · Test 06",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "verified-file",
+        "rcStatus": "merged-pdf",
+        "rcPdfPages": "Trang 172–205",
+        "audioSpeed": "normal",
+        "explanationStatus": "in-review",
+        "notes": "Có khóa nguồn, đang rà soát."
+      }
+    },
+    {
+      "id": "ets-2023-test-07",
+      "versionId": "ets-2023-test-07-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2023 · Test 07",
+      "year": 2023,
+      "testNumber": 7,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "practice",
+      "readinessNote": "Có khóa nguồn, đang rà soát",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Reading 2023 là PDF gộp 10 Test (Test 07: Trang 206–239). Có khóa nguồn, đang rà soát."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1_0BpC2l0N_xIP2AcZLc2au3ZevgrPRTo",
+          "name": "TEST 7.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 206,
+          "endPage": 239,
+          "note": "PDF gộp Test 1–10 (Test 07: Trang 206–239)"
+        },
+        "audio": {
+          "id": "1Ae4RD-EBg9i3w9kuJMhJ52hXRaoXVHUD",
+          "name": "Test 07.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 7
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 7
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-07",
+        "title": "ETS 2023 · Test 07",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "verified-file",
+        "rcStatus": "merged-pdf",
+        "rcPdfPages": "Trang 206–239",
+        "audioSpeed": "normal",
+        "explanationStatus": "in-review",
+        "notes": "Có khóa nguồn, đang rà soát."
+      }
+    },
+    {
+      "id": "ets-2023-test-08",
+      "versionId": "ets-2023-test-08-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2023 · Test 08",
+      "year": 2023,
+      "testNumber": 8,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "practice",
+      "readinessNote": "Có khóa nguồn, đang rà soát",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Reading 2023 là PDF gộp 10 Test (Test 08: Trang 240–273). Có khóa nguồn, đang rà soát."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1GsPJgHDyRKdT_OZNOnFepk0i7MZ2Pd_E",
+          "name": "TEST 8.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 240,
+          "endPage": 273,
+          "note": "PDF gộp Test 1–10 (Test 08: Trang 240–273)"
+        },
+        "audio": {
+          "id": "1ELj8zq_or47m-pjc2AvaRMR8vvtoYSdG",
+          "name": "Test 08.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 8
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 8
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-08",
+        "title": "ETS 2023 · Test 08",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "verified-file",
+        "rcStatus": "merged-pdf",
+        "rcPdfPages": "Trang 240–273",
+        "audioSpeed": "normal",
+        "explanationStatus": "in-review",
+        "notes": "Có khóa nguồn, đang rà soát."
+      }
+    },
+    {
+      "id": "ets-2023-test-09",
+      "versionId": "ets-2023-test-09-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2023 · Test 09",
+      "year": 2023,
+      "testNumber": 9,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "practice",
+      "readinessNote": "Có khóa nguồn, đang rà soát",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Reading 2023 là PDF gộp 10 Test (Test 09: Trang 274–307). Có khóa nguồn, đang rà soát."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "17K7lWDYbCvOyAGU2a6ciXHdvdp-bHT3G",
+          "name": "TEST 9.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 274,
+          "endPage": 307,
+          "note": "PDF gộp Test 1–10 (Test 09: Trang 274–307)"
+        },
+        "audio": {
+          "id": "1fEg0TSYUNGhtbLxRzOox9r0QtVo7-kRs",
+          "name": "Test 09.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 9
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 9
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-09",
+        "title": "ETS 2023 · Test 09",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "verified-file",
+        "rcStatus": "merged-pdf",
+        "rcPdfPages": "Trang 274–307",
+        "audioSpeed": "normal",
+        "explanationStatus": "in-review",
+        "notes": "Có khóa nguồn, đang rà soát."
+      }
+    },
+    {
+      "id": "ets-2023-test-10",
+      "versionId": "ets-2023-test-10-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2023 · Test 10",
+      "year": 2023,
+      "testNumber": 10,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2023",
+      "readiness": "practice",
+      "readinessNote": "Có khóa nguồn, đang rà soát",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Reading 2023 là PDF gộp 10 Test (Test 10: Trang 308–341). Có khóa nguồn, đang rà soát."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1hhjml5bOKli2jVunXvsRF0qEF-Kc7hGn",
+          "name": "TEST 10.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1SBYNmq1rI0mWVQxFEX9F25peAHzfcD3J",
+          "name": "ETS 2023 RC.pdf",
+          "merged": true,
+          "startPage": 308,
+          "endPage": 341,
+          "note": "PDF gộp Test 1–10 (Test 10: Trang 308–341)"
+        },
+        "audio": {
+          "id": "14_ReN0snQfk-Vhy039cBwOQ4zG6flTsS",
+          "name": "Test 10.mp3",
+          "speed": "normal",
+          "speedNote": "Tốc độ chuẩn",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1y5N_v_c2DSHTDONpdmShxwKhCKQ0-uWV",
+          "name": "ĐÁP ÁN LISTENING.pdf",
+          "sourcePage": 10
+        },
+        "answerKeyRc": {
+          "id": "180ATtbSpr9-wQwVNw-Z1c-gYaH9Uhd3G",
+          "name": "ĐÁP ÁN READING.pdf",
+          "sourcePage": 10
+        },
+        "transcript": null
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2023-test-10",
+        "title": "ETS 2023 · Test 10",
+        "year": 2023,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "verified-file",
+        "rcStatus": "merged-pdf",
+        "rcPdfPages": "Trang 308–341",
+        "audioSpeed": "normal",
+        "explanationStatus": "in-review",
+        "notes": "Có khóa nguồn, đang rà soát."
+      }
+    },
+    {
+      "id": "ets-2024-test-01",
+      "versionId": "ets-2024-test-01-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 01",
+      "year": 2024,
+      "testNumber": 1,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1l_WbcFuD4hLdmNcjvIHkxR4cWJAfeqIr",
+          "name": "LISTENING TEST 1.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1yH8hZR8RXXE2kzWdFyvJi7zcYPnWAykk",
+          "name": "READING TEST 1.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1HGDii4LI2rKhwomjD0laaZoxxrspZrbo",
+          "name": "Test_01-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 1
+        },
+        "transcript": {
+          "id": "1M-Q7PTcUamlNl-7AX8ezaKqF0DvP91-_",
+          "name": "LISTENING SCRIPT [TEST 1-5].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-01",
+        "title": "ETS 2024 · Test 01",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh không dùng cho thi mô phỏng; phù hợp luyện tập phản xạ nâng cao."
+      }
+    },
+    {
+      "id": "ets-2024-test-02",
+      "versionId": "ets-2024-test-02-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 02",
+      "year": 2024,
+      "testNumber": 2,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1cPV0atI1fYgBQ0PGCX8y6pU8hW9XNKSa",
+          "name": "LISTENING TEST 2.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "10u_UFYYq7JChw8THK0uHy53alc8klwmT",
+          "name": "READING TEST 2.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1I6rQtdELNNecaDco2FS9JCnpwZWu90bp",
+          "name": "Test_02-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 2
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 2
+        },
+        "transcript": {
+          "id": "1M-Q7PTcUamlNl-7AX8ezaKqF0DvP91-_",
+          "name": "LISTENING SCRIPT [TEST 1-5].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-02",
+        "title": "ETS 2024 · Test 02",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh; tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2024-test-03",
+      "versionId": "ets-2024-test-03-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 03",
+      "year": 2024,
+      "testNumber": 3,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1E6OSVDwABH5N_7zmfY1GNiIldYofgzgG",
+          "name": "LISTENING TEST 3.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "12mv7RupycDANUIHxwllNaMbddQV7jKxj",
+          "name": "READING TEST 3.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1_CoYERetE0oHx1ofYLpXW1bKFy7fJ9Za",
+          "name": "Test_03-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 3
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 3
+        },
+        "transcript": {
+          "id": "1M-Q7PTcUamlNl-7AX8ezaKqF0DvP91-_",
+          "name": "LISTENING SCRIPT [TEST 1-5].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-03",
+        "title": "ETS 2024 · Test 03",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh; tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2024-test-04",
+      "versionId": "ets-2024-test-04-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 04",
+      "year": 2024,
+      "testNumber": 4,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1N6AspZtf3kRhfOvMQyDPAs54chyGsY3U",
+          "name": "LISTENING TEST 4.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1TtGfs-qWPrQh8nps3v9Fd14E3AD3-5X1",
+          "name": "READING TEST 4.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1EV3xHOYSHtI2MafmEFllAXor5jPdtqbG",
+          "name": "Test_04-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 4
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 4
+        },
+        "transcript": {
+          "id": "1M-Q7PTcUamlNl-7AX8ezaKqF0DvP91-_",
+          "name": "LISTENING SCRIPT [TEST 1-5].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-04",
+        "title": "ETS 2024 · Test 04",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh; tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2024-test-05",
+      "versionId": "ets-2024-test-05-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 05",
+      "year": 2024,
+      "testNumber": 5,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1alxhQsvYEudy9t_RSm31M67JNDw2D82x",
+          "name": "LISTENING TEST 5.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1b6yQw9bpI6NOeKYkMtxykzwv7UAIUqSk",
+          "name": "READING TEST 5.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1_v113dHCZgOegZlwlCbWMw-bnMNw7P0P",
+          "name": "Test_05-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 5
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 5
+        },
+        "transcript": {
+          "id": "1M-Q7PTcUamlNl-7AX8ezaKqF0DvP91-_",
+          "name": "LISTENING SCRIPT [TEST 1-5].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-05",
+        "title": "ETS 2024 · Test 05",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh; tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2024-test-06",
+      "versionId": "ets-2024-test-06-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 06",
+      "year": 2024,
+      "testNumber": 6,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "15u_qHZg0gxFR1_4ZtfGPZm7x8C_nfnoW",
+          "name": "LISTENING TEST 6.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1KTix6jvMboKxDnUmvqygXCOmyA9UN9vZ",
+          "name": "READING TEST 6.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1nYEiXxfzvp7sto21dewMdE8MLmuK_PuG",
+          "name": "Test_06-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 6
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 6
+        },
+        "transcript": {
+          "id": "1ZJq3KmXQf9GZuUaPCZ6m3h_v264lreQq",
+          "name": "LISTENING SCRIPT [TEST 6-10].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-06",
+        "title": "ETS 2024 · Test 06",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh; tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2024-test-07",
+      "versionId": "ets-2024-test-07-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 07",
+      "year": 2024,
+      "testNumber": 7,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1G5ndPBhdZIFaAzaiIbsHGHs1rdej_Jkl",
+          "name": "LISTENING TEST 7.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "10jygiA12W0mJlJwMWy3eOj-4F3_xZ2XK",
+          "name": "READING TEST 7.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "191vGaVPBKVZrZfRG9Ixmy8X9uGFa56ke",
+          "name": "Test_07-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 7
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 7
+        },
+        "transcript": {
+          "id": "1ZJq3KmXQf9GZuUaPCZ6m3h_v264lreQq",
+          "name": "LISTENING SCRIPT [TEST 6-10].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-07",
+        "title": "ETS 2024 · Test 07",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh; tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2024-test-08",
+      "versionId": "ets-2024-test-08-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 08",
+      "year": 2024,
+      "testNumber": 8,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1Qb8D_5RHufWjaEzkufyC1Z4_S7jqE2la",
+          "name": "LISTENING TEST 8.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1yFcU1KxKEmEFCTR5aS40mu6C9WpsNOqj",
+          "name": "READING TEST 8.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1S-WC4pkIImZHRK6Q1TtUTK2JFo5nzfVH",
+          "name": "Test_08-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 8
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 8
+        },
+        "transcript": {
+          "id": "1ZJq3KmXQf9GZuUaPCZ6m3h_v264lreQq",
+          "name": "LISTENING SCRIPT [TEST 6-10].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-08",
+        "title": "ETS 2024 · Test 08",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh; tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2024-test-09",
+      "versionId": "ets-2024-test-09-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 09",
+      "year": 2024,
+      "testNumber": 9,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1UdcdCJkeVk_TaEBUP3kQAFxMegeJX4dm",
+          "name": "LISTENING TEST 9.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1d2oREZoflri0qUnOf30cRTNR6NShlk-q",
+          "name": "READING TEST 9.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1PDFC9N7H7bhBpUK3-wUDPUTDIJNuzIrA",
+          "name": "Test_09-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 9
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 9
+        },
+        "transcript": {
+          "id": "1ZJq3KmXQf9GZuUaPCZ6m3h_v264lreQq",
+          "name": "LISTENING SCRIPT [TEST 6-10].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-09",
+        "title": "ETS 2024 · Test 09",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh; tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2024-test-10",
+      "versionId": "ets-2024-test-10-v1",
+      "keyVersion": "v1",
+      "title": "ETS 2024 · Test 10",
+      "year": 2024,
+      "testNumber": 10,
+      "publisher": "ETS",
+      "sourceLabel": "ETS 2024",
+      "readiness": "practice",
+      "readinessNote": "Audio tốc độ nhanh (고속) — tự luyện nâng cao",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "practice",
+        "2": "practice",
+        "3": "practice",
+        "4": "practice",
+        "5": "practice",
+        "6": "practice",
+        "7": "practice"
+      },
+      "warnings": [
+        "Audio 2024 có nhãn tốc độ nhanh (고속) — phù hợp tự luyện nâng cao, không dùng cho thi mô phỏng chuẩn.",
+        "Đã có 200 câu hỏi tương tác cho chế độ tự luyện."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "11Sm5-onO121RTssUOLQgtbHplhbVj1Hr",
+          "name": "LISTENING TEST 10.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1v5Oa01xxV-JBgdZ2FkxKCpOvWAVE6n4Q",
+          "name": "READING TEST 10.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1MmsDij-5srQOhuvZsMe6_x_NFL9UWWU1",
+          "name": "Test_10-고속.mp3",
+          "speed": "fast",
+          "speedNote": "Tốc độ nhanh (고속)",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1CiHtsKKZ5Mzyd0bAkANyMxmo6zQT7fLQ",
+          "name": "LC đáp án.pdf",
+          "sourcePage": 10
+        },
+        "answerKeyRc": {
+          "id": "1awA8QNWvaQxp2mAvodZhs_pCqwiupmo4",
+          "name": "RC đáp án.pdf",
+          "sourcePage": 10
+        },
+        "transcript": {
+          "id": "1ZJq3KmXQf9GZuUaPCZ6m3h_v264lreQq",
+          "name": "LISTENING SCRIPT [TEST 6-10].pdf",
+          "label": "ETS 2024"
+        }
+      },
+      "checklist": {
+        "sourceVerified": true,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2024-test-10",
+        "title": "ETS 2024 · Test 10",
+        "year": 2024,
+        "publisher": "ETS",
+        "readiness": "practice",
+        "simulationEligible": false,
+        "keyVersion": "v1",
+        "lcStatus": "separate-pdf",
+        "rcStatus": "separate-pdf",
+        "audioSpeed": "fast (tốc độ nhanh 고속)",
+        "explanationStatus": "in-review",
+        "notes": "Audio tốc độ nhanh; tự luyện khả dụng."
+      }
+    },
+    {
+      "id": "ets-2025-test-01",
+      "versionId": "ets-2025-test-01-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 01 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 1,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1ljhKpxPslKLis8vb6GcLFitG_SdtnuGU",
+          "name": "TEST 1.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1GudzG7E3we4wWd82llRSpuERMXBKWho-",
+          "name": "TEST 1.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1714qIdmYlrxtGebWBUtS9f4j-0UF0Gx1",
+          "name": "Test 01.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1FPNPvyupuunK9WMRQ5idMCJ4nUq1DuGF",
+          "name": "TEST 1.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 1
+        },
+        "transcript": {
+          "id": "1FPNPvyupuunK9WMRQ5idMCJ4nUq1DuGF",
+          "name": "TEST 1.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-01",
+        "title": "Bộ 2025 · Test 01 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Bìa transcript Test 1 mang nhãn YBM LC1000; chưa chứng minh cả nhóm cùng nguồn. Giữ tài liệu tham khảo, chưa bật khóa chấm tự động."
+      }
+    },
+    {
+      "id": "ets-2025-test-02",
+      "versionId": "ets-2025-test-02-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 02 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 2,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1bMeRFqCPUayqocpZl8-dx7fznc3BrQGi",
+          "name": "TEST 2.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1V_-Gt5_f8rmJ35Y5P9oTZB1Re6onkt9E",
+          "name": "TEST 2.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "14n2vuuOc0McDgauqcZQ5wC03pZHWwKNc",
+          "name": "Test 02.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "11T2Ov4IkLHuM2lVe9R9hBMhwCoVZjsuA",
+          "name": "TEST 2.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 2
+        },
+        "transcript": {
+          "id": "11T2Ov4IkLHuM2lVe9R9hBMhwCoVZjsuA",
+          "name": "TEST 2.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-02",
+        "title": "Bộ 2025 · Test 02 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Tài liệu tham khảo."
+      }
+    },
+    {
+      "id": "ets-2025-test-03",
+      "versionId": "ets-2025-test-03-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 03 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 3,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1m31oDZhkgbHjgs6PZzhhze8Kez6YJIaT",
+          "name": "TEST 3.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1NkGKICGZsyW_f7VS_bYRJgHXHBtOnFkc",
+          "name": "TEST 3.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1k8r3mFNM67CXHS9sO93s_SeCXnaWl7Re",
+          "name": "Test 03.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1vQHxskcdzKJ2VYcPXz6bucsXBTbpqaYM",
+          "name": "TEST 3.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 3
+        },
+        "transcript": {
+          "id": "1vQHxskcdzKJ2VYcPXz6bucsXBTbpqaYM",
+          "name": "TEST 3.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-03",
+        "title": "Bộ 2025 · Test 03 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Tài liệu tham khảo."
+      }
+    },
+    {
+      "id": "ets-2025-test-04",
+      "versionId": "ets-2025-test-04-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 04 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 4,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1wQgOC8wKF0AnqVBGRD5wo8Vwjl3QYWdz",
+          "name": "TEST 4.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1Yj7fcKPY_iycIT9_s-TTLo69tfUkOYMk",
+          "name": "TEST 4.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1v3KMIpOWKqZqhCiD6T_vACqy0qRuOH_4",
+          "name": "Test 04.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1V9Y7OrKOnRiFeYHmugObrz_xCpLxKFGG",
+          "name": "TEST 4.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 4
+        },
+        "transcript": {
+          "id": "1V9Y7OrKOnRiFeYHmugObrz_xCpLxKFGG",
+          "name": "TEST 4.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-04",
+        "title": "Bộ 2025 · Test 04 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Tài liệu tham khảo."
+      }
+    },
+    {
+      "id": "ets-2025-test-05",
+      "versionId": "ets-2025-test-05-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 05 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 5,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1R7E72BqX6Wqi-Wx-NdsmxaYwRdHF9nMn",
+          "name": "TEST 5.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1rQbRz8RnJexv9jD9_0WHl6AQ9X9hp_Zp",
+          "name": "TEST 5.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1zkpF9cPkciPQ8Tqdz7bj1Wtrg13scdtI",
+          "name": "Test 05.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1jUmc1nq656ZT72iM7Lqi83x1OFinaRmw",
+          "name": "TEST 5.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 5
+        },
+        "transcript": {
+          "id": "1jUmc1nq656ZT72iM7Lqi83x1OFinaRmw",
+          "name": "TEST 5.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-05",
+        "title": "Bộ 2025 · Test 05 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Tài liệu tham khảo."
+      }
+    },
+    {
+      "id": "ets-2025-test-06",
+      "versionId": "ets-2025-test-06-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 06 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 6,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1NqSdBhBb5vlE4Uj4x1MnoxC0gqJou7dj",
+          "name": "TEST 6.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1DAMq782WXeoV-_ZygDuOx5XklfBppw4R",
+          "name": "TEST 6.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1ibyqME75BBF8lYLUDXxm3LHDNAdN5jQT",
+          "name": "Test 06.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1fDKiuBGCvlX1U0OBaHjuWNRyWIWzkjRX",
+          "name": "TEST 6.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 6
+        },
+        "transcript": {
+          "id": "1fDKiuBGCvlX1U0OBaHjuWNRyWIWzkjRX",
+          "name": "TEST 6.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-06",
+        "title": "Bộ 2025 · Test 06 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Tài liệu tham khảo."
+      }
+    },
+    {
+      "id": "ets-2025-test-07",
+      "versionId": "ets-2025-test-07-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 07 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 7,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "18oG6PSCnipk2GgOxnfLSsBac7GAS1_Bo",
+          "name": "TEST 7.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1TmE2wMoOgO9n1U3atCwXZmJAKer38sB4",
+          "name": "TEST 7.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1hrbYAGlXW2_dU7vAm7zR5gIUWVSvWCrC",
+          "name": "Test 07.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "19vFG8ulSZpGK_qXWWFoqMLvA8ivZc-Z3",
+          "name": "TEST 7.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 7
+        },
+        "transcript": {
+          "id": "19vFG8ulSZpGK_qXWWFoqMLvA8ivZc-Z3",
+          "name": "TEST 7.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-07",
+        "title": "Bộ 2025 · Test 07 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Tài liệu tham khảo."
+      }
+    },
+    {
+      "id": "ets-2025-test-08",
+      "versionId": "ets-2025-test-08-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 08 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 8,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1Q0JDN-COOVbETfZbYNnitKlTTklUxwW5",
+          "name": "TEST 8.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1iXrbTCmDy0Jk7P2gBWo3lYh_JELLOcSo",
+          "name": "TEST 8.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1ZAs64STZ9pwz6D845YmzU0d17TTw84DX",
+          "name": "Test 08.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1FXBHct_u0wvWXrBGr-L-MBRlltEiAMO9",
+          "name": "TEST 8.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 8
+        },
+        "transcript": {
+          "id": "1FXBHct_u0wvWXrBGr-L-MBRlltEiAMO9",
+          "name": "TEST 8.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-08",
+        "title": "Bộ 2025 · Test 08 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Tài liệu tham khảo."
+      }
+    },
+    {
+      "id": "ets-2025-test-09",
+      "versionId": "ets-2025-test-09-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 09 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 9,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1bM1fCcjeBdL85MNywcBjuW3AA-KF6Iww",
+          "name": "TEST 9.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1Ibf_WSZoln45b5oxSMPk8NCiD06pHI74",
+          "name": "TEST 9.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "1nAbZOSaJ5Nn4dotFWTB4Oz0FeNvC-tlS",
+          "name": "Test 09.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1EouU5WsoKS9LL5ea1q8hWwlQy3Us0q0v",
+          "name": "TEST 9.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 9
+        },
+        "transcript": {
+          "id": "1EouU5WsoKS9LL5ea1q8hWwlQy3Us0q0v",
+          "name": "TEST 9.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-09",
+        "title": "Bộ 2025 · Test 09 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Tài liệu tham khảo."
+      }
+    },
+    {
+      "id": "ets-2025-test-10",
+      "versionId": "ets-2025-test-10-unverified",
+      "keyVersion": "unverified",
+      "title": "Bộ 2025 · Test 10 (Nhãn YBM)",
+      "year": 2025,
+      "testNumber": 10,
+      "publisher": "YBM (chưa xác minh)",
+      "sourceLabel": "Bộ 2025 · Transcript nhãn YBM",
+      "readiness": "reference",
+      "readinessNote": "Tài liệu tham khảo · Chưa bật khóa chấm tự động",
+      "simulationEligible": false,
+      "partReadiness": {
+        "1": "reference",
+        "2": "reference",
+        "3": "reference",
+        "4": "reference",
+        "5": "reference",
+        "6": "reference",
+        "7": "reference"
+      },
+      "warnings": [
+        "Bìa transcript Test 1 mang nhãn YBM LC1000 — chưa xác minh sự khớp giữa đề, audio và khóa đáp án.",
+        "Giữ tài liệu tham khảo, chưa bật khóa chấm tự động / thi mô phỏng."
+      ],
+      "sources": {
+        "lcPdf": {
+          "id": "1kKX8ta-sz2UGAhIY8jcvGC-OrV8rgsuH",
+          "name": "TEST 10.pdf",
+          "merged": false
+        },
+        "rcPdf": {
+          "id": "1PAFD1-qNG90EKKR0HghwnwnOI8JjqmJb",
+          "name": "TEST 10.pdf",
+          "merged": false
+        },
+        "audio": {
+          "id": "18Khn9XKN3ZWODpqW-OObEJ6_alNj15MP",
+          "name": "Test 10.mp3",
+          "speed": "normal",
+          "speedNote": "Chưa xác minh khớp đề",
+          "playable": "drive-preview"
+        },
+        "answerKeyLc": {
+          "id": "1yfoPKC_Ewpgo8vuUi-nrLV1FhxXt9dZz",
+          "name": "TEST 10.pdf",
+          "sourcePage": 1
+        },
+        "answerKeyRc": {
+          "id": "1-bVvS_tBu1psO9nsSW3zOEcz55LFLef1",
+          "name": "ANSWER KEY READING.pdf",
+          "sourcePage": 10
+        },
+        "transcript": {
+          "id": "1yfoPKC_Ewpgo8vuUi-nrLV1FhxXt9dZz",
+          "name": "TEST 10.pdf",
+          "label": "YBM (chưa xác minh)"
+        }
+      },
+      "checklist": {
+        "sourceVerified": false,
+        "questionsVerified": false,
+        "mediaVerified": false,
+        "keyVerified": false,
+        "explanationsVerified": false
+      },
+      "auditReview": {
+        "examId": "ets-2025-test-10",
+        "title": "Bộ 2025 · Test 10 (Nhãn YBM)",
+        "year": 2025,
+        "publisher": "YBM (chưa xác minh)",
+        "readiness": "reference",
+        "simulationEligible": false,
+        "keyVersion": "unverified",
+        "lcStatus": "unverified-ybm",
+        "rcStatus": "unverified-ybm",
+        "audioSpeed": "normal",
+        "explanationStatus": "none",
+        "notes": "Tài liệu tham khảo."
+      }
+    }
+  ]
+}

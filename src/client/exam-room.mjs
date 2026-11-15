@@ -235,6 +235,12 @@ export function createExamRoom(ctx) {
       const pracOk = canStartMode(exam, 'practice');
 
       return `${heading(esc(exam.title), `${esc(exam.sourceLabel)} · ${esc(READINESS_LABELS[exam.readiness])}`, `<a class="btn btn-secondary" href="#exams">${icon('back')}Kho đề</a>`)}
+      ${exam.warnings?.length ? `<div class="exam-prep-warnings" style="margin-bottom:16px;background:#fff8e6;border:1px solid #ffe082;border-radius:10px;padding:12px 16px">
+        <strong style="color:#b26a00">Lưu ý nguồn và phạm vi đối chiếu:</strong>
+        <ul style="margin:6px 0 0 18px;font-size:12px;color:#555">
+          ${exam.warnings.map((w) => `<li>${esc(w)}</li>`).join('')}
+        </ul>
+      </div>` : ''}
       ${stats.inProgress ? `<div class="continue-strip" style="margin-bottom:16px">
         <span class="round-play">${icon('play')}</span>
         <div><strong>Bạn đang có một phiên làm dở</strong><p class="fine-print">Chế độ: ${stats.inProgress.mode === 'simulation' ? 'Thi mô phỏng' : 'Tự luyện'} · Bắt đầu: ${new Date(stats.inProgress.started_at).toLocaleString('vi-VN')}</p></div>
@@ -764,6 +770,7 @@ export function createExamRoom(ctx) {
     const grpMap = new Map((r.groups || []).map((g) => [g.id, g]));
     const exam = catalog.find((e) => e.id === r.examId);
     const hasLC = (r.questions || []).some((q) => q.part <= 4);
+    const isOutdated = r.versionId && exam && r.versionId !== exam.versionId;
 
     return `${heading(
       `Kết quả · ${esc(r.examTitle || r.examId)}`,
@@ -774,6 +781,16 @@ export function createExamRoom(ctx) {
         <a class="btn btn-secondary" href="#exams">Kho đề</a>
       </div>`
     )}
+    ${isOutdated ? `<div class="exam-result-version-alert" style="margin-bottom:16px;padding:12px 16px;background:#e8f4fd;border:1px solid #b3e5fc;border-radius:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+      <div>
+        <strong style="color:#0277bd">Thông báo phiên bản khóa đáp án:</strong>
+        <p style="margin:2px 0 0;font-size:12px;color:#455a64">
+          Khóa đáp án của đề này đã được hiệu chỉnh sang phiên bản mới <strong>${esc(exam.versionId)}</strong>.
+          Kết quả đang hiển thị theo khóa lúc bạn làm bài (<strong>${esc(r.versionId)}</strong>). Lịch sử cũ được giữ nguyên bất biến.
+        </p>
+      </div>
+      ${signedIn && r.attemptId ? `<button type="button" class="btn btn-primary" data-exam-regrade="${esc(r.attemptId)}" data-exam-id="${esc(r.examId)}">Chấm lại theo khóa mới (tạo bản liên kết)</button>` : ''}
+    </div>` : ''}
     ${hasLC && exam?.sources?.audio ? `<div class="exam-audio-dock" style="margin-bottom:16px">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
         <strong>Audio đề thi để nghe lại: ${esc(exam.sources.audio.name)}</strong>
@@ -1396,6 +1413,27 @@ export function createExamRoom(ctx) {
       } else {
         toast('Ghi chú đã được lưu trên thiết bị.');
       }
+    } else if (b.hasAttribute('data-exam-regrade')) {
+      const attemptId = b.dataset.examRegrade;
+      b.disabled = true;
+      b.textContent = 'Đang chấm lại…';
+      void api(`exam-attempts/${encodeURIComponent(attemptId)}/regrade`, 'POST', {})
+        .then((res) => {
+          if (res.result) {
+            activeResult = res.result;
+            toast('Đã chấm lại thành công theo khóa mới. Bản kết quả mới được lưu liên kết!');
+            if ($('#main')) $('#main').innerHTML = renderResultView(activeResult);
+          } else {
+            toast(res.message || 'Không thể chấm lại.');
+            b.disabled = false;
+            b.textContent = 'Chấm lại theo khóa mới';
+          }
+        })
+        .catch(() => {
+          toast('Lỗi khi chấm lại bài làm.');
+          b.disabled = false;
+          b.textContent = 'Chấm lại theo khóa mới';
+        });
     } else if (b.hasAttribute('data-review-done')) {
       const id = b.dataset.reviewDone;
       const days = Number(b.dataset.days || 1);

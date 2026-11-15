@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateExamContent } from '../src/client/exam-core.mjs';
 import { buildGenericExamContent } from './lib/exam-pools.mjs';
+import { buildExamCatalog } from './build-exam-catalog.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 
@@ -723,8 +724,7 @@ function buildPilotExamContent(pilotMeta) {
 }
 
 async function main() {
-  const catalog = JSON.parse(await readFile(path.join(root, 'data', 'catalog.json'), 'utf8'));
-  const exams = buildInventory(catalog);
+  const exams = await buildExamCatalog();
   const pilotMeta = exams.find((e) => e.id === 'ets-2023-test-01');
   const pilotContent = buildPilotExamContent(pilotMeta);
   const pilotErrs = validateExamContent(pilotContent);
