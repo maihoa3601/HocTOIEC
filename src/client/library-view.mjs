@@ -98,7 +98,7 @@ export function createLibraryView(ctx) {
 
     // Chapter Summary Card (Section 5)
     const isChapterDone=entry.videos.length>0&&completed===entry.videos.length;
-    const parentFolder=byId.get(folder.parent);
+    const parentFolder=index.byId.get(folder.parent);
     const siblings=parentFolder?index.folders.get(parentFolder.id)?.folders||[]:[];
     const curIdx=siblings.findIndex(f=>f.id===folder.id);
     const nextChapter=curIdx>=0&&curIdx<siblings.length-1?siblings[curIdx+1]:null;
